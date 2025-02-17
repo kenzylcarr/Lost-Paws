@@ -8,3 +8,81 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: signup.html
 -->
+<DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Signup Page</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+      <h1>Signup Page</h1>
+    </header>
+    <main id="main-left-signup"></main>
+    
+    <!-- Lost Paws Logo -->
+    <div class="logo">
+      <p>Lost Paws</p>
+    </div>
+
+    <!-- Navigation menu -->
+    <nav>
+      <div class="nav-container">
+        <p class="nav-options">
+          <a href="aboutpage.html">About Lost Paws</a>
+          <a href="">How To Use</a>
+        </p>
+      </div>
+    </nav>
+
+    <!-- Prompts user to input their information -->
+    <div class="signup-center">
+      <h2>Create New Account</h2>
+      <form class="auth-form" id="signup-form" action="mainpage.html" method="post">
+        <fieldset>
+        <p>Join our Lost Paws community!</p>
+        <!-- Username -->
+        <p>
+         <label for="username">Username</label>
+         <input type="text" name="username" id="username"/><br />
+         <span id="error-text-username" class="error-text hidden">Invalid username</span><br />
+        </p>
+        <!-- Email Address -->
+        <p>
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email"/><br />
+          <span id="error-text-email" class="error-text hidden">Invalid email address</span><br />
+        </p>
+        <!-- Password -->
+        <p>
+          <label for="password">Password</label>
+          <input type="text" name="password" id="password"/><br />
+          <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span><br />
+        </p>
+        <!-- Confirm Password -->
+        <p>
+          <label for="cpassword">Password</label>
+          <input type="text" name="cpassword" id="cpassword"/><br />
+          <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span><br />
+        </p>
+        <!-- Submit button that redirects user to mainpage -->
+        <p class="input-field">
+          <input type="submit" value="Create new account" action="mainpage.html" input="">
+        </p>
+        </fieldset>
+      </form>
+    </div>
+    <div class="header-right">
+      <p>Already have an account?</p>
+      <a class="button" href="login.html">Login</a>
+    </div>
+
+  </div>
+</body>
+
+
+</html>
+</DOCTYPE>
