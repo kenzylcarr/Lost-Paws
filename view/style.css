@@ -51,13 +51,13 @@ h1, h2 {
   padding: 10px 0;
 }
 
-.nav-links {
+.nav-links a {
   display: flex;
   gap: 20px;
 }
 
 /* styling the links */
-.nav-links {
+.nav-links a {
   text-decoration: none;
   color: black;
   font-size: 15px;
