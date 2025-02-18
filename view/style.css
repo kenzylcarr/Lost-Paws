@@ -16,6 +16,13 @@ body {
   background-color: white;
 }
 
+/* --isabelline: #faf5f0ff;
+--fairy-tale: #fac6ddff;
+--china-rose: #a1687aff;
+--space-cadet: #30334bff;
+--air-force-blue: #5d8598ff; */
+
+
 /* CSS style for the mainpage before logging in */
 #container {
   display: grid;
@@ -25,7 +32,7 @@ body {
 
 #header {
   padding: 10px;
-  background-color: #FFECBD;
+  background-color: #a1687aff;
   color: black;
   font-size: 20px;
   width: 100%;
@@ -37,7 +44,7 @@ body {
 }
 
 .navmenu {
-  background-color: #FFECBD;
+  background-color: #faf5f0ff;
   padding: 10px 0;
 }
 
@@ -58,4 +65,8 @@ body {
 .nav-links a:hover {
   background-color: white;
   border-radius: 5px;
+}
+
+.footer {
+  background-color: #fac6ddff;
 }
