@@ -16,13 +16,6 @@ body {
   background-color: white;
 }
 
-/* --isabelline: #faf5f0ff;
---fairy-tale: #fac6ddff;
---china-rose: #a1687aff;
---space-cadet: #30334bff;
---air-force-blue: #5d8598ff; */
-
-
 /* CSS style for the mainpage before logging in */
 #container {
   display: grid;
@@ -32,7 +25,7 @@ body {
 
 #header {
   padding: 10px;
-  background-color: #a1687aff;
+  background-color: #F6A665;
   color: black;
   font-size: 20px;
   width: 100%;
@@ -44,7 +37,7 @@ body {
 }
 
 .navmenu {
-  background-color: #faf5f0ff;
+  background-color: #B7CAE1;
   padding: 10px 0;
 }
 
@@ -68,5 +61,5 @@ body {
 }
 
 .footer {
-  background-color: #fac6ddff;
+  background-color: #F6A665;
 }
