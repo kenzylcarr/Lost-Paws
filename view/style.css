@@ -7,12 +7,12 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: style.css */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Frank+Ruhl+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&family=IBM+Plex+Sans&display=swap');
 
 body, p {
   margin: 0;
   padding: 0;
-  font-family: 'DM Sans', serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
   background-color: white;
