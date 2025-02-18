@@ -27,23 +27,33 @@ body {
 }
 
 #header {
-  padding: 0px;
+  padding: 10px;
   background-color: #FFECBD;
   color: black;
   width: 100%;
-  height: 100%;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  text-align: center;
 }
 
-.nav-container {
-  background-color: #C2E5FF;
+.navmenu {
+  background-color: #FFECBD;
+  padding: 10px 0;
 }
 
-.nav-options {
-  padding: 30px;
-  color: black;
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* styling the links */
+.nav-links {
   text-decoration: none;
+  color: black;
+  font-size: 20px;
+  padding: 10px 15px;
+}
+
+.nav-links a:hover {
+  background-color: white;
+  border-radius: 5px;
 }
