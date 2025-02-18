@@ -19,11 +19,8 @@ body {
 /* CSS style for the mainpage before logging in */
 #container {
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-gap: 5px;
-  min-height: 100vh;
-  width: 100 vw;
+  grid-template-rows: 60% 40%;
+  height: 100vh;
 }
 
 #header {
