@@ -27,7 +27,7 @@ body {
   padding: 10px;
   background-color: #FFECBD;
   color: black;
-  font-size: 30px;
+  font-size: 20px;
   width: 100%;
   text-align: center;
   grid-row-start: 2;
@@ -44,14 +44,13 @@ body {
 .nav-links {
   display: flex;
   gap: 20px;
-  font-size: 10px;
 }
 
 /* styling the links */
 .nav-links {
   text-decoration: none;
   color: black;
-  font-size: 10px;
+  font-size: 15px;
   justify-content: right;
   padding: 10px 15px;
 }
