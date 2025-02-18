@@ -16,3 +16,45 @@
   <title>Login Page</title>
   <link rel="stylsheet" type="text/css" href="css/style.css" />
 </head>
+
+<body>
+  <div id="container">
+    <header id="header">
+      <h1>Login Page</h1>
+    </header>
+
+    <!-- Lost Paws Logo -->
+    <div class="logo">
+      <p>Lost Paws</p>
+    </div>
+
+    <!-- Prompts for user input to login -->
+    <div class="login-center">
+      <form class="auth-form" id="login-form" action="mainpage.html" method="post">
+      <h2>Login to Account</h2>
+        
+        <!-- Username -->
+        <div class="input-field">
+          <lable for="username">Username</lable>
+          <input type="text" name="username" is="username"/>
+        </div>
+
+        <!-- Password -->
+        <div class="input-field">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password"/>
+
+        <!-- Submit Button to Login -->
+        <p class="input-field">
+          <input type="submit" class="form-submit" value="Login" action="mainpage.html">
+        </p>
+
+        <!-- Incase no Account -->
+        <div class="header-right">
+          <p>Don'y have an account? <a href="signup.html" class="extra-space">Signup</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
+</DOCTYPE>
