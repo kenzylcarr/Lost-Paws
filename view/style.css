@@ -29,7 +29,7 @@ body {
   color: black;
   font-size: 30px;
   width: 100%;
-  text-align: left;
+  text-align: center;
 }
 
 .navmenu {
@@ -39,15 +39,16 @@ body {
 
 .nav-links {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   gap: 20px;
+  font-size: 10px;
 }
 
 /* styling the links */
 .nav-links {
   text-decoration: none;
   color: black;
-  font-size: 15px;
+  font-size: 10px;
   padding: 10px 15px;
 }
 
