@@ -30,6 +30,10 @@ body {
   font-size: 30px;
   width: 100%;
   text-align: center;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 .navmenu {
@@ -39,7 +43,6 @@ body {
 
 .nav-links {
   display: flex;
-  justify-content: right;
   gap: 20px;
   font-size: 10px;
 }
@@ -49,6 +52,7 @@ body {
   text-decoration: none;
   color: black;
   font-size: 10px;
+  justify-content: right;
   padding: 10px 15px;
 }
 
