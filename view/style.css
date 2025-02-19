@@ -15,7 +15,6 @@ body, p {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
-  background-color: white;
 }
 
 h1, h2 {
@@ -23,7 +22,6 @@ h1, h2 {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  background-color: white;
 }
 
 /* CSS style for the mainpage before logging in */
