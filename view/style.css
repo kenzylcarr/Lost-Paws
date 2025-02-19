@@ -9,14 +9,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&family=IBM+Plex+Sans&display=swap');
 
-
 body, p {
   margin: 0;
   padding: 0;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
-  outline: red dashed 1px;
 }
 
 h1, h2 {
@@ -24,8 +22,6 @@ h1, h2 {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  outline: red dashed 1px;
-
 }
 
 /* CSS style for the mainpage before logging in */
@@ -34,8 +30,6 @@ h1, h2 {
   grid-template-rows: auto auto 1fr auto;
   grid-template-columns: 1fr;
   min-height: 100vh;
-  outline: red dashed 1px;
-
 }
 
 #header {
@@ -45,23 +39,17 @@ h1, h2 {
   font-size: 20px;
   width: 100%;
   text-align: center;
-  outline: red dashed 1px;
-
 }
 
 .navmenu {
   background-color: #B7CAE1;
   padding: 10px 0;
-  outline: red dashed 1px;
-
 }
 
 .nav-links {
   display: flex;
   gap: 20px;
   justify-content: center;
-  outline: red dashed 1px;
-
 }
 
 /* styling the links */
@@ -71,13 +59,10 @@ h1, h2 {
   font-size: 15px;
   justify-content: right;
   padding: 10px 15px;
-  outline: red dashed 1px;
-
 }
 
 footer {
   background-color: #F6A665;
-  outline: red dashed 1px;
   text-align: center;
   font-size: 15px;
   padding: 10px;
