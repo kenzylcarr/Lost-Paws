@@ -82,3 +82,7 @@ h1, h2 {
   outline: red dashed 1px;
 
 }
+
+.bottom {
+  justify-content: center;
+}
