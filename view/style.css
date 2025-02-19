@@ -31,8 +31,9 @@ h1, h2 {
 /* CSS style for the mainpage before logging in */
 #container {
   display: grid;
-  grid-template-rows: 60% 40%;
-  height: 100vh;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
   outline: red dashed 1px;
 
 }
@@ -44,10 +45,6 @@ h1, h2 {
   font-size: 20px;
   width: 100%;
   text-align: center;
-  grid-row-start: 2;
-  grid-row-end: 4;
-  grid-column-start: 1;
-  grid-column-end: 4;
   outline: red dashed 1px;
 
 }
@@ -59,9 +56,10 @@ h1, h2 {
 
 }
 
-.nav-links a {
+.nav-links {
   display: flex;
   gap: 20px;
+  justify-content: center;
   outline: red dashed 1px;
 
 }
@@ -80,10 +78,12 @@ h1, h2 {
 footer {
   background-color: #F6A665;
   outline: red dashed 1px;
-  justify-content: center;
+  text-align: center;
   font-size: 15px;
+  padding: 10px;
 }
 
 .bottom {
-  justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
