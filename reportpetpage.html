@@ -33,14 +33,14 @@
         </div>
     </header>
    
-    <main>
+   <main>
         <h1>Found or Lost a Pet?</h1>
         <div class="container">
             <div class="form-container">
                 <p>Report a pet by providing the following information!</p>
-
-                <!-- Button to open the form in a new window -->
-                <button id="report-pet-btn">Click here to report a pet</button>
+                
+                <!-- Embedded Form -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeX-rwts6_gJn5A0nXWU2nHLG06chqNJUSW3mN022037sx4FA/viewform?usp=header" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
 
             </div>
             <div class="map-container">
@@ -53,13 +53,8 @@
     <footer>
         CS 476: Software Development Project
     </footer>
-
-  <!-- JS for form button -->
-  <script>
-      document.getElementById("report-pet-btn").addEventListener("click", function() {
-        window.open("https://docs.google.com/forms/d/e/1FAIpQLSeX-rwts6_gJn5A0nXWU2nHLG06chqNJUSW3mN022037sx4FA/viewform", "_blank");
-      });
-    </script>                 
-  
+                       
+    <!-- Link to external JS file -->
+    <script src="script.js"></script>
 </body>
 </html>
