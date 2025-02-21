@@ -72,3 +72,100 @@ footer {
   text-align: center;
   padding: 20px;
 }
+
+
+
+
+
+/* 
+    START CSS FOR REPORT A PET PAGE 
+                                      */
+
+/* Header Styles */
+header {
+  display: flex; /* Flexbox for header layout */
+  justify-content: space-between; /* Space out logo, navigation, and buttons */
+  align-items: center; /* Vertically center items */
+  background-color: #fff; /* Set background color for header */
+  padding: 10px 20px; /* Padding inside header */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow below header */
+}
+
+/* Logo Styles */
+.logo {
+  font-size: 20px; /* Set font size for the logo */
+  font-weight: bold; /* Make the logo bold */
+}
+
+/* Navigation Links Styles */
+nav a {
+  margin: 0 10px; /* Space out the links */
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Set text color */
+}
+
+/* Auth Button Styles */
+.auth-buttons button {
+  background-color: #007bff; /* Blue background for buttons */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  padding: 5px 10px; /* Button padding */
+  margin-left: 5px; /* Add space between buttons */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Main Content Styles */
+main {
+  padding: 20px; /* Add padding inside the main content */
+  text-align: center; /* Center text in main content */
+}
+
+/* Container for Form and Map */
+.container {
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-around; /* Space out items evenly */
+  margin-top: 20px; /* Add space above the container */
+  flex-direction: row-reverse; /* Reverse the order: form on the left, map on the right */
+}
+
+/* Styles for both Form and Map Containers */
+.form-container, .map-container {
+  background: white; /* White background for both containers */
+  padding: 20px; /* Padding inside containers */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for a clean look */
+}
+
+/* Form Container Styles */
+.form-container {
+  width: 45%; /* Set the width of the form container */
+  text-align: left; /* Align text to the left inside the form */
+}
+
+/* Form Label Styles */
+form label {
+  display: block; /* Make labels block elements */
+  margin: 10px 0; /* Add margin above and below labels */
+}
+
+/* Input Text Styles */
+input[type="text"] {
+  width: 100%; /* Make input fields take up 100% of the width */
+  padding: 5px; /* Add padding inside input fields */
+}
+
+/* Map Container Styles */
+.map-container {
+  width: 45%; /* Set the width of the map container */
+}
+
+/* Map Area Styles */
+.map {
+  height: 300px; /* Set height of the map */
+  background: lightgray; /* Set a light gray background for the map */
+  border-radius: 10px; /* Rounded corners for the map */
+}
+
+/* 
+    END CSS FOR REPORT A PET PAGE 
+                                      */
