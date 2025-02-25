@@ -17,69 +17,85 @@
 
 <body>
   <div id="container">
-    <header id="header">
-      <h1>Signup Page</h1>
-    </header>
-    <main id="main-left-signup"></main>
     
-    <!-- Lost Paws Logo -->
-    <div class="logo">
-      <p>Lost Paws</p>
-    </div>
-
-    <!-- Navigation menu -->
-    <nav>
-      <div class="nav-container">
-        <p class="nav-options">
-          <a href="aboutpage.html">About Lost Paws</a>
-          <a href="">How To Use</a>
-        </p>
+    <nav class="navmenu">
+      <!-- Lost Paws Logo -->
+      <div class="logo"> 
+          <p>Lost Paws Logo</p>
+      </div>
+  
+      <!-- Navigation menu -->
+      <div class="nav-links">
+        <a href="aboutpage.html">About Lost Paws</a>
+        <a href="howtousepage.html">How To Use</a>
+        <a href="reportpetpage.html">Report a Pet</a>
+        <a href="selectpostpage.html">Lost & Found</a>
+        <a href="petmap.html">Pet Map</a>
       </div>
     </nav>
 
-    <!-- Prompts user to input their information -->
-    <div class="signup-center">
-      <h2>Create New Account</h2>
-      <form class="auth-form" id="signup-form" action="mainpage.html" method="post">
-        <fieldset>
-        <p>Join our Lost Paws community!</p>
-        <!-- Username -->
-        <p>
-         <label for="username">Username</label>
-         <input type="text" name="username" id="username"/><br />
-         <span id="error-text-username" class="error-text hidden">Invalid username</span><br />
-        </p>
-        <!-- Email Address -->
-        <p>
-          <label for="email">Email</label>
-          <input type="text" name="email" id="email"/><br />
-          <span id="error-text-email" class="error-text hidden">Invalid email address</span><br />
-        </p>
-        <!-- Password -->
-        <p>
-          <label for="password">Password</label>
-          <input type="text" name="password" id="password"/><br />
-          <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span><br />
-        </p>
-        <!-- Confirm Password -->
-        <p>
-          <label for="cpassword">Password</label>
-          <input type="text" name="cpassword" id="cpassword"/><br />
-          <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span><br />
-        </p>
-        <!-- Submit button that redirects user to mainpage -->
-        <p class="input-field">
-          <input type="submit" value="Create new account" action="mainpage.html" input="">
-        </p>
-        </fieldset>
-      </form>
-    </div>
-    <div class="header-right">
-      <p>Already have an account?</p>
-      <a class="button" href="login.html">Login</a>
-    </div>
+  <!-- Left-hand side of page  -->
+    <main id="main-left-signup">
+      <h1>Welcome</h1>
+      <h2>Join Our Lost Paws Community!</h2>
+    </main>
 
-  </div>
+  <!-- Right-hand side of page  -->
+    <main id="main-right-signup">
+      <div class="signup-header">
+          <h2>Hello! Tell us a bit about yourself.</h2>
+      </div>
+  <!-- Prompts user to input their information -->
+          <form class="auth-form" id="signup-form" action="mainpage.html" method="post">
+              <!-- Username -->
+              <div class="signup-field">
+              <label for="username">Username</label>
+              <input type="text" name="username" id="username"/><br />
+              <span id="error-text-username" class="error-text hidden">Invalid username</span><br />
+              </div>
+              <!-- Email Address -->
+              <div class="signup-field">
+              <label for="email">Email</label>
+              <input type="text" name="email" id="email"/><br />
+              <span id="error-text-email" class="error-text hidden">Invalid email address</span><br />
+              </div>
+              <!-- Phone Number -->
+              <div class="signup-field">
+                  <label for="phone">Phone Number</label>
+                  <input type="phone" id="phone" name="phone"/><br />
+                  <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
+              </div>
+              <!-- Password -->
+              <div class="signup-field">
+              <label for="password">Password</label>
+              <input type="text" name="password" id="password"/><br />
+              <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span><br />
+              </div>
+              <!-- Confirm Password -->
+              <div class="signup-field">
+              <label for="cpassword">Password</label>
+              <input type="text" name="cpassword" id="cpassword"/><br />
+              <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span><br />
+              </div>
+              <!-- Profile Photo -->
+              <div class="signup-field">
+                  <label for="profilephoto">Profile Picture</label>
+                  <input type="file" id="profilephoto" name="profilephoto" />
+                  <p id="error-text-profilephoto" class="error-text hidden">Choose a valid file.</p>
+              </div>
+              <!-- Submit button that redirects user to mainpage -->
+              <div class="signup-field">
+                   <input class="signup-button" type="submit" value="Sign Up!" action="mainpage.html" input="">
+              </div>
+          </form>
+      <!-- If user already has an account  -->
+      <div class="signup-footnote">
+          <p>Already have an account? <a class="login-button" href="login.html">Login</a></p>
+      </div>
+
+  </main>
+
+</div>
 </body>
 
 
