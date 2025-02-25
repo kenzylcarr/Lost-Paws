@@ -14,7 +14,7 @@
 
 <head>
   <title>Report A Pet</title>
-  <link rel="stylesheet" type="text/css" href="view/style.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
 </head>
 
@@ -42,7 +42,8 @@
     </nav>
     
       <main>
-        <h1>Found or Lost a Pet?</h1>
+	  
+        <h1> Found or Lost a Pet?</h1>
         <div class="container">
             <div class="map-container">
                 <h2>Drop a pin on the map:</h2>
@@ -62,13 +63,22 @@
             </div>
             
           <div class="form-container">
-                <p>Report a pet by providing the following information!</p>
+                <p> Report a pet by providing the following information!</p>
+				</br>
                 
                 <!-- Embedded Form -->
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeX-rwts6_gJn5A0nXWU2nHLG06chqNJUSW3mN022037sx4FA/viewform?usp=header" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-    </main>
+		</br>
+		
+		<div class="upload-container">
+			<p><strong>Please upload 1-5 images of your pet:</strong></p>
+			<input type="file" id="petImages" name="petImages" accept="image/*" multiple>
+			<label for="petImages">Choose Files</label> <!-- Custom "Choose Files" button -->
+			<button type="submit" id="submitImages" class="upload-button">Submit Images</button>
+		</div>
+	</main>
 
    <footer>
   <p>CS 476: Software Development Project</p>
