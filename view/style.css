@@ -414,6 +414,7 @@ input {
                                       */   
 
 
+
 /* 
     START CSS FOR REPORT A PET PAGE 
                                       */
@@ -494,6 +495,51 @@ footer {
   color: Black; 
   padding: 10px 0;
 }
+
+/* Container for the file input and submit button */
+.upload-container {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  gap: 10px; /* Space between the buttons */
+}
+
+/* Style for the file input button */
+.upload-container input[type="file"] {
+  display: none; /* Hide the default file input */
+}
+
+/* Custom label for file input */
+.upload-container label {
+  display: inline-block;
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px; /* Rounded corners */
+  text-align: center;
+  width: auto; /* Adjust width to fit text */
+}
+
+.upload-container label:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Style for the submit button */
+.upload-container button {
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.upload-container button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
 
 /* 
     END CSS FOR REPORT A PET PAGE 
