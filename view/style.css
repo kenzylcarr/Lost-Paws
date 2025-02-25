@@ -526,15 +526,5 @@ nav a {
   border-radius: 10px; /* Rounded corners for the map */
 }
 
-/* Media Query for Small Screens */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stack the map and form on smaller screens */
-    align-items: center; /* Center the items horizontally */
-  }
-  .form-container, .map-container {
-    width: 80%; /* Set width to 80% on small screens */
-    margin-bottom: 20px; /* Add spacing between the containers */
-  }
-}
+
 
