@@ -306,6 +306,113 @@ input {
 /*   END CSS: signup.html 
                                       */                               
 
+/*   START CSS: login.html 
+                                      */   
+#main-right-login {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding-left: 0px;
+  padding-top: 190px;
+  width: 50vw; 
+
+  background-color: #cde6f1c0;
+}
+
+#main-left-login {
+  padding-left: 10px;
+  padding-top: 40px;
+  background-color: white;
+  font-size: 20px;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+  display: grid;
+  grid-template-rows: 0.6fr 0.6fr auto;
+  height: 600px;
+}
+
+.login-header > h1 {
+  padding-left: 135px;
+  font-weight: bolder;
+  font-size: 70px;
+}
+
+.login-header > h2 {
+  padding-left: 160px;
+  font-size: 30px;
+  margin-top: -50px;
+}
+
+#main-left-login > h3 {
+  font-size: 30px;
+}
+
+.login-header {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding-left: 50px;
+}
+
+.auth-form {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  border: lightgray 1px solid;
+  border-radius: 7px;
+  width: 70%;
+  padding-right: 40px;
+  padding-left: 30px;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+  margin-left: 60px;
+}
+
+.login-field {
+  width: 95%;
+  margin: 25px;
+  margin-bottom: 20px;
+  font-size: smaller;
+}
+
+.login-footnote {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  font-size: smaller;
+  padding-left: 65px;
+  margin-top: -35px;
+}
+
+.login-footnote a {
+text-decoration: none;
+}
+
+input {
+  float: right;
+  width: 55%;
+  background-color: rgb(245, 243, 243);
+  border-radius: 0.3vw;
+} 
+
+.login-button {
+  background-color: rgba(141, 204, 221, 0.801);
+  width: 15vw;
+  padding: 5px;
+  text-align: center;
+  border-radius: 1vw;
+  font-size: medium;
+}
+
+.forgot-password {
+  float: right;
+}
+/*   END CSS: login.html 
+                                      */   
+
+                                      
 /* 
     START CSS FOR REPORT A PET PAGE 
                                       */
