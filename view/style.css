@@ -306,6 +306,7 @@ input {
 /*   END CSS: signup.html 
                                       */                               
 
+
 /*   START CSS: login.html 
                                       */   
 #main-right-login {
@@ -412,7 +413,7 @@ input {
 /*   END CSS: login.html 
                                       */   
 
-                                      
+
 /* 
     START CSS FOR REPORT A PET PAGE 
                                       */
@@ -450,12 +451,6 @@ nav a {
   cursor: pointer; /* Change cursor on hover */
 }
 
-/* Main Content Styles */
-main {
-  padding: 20px; /* Add padding inside the main content */
-  text-align: center; /* Center text in main content */
-}
-
 /* Container for Form and Map */
 .container {
   display: flex; /* Use flexbox to align items */
@@ -476,18 +471,6 @@ main {
 .form-container {
   width: 45%; /* Set the width of the form container */
   text-align: left; /* Align text to the left inside the form */
-}
-
-/* Form Label Styles */
-form label {
-  display: block; /* Make labels block elements */
-  margin: 10px 0; /* Add margin above and below labels */
-}
-
-/* Input Text Styles */
-input[type="text"] {
-  width: 100%; /* Make input fields take up 100% of the width */
-  padding: 5px; /* Add padding inside input fields */
 }
 
 /* Map Container Styles */
