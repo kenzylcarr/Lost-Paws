@@ -19,46 +19,65 @@
 
 <body>
   <div id="container">
-    <header id="header">
-      <h1>Login Page</h1>
-    </header>
 
-    <!-- Lost Paws Logo -->
-    <div class="logo">
-      <p>Lost Paws</p>
-    </div>
-
-    <!-- Prompts for user input to login -->
-    <div class="login-center">
-      <form class="auth-form" id="login-form" action="mainpage.html" method="post">
-      <h2>Login to Account</h2>
-        
-        <!-- Username -->
-        <div class="input-field">
-          <lable for="username">Username</lable>
-          <input type="text" name="username" id="username"/>
+    <nav class="navmenu">
+      <!-- Lost Paws Logo -->
+      <div class="logo"> 
+          <p>Lost Paws Logo</p>
+      </div>
+      <!-- Navigation menu -->
+      <div class="nav-links">
+        <a href="aboutpage.html">About Lost Paws</a>
+        <a href="howtousepage.html">How To Use</a>
+        <a href="reportpetpage.html">Report a Pet</a>
+        <a href="selectpostpage.html">Lost & Found</a>
+        <a href="petmap.html">Pet Map</a>
         </div>
+    </nav>
 
-        <!-- Password -->
-        <div class="input-field">
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password"/>
+      <!-- Left-hand side of page  -->
+    <main id="main-left-login">  
+      <div class="login-header">
+        <h1>LOST PAWS</h1>
+        <h2>Welcome to Lost Paws!</h2>
+      </div>
+          <!-- Prompts for user input to login -->
+          <form class="auth-form" id="login-form" action="mainpage.html" method="post">
+            <h3>Login</h3>
+            
+            <!-- Username -->
+            <div class="login-field">
+              <label for="username">Username</lable>
+              <input type="text" name="username" id="username"/>
+            </div>
 
-        <!-- Submit Button to Login -->
-        <p class="input-field">
-          <input type="submit" class="form-submit" value="Login" action="mainpage.html">
-        </p>
+            <!-- Password -->
+            <div class="login-field">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password"/>
+            </div>
 
-        <!-- Incase of Forgotten Password -->
-       <div class="header-right">
-        <p><a href="forgotpassword.html" class="extra-space">Forgot Password</a></p>
-       </div>
+            <!-- Incase of Forgotten Password -->
+            <div class="login-field">
+              <p><a href="forgotpassword.html" class="forgot-password">Forgot Password</a></p>
+             <br>
+            </div>
 
-        <!-- Incase no Account -->
-        <div class="header-right">
-          <p>Don'y have an account? <a href="signup.html" class="extra-space">Signup</a></p>
+            <!-- Submit Button to Login -->
+            <div class="login-field">
+              <input class="login-button" type="submit" value="Login" action="mainpage.html">
+            </div>
+          </form>
+        <!-- If user does not have an account  -->
+        <div class="login-footnote">
+            <p>Don't have an account? <a class="signup-button" href="signup.html">Signup</a></p>
         </div>
-    </div>
+    </main>
+
+    <!-- Right-hand side of page -->
+    <main id="main-right-login">
+        <img>
+    </main>
 </body>
 
 </html>
