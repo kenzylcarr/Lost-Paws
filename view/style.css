@@ -485,6 +485,16 @@ nav a {
   border-radius: 10px; /* Rounded corners for the map */
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(177,222,228,255);
+  color: Black; 
+  padding: 10px 0;
+}
+
 /* 
     END CSS FOR REPORT A PET PAGE 
                                       */
