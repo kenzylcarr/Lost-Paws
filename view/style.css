@@ -9,6 +9,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&family=IBM+Plex+Sans&display=swap');
 
+/* 
+    START OF COMMON CSS STYLES FOR ALL PAGES
+                                      */
+
 body, p {
   margin: 0;
   padding: 0;
@@ -24,32 +28,39 @@ h1, h2 {
   font-style: normal;
 }
 
-/* CSS style for the mainpage before logging in */
 #container {
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   grid-template-columns: 1fr;
   min-height: 100vh;
 }
 
-#header {
-  padding: 10px;
-  background-color: #F6A665;
-  color: black;
-  font-size: 20px;
-  width: 100%;
-  text-align: center;
-}
-
+/* START of common styles for navigation menu */
 .navmenu {
-  background-color: #B7CAE1;
-  padding: 10px 0;
+  background-color: #b1dee4;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 8px;
+  height: 2vw;
+
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  display: grid;
+  grid-template-columns: 2fr 9fr 0.5fr; /* used to position the navigation menu buttons */
 }
 
 .nav-links {
   display: flex;
   gap: 20px;
   justify-content: center;
+
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 /* styling the links */
@@ -60,6 +71,48 @@ h1, h2 {
   justify-content: right;
   padding: 10px 15px;
 }
+
+.logo {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.button {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 0px;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.button a {
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  justify-content: right;
+  padding: 10px 15px;
+}
+
+#signup-button {
+  background-color: rgba(141, 204, 221, 0.801);
+  width: 9vw;
+  height: 1.5vw;
+  padding: 0.3vw;
+  text-align: center;
+  border-radius: 1vw;
+}
+
+#login-button {
+  background-color: rgba(141, 204, 221, 0.801);
+  width: 9vw;
+  height: 1.5vw;
+  padding: 0.3vw;
+  border-radius: 1vw;
+  text-align: center;
+}
+/* END of common styles for navigation menu */
 
 footer {
   background-color: #F6A665;
@@ -72,10 +125,92 @@ footer {
   text-align: center;
   padding: 20px;
 }
+/* 
+    END OF COMMON CSS STYLES FOR ALL PAGES
+                                      */
 
+                                       
+ /*   START CSS: aboutpage.html 
+                                      */
+#aboutPage-info {
+  display: grid;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  width: 100%;
 
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
 
+  grid-template-rows: 2fr 2fr;
+}
 
+#aboutPage-row1 {
+    display: grid;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    grid-template-columns: 1fr 0.5fr 2fr;  
+}
+    .aboutPage-description {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .aboutPage-photo1 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .aboutPage-map {
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    .aboutPage-map > h3 {
+      color: rgb(104, 22, 22);
+    }
+
+#aboutPage-row2 {
+    display: grid;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    grid-template-columns: 1fr 0.5fr 2fr; 
+}
+    .aboutPage-offer {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .aboutPage-photo2 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .aboutPage-mission-statement {
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+p.description {
+    background-color: #faac6c;
+    padding: 1vw;
+    text-align: center;
+    border-radius: 17px 17px 17px 17px;
+}
+
+.aboutPage-mission-statement {
+    width: 60%;
+}
+
+ /*   END CSS: aboutpage.html 
+                                      */
+
+                                      
 
 /* 
     START CSS FOR REPORT A PET PAGE 
