@@ -9,9 +9,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&family=IBM+Plex+Sans&display=swap');
 
-/* 
-    START OF COMMON CSS STYLES FOR ALL PAGES
-                                      */
+
+/* START OF COMMON CSS STYLES FOR ALL PAGES */
 
 body, p {
   margin: 0;
@@ -125,13 +124,13 @@ footer {
   text-align: center;
   padding: 20px;
 }
-/* 
-    END OF COMMON CSS STYLES FOR ALL PAGES
-                                      */
 
-                                       
- /*   START CSS: aboutpage.html 
-                                      */
+/*  END OF COMMON CSS STYLES FOR ALL PAGES  */
+
+
+
+/*   START CSS: aboutpage.html  */
+
 #aboutPage-info {
   display: grid;
   padding: 10px;
@@ -207,12 +206,11 @@ p.description {
     width: 60%;
 }
 
- /*   END CSS: aboutpage.html 
-                                      */
+/*   END CSS: aboutpage.html  */
 
-                     
-/*   START CSS: signup.html 
-                                      */      
+
+
+/*   START CSS: signup.html  */      
 #main-left-signup {
   grid-column-start: 1;
   grid-column-end: 2;
@@ -541,6 +539,4 @@ footer {
 }
 
 
-/* 
-    END CSS FOR REPORT A PET PAGE 
-                                      */
+/*  END CSS FOR REPORT A PET PAGE  */
