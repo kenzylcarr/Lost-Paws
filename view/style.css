@@ -38,6 +38,7 @@ h1, h2 {
 /* START of common styles for navigation menu */
 .navmenu {
   background-color: #b1dee4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 
   padding-left: 20px;
   padding-right: 20px;
@@ -413,10 +414,18 @@ input {
   float: right;
 }
 /*   END CSS: login.html 
-                                      */   
+                                      */  
+              
 
+/*   START CSS: howtousepage.html  
+                                            */   
+#how-to-use-info > h1 {
+  text-align: center;
+}
+/*   END CSS: howtousepage.html 
+                                        */  
 
-
+                                        
 /* 
     START CSS FOR REPORT A PET PAGE 
                                       */
