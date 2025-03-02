@@ -39,6 +39,7 @@ h1, h2 {
 .navmenu {
   background-color: #b1dee4;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2px;
 
   padding-left: 20px;
   padding-right: 20px;
@@ -425,7 +426,7 @@ input {
 /*   END CSS: howtousepage.html 
                                         */  
 
-                                        
+
 /* 
     START CSS FOR REPORT A PET PAGE 
                                       */
