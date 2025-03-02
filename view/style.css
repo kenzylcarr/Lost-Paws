@@ -74,6 +74,12 @@ h1, h2 {
   padding: 10px 15px;
 }
 
+.nav-links a:hover {
+  background-color: #fdfdfd79;
+  color: black;
+  border-radius: 1vw;
+}
+
 .logo {
   grid-column-start: 1;
   grid-column-end: 2;
