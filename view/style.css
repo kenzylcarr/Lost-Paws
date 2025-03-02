@@ -216,8 +216,7 @@ p.description {
     width: 60%;
 }
 
-/*   END CSS: aboutpage.html
-                                          */
+/*   END CSS: aboutpage.html */
 
 
 /*   START CSS: signup.html  
@@ -308,8 +307,7 @@ input {
   border-radius: 1vw;
   font-size: medium;
 }
-/*   END CSS: signup.html 
-                                      */                               
+/*   END CSS: signup.html */                               
 
 
 /*   START CSS: login.html 
@@ -427,105 +425,111 @@ input {
 /*   END CSS: howtousepage.html */  
 
 
-/*   START CSS: index.html  
-                                            */  
-#lost-found-database {
-    grid-column-start: 1;
-    grid-column-end: 3;
+ /*   START CSS: index.html  
+                                              */  
+  #lost-found-database {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+    
+      display: grid;
+      grid-template-rows: 0.6fr 5fr auto;
+      height: 600px;
+  }
+  
+  .lost-or-found-buttons {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    padding: 25px;
+  }
+  
+  .lost-or-found-buttons button {
+    background: rgba(255, 255, 255, 0.863);
+    color: black;
+    cursor: pointer;
+    border-radius: 0.3vw;
+    padding: 10px 50px;
+    font-size: 30px;
+  }
+  
+  #lost-button {
+    margin-right: 20px;
+    padding: 10px 65px;
+  }
+  
+  .search-field {
     grid-row-start: 2;
     grid-row-end: 3;
   
+    float: left;
+    margin-left: 30px;
+  }
+  
+  .search-field input[type=text]{
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    width: 225px;
+  }
+  
+  .search-field button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 8px;
+    background: #dadadb;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  .pet-database-container {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    margin-top: -450px;
+    padding: 40px;
+
     display: grid;
-    grid-template-rows: 0.6fr 5fr auto;
-    height: 600px;
-}
-
-.lost-or-found-buttons {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  padding: 25px;
-}
-
-.lost-or-found-buttons button {
-  background: rgba(255, 255, 255, 0.863);
-  color: black;
-  cursor: pointer;
-  border-radius: 0.3vw;
-  padding: 10px 50px;
-  font-size: 30px;
-}
-
-#lost-button {
-  margin-right: 20px;
-  padding: 10px 65px;
-}
-
-.search-field {
-  grid-row-start: 2;
-  grid-row-end: 3;
-
-  float: left;
-}
-
-.search-field input[type=text]{
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
-}
-
-.search-field button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 8px;
-  background: #dadadb;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-.pet-database-container {
-  grid-row-start: 3;
-  grid-row-end: 4;
-  height: 55vh;
-  padding: 40px;
-}
-
-#index-main-right{
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  background-color: #e9e9e9;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-#index-main-right > h3 {
-  text-align: center;
-  width: 20vw;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
-}
-
-#index-main-right > p {
-  text-align: center;
-}
-
-#index-main-right a {
-  background-color: rgba(230, 180, 120, 0.801);
-  border-radius: 0.2vw;
-  width: 5vw;
-  padding: 0.3vw;
-  margin-left: 10px;
-  text-decoration: none;
-  font-size: large;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-/*   END CSS: index.html  */  
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+  }
+  
+  #index-main-right{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #e9e9e9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  #index-main-right > h3 {
+    text-align: center;
+    width: 15vw;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  #index-main-right > p {
+    text-align: center;
+  }
+  
+  #index-main-right a {
+    background-color: rgba(230, 180, 120, 0.801);
+    border-radius: 0.2vw;
+    width: 5vw;
+    padding: 0.3vw;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: large;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  /*   END CSS: index.html  */  
 
 
 
