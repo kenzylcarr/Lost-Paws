@@ -230,18 +230,18 @@ p.description {
 }
 
 #main-left-signup > h1 {
-  padding-left: 150px;
+  padding-left: 250px;
   font-weight: bold;
   font-size: 50px;
 }
 
 #main-left-signup > h2 {
-  padding-left: 60px;
+  padding-left: 150px;
   font-size: 30px;
 }
 
 #main-right-signup {
-  padding-left: 10px;
+  padding-left: 150px;
   padding-top: 40px;
   background-color: white;
   font-size: 20px;
@@ -267,13 +267,9 @@ p.description {
   grid-row-end: 3;
   border: lightgray 1px solid;
   border-radius: 7px;
-  width: 70%;
-  padding-right: 40px;
-  padding-bottom: 20px;
 }
 
 .signup-field {
-  width: 95%;
   margin: 25px;
   margin-bottom: 20px;
   font-size: smaller;
