@@ -870,6 +870,12 @@ footer {
 
 
 /*	 START CSS: mainpage.html 	*/
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
 .top-half {
 	background-color: #cde6f1c0;
 	height: 50%;
