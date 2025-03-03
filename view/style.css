@@ -897,12 +897,15 @@ footer {
 }
 
 .top-half a{
+	display: inline-block;
 	background-color: #b1d7ff;
-	color: white;
-	text-decoration: none;
 	padding: 10px 20px;
 	border-radius: 5px;
+	text-decoration: none;
 	font-size: 1em;
+	color: white;
+	text-align: center;
+	width: auto;
 }
 
 
