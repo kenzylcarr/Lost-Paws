@@ -916,4 +916,13 @@ footer {
 	margin 0 0 20px 0;
 }
 
+.bottom-half a {
+	background-color: #f4cb9d;
+	color: white;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 1em;
+}
+
 /*	 END CSS: mainpage.html		*/
