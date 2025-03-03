@@ -230,7 +230,7 @@ p.description {
   padding-top: 190px;
   width: 40vw; 
 
-  background-color: #F6A665;
+  background-color: #F6A665;	/* Orange Color */
 }
 
 #main-left-signup > h1 {
@@ -870,5 +870,50 @@ footer {
 
 
 /*	 START CSS: mainpage.html 	*/
+.top-half {
+	background-color: #cde6f1c0;
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	alighn-item: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.top-half h1 {
+	font-size: 3em;
+	margin: 0;
+}
+
+.top-half p {
+	font-size: 1.2em;
+	margin 10px 0;
+}
+
+.top-half a{
+	background-color: #b1d7ff;
+	color: white;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 1em;
+}
+
+
+.bottom-half {
+	background-color: white;
+	height: 50%;
+	display flex;
+	flex-direction: column;
+	flex-direction: column;
+	align-itemjs: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.bottom-half p {
+	font-size: 1.5em;
+	margin 0 0 20px 0;
+}
 
 /*	 END CSS: mainpage.html		*/
