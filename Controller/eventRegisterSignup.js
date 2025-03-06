@@ -39,7 +39,9 @@ profilePhoto.addEventListener("change", profilePhotoHandler);
 
 
 /* Function Handlers for the signup.html */
-function usernameHandler(event) {
+// Username
+function usernameHandler(event) 
+{
   let username = event.target;
   let errorText = document.getElementById("error-text-username");
 
@@ -53,4 +55,17 @@ function usernameHandler(event) {
     errorText.classList.add("hidden");
     console.log("Valid username: " + username.value);
   }
+}
+
+
+// Email
+function emailHandler(event)
+{
+  let email = event.target;
+  let errorText = document.getElementById("error-text-email");
+  // let emailPattern = 
+  // if()
+  // {
+    
+  // }
 }
