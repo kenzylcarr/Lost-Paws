@@ -61,3 +61,79 @@ fuction validateProfilePhoto(profilePhoto)
 }
 
 /* End of common validator functions */
+
+
+
+/* Event handlers for signup.html page begins */
+function validateSignup(event)
+{
+  let formIsValid = true;
+
+  // validating username
+  if (!validateUsername(username.value))
+  {
+    username.classList.add('error-border');
+    document.getElementById("error-text-username").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    username.classList.remove('error-border');
+    document.getElementById("error-text-username").classList.add("hidden");
+  }
+
+  // validating email
+  if (!validateEmail(email.value))
+  {
+    email.classList.add('error-border');
+    document.getElementById("error-text-email").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    email.classList.remove('error-border');
+    document.getElementById("error-text-email").classList.add("hidden");
+  }
+
+  // validating password
+  if (!validatePassword(password.value))
+  {
+    password.classList.add('error-border');
+    document.getElementById("error-text-password").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    password.classList.remove('error-border');
+    document.getElementById("error-text-password").classList.add("hidden");
+  }
+
+  // validating password confirmation
+  
+
+  // validating profile photo
+  if (!validateProfilePhoto(profilePhoto.value))
+  {
+    profilePhoto.classList.add('error-border');
+    document.getElementById("error-text-avatar").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    profilePhoto.classList.remove('error-border');
+    document.getElementById("error-text-profilePhoto").classList.add("hidden");
+  }
+
+  // if form is not valid
+  if (formIsValid == false)
+  {
+    event.preentDefault();
+  }
+  else
+  {
+    console.log("Validation was successful, now sending data over to the server.");
+  }
+
+  
+}
+/* End of event handlers for signup.html page */
