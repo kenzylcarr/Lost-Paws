@@ -8,3 +8,49 @@ CS 476: Lost Paws Project
             Fatima Rizwan (frf706 - 200446702)
   File name: eventRegisterSignup.js
 */
+
+let signupForm = document.getElementById("signup-form");
+signupForm.addEventListener("submot", validateSignup);
+
+// Change validator on username field
+let username = document.getElementById("username");
+username.addEventListener("blur", usernameHandler);
+
+// Change validator on email address field
+let email = document.getElementById("email");
+email.addEventListener("blur", emailHandler);
+
+
+// Change validator on phone number field
+let phone = document.getElementById("phone");
+phone.addEventListener("blur", phoneHandler);
+
+// Change validator on password field
+let password = document.getElementById("password");
+password.addEventListener("blur", passwordHandler);
+
+// Change validator on confirm password field
+let cpassword = document.getElementById("cpassword");
+cpassword.addEventListener("blur", cpasswordHandler);
+
+// Change validator on profile photo field
+let profilePhoto = document.getElementById("profilephoto");
+profilePhoto.addEventListener("change", profilePhotoHandler);
+
+
+/* Function Handlers for the signup.html */
+function usernameHandler(event) {
+  let username = event.target;
+  let errorText = document.getElementById("error-text-username");
+
+  if(username.value.trim().length < 3)
+  {
+    errorText.classList.remove("hidden");
+    console.log("Invalid username:" + username.value);
+  }
+  else
+  {
+    errorText.classList.add("hidden");
+    console.log("Valid username: " + username.value);
+  }
+}
