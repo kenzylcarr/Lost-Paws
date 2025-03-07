@@ -85,6 +85,7 @@ function validateSignup(event)
   }
 
   // validating email
+  let email = document.getElementById("email");
   if (!validateEmail(email.value))
   {
     email.classList.add('error-border');
@@ -112,7 +113,18 @@ function validateSignup(event)
   }
 
   // validating password confirmation
-  // in eventRegisterSignup.js file
+  let cpassword = document.getElementById("cpassword");
+  if (password.value !== cpassword.value)
+  {
+    cpassword.classList.add("error-border");
+    document.getElementById("error-text-cpassword").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    cpassword.classList.remove("error-border");
+    document.getElementById("error-text-cpassword").classList.add("hidden");
+  }
 
   // validating profile photo
   let profilePhoto = document.getElementById("profilephoto");
