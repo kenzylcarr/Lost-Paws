@@ -8,11 +8,6 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: index.php
 -->
-<?php
-// display PHP version
-echo "Current PHP Version: " . phpversion();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
