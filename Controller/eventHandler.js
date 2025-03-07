@@ -98,6 +98,7 @@ function validateSignup(event)
   }
 
   // validating password
+  let password = document.getElementById("password");
   if (!validatePassword(password.value))
   {
     password.classList.add('error-border');
@@ -111,9 +112,10 @@ function validateSignup(event)
   }
 
   // validating password confirmation
-  
+  // in eventRegisterSignup.js file
 
   // validating profile photo
+  let profilePhoto = document.getElementById("profilephoto");
   if (!validateProfilePhoto(profilePhoto.value))
   {
     profilePhoto.classList.add('error-border');
@@ -123,11 +125,11 @@ function validateSignup(event)
   else
   {
     profilePhoto.classList.remove('error-border');
-    document.getElementById("error-text-profilePhoto").classList.add("hidden");
+    document.getElementById("error-text-profilephoto").classList.add("hidden");
   }
 
   // if form is not valid
-  if (formIsValid == false)
+  if (!formIsValid)
   {
     event.preventDefault();
   }
