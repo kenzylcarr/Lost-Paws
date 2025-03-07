@@ -117,7 +117,7 @@ function validateSignup(event)
   if (!validateProfilePhoto(profilePhoto.value))
   {
     profilePhoto.classList.add('error-border');
-    document.getElementById("error-text-avatar").classList.remove("hidden");
+    document.getElementById("error-text-profilephoto").classList.remove("hidden");
     formIsValid = false;
   }
   else
