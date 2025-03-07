@@ -1,0 +1,7 @@
+{
+    "name": "fatimarizwan2/lost-paws",
+    "description": "A webite that helps people find lost pets and make reports.",
+    "require": {
+      "php": "^8.0"
+    }
+  }
