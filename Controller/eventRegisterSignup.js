@@ -10,7 +10,7 @@ CS 476: Lost Paws Project
 */
 
 let signupForm = document.getElementById("signup-form");
-signupForm.addEventListener("submot", validateSignup);
+signupForm.addEventListener("submit", validateSignup);
 
 // Change validator on username field
 let username = document.getElementById("username");
@@ -78,7 +78,7 @@ function passwordHandler(event)
 // Password Confirmation
 function cpasswordHandler(Event)
 {
-  let password = document.getElementBy("password");
+  let password = document.getElementBy();
   let cpassword = event.target;
 
   if (password.value !== cpassword.value)
