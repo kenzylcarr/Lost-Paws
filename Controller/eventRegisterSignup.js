@@ -76,7 +76,7 @@ function passwordHandler(event)
 }
 
 // Password Confirmation
-function cpasswordHandler(Event)
+function cpasswordHandler(event)
 {
   let password = document.getElementById("password");
   let cpassword = event.target;
