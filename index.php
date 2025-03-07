@@ -22,21 +22,21 @@
        <!-- Lost Paws Logo -->
       <nav class="navmenu">
           <div class="logo"> 
-            <a href="mainpage.html" class="logo">L·ᴥ·st Paws</a>
+            <a href="/View/mainpage.html" class="logo">L·ᴥ·st Paws</a>
           </div>
   
         <!-- Navigation menu -->
         <div class="nav-links">
-          <a href="aboutpage.html">About Lost Paws</a>
-          <a href="howtousepage.html">How To Use</a>
-          <a href="reportpetpage.html">Report a Pet</a>
-          <a href="index.html">Lost & Found</a>
-          <a href="petmap.html">Pet Map</a>
+          <a href="/View/aboutpage.html">About Lost Paws</a>
+          <a href="/View/howtousepage.html">How To Use</a>
+          <a href="/View/reportpetpage.html">Report a Pet</a>
+          <a href="/View/index.html">Lost & Found</a>
+          <a href="/View/petmap.html">Pet Map</a>
         </div>
   
         <div class="button">
-          <a id="signup-button" href="signup.html">Sign Up!</a>
-          <a id="login-button" href="login.html">Login</a>
+          <a id="signup-button" href="/View/signup.html">Sign Up!</a>
+          <a id="login-button" href="/View/login.html">Login</a>
         </div>
       </nav>
       
@@ -61,54 +61,54 @@
               <div class="pet-brief-info">
                   <img alt="Photo">
                   <p>Brief Pet Information</p>
-                  <p><a href="selectpostpage.html">View Post</a></p>
+                  <p><a href="/View/selectpostpage.html">View Post</a></p>
               </div>
               <div class="pet-brief-info">
                   <img alt="Photo">
                   <p>Brief Pet Information</p>
-                  <p><a href="selectpostpage.html">View Post</a></p>
+                  <p><a href="/View/selectpostpage.html">View Post</a></p>
               </div>
               <div class="pet-brief-info">
                   <img alt="Photo">
                   <p>Brief Pet Information</p>
-                  <p><a href="selectpostpage.html">View Post</a></p>
+                  <p><a href="/View/selectpostpage.html">View Post</a></p>
               </div>
               <div class="pet-brief-info">
                 <img alt="Photo">
                 <p>Brief Pet Information</p>
-                <p><a href="selectpostpage.html">View Post</a></p>
+                <p><a href="/View/selectpostpage.html">View Post</a></p>
             </div>
             <div class="pet-brief-info">
                 <img alt="Photo">
                 <p>Brief Pet Information</p>
-                <p><a href="selectpostpage.html">View Post</a></p>
+                <p><a href="/View/selectpostpage.html">View Post</a></p>
             </div>
             <div class="pet-brief-info">
               <img alt="Photo">
               <p>Brief Pet Information</p>
-              <p><a href="selectpostpage.html">View Post</a></p>
+              <p><a href="/View/selectpostpage.html">View Post</a></p>
            </div>
            <div class="pet-brief-info">
               <img alt="Photo">
               <p>Brief Pet Information</p>
-              <p><a href="selectpostpage.html">View Post</a></p>
+              <p><a href="/View/selectpostpage.html">View Post</a></p>
           </div>
           <div class="pet-brief-info">
             <img alt="Photo">
             <p>Brief Pet Information</p>
-            <p><a href="selectpostpage.html">View Post</a></p>
+            <p><a href="/View/selectpostpage.html">View Post</a></p>
           </div>
           <div class="pet-brief-info">
             <img alt="Photo">
             <p>Brief Pet Information</p>
-            <p><a href="selectpostpage.html">View Post</a></p>
+            <p><a href="/View/selectpostpage.html">View Post</a></p>
           </div>
         </div>
       </main>
   
       <main id="index-main-right">
         <h3>Sign in to get alerts and to connect with your community!</h3>
-        <p>Don't have an account?<a class="signup-button" href="signup.html">Register</a></p>
+        <p>Don't have an account?<a class="signup-button" href="/View/signup.html">Register</a></p>
       </main>
   
     </div>
