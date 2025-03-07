@@ -45,20 +45,23 @@
       <div class="signup-header">
           <h2>Hello! Tell us a bit about yourself.</h2>
       </div>
+      
   <!-- Prompts user to input their information -->
-          <form class="auth-form" id="signup-form" action="mainpage.html" method="POST">
+          <form class="auth-form" id="signup-form" action="#" method="post" onsuvmit="return validateSignup(event)">
               <!-- Username -->
               <div class="signup-field">
                   <label for="username">Username</label>
                   <input type="text" name="username" id="username"/><br />
                   <span id="error-text-username" class="error-text hidden">Invalid username</span><br />
               </div>
+            
               <!-- Email Address -->
               <div class="signup-field">
                   <label for="email">Email</label>
                   <input type="email" name="email" id="email"/><br />
                   <span id="error-text-email" class="error-text hidden">Invalid email address</span><br />
               </div>
+            
               <!-- Phone Number -->
               <div class="signup-field">
                   <label for="phone">Phone Number</label>
