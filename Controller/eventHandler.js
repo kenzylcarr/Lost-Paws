@@ -12,7 +12,7 @@
 /* Common validator functions begin */
 function validateName(name)
 {
-  let nameRegEx = /^[a-zA-Z]+$/;
+  let nameRegEx = /^[a-zA-Z\s]+$/;    // allow spaces for names
 
   if (nameRegEx.test(name))
       return true;
@@ -42,8 +42,9 @@ function validateEmail(email)
 
 function validatePassword(password)
 {
-  let passwordRegEx = /^(?=.*\W).{6,}$/;
-
+  let passwordRegEx = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+  // 1 upper letter, 1 lower letter, 1 digit, 1 special char, min 6 chars
+  
   if (passwordRegEx.test(password))
       return true;
   else
@@ -52,7 +53,7 @@ function validatePassword(password)
 
 function validateProfilePhoto(profilePhoto)
 {
-  let profilePhotoRegEx = /^[^\n]+\.[a-zA-Z]{3,4}$/
+  let profilePhotoRegEx = /\.(jpg|jpeg|png|gif)$/i;    // allow JPG, JPEG, PNG, GIF formats
 
   if (profilePhotoRegEx.test(profilePhoto))
       return true;
@@ -70,6 +71,7 @@ function validateSignup(event)
   let formIsValid = true;
 
   // validating username
+  let username = document.getElementById("username");
   if (!validateUsername(username.value))
   {
     username.classList.add('error-border');
