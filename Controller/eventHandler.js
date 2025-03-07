@@ -141,15 +141,13 @@ function validateSignup(event)
   }
 
   // if form is not valid
-  if (!formIsValid)
-  {
-    event.preventDefault();
-  }
-  else
+  if (formIsValid)
   {
     console.log("Validation was successful, now sending data over to the server.");
   }
-
-  
+  else
+  {
+    event.preventDefault();
+  }
 }
 /* End of event handlers for signup.html page */
