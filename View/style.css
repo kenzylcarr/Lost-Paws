@@ -933,5 +933,23 @@ footer {
 	border-radius: 5px;
 	font-size: 1em;
 }
-
 /*	 END CSS: mainpage.html		*/
+
+
+
+/*	 START CSS: error messages 	*/
+.error-border {
+	border: 1.5px solid red;
+}
+
+.error-text {
+	color: red;
+	font-style: italic;
+	font-size: 12pt;
+}
+
+.hidden {
+	visibility: hidden;
+}
+/*	 END CSS: error messages	*/
+
