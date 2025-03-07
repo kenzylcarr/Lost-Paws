@@ -50,7 +50,7 @@ function validatePassword(password)
       return false;
 }
 
-fuction validateProfilePhoto(profilePhoto)
+function validateProfilePhoto(profilePhoto)
 {
   let profilePhotoRegEx = /^[^\n]+\.[a-zA-Z]{3,4}$/
 
@@ -127,7 +127,7 @@ function validateSignup(event)
   // if form is not valid
   if (formIsValid == false)
   {
-    event.preentDefault();
+    event.preventDefault();
   }
   else
   {
