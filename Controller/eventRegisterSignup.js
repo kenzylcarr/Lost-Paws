@@ -43,18 +43,11 @@ profilePhoto.addEventListener("change", profilePhotoHandler);
 function usernameHandler(event) 
 {
   let username = event.target;
-  let errorText = document.getElementById("error-text-username");
-
-  if(username.value.trim().length < 3)
-  {
-    errorText.classList.remove("hidden");
-    console.log("Invalid username:" + username.value);
-  }
+  
+  if (!validateUsername(username.value))
+      console.log("'" + username.value + "' is not a valid username");
   else
-  {
-    errorText.classList.add("hidden");
-    console.log("Valid username: " + username.value);
-  }
+      console.log("'" + username.value + "' is a valid username");
 }
 
 
@@ -62,10 +55,56 @@ function usernameHandler(event)
 function emailHandler(event)
 {
   let email = event.target;
-  let errorText = document.getElementById("error-text-email");
-  // let emailPattern = 
-  // if()
-  // {
-    
-  // }
+  
+  if(!validateEmail(email.value))
+      console.log("'" + email.value + "' is not a valid email address");
+  else
+      console.log("'" + email.value + "' is a valid email address");
+}
+
+
+// Password
+function passwordHandler(event)
+{
+  let password = event.target;
+
+  if (!validatePassword(password.value))
+      console.log("'" + password.value + "' is not a valid password");
+  else
+      console.log("'" + password.value + "' is a valid password");
+      
+}
+
+// Password Confirmation
+function cpasswordHandler(Event)
+{
+  let password = document.getElementBy("password");
+  let cpassword = event.target;
+
+  if (password.value !== cpassword.value)
+  {
+      cpassword.classList.add("error-border");
+      document.getElementById("error-text-cpassword").classList.remove("hidden");
+      console.log("Your password: " + password.value + " and " + cpassword.value + " do not match");
+  }
+  else
+  {
+      console.log("Your passwords match");
+    cpassword.classList.remove("error-border");
+    document.getElementById("error-text-cpassword").classList.add('hidden');
+  }
+}
+
+
+// Profile Photo
+function profilePhotoHandler(event)
+{
+  let profilePhoto = event.target;
+  if (!validateProfilePhoto(profilePhoto.value))
+  {
+      console.log("'" + profilePhoto + "' is not a valid profile photo");
+      flag = false;
+  }
+  else
+      console.log("'" + profilePhoto.value + "' is a valid profile photo");
 }
