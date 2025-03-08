@@ -436,7 +436,7 @@ input {
   /*   END CSS: howtousepage.html */   
 
 
- /*   START CSS: mainpage.html  
+ /*   START CSS: mainpage-beforelogin.html  
                                               */  
   #lost-found-database {
       grid-column-start: 1;
@@ -518,7 +518,7 @@ input {
     padding: 15px;
   }
   
-  #mainpage-main-right{
+  #mainpage-right-beforelogin{
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
@@ -527,7 +527,7 @@ input {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
   
-  #mainpage-main-right > h3 {
+  #mainpage-right-beforelogin > h3 {
     text-align: center;
     width: 15vw;
     padding-left: 30px;
@@ -536,11 +536,11 @@ input {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   }
   
-  #mainpage-main-right > p {
+  #mainpage-right-beforelogin > p {
     text-align: center;
   }
   
-  #mainpage-main-right a {
+  #mainpage-right-beforelogin a {
     background-color: #9AD4FF(230, 180, 120, 0.801);
     border-radius: 0.2vw;
     width: 5vw;
@@ -550,7 +550,7 @@ input {
     font-size: large;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
-  /*   END CSS: mainpage.html  */  
+  /*   END CSS: mainpage-beforelogin.html  */  
 
   /*   START CSS: selectpostpage.html  
                                               */   
