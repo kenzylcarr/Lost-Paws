@@ -8,8 +8,6 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: petmap.html
 -->
-     <!-- TEST CHANGE -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,24 +17,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Find lost and found pets in your area with the Lost Paws interactive pet map.">
   <title>Pet Map | Lost Paws</title>
-  <link rel="stylesheet" type="text/css" href="/View/style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <div id="container">
-     <!-- Lost Paws Logo -->
+    <!-- Lost Paws Logo -->
     <nav class="navmenu">
-        <div class="logo"> 
-            <a href="mainpage.html" class="logo">L·ᴥ·st Paws</a>
-        </div>
+      <div class="logo">
+        <p>Lost Paws Logo</p>
+      </div>
 
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="aboutpage.html">About Lost Paws</a>
         <a href="howtousepage.html">How To Use</a>
         <a href="reportpetpage.html">Report a Pet</a>
-        <a href="index.html">Lost & Found</a>
+        <a href="selectpostpage.html">Lost & Found</a>
         <a href="petmap.html">Pet Map</a>
       </div>
 
@@ -48,7 +46,7 @@
 
     <main>
       <div id="petmap-container">
-        <!-- Toggle Switch for Lost/Found Pets -->
+        <!-- Centered Toggle and Filter Section -->
         <div id="filter-section">
           <label class="switch">
             <input type="checkbox" id="toggle-lost-found">
@@ -70,7 +68,7 @@
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81279.3134140618!2d-104.66390488857418!3d50.460124225863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x531c1e40fba53deb%3A0x354a3296b77b54b1!2sRegina%2C%20SK!5e0!3m2!1sen!2sca!4v1740001571797!5m2!1sen!2sca" 
             width="100%" 
-            height="500" 
+            height="600" 
             style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
@@ -81,9 +79,7 @@
     </main>
   </div>
 
-
   <script>
-
     document.addEventListener("DOMContentLoaded", function () {
       const toggleSwitch = document.getElementById("toggle-lost-found");
       const toggleLabel = document.getElementById("toggle-label");
@@ -101,20 +97,20 @@
       function updateMap() {
         const isFoundPets = toggleSwitch.checked;
         const selectedType = petFilter.value;
-        
+
         console.log(`Displaying ${isFoundPets ? "Found" : "Lost"} Pets of type: ${selectedType}`);
 
         // Placeholder for map update logic
         // This would involve updating markers dynamically based on filters
       }
     });
-
   </script>
 
 </body>
 
- <footer>
+<footer>
   <p>CS 476: Software Development Project</p>
 </footer>
 
 </html>
+
