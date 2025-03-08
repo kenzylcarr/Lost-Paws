@@ -430,7 +430,7 @@ input {
   /*   END CSS: howtousepage.html */   
 
 
- /*   START CSS: index.html  
+ /*   START CSS: mainpage.html  
                                               */  
   #lost-found-database {
       grid-column-start: 1;
@@ -512,7 +512,7 @@ input {
     padding: 15px;
   }
   
-  #index-main-right{
+  #mainpage-main-right{
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
@@ -521,7 +521,7 @@ input {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
   
-  #index-main-right > h3 {
+  #mainpage-main-right > h3 {
     text-align: center;
     width: 15vw;
     padding-left: 30px;
@@ -530,11 +530,11 @@ input {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   }
   
-  #index-main-right > p {
+  #mainpage-main-right > p {
     text-align: center;
   }
   
-  #index-main-right a {
+  #mainpage-main-right a {
     background-color: #9AD4FF(230, 180, 120, 0.801);
     border-radius: 0.2vw;
     width: 5vw;
@@ -544,7 +544,7 @@ input {
     font-size: large;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
-  /*   END CSS: index.html  */  
+  /*   END CSS: mainpage.html  */  
 
   /*   START CSS: selectpostpage.html  
                                               */   
@@ -867,36 +867,39 @@ footer {
 	END CSS: petmap.html  */
 
 
-
-
-/*	 START CSS: mainpage.html 	*/
+/*	 START CSS: index.php 	*/
 .container {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .top-half {
 	background-color: #cde6f1c0;
-	height: 50%;
+	height: 75%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+	align-items: flex-start;
+	padding-left: 15%;
+  padding-top: 10%;
 }
 
 .top-half h1 {
-	font-size: 3em;
+	font-size: 3.5em;
 	margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .top-half p {
 	font-size: 1.2em;
 	margin: 10px 0;
+  color: black;
+  max-width: 400 px;
 }
 
-.top-half a{
+/* .top-half a{
 	display: inline-block;
 	background-color: #b1d7ff;
 	padding: 10px 20px;
@@ -906,12 +909,11 @@ footer {
 	color: white;
 	text-align: center;
 	width: auto;
-}
-
+} */
 
 .bottom-half {
 	background-color: white;
-	height: 50%;
+	height: 20%;
 	display: flex;
 	flex-direction: column;
 	flex-direction: column;
@@ -925,17 +927,33 @@ footer {
 	margin: 0 0 20px 0;
 }
 
-.bottom-half a {
+/* .bottom-half a {
 	background-color: #f4cb9d;
 	color: white;
 	text-decoration: none;
 	padding: 10px 20px;
 	border-radius: 5px;
 	font-size: 1em;
+} */
+
+footer {
+  background-color: #FFECBD;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
-/*	 END CSS: mainpage.html		*/
 
+footer p {
+  margin: 0;
+  font-size: 1em;
+  color: black;
+}
 
+/*	 END CSS: index.php		*/
 
 /*	 START CSS: error messages 	*/
 .error-border {
