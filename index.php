@@ -30,7 +30,7 @@
       <div class="top-half">
         <h1>Lost Paws</h1>
         <p>Sign up now and join the community to report lost pets and lost pet sightings!</p>
-        <a href="signup.html">Sign Up!</a>
+        <a href="/View/signup.html">Sign Up!</a>
       </div>
       
       <!-- Bottom text -->

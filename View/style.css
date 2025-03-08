@@ -758,13 +758,21 @@ nav a {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
   background-color: #FFECBD;
-  color: Black; 
-  padding: 10px 0;
+  color: Black;
+  display: flex;
+  height: 5%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1em;
+  color: black;
 }
 
 /* Container for the file input and submit button */
