@@ -16,7 +16,7 @@ jobs:
     - name: Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ftp://194.164.64.44
+        server: 194.164.64.44
         username: u204807276.pawsarelost.com
         password: ${{ secrets.FTP_PASSWORD }}  # Set your FTP password as a secret
         local-dir: ./  # Path to your project folder (root of the repo)
