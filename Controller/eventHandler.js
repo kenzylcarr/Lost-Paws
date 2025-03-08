@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function()
   let loginForm = document.getElementById("login-form");
   if (loginForm)
   {
-    loginForm.addEventListener("submit", validateLogin);
+    loginForm.addEventListener("submit", validateLogin); 
   }
 });
 }
