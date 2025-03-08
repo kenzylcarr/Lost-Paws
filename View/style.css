@@ -327,8 +327,7 @@ input {
   grid-row-end: 3;
   padding-left: 0px;
   padding-top: 190px;
-  width: 50vw; 
-
+  width: 60vw; 
   background-color: #cde6f1c0;
 }
 
@@ -342,10 +341,9 @@ input {
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 3;
-
+  width: 40vw; 
   display: grid;
   grid-template-rows: 0.6fr 0.6fr auto;
-  height: 600px;
 }
 
 .login-header > h1 {
@@ -370,7 +368,7 @@ input {
   padding-left: 50px;
 }
 
-.auth-form {
+.auth-form-login {
   grid-row-start: 2;
   grid-row-end: 3;
   border: lightgray 1px solid;
@@ -378,9 +376,9 @@ input {
   width: 70%;
   padding-right: 40px;
   padding-left: 30px;
-  padding-bottom: 20px;
-  margin-bottom: 50px;
+  margin-top: -190px;
   margin-left: 60px;
+  height: 70%;
 }
 
 .login-field {
@@ -395,7 +393,7 @@ input {
   grid-row-end: 4;
   font-size: smaller;
   padding-left: 65px;
-  margin-top: -35px;
+  margin-top: -300px;
 }
 
 .login-footnote a {
