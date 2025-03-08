@@ -133,6 +133,12 @@ footer {
   padding: 20px;
 }
 
+.logo {
+  margin-top: -22px;
+  max-width: 100%; 
+  height: 55px; 
+}
+
 /*  END OF COMMON CSS STYLES FOR ALL PAGES  
                                           */
 
