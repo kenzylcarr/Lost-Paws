@@ -271,13 +271,14 @@ p.description {
   grid-row-end: 2;
 }
 
-.auth-form {
+.auth-form-signup {
   grid-row-start: 2;
   grid-row-end: 3;
   border: lightgray 1px solid;
   border-radius: 7px;
   margin-top: -18vw;
   height: 25vw;
+  width: 40vw;
 }
 
 .signup-field {
@@ -291,7 +292,7 @@ p.description {
   grid-row-end: 4;
   font-size: smaller;
 
-  padding-left: 65px;
+  padding-left: 10px;
   margin-top: -255px;
 }
 
