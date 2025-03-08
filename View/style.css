@@ -59,7 +59,7 @@ h1, h2 {
 .nav-links {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: right;
 
   grid-column-start: 2;
   grid-column-end: 3;
