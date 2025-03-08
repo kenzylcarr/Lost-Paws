@@ -156,7 +156,7 @@ function validateSignup(event)
 
 
 
-/* Event handlers for logig.html page begin */
+/* Event handlers for login.html page begin */
 function validateLogin(event)
 {
   // accessing the login form's input elements
@@ -165,9 +165,9 @@ function validateLogin(event)
   let formIsValid = true;
 
   // if loop to check the username isn't valid by calling the validator function
-  if (!validateUsername(username.valid))
+  if (!validateUsername(username.value))
   {
-    console.log("'" + username.value + "'" is not a valid username");
+    console.log("'" + username.value + "' is not a valid username");
     username.classList.add("invalid");
     username.classList.add('error-border');
     
