@@ -263,8 +263,7 @@ p.description {
 
   display: grid;
   grid-template-rows: 0.6fr 0.6fr auto;
-  height: 600px;
-  width: 50vw;
+  width: 52vw;
 }
 
 .signup-header {
@@ -277,6 +276,8 @@ p.description {
   grid-row-end: 3;
   border: lightgray 1px solid;
   border-radius: 7px;
+  margin-top: -18vw;
+  height: 25vw;
 }
 
 .signup-field {
@@ -291,7 +292,7 @@ p.description {
   font-size: smaller;
 
   padding-left: 65px;
-  margin-top: -35px;
+  margin-top: -255px;
 }
 
 .signup-footnote a {
