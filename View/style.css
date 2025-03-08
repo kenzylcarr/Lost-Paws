@@ -686,6 +686,7 @@ input {
   /*   END CSS: selectpostpage.html */  
 
 
+
 /* 
     START CSS FOR REPORT A PET PAGE 
                                       */
@@ -695,7 +696,7 @@ header {
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
-  /* background-color:  */
+  background-color: #f8f8f8; /* Example background */
   padding: 10px 20px; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
@@ -715,7 +716,7 @@ nav a {
 
 /* Auth Button Styles */
 .auth-buttons button {
-  /* background-color: */
+  background-color: #007bff; 
   color: white;
   border: none;
   padding: 5px 10px; 
@@ -726,9 +727,10 @@ nav a {
 /* Container for Form and Map */
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; 
   margin-top: 20px;
-  flex-direction: row-reverse;
+  gap: 20px;  /* Optional: space between map and form */
+  flex-wrap: wrap; /* Ensures the layout wraps on smaller screens */
 }
 
 /* Styles for both Form and Map Containers */
@@ -758,21 +760,13 @@ nav a {
 }
 
 footer {
-  background-color: #FFECBD;
-  color: Black;
-  display: flex;
-  height: 5%;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   text-align: center;
-  padding: 0;
-  margin: 0;
-}
-
-footer p {
-  margin: 0;
-  font-size: 1em;
-  color: black;
+  background-color: #FFECBD;
+  color: Black; 
+  padding: 10px 0;
 }
 
 /* Container for the file input and submit button */
@@ -819,9 +813,7 @@ footer p {
   background-color: #0056b3;
 }
 
-
 /*  END CSS FOR REPORT A PET PAGE  */
-
 
 /* 
 	START CSS: petmap.html 
