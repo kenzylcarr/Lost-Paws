@@ -31,7 +31,7 @@ if($pdo) {
         <a href="/View/howtousepage.html">How To Use</a>
         <a href="/View/reportpetpage.html">Report a Pet</a>
         <a href="/View/mainpage.html">Lost & Found</a>
-        <p>Testing webhook</p>
+        <p>Testing webhook again</p>
       </div>
     </nav>
 
