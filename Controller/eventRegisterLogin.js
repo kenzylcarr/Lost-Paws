@@ -8,3 +8,6 @@ CS 476: Lost Paws Project
             Fatima Rizwan (frf706 - 200446702)
   File name: eventRegisterLogin.js
 */
+
+let logInForm = document.getElementById("login-form");
+loginForm.addEventListener("submit", validateLogin);
