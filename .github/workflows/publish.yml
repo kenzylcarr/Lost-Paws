@@ -20,4 +20,4 @@ jobs:
         username: u204807276.pawsarelost.com
         password: ${{ secrets.FTP_PASSWORD }}  # Set your FTP password as a secret
         local-dir: ./  # Path to your project folder (root of the repo)
-        server-dir: /public_html/  # This should point to public_html on your server
+        server-dir: /public_html/pawsarelost.com/  # This should point to public_html on your server
