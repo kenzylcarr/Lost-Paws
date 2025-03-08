@@ -9,7 +9,7 @@
   File name: index.php
 -->
 <?php
-include('db_config.php');
+include('Model/db_config.php');
 if($pdo) {
   echo "Connected to database!";
 }
