@@ -8,6 +8,13 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: index.php
 -->
+<?php
+include('db_config.php');
+if($pdo) {
+  echo "Connected to database!";
+}
+?>
+
 <!DOCTYPE html>
   <html lang="en">
   <head>
