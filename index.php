@@ -9,117 +9,38 @@
   File name: index.php
 -->
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
+  <head>
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="/View/style.css">
+  </head>
 
-<head>
-  <title>Lost & Found Homepage</title>
-  <link rel="stylesheet" type="text/css" href="/View/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-
-<body>
-    <div id="container">
-       <!-- Lost Paws Logo -->
+  <body>
+    <div class="container">
+      <div class="top-half">
+        <h1>Lost Paws</h1>
+        <p>Sign up now and join the community to report lost pets and lost pet sightings!</p>
+        <a href="signup.html">Sign Up!</a>
+      </div>
+      
+      <!-- Navigation Menu -->
       <nav class="navmenu">
-          <div class="logo"> 
-            <a href="/View/mainpage.html" class="logo">L·ᴥ·st Paws</a>
-          </div>
-  
-        <!-- Navigation menu -->
         <div class="nav-links">
           <a href="/View/aboutpage.html">About Lost Paws</a>
           <a href="/View/howtousepage.html">How To Use</a>
           <a href="/View/reportpetpage.html">Report a Pet</a>
-          <a href="/View/index.html">Lost & Found</a>
-          <a href="/View/petmap.html">Pet Map</a>
-        </div>
-  
-        <div class="button">
-          <a id="signup-button" href="/View/signup.html">Sign Up!</a>
-          <a id="login-button" href="/View/login.html">Login</a>
+          <a href="/View/mainpage.html">Lost & Found</a>
         </div>
       </nav>
       
-      <main id="lost-found-database">
-        <!-- Lost or Found Buttons Row -->
-            <div class="lost-or-found-buttons">
-                <button id="lost-button">Lost Pets</button>
-                <button id="found-button">Found Pets</button>
-            </div>
-        <!-- Search and Filter Row -->
-            <div class="search-filter">         
-                <div class="search-field">
-                 <!-- Submit Button to Search -->
-                    <form action="">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit" value="Search"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="pet-database-container"> 
-              <div class="pet-brief-info">
-                  <img alt="Photo">
-                  <p>Brief Pet Information</p>
-                  <p><a href="/View/selectpostpage.html">View Post</a></p>
-              </div>
-              <div class="pet-brief-info">
-                  <img alt="Photo">
-                  <p>Brief Pet Information</p>
-                  <p><a href="/View/selectpostpage.html">View Post</a></p>
-              </div>
-              <div class="pet-brief-info">
-                  <img alt="Photo">
-                  <p>Brief Pet Information</p>
-                  <p><a href="/View/selectpostpage.html">View Post</a></p>
-              </div>
-              <div class="pet-brief-info">
-                <img alt="Photo">
-                <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.html">View Post</a></p>
-            </div>
-            <div class="pet-brief-info">
-                <img alt="Photo">
-                <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.html">View Post</a></p>
-            </div>
-            <div class="pet-brief-info">
-              <img alt="Photo">
-              <p>Brief Pet Information</p>
-              <p><a href="/View/selectpostpage.html">View Post</a></p>
-           </div>
-           <div class="pet-brief-info">
-              <img alt="Photo">
-              <p>Brief Pet Information</p>
-              <p><a href="/View/selectpostpage.html">View Post</a></p>
-          </div>
-          <div class="pet-brief-info">
-            <img alt="Photo">
-            <p>Brief Pet Information</p>
-            <p><a href="/View/selectpostpage.html">View Post</a></p>
-          </div>
-          <div class="pet-brief-info">
-            <img alt="Photo">
-            <p>Brief Pet Information</p>
-            <p><a href="/View/selectpostpage.html">View Post</a></p>
-          </div>
-        </div>
-      </main>
-  
-      <main id="index-main-right">
-        <h3>Sign in to get alerts and to connect with your community!</h3>
-        <p>Don't have an account?<a class="signup-button" href="/View/signup.html">Register</a></p>
-      </main>
-  
+      <!-- Bottom text -->
+      <div class="bottom-half">
+        <p>Together, we can make a positive impact on the lives of countless animals. Sign up now and become part of our compassionate community. Your support means the world to us and to the animals we care for.</p>
+        <a href="/View/mainpage.html">View Lost Pet Sightings</a>
+      </div>
     </div>
   </body>
-  
-  <!-- Footer -->
   <footer>
     <p>CS 476: Software Development Project</p>
   </footer>
-  
-  </html>
-
-
-  
+</html>
