@@ -1,5 +1,5 @@
 <?php
-$host = "localhost";
+$host = "srv1507.hstgr.io";
 $dbname = "lp_database";
 $username = "lp_admin";
 $password = "kijqyx-4pyqce-zosPag";
