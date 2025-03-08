@@ -15,7 +15,6 @@ if($pdo) {
 }
 ?>
 
-// testing webhook
 
 <!DOCTYPE html>
   <html lang="en">
@@ -32,6 +31,7 @@ if($pdo) {
         <a href="/View/howtousepage.html">How To Use</a>
         <a href="/View/reportpetpage.html">Report a Pet</a>
         <a href="/View/mainpage.html">Lost & Found</a>
+        <p>Testing webhook</p>
       </div>
     </nav>
 
