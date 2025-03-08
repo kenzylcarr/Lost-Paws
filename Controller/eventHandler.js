@@ -209,4 +209,14 @@ function validateLogin(event)
     console.log("validation was successful, sending data over to the server");
   }
 }
+
+document.addEventListener("DOMContentLoaded", function()
+{
+  let loginForm = document.getElementById("login-form");
+  if (loginForm)
+  {
+    loginForm.addEventListener("submit", validateLogin);
+  }
+});
+}
 /* Enf of event handlers for login.html page */
