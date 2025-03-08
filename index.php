@@ -16,6 +16,16 @@
   </head>
 
   <body>
+    <!-- Navigation Menu -->
+    <nav class="navmenu">
+      <div class="nav-links">
+        <a href="/View/aboutpage.html">About Lost Paws</a>
+        <a href="/View/howtousepage.html">How To Use</a>
+        <a href="/View/reportpetpage.html">Report a Pet</a>
+        <a href="/View/mainpage.html">Lost & Found</a>
+      </div>
+    </nav>
+
     <div class="container">
       <div class="top-half">
         <h1>Lost Paws</h1>
@@ -23,24 +33,14 @@
         <a href="signup.html">Sign Up!</a>
       </div>
       
-      <!-- Navigation Menu -->
-      <nav class="navmenu">
-        <div class="nav-links">
-          <a href="/View/aboutpage.html">About Lost Paws</a>
-          <a href="/View/howtousepage.html">How To Use</a>
-          <a href="/View/reportpetpage.html">Report a Pet</a>
-          <a href="/View/mainpage.html">Lost & Found</a>
-        </div>
-      </nav>
-      
       <!-- Bottom text -->
       <div class="bottom-half">
         <p>Together, we can make a positive impact on the lives of countless animals. Sign up now and become part of our compassionate community. Your support means the world to us and to the animals we care for.</p>
         <a href="/View/mainpage.html">View Lost Pet Sightings</a>
       </div>
     </div>
-  </body>
   <footer>
     <p>CS 476: Software Development Project</p>
   </footer>
+  </body>
 </html>
