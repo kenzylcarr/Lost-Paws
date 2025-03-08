@@ -77,7 +77,7 @@ h1, h2 {
 .nav-links a:hover {
   background-color: #fdfdfd79;
   color: black;
-  border-radius: 1vw;
+  border-radius: 0.5vw;
 }
 
 .logo {
