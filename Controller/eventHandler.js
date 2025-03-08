@@ -151,3 +151,62 @@ function validateSignup(event)
   }
 }
 /* End of event handlers for signup.html page */
+
+
+
+
+
+/* Event handlers for logig.html page begin */
+function validateLogin(event)
+{
+  // accessing the login form's input elements
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let formIsValid = true;
+
+  // if loop to check the username isn't valid by calling the validator function
+  if (!validateUsername(username.valid))
+  {
+    console.log("'" + username.value + "'" is not a valid username");
+    username.classList.add("invalid");
+    username.classList.add('error-border');
+    
+    document.getElementById("error-text-username").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    username.classList.remove("invalid");
+    username.classList.remove('error-border');
+    document.getElementById("error-text-username").classList.add("hidden");
+  }
+
+  // checking if the password isn't valid by calling the validator function
+  if (!validatePassword(password.value))
+  {
+    console.log("'" + password.value + "' is not a valid password");
+    password.classList.add("invalid");
+    password.classList.add('error-border');
+    
+    document.getElementById("error-text-password").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    password.classList.remove("invalid");
+    password.classList.remove('error-border');
+
+    document.getElementById("error-text-password").classList.add("hidden");
+  }
+
+  // in case the form isn't valid
+  if (formIsValid == false)
+  {
+    event.preventDefault();
+  }
+  else
+  {
+    console.log("validation was successful, sending data over to the server");
+  }
+}
+/* Enf of event handlers for login.html page */
