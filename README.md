@@ -20,6 +20,7 @@ Follow these simple steps to navigate the website:
 ## Team Members
 - Butool Basabrain
 - Anna Chu
+- Ibrahim Hassan
 - Makenzy Laursen-Carr
 - Kaira Molano
 - Fatima Rizwan
