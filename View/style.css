@@ -881,7 +881,7 @@ footer {
 	height: 50%;
 	display: flex;
 	flex-direction: column;
-	alighn-item: center;
+	align-items: center;
 	justify-content: center;
 	text-align: center;
 }
@@ -893,7 +893,7 @@ footer {
 
 .top-half p {
 	font-size: 1.2em;
-	margin 10px 0;
+	margin: 10px 0;
 }
 
 .top-half a{
@@ -912,17 +912,17 @@ footer {
 .bottom-half {
 	background-color: white;
 	height: 50%;
-	display flex;
+	display: flex;
 	flex-direction: column;
 	flex-direction: column;
-	align-itemjs: center;
+	align-items: center;
 	justify-content: center;
 	text-align: center;
 }
 
 .bottom-half p {
 	font-size: 1.5em;
-	margin 0 0 20px 0;
+	margin: 0 0 20px 0;
 }
 
 .bottom-half a {
