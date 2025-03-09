@@ -157,6 +157,41 @@ function validateSignup(event)
 
 
 /* Event handlers for login.html page begin */
+function usernameHandler(event) {
+  let username = event.target;
+  let error_text = document.getElementById("error-text-username");
+
+  if (validateUsername(username.value)) {
+      username.classList.remove("error-border");
+      error_text.classList.add("hidden");
+  }
+  else {
+      console.log("Username not valid.");
+      username.classList.add("error-border");
+
+      formIsValid = false;
+      error_text.classList.remove("hidden");
+  }
+}
+
+function pwdHandler(event) {
+  let password = event.target;
+
+  if (validatePassword(password.value)) {
+      console.log("Password is valid.")
+      pwd.classList.remove("error-border");
+      let error_text = document.getElementById("error-text-password");
+      error_text.classList.add("hidden");
+  }
+  else {
+      console.log("Password must have 1 upper letter, 1 lower letter, 1 digit, 1 special char, min 6 chars.")
+      pwd.classList.add("error-border");
+      let error_text = document.getElementById("error-text-password");
+      error_text.classList.remove("hidden");
+
+  }
+}
+
 function validateLogin(event)
 {
   // accessing the login form's input elements

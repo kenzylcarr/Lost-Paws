@@ -9,7 +9,7 @@ CS 476: Lost Paws Project
   File name: eventRegisterLogin.js
 */
 
-let logInForm = document.getElementById("login-form");
+let loginForm = document.getElementById("login-form");
 loginForm.addEventListener("submit", validateLogin);
 
 let username = document.getElementById("username");
