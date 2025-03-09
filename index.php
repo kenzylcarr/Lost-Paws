@@ -9,14 +9,6 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: index.php
 -->
-<?php
-include('Model/db_config.php');
-if($pdo) {
-  echo "Connected to database!";
-}
-?>
-
-
 <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -28,6 +20,9 @@ if($pdo) {
     <!-- Navigation Menu -->
     <nav class="navmenu">
       <div class="nav-links">
+        <a href="/" class="logo">
+          <img src="/View/images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo">
+        </a>
         <a href="/View/aboutpage.html">About Lost Paws</a>
         <a href="/View/howtousepage.html">How To Use</a>
         <a href="/View/reportpetpage.html">Report a Pet</a>
