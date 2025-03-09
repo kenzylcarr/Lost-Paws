@@ -275,4 +275,4 @@ document.addEventListener("DOMContentLoaded", function()
   }
 });
 
-/* Enf of event handlers for login.html page */
+/* End of event handlers for login.html page */
