@@ -587,6 +587,14 @@ input {
   padding: 20px 0px 0px 5px;
   width: 15vw;
 }
+
+.user-options > p {
+  padding: 8px;
+  }
+  
+  .user-options a {
+      text-decoration: none;
+  }
                                               
   /*   END CSS: mainpage-afterlogin.html */  
 
