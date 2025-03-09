@@ -11,3 +11,9 @@ CS 476: Lost Paws Project
 
 let logInForm = document.getElementById("login-form");
 loginForm.addEventListener("submit", validateLogin);
+
+let username = document.getElementById("username");
+username.addEventListener("blur", usernameHandler);
+
+let pwd = document.getElementById("password");
+pwd.addEventListener("blur", pwdHandler); 

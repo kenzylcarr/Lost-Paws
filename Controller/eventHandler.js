@@ -218,5 +218,5 @@ document.addEventListener("DOMContentLoaded", function()
     loginForm.addEventListener("submit", validateLogin); 
   }
 });
-}
+
 /* Enf of event handlers for login.html page */

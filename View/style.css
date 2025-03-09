@@ -1097,11 +1097,13 @@ footer p {
 .error-text {
 	color: red;
 	font-style: italic;
-	font-size: 12pt;
+	font-size: 14px;
+  float: right;
+  margin-left: 120px;
+  margin-top: 7px;
 }
 
 .hidden {
 	visibility: hidden;
 }
 /*	 END CSS: error messages	*/
-
