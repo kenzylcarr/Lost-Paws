@@ -19,11 +19,9 @@
   <body>
     <!-- Navigation Menu -->
     <nav class="navmenu">
-      <div class="logo">
-        <a href="/">
-          <img src="/View/images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo">
-        </a>
-      </div>
+      <a href="/" class="logo">
+        <img src="/View/images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo">
+      </a>
       <div class="nav-links">
         <a href="/View/aboutpage.html">About Lost Paws</a>
         <a href="/View/howtousepage.html">How To Use</a>
