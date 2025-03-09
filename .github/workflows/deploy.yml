@@ -1,0 +1,29 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main  # Trigger this workflow when pushing to the 'main' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_HOST: ${{ secrets.DB_HOST }}        # MySQL Host from GitHub secrets
+      DB_NAME: ${{ secrets.DB_NAME }}        # MySQL Database Name from GitHub secrets
+      DB_USERNAME: ${{ secrets.DB_USERNAME }} # MySQL Username from GitHub secrets
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }} # MySQL Password from GitHub secrets
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Deploy to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: 194.164.64.44
+        username: u204807276.pawsarelost.com  # Your FTP username
+        password: ${{ secrets.FTP_PASSWORD }}  # FTP password stored in GitHub secrets
+        local-dir: ./  # Path to your project folder (root of the repo)
+        server-dir: /public_html/pawsarelost.com/  # Remote directory on your server
