@@ -41,6 +41,12 @@ function validateEmail(email)
       return false;
 }
 
+function validatePhoneNumber(phone)
+{
+  let phoneRegEx = /^\d{9}$/;        // exactly 9 digits for the form (###) ### - ###
+  return phoneRegEx.test(phone);
+}
+
 function validatePassword(password)
 {
   let passwordRegEx = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
@@ -97,6 +103,20 @@ function validateSignup(event)
   {
     email.classList.remove('error-border');
     document.getElementById("error-text-email").classList.add("hidden");
+  }
+
+  // validating phone number
+  let phone = document.getElementById("phone");
+  if (!validatePhoneNumber(phone.value))
+  {
+    phone.classList.add("error-border");
+    document.getElementById("error-text-phone").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    phone.classList.remove("error-border");
+    document.getElementById("error-text-phone").classList.add("hidden");
   }
 
   // validating password
