@@ -19,14 +19,20 @@
   <body>
     <!-- Navigation Menu -->
     <nav class="navmenu">
-      <div class="nav-links">
-        <a href="/" class="logo">
+      <div class="logo">
+        <a href="/">
           <img src="/View/images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo">
         </a>
+      </div>
+      <div class="nav-links">
         <a href="/View/aboutpage.html">About Lost Paws</a>
         <a href="/View/howtousepage.html">How To Use</a>
         <a href="/View/reportpetpage.html">Report a Pet</a>
         <a href="/View/mainpage.html">Lost & Found</a>
+      </div>
+      <div class="button">
+      <a href="/View/login.html" id="login-button">Login</a>
+      <a href="/View/signup.html" id="signup-button">Sign up!</a>
       </div>
     </nav>
 
