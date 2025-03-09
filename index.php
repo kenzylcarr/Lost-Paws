@@ -30,20 +30,20 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div class="top-half">
+    <div class="index-container">
+      <div class="index-top-half">
         <h1>Lost Paws</h1>
         <p>Sign up now and join the community to report lost pets and lost pet sightings!</p>
         <a href="/View/signup.html">Sign Up!</a>
       </div>
       
       <!-- Bottom text -->
-      <div class="bottom-half">
+      <div class="index-bottom-half">
         <p>Together, we can make a positive impact on the lives of countless animals. Sign up now and become part of our compassionate community. Your support means the world to us and to the animals we care for.</p>
         <a href="/View/mainpage.html">View Lost Pet Sightings</a>
       </div>
     </div>
-  <footer>
+  <footer class ="index-footer">
     <p>CS 476: Software Development Project</p>
   </footer>
   </body>
