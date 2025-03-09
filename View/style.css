@@ -423,9 +423,6 @@ input {
 /*   END CSS: login.html 
                                       */  
 
-
-
-
  /*   START CSS: mainpage-beforelogin.html  
                                               */  
   #lost-found-database {
@@ -541,6 +538,22 @@ input {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
   /*   END CSS: mainpage-beforelogin.html  */  
+
+  /*   START CSS: mainpage-afterlogin.html  
+                                              */
+  #mainpage-right-afterlogin{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 80px auto;
+  }
+                                              
+  /*   END CSS: mainpage-afterlogin.html */  
+
 
   /*   START CSS: selectpostpage.html  
                                               */   
