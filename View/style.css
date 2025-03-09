@@ -569,6 +569,24 @@ input {
     grid-row-start: 1;
     grid-row-end: 2;
 }
+
+.user-name {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-size: 1.5em;
+}
+
+.user-options {
+  border-top: rgb(185, 185, 185) 1px solid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding: 20px 0px 0px 5px;
+  width: 15vw;
+}
                                               
   /*   END CSS: mainpage-afterlogin.html */  
 
