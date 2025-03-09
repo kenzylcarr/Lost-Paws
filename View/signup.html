@@ -3,6 +3,7 @@
   Group Members: 
             Butool Basabrain (bmb008 - 200478399), 
             Anna Chu (ace859 - 200391368), 
+            Ibrahim Hassan (hassan4i - 200343818),
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
@@ -27,7 +28,6 @@
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="/View/aboutpage.html">About Lost Paws</a>
-        <a href="/View/howtousepage.html">How To Use</a>
         <a href="/View/reportpetpage.html">Report a Pet</a>
         <a href="index.php">Lost & Found</a>
         <a href="/View/petmap.html">Pet Map</a>
@@ -52,14 +52,14 @@
               <div class="signup-field">
                   <label for="username">Username</label>
                   <input type="text" name="username" id="username"/><br />
-                  <span id="error-text-username" class="error-text hidden">Invalid username</span><br />
+                  <span id="error-text-username" class="error-text hidden">Invalid username.</span><br />
               </div>
             
               <!-- Email Address -->
               <div class="signup-field">
                   <label for="email">Email</label>
                   <input type="email" name="email" id="email"/><br />
-                  <span id="error-text-email" class="error-text hidden">Invalid email address</span><br />
+                  <span id="error-text-email" class="error-text hidden">Invalid email address.</span><br />
               </div>
             
               <!-- Phone Number -->
@@ -88,7 +88,7 @@
               </div>
               <!-- Submit button that redirects user to mainpage -->
               <div class="signup-field">
-                   <input class="signup-button" type="submit" value="Sign Up!"/>
+                   <input class="signup-button" type="submit" value="Sign Up!" action="login.html"/>
               </div>
           </form>
       <!-- If user already has an account  -->
@@ -97,6 +97,7 @@
       </div>
    </main>
   </div>
+  <script src="../Controller/eventRegisterSignup.js"></script>
 </body>
 
 </html>

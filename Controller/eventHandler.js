@@ -3,6 +3,7 @@
   Group Members: 
             Butool Basabrain (bmb008 - 200478399), 
             Anna Chu (ace859 - 200391368), 
+            Ibrahim Hassan (hassan4i - 200343818),
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
@@ -38,6 +39,12 @@ function validateEmail(email)
       return true;
   else
       return false;
+}
+
+function validatePhoneNumber(phone)
+{
+  let phoneRegEx = /^\d{9}$/;        // exactly 9 digits for the form (###) ### - ###
+  return phoneRegEx.test(phone);
 }
 
 function validatePassword(password)
@@ -96,6 +103,20 @@ function validateSignup(event)
   {
     email.classList.remove('error-border');
     document.getElementById("error-text-email").classList.add("hidden");
+  }
+
+  // validating phone number
+  let phone = document.getElementById("phone");
+  if (!validatePhoneNumber(phone.value))
+  {
+    phone.classList.add("error-border");
+    document.getElementById("error-text-phone").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    phone.classList.remove("error-border");
+    document.getElementById("error-text-phone").classList.add("hidden");
   }
 
   // validating password
@@ -157,6 +178,41 @@ function validateSignup(event)
 
 
 /* Event handlers for login.html page begin */
+function usernameHandler(event) {
+  let username = event.target;
+  let error_text = document.getElementById("error-text-username");
+
+  if (validateUsername(username.value)) {
+      username.classList.remove("error-border");
+      error_text.classList.add("hidden");
+  }
+  else {
+      console.log("Username not valid.");
+      username.classList.add("error-border");
+
+      formIsValid = false;
+      error_text.classList.remove("hidden");
+  }
+}
+
+function pwdHandler(event) {
+  let password = event.target;
+
+  if (validatePassword(password.value)) {
+      console.log("Password is valid.")
+      pwd.classList.remove("error-border");
+      let error_text = document.getElementById("error-text-password");
+      error_text.classList.add("hidden");
+  }
+  else {
+      console.log("Password must have 1 upper letter, 1 lower letter, 1 digit, 1 special char, min 6 chars.")
+      pwd.classList.add("error-border");
+      let error_text = document.getElementById("error-text-password");
+      error_text.classList.remove("hidden");
+
+  }
+}
+
 function validateLogin(event)
 {
   // accessing the login form's input elements
@@ -218,5 +274,5 @@ document.addEventListener("DOMContentLoaded", function()
     loginForm.addEventListener("submit", validateLogin); 
   }
 });
-}
-/* Enf of event handlers for login.html page */
+
+/* End of event handlers for login.html page */

@@ -3,6 +3,7 @@
   Group Members: 
             Butool Basabrain (bmb008 - 200478399), 
             Anna Chu (ace859 - 200391368), 
+            Ibrahim Hassan (hassan4i - 200343818),
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
@@ -29,10 +30,10 @@
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="aboutpage.html">About Lost Paws</a>
-        <a href="howtousepage.html">How To Use</a>
         <a href="reportpetpage.html">Report a Pet</a>
         <a href="mainpage-beforelogin.html">Lost & Found</a>
         <a href="petmap.html">Pet Map</a>
+        <a href="mainpage-afterlogin.html">After Login TEST</a>
         </div>
     </nav>
 
@@ -43,19 +44,21 @@
         <h2>Welcome to Lost Paws!</h2>
       </div>
           <!-- Prompts for user input to login -->
-          <form class="auth-form-login" id="login-form" action="mainpage.html" method="post">
+          <form class="auth-form-login" id="login-form" action="signup.html" method="post">
             <h3>Login</h3>
             
             <!-- Username -->
             <div class="login-field">
               <label for="username">Username</lable>
               <input type="text" name="username" id="username"/>
+              <p id="error-text-username" class="error-text hidden">Invalid username</p>
             </div>
 
             <!-- Password -->
             <div class="login-field">
               <label for="password">Password</label>
               <input type="password" name="password" id="password"/>
+              <p id="error-text-password" class="error-text hidden">Invalid password</p>
             </div>
 
             <!-- Incase of Forgotten Password -->
@@ -66,7 +69,7 @@
 
             <!-- Submit Button to Login -->
             <div class="login-field">
-              <input class="login-button" type="submit" value="Login" action="mainpage.html">
+              <input class="login-button" type="submit" value="Login" action="mainpage-afterlogin.html">
             </div>
           </form>
         <!-- If user does not have an account  -->
@@ -79,6 +82,7 @@
     <main id="main-right-login">
         <img>
     </main>
+    <script src="../Controller/eventRegisterLogin.js"></script>
 </body>
 
 </html>

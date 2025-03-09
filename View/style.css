@@ -2,6 +2,7 @@
   Group Members: 
             Butool Basabrain (bmb008 - 200478399), 
             Anna Chu (ace859 - 200391368), 
+            Ibrahim Hassan (hassan4i - 200343818),
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
@@ -421,20 +422,6 @@ input {
 }
 /*   END CSS: login.html 
                                       */  
-              
-
-/*   START CSS: howtousepage.html  
-                                              */   
-  #how-to-use-info > h1 {
-    text-align: center;
-  }
-
-  #how-to-use-info video {
-      display: block;
-      margin: auto;
-  }
-  /*   END CSS: howtousepage.html */   
-
 
  /*   START CSS: mainpage-beforelogin.html  
                                               */  
@@ -551,6 +538,84 @@ input {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
   /*   END CSS: mainpage-beforelogin.html  */  
+
+  /*   START CSS: mainpage-afterlogin.html  
+                                              */
+  #mainpage-right-afterlogin{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 80px auto;
+
+    background-color: #e9e9e9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    width: 22vw;
+    padding-left: 30px;
+    margin-right: -100px;
+    padding-top: 20px;
+  }
+
+  .user-photo img {
+    max-width: 100px;
+    max-height: 70px;
+    border: lightgrey 1px solid;
+    padding: 2px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.user-name {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-size: 1.5em;
+  margin-left: -50px;
+}
+
+.user-options {
+  border-top: rgb(185, 185, 185) 1px solid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding: 20px 0px 0px 5px;
+  width: 15vw;
+}
+
+.user-options > p {
+padding: 8px;
+}
+
+.user-options a {
+    text-decoration: none;
+}
+
+.user-options a:hover {
+  background-color: #fcfcfc79;
+  padding: 8px;
+  color: black;
+  border-radius: 0.3vw;
+}
+
+#logout-button {
+  margin-top: 10px;
+  border-radius: 0.3vw;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: #e9e9e9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}                                     
+  /*   END CSS: mainpage-afterlogin.html */  
+
 
   /*   START CSS: selectpostpage.html  
                                               */   
@@ -697,7 +762,7 @@ input {
     START CSS: reportpetpage.html 
                                       */
 
-/* Header Styles */
+/*Header Styles */
 header {
   display: flex; 
   justify-content: space-between; 
@@ -741,28 +806,30 @@ nav a {
 
 /* Styles for both Form and Map Containers */
 .form-container, .map-container {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: white; 
+  padding: 20px; 
+  border-radius: 10px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 /* Form Container Styles */
 .form-container {
-  width: 45%;
-  text-align: left;
+  width: 45%; 
+  text-align: left; 
+  height: 550px;
 }
 
 /* Map Container Styles */
 .map-container {
-  width: 45%;
+  width: 45%; 
+  height: 550px;
 }
 
 /* Map Area Styles */
 .map {
-  height: 300px;
-  background: lightgray;
-  border-radius: 10px;
+  height: 400px; 
+  background: lightgray; 
+  border-radius: 10px; 
 }
 
 footer {
@@ -1032,11 +1099,13 @@ footer p {
 .error-text {
 	color: red;
 	font-style: italic;
-	font-size: 12pt;
+	font-size: 14px;
+  float: right;
+  margin-left: 120px;
+  margin-top: 7px;
 }
 
 .hidden {
 	visibility: hidden;
 }
 /*	 END CSS: error messages	*/
-
