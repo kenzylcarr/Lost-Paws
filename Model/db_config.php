@@ -2,7 +2,7 @@
 // $host = "srv1507.hstgr.io";
 // $dbname = "lp_database";
 // $username = "lp_admin";
-// $password = "kijqyx-4pyqce-zosPag";
+// $password = "ur@CS2025!!";
 // 
 // try {
 //     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
