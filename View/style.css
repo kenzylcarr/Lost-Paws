@@ -762,12 +762,12 @@ padding: 8px;
     START CSS: reportpetpage.html 
                                       */
 
-/* Header Styles */
+/*Header Styles */
 header {
-  display: flex;
+  display: flex; 
   justify-content: space-between; 
   align-items: center; 
-  background-color: #fff; 
+  background-color: #f8f8f8; /* Example background */
   padding: 10px 20px; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
@@ -788,45 +788,46 @@ nav a {
 /* Auth Button Styles */
 .auth-buttons button {
   background-color: #007bff; 
-  color: white; 
-  border: none; 
+  color: white;
+  border: none;
   padding: 5px 10px; 
-  margin-left: 5px;
+  margin-left: 5px; 
   cursor: pointer; 
 }
 
 /* Container for Form and Map */
 .container {
-  display: flex; 
-  justify-content: space-around; 
-  margin-top: 20px; 
-  flex-direction: row-reverse; 
+  display: flex;
+  justify-content: space-between; 
+  margin-top: 20px;
+  gap: 20px;  /* Optional: space between map and form */
+  flex-wrap: wrap; /* Ensures the layout wraps on smaller screens */
 }
 
 /* Styles for both Form and Map Containers */
 .form-container, .map-container {
-  background: white; 
-  padding: 20px; 
-  border-radius: 10px; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Form Container Styles */
 .form-container {
-  width: 45%; 
-  text-align: left; 
+  width: 45%;
+  text-align: left;
 }
 
 /* Map Container Styles */
 .map-container {
-  width: 45%; 
+  width: 45%;
 }
 
 /* Map Area Styles */
 .map {
-  height: 300px; 
-  background: lightgray; 
-  border-radius: 10px; 
+  height: 300px;
+  background: lightgray;
+  border-radius: 10px;
 }
 
 footer {
@@ -834,7 +835,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  background-color: rgba(177,222,228,255);
+  background-color: #FFECBD;
   color: Black; 
   padding: 10px 0;
 }
@@ -842,45 +843,45 @@ footer {
 /* Container for the file input and submit button */
 .upload-container {
   display: flex;
-  align-items: center; 
-  gap: 10px; 
+  align-items: center;
+  gap: 10px;
 }
 
 /* Style for the file input button */
 .upload-container input[type="file"] {
-  display: none; 
+  display: none;
 }
 
 /* Custom label for file input */
 .upload-container label {
   display: inline-block;
-  background-color: #007bff; 
-  color: white; 
+  background-color: #007bff;
+  color: white;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 20px; 
+  border-radius: 20px;
   text-align: center;
-  width: auto; 
+  width: auto;
 }
 
 .upload-container label:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
 
 /* Style for the submit button */
 .upload-container button {
   background-color: #007bff; 
-  color: white; 
+  color: white;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   cursor: pointer;
-  border-radius: 20px; 
+  border-radius: 20px;
 }
 
 .upload-container button:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
 
 /*  END CSS FOR reportpetpage.html  */
