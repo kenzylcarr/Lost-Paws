@@ -550,7 +550,25 @@ input {
     display: grid;
     grid-template-columns: 0.5fr 1fr;
     grid-template-rows: 80px auto;
+
+    background-color: #e9e9e9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    width: 22vw;
+    padding-left: 30px;
+    margin-right: -100px;
+    padding-top: 20px;
   }
+
+  .user-photo img {
+    max-width: 140px;
+    max-height: 140px;
+    border: lightgrey 1px solid;
+    padding: 10px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
                                               
   /*   END CSS: mainpage-afterlogin.html */  
 
