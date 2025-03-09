@@ -757,7 +757,6 @@ padding: 8px;
   /*   END CSS: selectpostpage.html */  
 
 
-
 /* 
     START CSS: reportpetpage.html 
                                       */
@@ -845,8 +844,11 @@ footer {
 /* Container for the file input and submit button */
 .upload-container {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: row;
+  align-items: left;
+  gap: 10px; /* Space between elements */
+  margin-top: -280px;
+  padding: 30px;
 }
 
 /* Style for the file input button */
@@ -855,8 +857,9 @@ footer {
 }
 
 /* Custom label for file input */
+
 .upload-container label {
-  display: inline-block;
+  display: inline-block; /* Ensure it's visible */
   background-color: #007bff;
   color: white;
   padding: 10px 20px;
@@ -865,8 +868,10 @@ footer {
   border-radius: 20px;
   text-align: center;
   width: auto;
+  visibility: visible; /* Ensure it's visible */
 }
 
+/* Hover effect for label */
 .upload-container label:hover {
   background-color: #0056b3;
 }
@@ -882,12 +887,12 @@ footer {
   border-radius: 20px;
 }
 
+/* Hover effect for submit button */
 .upload-container button:hover {
   background-color: #0056b3;
 }
 
 /*  END CSS FOR reportpetpage.html  */
-
 /* 
 	START CSS: petmap.html */
 						
