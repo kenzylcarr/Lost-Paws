@@ -26,7 +26,9 @@
 
       <!-- Lost Paws Logo -->
       <div class="logo">
-          <a href="mainpage.php" class="logo">L·ᴥ·st Paws</a> 
+          <a href="mainpage.php">
+            <p><img src="images/Logo.jpg" alt="Lost Paws Logo" class="logo"/></p>
+          </a>
       </div>
 
       <!-- Email -->
