@@ -29,8 +29,8 @@
         <a href="/View/mainpage.html">Lost & Found</a>
       </div>
       <div class="button">
-      <a href="/View/login.html" id="login-button">Login</a>
-      <a href="/View/signup.html" id="signup-button">Sign up!</a>
+      <a href="/View/login.html" id="index-login-button">Login</a>
+      <a href="/View/signup.html" id="index-signup-button">Sign up!</a>
       </div>
     </nav>
 
