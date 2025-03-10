@@ -47,7 +47,7 @@
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="/View/login.php" method="post" onsubmit="return validateSignup(event)">
+          <form class="auth-form-signup" id="signup-form" action="/View/login.php" method="post">
               <!-- Username -->
               <div class="signup-field">
                   <label for="username">Username</label>
