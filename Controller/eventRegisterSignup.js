@@ -12,7 +12,7 @@ CS 476: Lost Paws Project
 
 document.addEventListener("DOMContentLoaded", function()
 {
-  let signupForm = document.getElementByID("signup-form");
+  let signupForm = document.getElementById("signup-form");
   if (signupForm)
     signupForm.addEventListener("submit", validateSignup);
 });
