@@ -14,7 +14,7 @@
 <head>
   <title>Signup Page</title>
   <link rel="stylesheet" type="text/css" href="/View/style.css">
-  <script src="../Controller/eventHandlers.js"></script>
+  <script src="../Controller/eventHandler.js"></script>
 </head>
 
 <body>
