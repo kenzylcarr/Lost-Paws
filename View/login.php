@@ -7,7 +7,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: login.html
+  File name: login.php
 -->
 
 <!DOCTYPE html>
@@ -25,15 +25,15 @@
     <nav class="navmenu">
       <!-- Lost Paws Logo -->
       <div class="logo"> 
-          <a href="mainpage.html" class="logo">L·ᴥ·st Paws</a> 
+          <a href="mainpage.php" class="logo">L·ᴥ·st Paws</a> 
       </div>
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="aboutpage.html">About Lost Paws</a>
-        <a href="reportpetpage.html">Report a Pet</a>
-        <a href="mainpage-beforelogin.html">Lost & Found</a>
-        <a href="petmap.html">Pet Map</a>
-        <a href="mainpage-afterlogin.html">After Login TEST</a>
+        <a href="aboutpage.php">About Lost Paws</a>
+        <a href="reportpetpage.php">Report a Pet</a>
+        <a href="mainpage-beforelogin.php">Lost & Found</a>
+        <a href="petmap.php">Pet Map</a>
+        <a href="mainpage-afterlogin.php">After Login TEST</a>
         </div>
     </nav>
 
@@ -44,7 +44,7 @@
         <h2>Welcome to Lost Paws!</h2>
       </div>
           <!-- Prompts for user input to login -->
-          <form class="auth-form-login" id="login-form" action="signup.html" method="post">
+          <form class="auth-form-login" id="login-form" action="signup.php" method="post">
             <h3>Login</h3>
             
             <!-- Username -->
@@ -63,18 +63,18 @@
 
             <!-- Incase of Forgotten Password -->
             <div class="login-field">
-              <p><a href="forgotpassword.html" class="forgot-password">Forgot Password</a></p>
+              <p><a href="forgotpassword.php" class="forgot-password">Forgot Password</a></p>
              <br>
             </div>
 
             <!-- Submit Button to Login -->
             <div class="login-field">
-              <input class="login-button" type="submit" value="Login" action="mainpage-afterlogin.html">
+              <input class="login-button" type="submit" value="Login" action="mainpage-afterlogin.php">
             </div>
           </form>
         <!-- If user does not have an account  -->
         <div class="login-footnote">
-            <p>Don't have an account? <a class="signup-button" href="signup.html">Signup</a></p>
+            <p>Don't have an account? <a class="signup-button" href="signup.php">Signup</a></p>
         </div>
     </main>
 

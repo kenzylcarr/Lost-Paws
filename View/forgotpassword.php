@@ -7,7 +7,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: forgotpassword.html
+  File name: forgotpassword.php
 -->
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
 
       <!-- Lost Paws Logo -->
       <div class="logo">
-          <a href="mainpage.html" class="logo">L·ᴥ·st Paws</a> 
+          <a href="mainpage.php" class="logo">L·ᴥ·st Paws</a> 
       </div>
 
       <!-- Email -->
@@ -55,7 +55,7 @@
 
       <!-- Return to Login Page -->
       <p class="input-field">
-        <input type="submit" class="form-submit" value="" action="login.html"/>
+        <input type="submit" class="form-submit" value="" action="login.php"/>
       </p>
 
   </body>

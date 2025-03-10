@@ -7,7 +7,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: selectpostpage.html
+  File name: selectpostpage.php
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -23,20 +23,20 @@
        <!-- Lost Paws Logo -->
       <nav class="navmenu">
           <div class="logo"> 
-            <a href="/View/mainpage.html" class="logo">L·ᴥ·st Paws</a>
+            <a href="/View/mainpage.php" class="logo">L·ᴥ·st Paws</a>
           </div>
   
         <!-- Navigation menu -->
         <div class="nav-links">
-          <a href="/View/aboutpage.html">About Lost Paws</a>
-          <a href="/View/reportpetpage.html">Report a Pet</a>
+          <a href="/View/aboutpage.php">About Lost Paws</a>
+          <a href="/View/reportpetpage.php">Report a Pet</a>
           <a href="index.php">Lost & Found</a>
-          <a href="/View/petmap.html">Pet Map</a>
+          <a href="/View/petmap.php">Pet Map</a>
         </div>
   
         <div class="button">
-          <a id="signup-button" href="signup.html">Sign Up!</a>
-          <a id="login-button" href="/View/login.html">Login</a>
+          <a id="signup-button" href="signup.php">Sign Up!</a>
+          <a id="login-button" href="/View/login.php">Login</a>
         </div>
       </nav>
       
@@ -83,7 +83,7 @@
       <!-- Right Section: User Prompt to Signup/Login-->
       <main id="select-post-main-right">
         <h3>Sign in to get alerts and to connect with your community!</h3>
-        <p>Don't have an account?<a class="signup-button" href="/View/signup.html">Register</a></p>
+        <p>Don't have an account?<a class="signup-button" href="/View/signup.php">Register</a></p>
       </main>
   
     </div>

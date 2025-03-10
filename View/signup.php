@@ -7,7 +7,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: signup.html
+  File name: signup.php
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -22,15 +22,15 @@
     <nav class="navmenu">
       <!-- Lost Paws Logo -->
       <div class="logo"> 
-          <a href="/View/mainpage.html" class="logo">L·ᴥ·st Paws</a> 
+          <a href="/View/mainpage.php" class="logo">L·ᴥ·st Paws</a> 
       </div>
   
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="/View/aboutpage.html">About Lost Paws</a>
-        <a href="/View/reportpetpage.html">Report a Pet</a>
+        <a href="/View/aboutpage.php">About Lost Paws</a>
+        <a href="/View/reportpetpage.php">Report a Pet</a>
         <a href="index.php">Lost & Found</a>
-        <a href="/View/petmap.html">Pet Map</a>
+        <a href="/View/petmap.php">Pet Map</a>
       </div>
     </nav>
 
@@ -47,7 +47,7 @@
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="/View/login.html" method="post" onsubmit="return validateSignup(event)">
+          <form class="auth-form-signup" id="signup-form" action="/View/login.php" method="post" onsubmit="return validateSignup(event)">
               <!-- Username -->
               <div class="signup-field">
                   <label for="username">Username</label>
@@ -88,12 +88,12 @@
               </div>
               <!-- Submit button that redirects user to mainpage -->
               <div class="signup-field">
-                   <input class="signup-button" type="submit" value="Sign Up!" action="login.html"/>
+                   <input class="signup-button" type="submit" value="Sign Up!" action="login.php"/>
               </div>
           </form>
       <!-- If user already has an account  -->
       <div class="signup-footnote">
-          <p>Already have an account? <a class="login-button" href="/View/login.html">Login</a></p>
+          <p>Already have an account? <a class="login-button" href="/View/login.php">Login</a></p>
       </div>
    </main>
   </div>

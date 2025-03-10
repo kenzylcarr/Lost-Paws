@@ -7,7 +7,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: mainpage-afterlogin.html
+  File name: mainpage-afterlogin.php
 -->
 
 <!DOCTYPE html>
@@ -24,22 +24,22 @@
        <!-- Lost Paws Logo -->
        <nav class="navmenu">
         <div class="logo"> 
-            <a href="mainpage.html">
+            <a href="mainpage.php">
 			<p><img src="images/Logo.jpg" alt="Lost Paws Logo" class="logo"/></p>
 		</a>
         </div>
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="/View/aboutpage.html">About Lost Paws</a>
-        <a href="/View/reportpetpage.html">Report a Pet</a>
-        <a href="/View/mainpage-beforelogin.html">Lost & Found</a>
-        <a href="/View/petmap.html">Pet Map</a>
+        <a href="/View/aboutpage.php">About Lost Paws</a>
+        <a href="/View/reportpetpage.php">Report a Pet</a>
+        <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
+        <a href="/View/petmap.php">Pet Map</a>
       </div>
 
       <div class="button">
-        <a id="signup-button" href="/View/signup.html">Sign Up!</a>
-        <a id="login-button" href="/View/login.html">Login</a>
+        <a id="signup-button" href="/View/signup.php">Sign Up!</a>
+        <a id="login-button" href="/View/login.php">Login</a>
       </div>
         </nav>
 
@@ -64,47 +64,47 @@
             <div class="pet-brief-info">
                 <img alt="Photo">
                 <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.html">View Post</a></p>
+                <p><a href="/View/selectpostpage.php">View Post</a></p>
             </div>
             <div class="pet-brief-info">
                 <img alt="Photo">
                 <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.html">View Post</a></p>
+                <p><a href="/View/selectpostpage.php">View Post</a></p>
             </div>
             <div class="pet-brief-info">
                 <img alt="Photo">
                 <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.html">View Post</a></p>
+                <p><a href="/View/selectpostpage.php">View Post</a></p>
             </div>
             <div class="pet-brief-info">
               <img alt="Photo">
               <p>Brief Pet Information</p>
-              <p><a href="/View/selectpostpage.html">View Post</a></p>
+              <p><a href="/View/selectpostpage.php">View Post</a></p>
           </div>
           <div class="pet-brief-info">
               <img alt="Photo">
               <p>Brief Pet Information</p>
-              <p><a href="/View/selectpostpage.html">View Post</a></p>
+              <p><a href="/View/selectpostpage.php">View Post</a></p>
           </div>
           <div class="pet-brief-info">
             <img alt="Photo">
             <p>Brief Pet Information</p>
-            <p><a href="/View/selectpostpage.html">View Post</a></p>
+            <p><a href="/View/selectpostpage.php">View Post</a></p>
          </div>
          <div class="pet-brief-info">
             <img alt="Photo">
             <p>Brief Pet Information</p>
-            <p><a href="/View/selectpostpage.html">View Post</a></p>
+            <p><a href="/View/selectpostpage.php">View Post</a></p>
         </div>
         <div class="pet-brief-info">
           <img alt="Photo">
           <p>Brief Pet Information</p>
-          <p><a href="/View/selectpostpage.html">View Post</a></p>
+          <p><a href="/View/selectpostpage.php">View Post</a></p>
         </div>
         <div class="pet-brief-info">
           <img alt="Photo">
           <p>Brief Pet Information</p>
-          <p><a href="/View/selectpostpage.html">View Post</a></p>
+          <p><a href="/View/selectpostpage.php">View Post</a></p>
         </div>
       </div>
     </main>

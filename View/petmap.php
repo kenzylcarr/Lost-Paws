@@ -7,7 +7,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: petmap.html
+  File name: petmap.php
 -->
 
 <!DOCTYPE html>
@@ -28,23 +28,23 @@
 	  <!-- Lost Paws Logo -->
     <nav class="navmenu">
         <div class="logo"> 
-            <a href="mainpage.html">
+            <a href="mainpage.php">
 			<p><img src="images/Logo.jpg" alt="Lost Paws Logo" class="logo"/></p>
 		</a>
         </div>
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="aboutpage.html">About Lost Paws</a>
-	<a href="howtousepage.html">How to Use</a>
-        <a href="reportpetpage.html">Report a Pet</a>
-        <a href="selectpostpage.html">Lost & Found</a>
-        <a href="petmap.html">Pet Map</a>
+        <a href="aboutpage.php">About Lost Paws</a>
+	<a href="howtousepage.php">How to Use</a>
+        <a href="reportpetpage.php">Report a Pet</a>
+        <a href="selectpostpage.php">Lost & Found</a>
+        <a href="petmap.php">Pet Map</a>
       </div>
 
       <div class="button">
-        <a id="signup-button" href="signup.html">Sign Up!</a>
-        <a id="login-button" href="login.html">Login</a>
+        <a id="signup-button" href="signup.php">Sign Up!</a>
+        <a id="login-button" href="login.php">Login</a>
       </div>
     </nav>
 
