@@ -78,11 +78,35 @@ if (empty($username_err) && empty($email_err) && empty($phone_err) && empty($pas
         if (move_uploaded_file(["profilephoto"]["tmp_name"], $target_file)) {
             $profile_photo = basename($_FILES["profilephoto"]["name"]);
         }
-    }
     // Prepare INSERT statement
     $sql = "INSERT INTO users (username, email_address, phone_number, password, profile_photo) VALUES (?, ?, ?, ?, ?)";
 
+        if ($stmt = mysqli_prepare($conn, $sql)) {
+            mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
+
+            // Set parameters
+            $param_username = $username;
+            $param_email = $email;
+            $param_phone = $phone;
+            $param_password = $password;
+            $param_profile_photo = $profile_photo;
+
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                // Redirect to login page
+                header("location: ../View/login.php");
+            } else {
+                echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
+            }
+            mysqli_stmt_close($stmt);
+        }
+    } else {
+        // Display validation errors
+        if (!empty($username_err)) echo $username_err . "<br>";
+        if (!empty($email_err)) echo $email_err . "<br>";
+        if (!empty($phone_err)) echo $phone_err . "<br>";
+        if (!empty($password_err)) echo $password_err . "<br>";
+    }
+    mysqli_close($conn);
 }
-
-
 ?>
