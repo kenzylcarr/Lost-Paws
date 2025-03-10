@@ -88,7 +88,7 @@
               </div>
               <!-- Submit button that redirects user to mainpage -->
               <div class="signup-field">
-                   <input class="signup-button" type="submit" value="Sign Up!" action="login.php"/>
+                   <input class="signup-button" type="submit" value="Sign Up!" action="mainpage-afterlogin.php"/>
               </div>
           </form>
       <!-- If user already has an account  -->
