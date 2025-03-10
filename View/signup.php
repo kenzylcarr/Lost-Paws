@@ -22,7 +22,9 @@
     <nav class="navmenu">
       <!-- Lost Paws Logo -->
       <div class="logo"> 
-          <a href="/View/mainpage.php" class="logo">L·ᴥ·st Paws</a> 
+          <a href="/View/mainpage.php">
+            <p><img src="images/Logo.jpg" alt="Lost Paws Logo" class="logo"/></p>
+          </a>
       </div>
   
       <!-- Navigation menu -->
