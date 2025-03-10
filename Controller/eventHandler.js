@@ -10,6 +10,19 @@
   File name: eventHandlers.js
 */
 
+/* Waiting for DOM to load before executing script for both Signup and Login */
+document.addEventListener("DOMContentLoaded", function()
+{
+  // Attaching event listeners when the page is being loaded
+  let signupForm = document.getElementById("signup-form");
+  if (signupForm)
+    signupForm.addEventListener("submit", validateSignup);
+
+  let loginForm = document.getElementById("login-form");
+  if (loginForm)
+    loginForm.addEventListener("submit", validateLogin);
+});
+
 /* Common validator functions begin */
 function validateName(name)
 {
@@ -266,13 +279,14 @@ function validateLogin(event)
   }
 }
 
-document.addEventListener("DOMContentLoaded", function()
-{
-  let loginForm = document.getElementById("login-form");
-  if (loginForm)
-  {
-    loginForm.addEventListener("submit", validateLogin); 
-  }
-});
+// added together above with signup, delete later(?)
+// document.addEventListener("DOMContentLoaded", function()
+// {
+//   let loginForm = document.getElementById("login-form");
+//   if (loginForm)
+//   {
+//     loginForm.addEventListener("submit", validateLogin); 
+//   }
+// });
 
 /* End of event handlers for login.html page */
