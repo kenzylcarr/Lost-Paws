@@ -39,7 +39,6 @@ h1, h2 {
 /* START of common styles for navigation menu */
 .navmenu {
   background-color: #C2E5FF;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 2px;
 
   padding-left: 20px;
@@ -995,25 +994,53 @@ input:checked + .slider:before {
 
 
 /*	 START CSS: index.php 	*/
+.index-navmenu {
+  background-color: #C2E5FF;
+  margin-bottom: 2px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5vh;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.index-nav-links {
+  display: flex;
+  gap: 20px;
+  justify-content: right;
+  align-items: center;
+  margin: 0 auto;
+}
+
 .index-container {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
   margin: 0;
   padding: 0;
+  width: 100%;
+  position: relative;
   overflow-x: hidden;
 }
 
 .index-top-half {
 	background-color: #cde6f1c0;
-	height: 75%;
+	height: 65vh;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding-left: 10%;
-  padding-top: 10%;
-  position: relative;
+	padding: 5vh 10% 0 10%;
+  box-sizing: border-box;
   width: 100%;
+  margin-top: 5vh;
 }
 
 .index-top-half h1 {
@@ -1026,7 +1053,7 @@ input:checked + .slider:before {
 	font-size: 1.2em;
 	margin: 30px 0;
   color: black;
-  max-width: 600 px;
+  max-width: 400 px;
 }
 
 .index-top-half a{
@@ -1049,16 +1076,15 @@ input:checked + .slider:before {
 
 .index-bottom-half {
 	background-color: white;
-	min-height: 40%;
-	display: flex;
+  height: 25vh;
+  display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-  margin-top: -150px;
-  padding: 40px 20px;
+  padding: 20px;
   width: 100%;
-  position: relative;
+  box-sizing: border-box;
   z-index: 1;
 }
 
@@ -1085,11 +1111,13 @@ input:checked + .slider:before {
 
 index-footer {
   background-color: #FFECBD;
-  min-height: 5%;
+  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
