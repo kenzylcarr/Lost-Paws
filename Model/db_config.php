@@ -11,22 +11,36 @@
 -->
 
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Load environment variables from .env file
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
-
-// Database credentials
-$host = $_ENV['DB_HOST'];
-$dbname = $_ENV['DB_NAME'];
-$username = $_ENV['DB_USERNAME'];
-$password = $_ENV['DB_PASSWORD'];
-
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+    $dotenv->load();
+    
+    // Database credentials
+    $host = $_ENV['DB_HOST'];
+    $dbname = $_ENV['DB_NAME'];
+    $username = $_ENV['DB_USERNAME'];
+    $password = $_ENV['DB_PASSWORD'];
+
+    // Debug output
+    echo "Attempting to connect to database:<br>";
+    echo "Host: " . $host . "<br>";
+    echo "Database: " . $dbname . "<br>";
+    echo "Username: " . $username . "<br>";
+    
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Database connection successful!<br>";
+    } catch (PDOException $e) {
+        die("Database connection failed: " . $e->getMessage());
+    }
+} catch (Exception $e) {
+    die("Error loading environment variables: " . $e->getMessage());
 }
 ?>
