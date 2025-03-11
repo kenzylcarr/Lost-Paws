@@ -1016,6 +1016,27 @@ input:checked + .slider:before {
 	END CSS: petmap.html  */
 
 /*	 START CSS: index.php 	*/
+.custom-shape-divider-bottom-1741667979 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1741667979 svg {
+  position: relative;
+  display: block;
+  width: calc(256% + 1.3px);
+  height: 156px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1741667979 .shape-fill {
+  fill: #1E3F66;
+}
+
 #index-signup-button, #index-login-button {
   display: inline-block;
   background-color: #1E3F66;
