@@ -26,7 +26,7 @@
 
       <!-- Lost Paws Logo -->
       <div class="logo">
-          <a href="mainpage.php">
+          <a href="index.php">
             <p><img src="images/Logo.jpg" alt="Lost Paws Logo" class="logo"/></p>
           </a>
       </div>

@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav class="navmenu">
       <!-- Lost Paws Logo -->
       <div class="logo"> 
-          <a href="/View/mainpage.php">
+          <a href="index.php">
             <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="logo"/></p>
           </a>
       </div>
