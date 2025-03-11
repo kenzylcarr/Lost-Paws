@@ -118,6 +118,14 @@ h1, h2 {
   justify-content: right;
 }
 
+.button p {
+  margin: 0;
+  padding: 10px 0;
+  width: 100%;
+  font-size: 1em;
+  color: black;
+}
+
 #signup-button, #login-button {
   display: inline-block;
   background-color: #1E3F66;
