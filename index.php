@@ -24,7 +24,6 @@
       </a>
       <div class="index-nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="/View/howtousepage.php">How To Use</a>
         <a href="/View/reportpetpage.php">Report a Pet</a>
         <a href="/View/mainpage.php">Lost & Found</a>
       </div>
