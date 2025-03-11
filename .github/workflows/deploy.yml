@@ -34,4 +34,4 @@ jobs:
         username: u204807276.pawsarelost.com  # Your FTP username
         password: ${{ secrets.FTP_PASSWORD }}  # FTP password stored in GitHub secrets
         local-dir: ./  # Path to your project folder (root of the repo)
-        server-dir: /public_html/pawsarelost.com/  # Remote directory on your server
+        server-dir: /public_html/lostpaws_html/  # Remote directory on your server
