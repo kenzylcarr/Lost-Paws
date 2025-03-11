@@ -25,20 +25,13 @@ jobs:
         php-version: '8.0'
         
     - name: Install Composer Dependencies
-      run: |
-        composer install --no-dev --optimize-autoloader
-        chmod -R 755 vendor
-        
+      run: composer install --no-dev --optimize-autoloader
+
     - name: Deploy to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: 194.164.64.44
-        username: u204807276.pawsarelost.com
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
-        server-dir: /public_html/lostpaws_html/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-        dangerous-clean-slate: true
+        username: u204807276.pawsarelost.com  # Your FTP username
+        password: ${{ secrets.FTP_PASSWORD }}  # FTP password stored in GitHub secrets
+        local-dir: ./  # Path to your project folder (root of the repo)
+        server-dir: /public_html/lostpaws_html/  # Remote directory on your server
