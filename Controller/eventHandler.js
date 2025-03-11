@@ -56,7 +56,7 @@ function validateEmail(email)
 
 function validatePhoneNumber(phone)
 {
-  let phoneRegEx = /^\d{9}$/;        // exactly 9 digits for the form (###) ### - ###
+  let phoneRegEx = /^\d{10}$/;        // exactly 10 digits for the form (###) ### - ####
   return phoneRegEx.test(phone);
 }
 
@@ -185,10 +185,6 @@ function validateSignup(event)
   }
 }
 /* End of event handlers for signup.html page */
-
-
-
-
 
 /* Event handlers for login.html page begin */
 function usernameHandler(event) {
