@@ -9,6 +9,34 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: signup.php
 -->
+
+<!-- PHP validation for the form begins -->
+<?php
+session_start();
+// Include the db_config.php file to connect to database
+require_once '../Model/db_config.php';
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+// Array to keep track of any errors while processing the form
+$errors = array();
+$email = "";
+$username = "";
+$phone = "";
+$password = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Extract all form inputs from the superglobal $_POST variable and store into different variables
+  
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,5 @@
 <?php
+// Database credentials
 $host = getenv('DB_HOST');
 $dbname = getenv('DB_NAME');
 $username = getenv('DB_USERNAME');
