@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- Lost Paws Logo -->
       <div class="logo"> 
           <a href="/View/mainpage.php">
-            <p><img src="images/Logo.jpg" alt="Lost Paws Logo" class="logo"/></p>
+            <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="logo"/></p>
           </a>
       </div>
   

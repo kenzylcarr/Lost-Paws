@@ -21,11 +21,12 @@
 <body>
     <div id="container">
        <!-- Lost Paws Logo -->
+      <div class="logo"> 
+          <a href="mainpage.php">
+            <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="logo"/></p>
+          </a>
+      </div>
       <nav class="navmenu">
-          <div class="logo"> 
-            <a href="/View/mainpage.php" class="logo">L·ᴥ·st Paws</a>
-          </div>
-  
         <!-- Navigation menu -->
         <div class="nav-links">
           <a href="/View/aboutpage.php">About Lost Paws</a>
