@@ -21,6 +21,6 @@ Follow these simple steps to navigate the website:
 - Butool Basabrain
 - Anna Chu
 - Ibrahim Hassan
-- Makenzy Laursen-Carr
+- Makenzy Laursen-Carr (team leader)
 - Kaira Molano
 - Fatima Rizwan
