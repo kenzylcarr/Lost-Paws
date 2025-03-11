@@ -40,20 +40,19 @@ h1, h2 {
 .navmenu {
   background-color: #C2E5FF;
   margin-bottom: 2px;
-
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 8px;
-  height: 2vw;
-
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-
-  display: grid;
-  grid-template-columns: 2fr 9fr 0.5fr; /* used to position the navigation menu buttons */
+  padding: 35px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 5vh;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
 .nav-links {
@@ -75,10 +74,10 @@ h1, h2 {
 }
 
 .nav-logo {
-  height: 65px;
+  height: 70px;
   width: auto;
   margin-right: 20px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 /* styling the links */
