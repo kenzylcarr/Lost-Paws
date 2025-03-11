@@ -44,7 +44,7 @@
       <!-- Bottom text -->
       <div class="index-bottom-half">
         <p>Together, we can make a positive impact on the lives of countless animals. Sign up now and become part of our compassionate community. Your support means the world to us and to the animals we care for.</p>
-        <a href="/View/mainpage.php">View Lost Pet Sightings</a>
+        <a href="/View/mainpage-beforelogin.php">View Lost Pet Sightings</a>
       </div>
     </div>
   <footer class ="index-footer">
