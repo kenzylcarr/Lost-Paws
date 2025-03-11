@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="/View/signup.php" method="post">
+          <form class="auth-form-signup" id="signup-form" action="/Controller/register.php" method="post">
               <!-- Username -->
               <div class="signup-field">
                   <label for="username">Username</label>

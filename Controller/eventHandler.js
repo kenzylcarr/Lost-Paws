@@ -85,7 +85,7 @@ function validateProfilePhoto(profilePhoto)
 
 
 
-/* Event handlers for signup.html page begins */
+/* Event handlers for signup.php page begins */
 function validateSignup(event)
 {
   let formIsValid = true;
@@ -184,9 +184,9 @@ function validateSignup(event)
     event.preventDefault();
   }
 }
-/* End of event handlers for signup.html page */
+/* End of event handlers for signup.php page */
 
-/* Event handlers for login.html page begin */
+/* Event handlers for login.php page begin */
 function usernameHandler(event) {
   let username = event.target;
   let error_text = document.getElementById("error-text-username");
@@ -285,4 +285,4 @@ function validateLogin(event)
 //   }
 // });
 
-/* End of event handlers for login.html page */
+/* End of event handlers for login.php page */

@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function()
   let cpassword = document.getElementById("cpassword");
   cpassword.addEventListener("blur", cpasswordHandler);
   
-  let avatar = document.getElementById("avatar");
+  let avatar = document.getElementById("profilephoto");
   avatar.addEventListener("blur", avatarHandler);
 });
 
