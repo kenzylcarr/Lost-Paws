@@ -24,7 +24,7 @@
        <!-- Lost Paws Logo -->
        <nav class="navmenu">
         <div class="logo"> 
-            <a href="index.php">
+            <a href="../index.php">
 			<p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="logo"/></p>
 		</a>
         </div>
@@ -118,7 +118,7 @@
     
         <div class="user-options">
             <p><a href="">View My Posts</a></p>
-            <p><a href="">Account Settings</a></p>
+            <p><a href="/View/acctsettings.php">Account Settings</a></p>
             <p><a href="">Messages</a></p>
         </div>
     </main>

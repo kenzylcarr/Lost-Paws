@@ -18,17 +18,18 @@
 
   <body>
     <!-- Navigation Menu -->
-    <nav class="index-navmenu">
-      <a href="/" class="logo">
+    <nav class="navmenu">
+      <a href="index.php" class="logo">
         <img src="/View/images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo">
       </a>
-      <div class="index-nav-links">
+      <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
+        <a href="/View/howtousepage.php">How To Use</a>
         <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
       </div>
       <div class="button">
-        <p>Already have an account?</p>
-        <a href="/View/login.php" id="index-login-button">Login</a>
+      <a href="/View/login.php" id="index-login-button">Login</a>
+      <a href="/View/signup.php" id="index-signup-button">Sign up!</a>
       </div>
     </nav>
 

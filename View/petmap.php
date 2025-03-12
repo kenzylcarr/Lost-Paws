@@ -28,7 +28,7 @@
 	  <!-- Lost Paws Logo -->
     <nav class="navmenu">
         <div class="logo"> 
-            <a href="index.php">
+            <a href="../index.php">
 			<p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="logo"/></p>
 		</a>
         </div>
@@ -37,7 +37,7 @@
       <div class="nav-links">
         <a href="aboutpage.php">About Lost Paws</a>
         <a href="reportpetpage.php">Report a Pet</a>
-        <a href="mainpage-beforelogin.php">Lost & Found</a> 	<!-- Was seclectpostpage before (?) -->
+        <a href="mainpage-beforelogin.php">Lost & Found</a> 	
         <a href="petmap.php">Pet Map</a>
       </div>
 
