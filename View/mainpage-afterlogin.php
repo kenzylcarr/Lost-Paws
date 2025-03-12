@@ -24,7 +24,7 @@
        <!-- Lost Paws Logo -->
        <nav class="navmenu">
         <div class="logo"> 
-            <a href="index.php">
+            <a href="../">
 			<p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="logo"/></p>
 		</a>
         </div>
