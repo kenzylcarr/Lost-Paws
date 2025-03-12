@@ -69,44 +69,46 @@ if(empty(trim($_POST["password"]))) {
 if (empty($username_err) && empty($email_err) && empty($phone_err) && empty($password_err)) {
     // Handle file upload for profile photo
     $profile_photo = "";
-    if (isset($_FILES["profilephoto"]) && $_FILES(["profilephoto"]["name"])) {
+    if (isset($_FILES["profilephoto"]) && $_FILES["profilephoto"]["name"]) {
         $target_dir = "../View/uploads/";
         if (!file_exists($target_dir)) {
             mkdir($target_dir, 0777, true);
         }
-        $target_dir = $target_dir . basename($_FILES["profilephoto"]["name"]);
-        if (move_uploaded_file(["profilephoto"]["tmp_name"], $target_file)) {
+        $target_file = $target_dir . basename($_FILES["profilephoto"]["name"]);
+        if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
             $profile_photo = basename($_FILES["profilephoto"]["name"]);
         }
+    }
+    // Hash password before storing it
+    $param_password = password_hash($password, PASSWORD_DEFAULT);
+
     // Prepare INSERT statement
     $sql = "INSERT INTO users (username, email_address, phone_number, password, profile_photo) VALUES (?, ?, ?, ?, ?)";
 
-        if ($stmt = mysqli_prepare($conn, $sql)) {
-            mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
 
-            // Set parameters
-            $param_username = $username;
-            $param_email = $email;
-            $param_phone = $phone;
-            $param_password = $password;
-            $param_profile_photo = $profile_photo;
+        // Set parameters
+        $param_username = $username;
+        $param_email = $email;
+        $param_phone = $phone;
+        $param_profile_photo = $profile_photo;
 
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                // Redirect to login page
-                header("location: ../View/login.php");
-            } else {
-                echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
-            }
-            mysqli_stmt_close($stmt);
+        // Attempt to execute the prepared statement
+        if (mysqli_stmt_execute($stmt)) {
+            // Redirect to login page
+            header("location: ../View/login.php");
+        } else {
+            echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
         }
-    } else {
-        // Display validation errors
-        if (!empty($username_err)) echo $username_err . "<br>";
-        if (!empty($email_err)) echo $email_err . "<br>";
-        if (!empty($phone_err)) echo $phone_err . "<br>";
-        if (!empty($password_err)) echo $password_err . "<br>";
+        mysqli_stmt_close($stmt);
     }
-    mysqli_close($conn);
+} else {
+    // Display validation errors
+    if (!empty($username_err)) echo $username_err . "<br>";
+    if (!empty($email_err)) echo $email_err . "<br>";
+    if (!empty($phone_err)) echo $phone_err . "<br>";
+    if (!empty($password_err)) echo $password_err . "<br>";
 }
+mysqli_close($conn);
 ?>
