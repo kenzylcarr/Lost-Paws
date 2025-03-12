@@ -34,8 +34,10 @@ try {
     echo "Username: " . $username . "<br>";
     
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = mysqli_connect($host, $username, $password, $dbname);
+        if (!$conn) {
+            die("Database connection failed: " . mysqli_connect_error());
+        }
         echo "Database connection successful!<br>";
     } catch (PDOException $e) {
         die("Database connection failed: " . $e->getMessage());
