@@ -144,12 +144,12 @@ h1, h2 {
 
 /* END of common styles for navigation menu */
 
-footer {
+/* footer {
   background-color: #ceedf1;
   text-align: center;
   font-size: 15px;
   padding: 10px;
-}
+} */
 
 .bottom {
   text-align: center;
@@ -292,6 +292,12 @@ p.description {
 .signup-header {
   grid-row-start: 1;
   grid-row-end: 2;
+}
+
+.signup-header h2 {
+  font-size: 1.5em;
+  padding: 5%;
+  padding-left: 0%;
 }
 
 .auth-form-signup {
@@ -853,7 +859,7 @@ nav a {
   border-radius: 10px; 
 }
 
-footer {
+/* footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -861,7 +867,7 @@ footer {
   background-color: #FFECBD;
   color: Black; 
   padding: 10px 0;
-}
+} */
 
 /* Container for the file input and submit button */
 .upload-container {
@@ -1149,7 +1155,7 @@ input:checked + .slider:before {
   background-color:#ea6f50;
 }
 
-.index-footer {
+/* .index-footer {
   background-color: #FFECBD;
   height: 5vh;
   display: flex;
@@ -1168,7 +1174,7 @@ input:checked + .slider:before {
   width: 100%;
   font-size: 1em;
   color: black;
-}
+} */
 
 /*	 END CSS: index.php		*/
 

@@ -24,8 +24,7 @@
       </a>
       <div class="index-nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="/View/reportpetpage.php">Report a Pet</a>
-        <a href="/View/mainpage.php">Lost & Found</a>
+        <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
       </div>
       <div class="button">
         <p>Already have an account?</p>
@@ -46,8 +45,5 @@
         <a href="/View/mainpage-beforelogin.php">View Lost Pet Sightings</a>
       </div>
     </div>
-  <footer class ="index-footer">
-    <p>CS 476: Software Development Project</p>
-  </footer>
   </body>
 </html>
