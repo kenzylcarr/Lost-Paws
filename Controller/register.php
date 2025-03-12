@@ -14,6 +14,11 @@
 // Include the db_config.php file to connect to database
 require_once '../Model/db_config.php';
 
+// Check if connection is successful
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
 // Declare variables with empty values
 $username = $email = $phone = $password = "";
 $username_err = $email_err = $phone_err = $password_err = "";
@@ -29,86 +34,99 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($stmt = mysqli_prepare($conn, $sql)) {
             mysqli_stmt_bind_param($stmt, "s", $param_username);
-
             $param_username = trim($_POST["username"]);
 
+            // Execute the statement
             if(mysqli_stmt_execute($stmt)) {
-                $username_err = "This username is already taken.";
+                // Store result
+                mysqli_stmt_store_result($stmt);
+                // Check if username exists
+                if(mysqli_stmt_num_rows($stmt) > 0) {
+                    $username_err = "This username is already taken.";
+                } else {
+                    $username = trim($_POST["username"]);
+                }
             } else {
-                $username = trim($_POST["username"]);
+                echo "Something went wrong. Please try again later.";
             }
-        } else {
-            echo "Oops! Something went wrong. Please try again later.";
-        }
         mysqli_stmt_close($stmt);
+        } else {
+            echo "Something went wrong. Please try again later.";
+        }
     }
-}
-// Validate email address
-if(empty(trim($_POST["email"]))) {
+
+  // Validate email address
+  $email = isset($_POST["email"]) ? trim($_POST["email"]) : ""; // Check if email exists
+  if (empty($email)) {
     $email_err = "Please enter an email address.";
-} else {
-    $email = trim($_POST["email"]);
-}
+  }
 
-// Validate phone number
-if(empty(trim($_POST["phone"]))) {
+  // Validate phone number
+  $phone = isset($_POST["phone"]) ? trim($_POST["phone"]) : ""; // Check if phone exists
+  if (empty($phone)) {
     $phone_err = "Please enter a phone number.";
-} else {
-    $phone = trim($_POST["phone"]);
-}
+  }
 
-// Validate password
-if(empty(trim($_POST["password"]))) {
+  // Validate password
+  $password = isset($_POST["password"]) ? trim($_POST["password"]) : ""; // Check if password exists
+  if (empty($password)) {
     $password_err = "Please enter a password.";
-} elseif(strlen(trim($_POST["password"])) < 6){
+  } elseif (strlen($password) < 6) {
     $password_err = "Password must contain at least 6 characters.";
-} else {
-    $password = trim($_POST["password"]);
-}
-// Check for input errors before submitting to database
-if (empty($username_err) && empty($email_err) && empty($phone_err) && empty($password_err)) {
+  }
+
+  // Validate confirm password
+  $cpassword = isset($_POST["cpassword"]) ? trim($_POST["cpassword"]) : ""; // Check if confirm password exists
+  if ($password !== $cpassword) {
+    $password_err = "Passwords do not match.";
+  }
+
+  // Check for input errors before submitting to database
+  if (empty($username_err) && empty($email_err) && empty($phone_err) && empty($password_err)) {
     // Handle file upload for profile photo
     $profile_photo = "";
     if (isset($_FILES["profilephoto"]) && $_FILES["profilephoto"]["name"]) {
-        $target_dir = "../View/uploads/";
-        if (!file_exists($target_dir)) {
-            mkdir($target_dir, 0777, true);
-        }
-        $target_file = $target_dir . basename($_FILES["profilephoto"]["name"]);
-        if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
-            $profile_photo = basename($_FILES["profilephoto"]["name"]);
-        }
+      $target_dir = "../View/uploads/";
+      if (!file_exists($target_dir)) {
+        mkdir($target_dir, 0777, true);
+      }
+      $target_file = $target_dir . basename($_FILES["profilephoto"]["name"]);
+      if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
+        $profile_photo = basename($_FILES["profilephoto"]["name"]);
+      }
     }
+
     // Hash password before storing it
     $param_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare INSERT statement
     $sql = "INSERT INTO users (username, email_address, phone_number, password, profile_photo) VALUES (?, ?, ?, ?, ?)";
-
     if ($stmt = mysqli_prepare($conn, $sql)) {
-        mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
+      mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
 
-        // Set parameters
-        $param_username = $username;
-        $param_email = $email;
-        $param_phone = $phone;
-        $param_profile_photo = $profile_photo;
+      // Set parameters
+      $param_username = $username;
+      $param_email = $email;
+      $param_phone = $phone;
+      $param_profile_photo = $profile_photo;
 
-        // Attempt to execute the prepared statement
-        if (mysqli_stmt_execute($stmt)) {
-            // Redirect to login page
-            header("location: ../View/login.php");
-        } else {
-            echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
-        }
-        mysqli_stmt_close($stmt);
+      // Attempt to execute the prepared statement
+      if (mysqli_stmt_execute($stmt)) {
+        // Redirect to login page
+        header("location: ../View/login.php");
+        exit();
+      } else {
+        echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
+      }
+      mysqli_stmt_close($stmt);
     }
-} else {
+  } else {
     // Display validation errors
     if (!empty($username_err)) echo $username_err . "<br>";
     if (!empty($email_err)) echo $email_err . "<br>";
     if (!empty($phone_err)) echo $phone_err . "<br>";
     if (!empty($password_err)) echo $password_err . "<br>";
+  }
 }
 mysqli_close($conn);
 ?>
