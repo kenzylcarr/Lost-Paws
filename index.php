@@ -24,7 +24,6 @@
       </a>
       <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="/View/howtousepage.php">How To Use</a>
         <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
       </div>
       <div class="button">
