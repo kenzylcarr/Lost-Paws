@@ -120,7 +120,7 @@
     
         <div class="user-options">
             <p><a href="">View My Posts</a></p>
-            <p><a href="">Account Settings</a></p>
+            <p><a href="/View/acctsettings.php">Account Settings</a></p>
             <p><a href="">Messages</a></p>
         </div>
     </main>

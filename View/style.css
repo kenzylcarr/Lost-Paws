@@ -40,20 +40,19 @@ h1, h2 {
 .navmenu {
   background-color: #C2E5FF;
   margin-bottom: 2px;
-
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 8px;
-  height: 2vw;
-
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-
-  display: grid;
-  grid-template-columns: 2fr 9fr 0.5fr; /* used to position the navigation menu buttons */
+  padding: 35px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 5vh;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
 .nav-links {
@@ -1064,52 +1063,52 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    position: relative;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .index-top-half {
-    background-color: #cde6f1c0;
-    height: 65vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15vh;
-    box-sizing: border-box;
-    width: 100%;
-    margin-top: 5vh;
+  background-color: #cde6f1c0;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15vh 10% 0 10%;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 5vh;
 }
 
 .index-top-half h1 {
-    font-size: 5em;
-    margin: 0;
-    margin-top: 30px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 4.5em;
+  margin: 0;
+  margin-top: 30px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .index-top-half p {
-    font-size: 1.4em;
-    margin: 30px 0;
-    color: black;
-    text-align: center;
-    max-width: 450px;
+  font-size: 1.4em;
+  margin: 30px 0;
+  color: black;
+  text-align: center;
+  max-width: 450px;
 }
 
 .index-top-half a{
-    display: inline-block;
-    background-color: #1E3F66;
-    padding: 10px 20px;
-    border-radius: 15px;
-    text-decoration: none;
-    font-size: 1em;
-    color: white;
-    text-align: center;
-    width: auto;
-    margin-top: 30px;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  background-color: #1E3F66;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 1em;
+  color: white;
+  text-align: center;
+  width: auto;
+  margin-top: 30px;
+  transition: background-color 0.3s ease;
 }
 
 .index-top-half a:hover {
