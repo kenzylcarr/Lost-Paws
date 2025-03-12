@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="index.php">Lost & Found</a>
+        <a href="../index.php">Lost & Found</a>
       </div>
     </nav>
 
@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="/Controller/register.php" method="post">
+          <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post">
               <!-- Username -->
               <div class="signup-field">
                   <label for="username">Username</label>
