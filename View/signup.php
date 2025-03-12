@@ -125,57 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 mysqli_close($conn);
-
-  //   // Extract all form inputs from the superglobal $_POST variable and store into different variables
-//   $username = test_input($_POST["username"]);
-//   $email = test_input($_POST["email"]);
-//   $phone = test_input($_POST["phone"]);
-//   $password = test_input($_POST["password"]);
-//   $cpassword = test_input($_POST["cpassword"]);
-// 
-//   // Regular expressions for validation
-//   $usernameRegex = "/^[a-zA-Z0-9_]+$/";
-//   $emailRegex = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
-//   $phoneRegex = "/^\d{10}$/";
-//   $passwordRegex = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/";
-
-  // // Error messages array
-  // $errors = [];
-
-//   // Validate Username
-//   if (!preg_match($usernameRegex, $username)) {
-//     $errors[] = "Invalid username. Only letters, numbers, and underscores are allowed.";
-//   }
-// 
-//   // Validate Email
-//   if (!preg_match($emailRegex, $email)) {
-//     $errors[] = "Invalid email address.";
-//   }
-// 
-//   // Validate Phone
-//   if (!preg_match($phoneRegex, $phone)) {
-//     $errors[] = "Invalid phone number. It must contain exactly 10 digits.";
-//   }
-// 
-//   // Validate Password
-//   if (!preg_match($passwordRegex, $password)) {
-//     $errors[] = "Invalid password. Must contain at least one uppercase, one lowercase, one digit, one special character (@$!%*?&) and be at least 6 characters long.";
-//   }
-// 
-//   // Confirm Passwords Match
-//   if ($password !== $cpassword) {
-//     $errors[] = "Passwords do not match.";
-//   }
-
-//   // Check for errors
-//   if (!empty($errors)) {
-//     foreach ($errors as $error) {
-//       echo "<p style='color: red;'>$error</p>";
-//     }
-//   } else {
-//     echo "<p style='color: green;'>Form submitted successfully!</p>";
-//   }
-// }
 ?>
 
 <!DOCTYPE html>
@@ -216,7 +165,7 @@ mysqli_close($conn);
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post">
+          <form class="auth-form-signup" id="signup-form" action="signup.php" method="post">
               <!-- Username -->
               <div class="signup-field">
                   <label for="username">Username</label>
