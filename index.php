@@ -19,7 +19,7 @@
   <body>
     <!-- Navigation Menu -->
     <nav class="navmenu">
-      <a href="/" class="logo">
+      <a href="index.php" class="logo">
         <img src="/View/images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo">
       </a>
       <div class="nav-links">
