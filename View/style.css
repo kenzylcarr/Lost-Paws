@@ -75,10 +75,10 @@ h1, h2 {
 }
 
 .nav-logo {
-  height: 65px;
+  height: 70px;
   width: auto;
   margin-right: 20px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 /* styling the links */
@@ -116,6 +116,14 @@ h1, h2 {
   font-size: 17px;
   font-weight: bold;
   justify-content: right;
+}
+
+.button p {
+  margin: 0;
+  padding: 10px 0;
+  width: 100%;
+  font-size: 1em;
+  color: black;
 }
 
 #signup-button, #login-button {
@@ -1056,11 +1064,11 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     height: 100vh;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  position: relative;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .index-top-half {
@@ -1068,39 +1076,40 @@ input:checked + .slider:before {
     height: 65vh;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 15vh 10% 0 10%;
-  box-sizing: border-box;
-  width: 100%;
-  margin-top: 5vh;
+    align-items: center;
+    padding: 15vh;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 5vh;
 }
 
 .index-top-half h1 {
-    font-size: 4.5em;
-  margin: 0;
-  margin-top: 30px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 5em;
+    margin: 0;
+    margin-top: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .index-top-half p {
-    font-size: 1.2em;
-    margin: 40px 0;
-  color: black;
-  max-width: 400px;
+    font-size: 1.4em;
+    margin: 30px 0;
+    color: black;
+    text-align: center;
+    max-width: 450px;
 }
 
 .index-top-half a{
     display: inline-block;
-    background-color: #9AD4FF;
+    background-color: #1E3F66;
     padding: 10px 20px;
     border-radius: 15px;
     text-decoration: none;
     font-size: 1em;
-    color: black;
+    color: white;
     text-align: center;
     width: auto;
-  margin-top: 30px;
-  transition: background-color 0.3s ease;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
 }
 
 .index-top-half a:hover {
