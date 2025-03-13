@@ -28,17 +28,17 @@ try {
     $password = $_ENV['DB_PASSWORD'];
 
     // Debug output
-    echo "Attempting to connect to database:<br>";
-    echo "Host: " . $host . "<br>";
-    echo "Database: " . $dbname . "<br>";
-    echo "Username: " . $username . "<br>";
+    // echo "Attempting to connect to database:<br>";
+    // echo "Host: " . $host . "<br>";
+    // echo "Database: " . $dbname . "<br>";
+    // echo "Username: " . $username . "<br>";
     
     try {
         $conn = mysqli_connect($host, $username, $password, $dbname);
         if (!$conn) {
             die("Database connection failed: " . mysqli_connect_error());
         }
-        echo "Database connection successful!<br>";
+        // echo "Database connection successful!<br>";
     } catch (PDOException $e) {
         die("Database connection failed: " . $e->getMessage());
     }
