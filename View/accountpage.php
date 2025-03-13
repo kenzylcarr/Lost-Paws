@@ -126,3 +126,36 @@
 			<input type="submit" value="Save Changes" class="save-button"/>
 		  </form>
 		</div>
+
+		 <!-- Change Password Section -->
+          <div id="password" class="settings-section" style="display: none;">
+            <h3>Change Password</h3>
+            <form id="password-form" method="post" action="change-password.php">
+              <label for="old-password">Old Password</label>
+              <input type="password" name="old-password" id="old-password" required/>
+              <label for="new-password">New Password</label>
+              <input type="password" name="new-password" id="new-password" required/>
+              <input type="submit" value="Change Password" class="save-button"/>
+            </form>
+          </div>
+
+          <!-- Delete Account Section -->
+          <div id="delete" class="settings-section" style="display: none;">
+            <h3>Delete Account</h3>
+            <p>Are you sure you want to delete your account? This action is irreversible.</p>
+            <form id="delete-form" method="post" action="delete-account.php">
+              <input type="submit" value="Delete Account" class="save-button"/>
+            </form>
+          </div>
+
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>CS 476: Software Development Project</p>
+    </footer>
+  </div>
+</body>
+</html>
+
