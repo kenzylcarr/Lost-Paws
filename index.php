@@ -13,6 +13,7 @@
   <head>
     <title>Homepage</title>
     <link rel="stylesheet" type="text/css" href="/View/style.css">
+    <link rel="stylesheet" type="text/css" href="/View/index-style.css">
   </head>
 
   <body>
