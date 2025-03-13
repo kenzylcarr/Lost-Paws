@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div id="container">
+    <div id="mainpage-container">
        <!-- Lost Paws Logo -->
       <nav class="navmenu">
           <div class="logo"> 
