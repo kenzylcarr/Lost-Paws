@@ -35,6 +35,8 @@ h1, h2 {
   min-height: 100vh;
 }
 
+/* END OF COMMON CSS STYLES FOR ALL PAGES */
+
 /* START of common styles for navigation menu */
 .navmenu {
   background-color: #C2E5FF;
