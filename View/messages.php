@@ -70,3 +70,145 @@
           <button onclick="toggleTab('lost-pets-tab')" class="tab-button">Lost Pets</button>
           <button onclick="toggleTab('found-pets-tab')" class="tab-button">Found Pets</button>
         </div>
+
+        <!-- Lost Pets Tab Content -->
+        <div id="lost-pets-tab" class="tab-content" style="display: block;">
+          <div class="conversation-list">
+            <!-- Conversation 1 for Lost Pets -->
+            <div class="conversation-item" onclick="toggleConversation('lost-conversation1')">
+              <div class="conversation-header">
+                <p><strong>Sarah Lee</strong> (Lost Dog)</p>
+                <p><small>Last message: "I think I found your dog near the grocery store."</small></p>
+              </div>
+            </div>
+            <!-- Conversation 2 for Lost Pets -->
+            <div class="conversation-item" onclick="toggleConversation('lost-conversation2')">
+              <div class="conversation-header">
+                <p><strong>Mike Johnson</strong> (Lost Dog)</p>
+                <p><small>Last message: "I saw a dog running around near the park. It looks like your lost pet."</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Found Pets Tab Content -->
+        <div id="found-pets-tab" class="tab-content" style="display: none;">
+          <div class="conversation-list">
+            <!-- Conversation 1 for Found Pets -->
+            <div class="conversation-item" onclick="toggleConversation('found-conversation1')">
+              <div class="conversation-header">
+                <p><strong>Emma Green</strong> (Found Cat)</p>
+                <p><small>Last message: "I found your cat!"</small></p>
+              </div>
+            </div>
+            <!-- Conversation 2 for Found Pets -->
+            <div class="conversation-item" onclick="toggleConversation('found-conversation2')">
+              <div class="conversation-header">
+                <p><strong>Isha Khan</strong> (Found Dog)</p>
+                <p><small>Last message: "I found a dog matching the description of your missing pet!"</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message Thread for Lost Pets (Conversation 1) -->
+        <div class="message-thread" id="lost-conversation1" style="display: none;">
+          <div class="thread-header">
+            <h3>Conversation with Sarah Lee</h3>
+          </div>
+          <div class="message-item received">
+            <p><strong>Sarah Lee:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+          <div class="message-item received">
+            <p><strong>Sarah Lee:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+
+          <!-- Input Box to Send Message -->
+          <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
+          <button class="send-reply">Send</button>
+        </div>
+
+        <!-- Message Thread for Lost Pets (Conversation 2) -->
+        <div class="message-thread" id="lost-conversation2" style="display: none;">
+          <div class="thread-header">
+            <h3>Conversation with Mike Johnson</h3>
+          </div>
+          <div class="message-item received">
+            <p><strong>Mike Johnson:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+          <div class="message-item received">
+            <p><strong>Mike Johnson:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+
+          <!-- Input Box to Send Message -->
+          <textarea id="reply-message-lost2" placeholder="Type a message..." rows="4"></textarea>
+          <button class="send-reply">Send</button>
+        </div>
+
+        <!-- Message Thread for Found Pets (Conversation 1) -->
+        <div class="message-thread" id="found-conversation1" style="display: none;">
+          <div class="thread-header">
+            <h3>Conversation with Emma Green</h3>
+          </div>
+          <div class="message-item received">
+            <p><strong>Emma Green:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+          <div class="message-item received">
+            <p><strong>Emma Green:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+
+          <!-- Input Box to Send Message -->
+          <textarea id="reply-message-found1" placeholder="Type a message..." rows="4"></textarea>
+          <button class="send-reply">Send</button>
+        </div>
+
+        <!-- Message Thread for Found Pets (Conversation 2) -->
+        <div class="message-thread" id="found-conversation2" style="display: none;">
+          <div class="thread-header">
+            <h3>Conversation with Isha Khan</h3>
+          </div>
+          <div class="message-item received">
+            <p><strong>Isha Khan:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+          <div class="message-item received">
+            <p><strong>Isha Khan:</strong> "sample text"</p>
+          </div>
+          <div class="message-item sent">
+            <p><strong>You:</strong> "sample text"</p>
+          </div>
+
+          <!-- Input Box to Send Message -->
+          <textarea id="reply-message-found2" placeholder="Type a message..." rows="4"></textarea>
+          <button class="send-reply">Send</button>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <p>CS 476: Software Development Project</p>
+    </footer>
+  </div>
+</body>
+</html>

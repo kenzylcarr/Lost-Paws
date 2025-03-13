@@ -1272,14 +1272,14 @@ input {
 /*  END CSS FOR accountpage.php  */
 
 /*  START CSS FOR messages.php  */
-/* Style for Conversation List */
 
+/* Style for Conversation List */
 .conversation-list {
   margin-top: 20px;
 }
 
 .conversation-item {
-  background-color: #f1f1f1;
+  background-color: #cce4fc;
   padding: 15px;
   margin: 10px 0;
   border-radius: 8px;
@@ -1288,7 +1288,7 @@ input {
 }
 
 .conversation-item:hover {
-  background-color: #e0e0e0;
+  background-color: #dfeaed;
 }
 
 .conversation-header {
@@ -1324,7 +1324,7 @@ input {
 }
 
 .message-item.received {
-  background-color: #f1f1f1;
+  background-color: #faf0f0;
 }
 
 .message-item.sent {
@@ -1347,7 +1347,7 @@ textarea {
 }
 
 .send-reply {
-  background-color: #007bff;
+  background-color: #64acf9;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -1358,6 +1358,7 @@ textarea {
 .send-reply:hover {
   background-color: #0056b3;
 }
+
 
 /*  END CSS FOR messages.php  */
 
