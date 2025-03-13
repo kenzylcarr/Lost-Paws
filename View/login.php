@@ -9,6 +9,57 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: login.php
 -->
+<?php
+  // Start the session
+  session_start();
+
+  // Include database configuration file
+  require_once '../Model/db_config.php';
+
+  // Initialize variables
+  $username = "";
+  $password = "";
+  $username_err = "";
+  $password_err = "";
+  $login_err = "";
+
+  // Process the form when submitted
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate username
+    if (empty(trim($_POST["username"]))) {
+      $username_err = "Please enter your username.";
+    } else {
+      $username = trim($_POST["username"]);
+    }
+    // Validate password
+    if (empty(trim($_POST["password"]))) {
+      $password_err = "Please enter your password.";
+    } else {
+      $password = trim($_POST["password"]);
+    }
+    // Check for errors before querying database
+    if (empty($username_err) && empty($password_err)) {
+      // Prepare SELECT statement
+      $sql = "SELECT user_id, username, password FROM users WHERE username = ?";
+
+      if ($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $param_username);
+        $param_username = $username;
+
+        // Execute prepared statement
+        if (mysqli_stmt_execute($stmt)) {
+          mysqli_stmt_store_result($stmt);
+
+          // Check if the username exists, then verify password if it does
+          if (mysqli_stmt_num_rows($stmt) == 1) {
+            mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
+            
+          }
+        }
+      }
+    }
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">

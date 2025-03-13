@@ -24,7 +24,6 @@ function test_input($data) {
 }
 
 // Array to keep track of any errors while processing the form
-$errors = array();
 $username = "";
 $email = "";
 $phone = "";
