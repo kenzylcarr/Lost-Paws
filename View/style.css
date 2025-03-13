@@ -185,6 +185,7 @@ h1, h2 {
   grid-row-end: 3;
 
   grid-template-rows: 2fr 2fr;
+  margin-top: 70px;
 }
 
 #aboutPage-row1 {
