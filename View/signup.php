@@ -148,7 +148,7 @@ mysqli_close($conn);
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="../index.php">Lost & Found</a>
+        <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
       </div>
     </nav>
 

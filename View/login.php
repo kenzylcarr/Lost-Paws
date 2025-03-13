@@ -140,11 +140,11 @@
               <p id="error-text-password" class="error-text hidden">Invalid password</p>
             </div>
 
-            <!-- Incase of Forgotten Password -->
+            <!-- Incase of Forgotten Password
             <div class="login-field">
               <p><a href="forgotpassword.php" class="forgot-password">Forgot Password</a></p>
              <br>
-            </div>
+            </div> -->
 
             <!-- Submit Button to Login -->
             <div class="login-field">
