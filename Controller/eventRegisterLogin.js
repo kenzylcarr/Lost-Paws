@@ -51,3 +51,5 @@ function passwordHandler(event) {
     console.log("'" + pwd.value + "' is a valid password");
   }
 }
+
+/* FUNCTION VALIDATORS FOR LOGIN PAGE */
