@@ -168,7 +168,7 @@ h1, h2 {
 
 
 
-/*   START CSS: aboutpage.html  
+/*   START CSS: aboutpage.php  
                                           */
 
 #aboutPage-info {
@@ -246,110 +246,11 @@ p.description {
     width: 60%;
 }
 
-/*   END CSS: aboutpage.html */
+/*   END CSS: aboutpage.php */
 
 
-/*   START CSS: signup.html  
-                                          */     
-#main-left-signup {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  padding-left: 0px;
-  padding-top: 190px;
-  width: 40vw; 
 
-  background-color: #FFECBD;	/* Yellow Color */
-}
-
-#main-left-signup > h1 {
-  padding-left: 250px;
-  font-weight: bold;
-  font-size: 50px;
-}
-
-#main-left-signup > h2 {
-  padding-left: 150px;
-  font-size: 30px;
-}
-
-#main-right-signup {
-  padding-left: 150px;
-  padding-top: 40px;
-  background-color: white;
-  font-size: 20px;
-
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
-
-  display: grid;
-  grid-template-rows: 0.6fr 0.6fr auto;
-  width: 52vw;
-}
-
-.signup-header {
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-
-.signup-header h2 {
-  font-size: 1.5em;
-  padding: 5%;
-  padding-left: 0%;
-}
-
-.auth-form-signup {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  border: lightgray 1px solid;
-  border-radius: 7px;
-  margin-top: -18vw;
-  height: 25vw;
-  width: 40vw;
-}
-
-.signup-field {
-  margin: 25px;
-  margin-bottom: 20px;
-  font-size: smaller;
-}
-
-.signup-footnote {
-  grid-row-start: 3;
-  grid-row-end: 4;
-  font-size: smaller;
-
-  padding-left: 10px;
-  margin-top: -255px;
-}
-
-.signup-footnote a {
-text-decoration: none;
-}
-
-input {
-  float: right;
-  width: 55%;
-  background-color: rgb(245, 243, 243);
-  border-radius: 0.3vw;
-} 
-
-.signup-button {
-  background-color: #1E3F66;
-  width: 15vw;
-  padding: 5px;
-  text-align: center;
-  border-radius: 1vw;
-  font-size: medium;
-  color: white;
-}
-/*   END CSS: signup.html */                               
-
-
-/*   START CSS: login.html 
+/*   START CSS: login.php 
                                       */   
 #main-right-login {
   grid-column-start: 2;
@@ -450,10 +351,10 @@ input {
 .forgot-password {
   float: right;
 }
-/*   END CSS: login.html 
+/*   END CSS: login.php 
                                       */  
 
- /*   START CSS: mainpage-beforelogin.html  
+ /*   START CSS: mainpage-beforelogin.php  
                                               */  
   #lost-found-database {
       grid-column-start: 1;
@@ -567,9 +468,9 @@ input {
     font-size: large;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
-  /*   END CSS: mainpage-beforelogin.html  */  
+  /*   END CSS: mainpage-beforelogin.php  */  
 
-  /*   START CSS: mainpage-afterlogin.html  
+  /*   START CSS: mainpage-afterlogin.php  
                                               */
   #mainpage-right-afterlogin{
     grid-column-start: 3;
@@ -644,10 +545,10 @@ padding: 8px;
   background-color: #e9e9e9;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }                                     
-  /*   END CSS: mainpage-afterlogin.html */  
+  /*   END CSS: mainpage-afterlogin.php */  
 
 
-  /*   START CSS: selectpostpage.html  
+  /*   START CSS: selectpostpage.php  
                                               */   
   #select-post-main-left {
       grid-column-start: 1;
@@ -784,11 +685,11 @@ padding: 8px;
     font-size: large;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
-  /*   END CSS: selectpostpage.html */  
+  /*   END CSS: selectpostpage.php */  
 
 
 /* 
-    START CSS: reportpetpage.html 
+    START CSS: reportpetpage.php 
                                       */
 
 /*Header Styles */
@@ -922,9 +823,9 @@ nav a {
   background-color: #0056b3;
 }
 
-/*  END CSS FOR reportpetpage.html  */
+/*  END CSS FOR reportpetpage.php  */
 /* 
-	START CSS: petmap.html */
+	START CSS: petmap.php */
 						
 body {
   display: flex;
@@ -1021,7 +922,7 @@ input:checked + .slider:before {
 }
 
 /* 
-	END CSS: petmap.html  */
+	END CSS: petmap.php  */
 
 /*	 START CSS: index.php 	*/
 #index-signup-button, #index-login-button {

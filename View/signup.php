@@ -132,6 +132,7 @@ mysqli_close($conn);
 <head>
   <title>Signup Page</title>
   <link rel="stylesheet" type="text/css" href="/View/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/signup-style.css">
   <script src="../Controller/eventHandler.js"></script>
 </head>
 

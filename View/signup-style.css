@@ -1,0 +1,172 @@
+/* CS 476: Lost Paws Project
+  Group Members: 
+            Butool Basabrain (bmb008 - 200478399), 
+            Anna Chu (ace859 - 200391368), 
+            Ibrahim Hassan (hassan4i - 200343818),
+            Makenzy Laursen-Carr (mil979 - 200504296), 
+            Kaira Molano (kvm406 - 200447526), 
+            Fatima Rizwan (frf706 - 200446702)
+  File name: signup-style.css */
+
+  @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&family=IBM+Plex+Sans&display=swap');
+
+/*   START CSS: signup.php  */ 
+.nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    justify-content: right;
+    padding: 10px 15px;
+}
+  
+.nav-links a:hover {
+    background-color: #fdfdfd79;
+    color: black;
+    border-radius: 0.5vw;
+}
+
+.button {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-left: 50px;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+  
+.button a {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    justify-content: right;
+}
+  
+.button p {
+    margin: 0;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1em;
+    color: black;
+}
+
+#main-left-signup {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    padding-left: 0px;
+    padding-top: 190px;
+    width: 40vw; 
+    
+    background-color: #FFECBD;	/* Yellow Color */
+}
+    
+#main-left-signup > h1 {
+    padding-left: 250px;
+    font-weight: bold;
+    font-size: 50px;
+}
+    
+#main-left-signup > h2 {
+    padding-left: 150px;
+    font-size: 30px;
+}
+    
+#main-right-signup {
+    padding-left: 150px;
+    padding-top: 40px;
+    background-color: white;
+    font-size: 20px;
+    
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    
+    display: grid;
+    grid-template-rows: 0.6fr 0.6fr auto;
+    width: 52vw;
+}
+    
+.signup-header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+    
+.signup-header h2 {
+    font-size: 1.5em;
+    padding: 5%;
+    padding-left: 0%;
+}
+    
+.auth-form-signup {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border: lightgray 1px solid;
+    border-radius: 7px;
+    margin-top: -18vw;
+    height: 25vw;
+    width: 40vw;
+}
+    
+.signup-field {
+    margin: 25px;
+    margin-bottom: 20px;
+    font-size: smaller;
+}
+    
+.signup-footnote {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    font-size: smaller;
+    
+    padding-left: 10px;
+    margin-top: -255px;
+}
+    
+.signup-footnote a {
+    text-decoration: none;
+}
+    
+input {
+    float: right;
+    width: 55%;
+    background-color: rgb(245, 243, 243);
+    border-radius: 0.3vw;
+} 
+    
+.signup-button {
+    background-color: #1E3F66;
+    width: 15vw;
+    padding: 5px;
+    text-align: center;
+    border-radius: 1vw;
+    font-size: medium;
+    color: white;
+}
+
+#signup-button, #login-button {
+    display: inline-block;
+    background-color: #1E3F66;
+    padding: 10px 15px;
+    border-radius: 1vw;
+    text-decoration: none;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    width: auto;
+    transition: background-color 0.3s ease;
+}
+  
+#signup-button:hover, #login-button:hover {
+    background-color: #64aef3;
+}
+/*   END CSS: signup.php */                                        
