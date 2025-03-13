@@ -17,6 +17,19 @@
   <title>Account Settings</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="../Controller/eventHandler.js"></script>
+  <script>
+    // JavaScript function to toggle visibility of sections
+    function toggleSection(sectionId) {
+      const sections = document.querySelectorAll('.settings-section');
+      sections.forEach(section => {
+        if (section.id === sectionId) {
+          section.style.display = section.style.display === 'none' ? 'block' : 'none';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </head>
 
 <body>
@@ -47,17 +60,19 @@
             <p class="username">John Doe</p>
           </div>
           <ul class="settings-menu">
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#account">Account</a></li>
-            <li><a href="#password">Change Password</a></li>
-            <li><a href="#delete">Delete Account</a></li>
+            <li><a href="javascript:void(0);" onclick="toggleSection('profile')">Profile</a></li>
+            <li><a href="javascript:void(0);" onclick="toggleSection('account')">Account</a></li>
+            <li><a href="javascript:void(0);" onclick="toggleSection('password')">Change Password</a></li>
+            <li><a href="javascript:void(0);" onclick="toggleSection('delete')">Delete Account</a></li>
           </ul>
         </aside>
 
         <!-- Main Content -->
         <section class="settings-content">
           <h1>Account Settings</h1>
-          <div id="profile" class="settings-section">
+
+          <!-- Profile Section -->
+          <div id="profile" class="settings-section" style="display: block;">
             <h3>Profile Information</h3>
             <form id="profile-form" method="post" action="save-profile.php">
               <label for="username">Username</label>
@@ -67,13 +82,47 @@
               <input type="submit" value="Save Changes" class="save-button"/>
             </form>
           </div>
-        </section>
-      </div>
-    </main>
 
-    <footer>
-      <p>CS 476: Software Development Project</p>
-    </footer>
-  </div>
-</body>
-</html>
+          <!-- Account Section -->
+		<div id="account" class="settings-section" style="display: none;">
+		  <h3>Account Settings</h3>
+		  <p>Here you can update your account settings.</p>
+		  
+		  <form id="account-settings-form" method="post" action="save-account-settings.php">
+			<!-- Full Name -->
+			<label for="full-name">Full Name</label>
+			<input type="text" name="full-name" id="full-name" value="John Doe" required />
+			
+			<!-- Username -->
+			<label for="username">Username</label>
+			<input type="text" name="username" id="username" value="JohnDoe123" required />
+			
+			<!-- Email Address -->
+			<label for="email">Email Address</label>
+			<input type="email" name="email" id="email" value="johndoe@example.com" required />
+			
+			<!-- Phone Number -->
+			<label for="phone">Phone Number</label>
+			<input type="tel" name="phone" id="phone" value="123-456-7890" />
+
+			<!-- Address -->
+			<label for="address">Address</label>
+			<input type="text" name="address" id="address" value="123 Main St, City, Country" />
+
+			<!-- Privacy Settings (Optional) -->
+			<h4>Privacy Settings</h4>
+			<label for="email-preferences">Email Preferences</label>
+			<select name="email-preferences" id="email-preferences">
+			  <option value="all">All Emails</option>
+			  <option value="updates">Only Updates</option>
+			  <option value="none">No Emails</option>
+			</select>
+
+			<!-- Profile Picture (Optional) -->
+			<label for="profile-picture">Profile Picture</label>
+			<input type="file" name="profile-picture" id="profile-picture" />
+			
+			<!-- Save Changes Button -->
+			<input type="submit" value="Save Changes" class="save-button"/>
+		  </form>
+		</div>
