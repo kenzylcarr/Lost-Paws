@@ -119,18 +119,18 @@
         <h2>Welcome to Lost Paws!</h2>
       </div>
           <!-- Prompts for user input to login -->
-          <form class="auth-form-login" id="login-form" action="mainpage-afterlogin.php" method="post">
+          <form class="auth-form-login" id="login-form" action="../View/login.php" method="post">
             <h3>Login</h3>
             
             <!-- Username -->
             <div class="login-field">
-              <label for="username">Username</lable>
+              <label for="username">Username</label>
               <input type="text" name="username" id="username"/>
               <p id="error-text-username" class="error-text hidden">Invalid username</p>
             </div>
 
             <!-- Password -->
-            <div class="login-field">
+            <div class="login-fi2eld">
               <label for="password">Password</label>
               <input type="password" name="password" id="password"/>
               <p id="error-text-password" class="error-text hidden">Invalid password</p>
