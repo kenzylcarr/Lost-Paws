@@ -338,12 +338,13 @@ input {
 } 
 
 .signup-button {
-  background-color: rgba(141, 204, 221, 0.801);
+  background-color: #1E3F66;
   width: 15vw;
   padding: 5px;
   text-align: center;
   border-radius: 1vw;
   font-size: medium;
+  color: white;
 }
 /*   END CSS: signup.html */                               
 
