@@ -465,6 +465,7 @@ input {
       display: grid;
       grid-template-rows: 0.6fr 5fr auto;
       height: 600px;
+      margin-top: 70px;
   }
   
   .lost-or-found-buttons {
