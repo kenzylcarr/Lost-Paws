@@ -53,11 +53,36 @@
           // Check if the username exists, then verify password if it does
           if (mysqli_stmt_num_rows($stmt) == 1) {
             mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
-            
+            if (mysqli_stmt_fetch($stmt)) {
+              if (password_verify($password, $hashed_password)) {
+                // Password is valid, start new session
+                session_start();
+
+                // Store data in session variables
+                $_SESSION["signedin"] = true;
+                $_SESSION["id"] = $user_id;
+                $_SESSION["username"] = $username;
+
+                // Redirect user to mainpage after login
+                header("location: mainpage-afterlogin.php");
+              } else {
+                // Display error message if password is invalid
+                $login_err = "Invalid username or password.";
+              }
+            }
+          } else {
+            // Display error message if username does not exist
+            $login_err = "Invalid username.";
           }
+        } else {
+          echo "Something went wrong. Please try again later.";
         }
+        // Close statment
+        mysqli_stmt_close($stmt);
       }
     }
+    // Close connection
+    mysqli_close($conn);
   }
 ?>
 
