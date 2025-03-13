@@ -36,7 +36,7 @@
 
       <div class="button">
         <a id="signup-button" href="/View/signup.php">Sign Up!</a>
-        <a id="login-button" href="/View/login.php">Login</a>
+        <a id="login-button" href="../index.php">Logout</a>
       </div>
         </nav>
 
