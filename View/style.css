@@ -1178,6 +1178,99 @@ input:checked + .slider:before {
 
 /*	 END CSS: index.php		*/
 
+/* 
+	START CSS: accountpage.php */
+	
+
+/* Account Settings Layout */
+.settings-container {
+  display: flex;
+  width: 80%;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.profile-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.username {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.settings-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.settings-menu li {
+  margin: 10px 0;
+}
+
+.settings-menu a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Main Content */
+.settings-content {
+  width: 70%;
+  padding: 20px;
+}
+
+.settings-section {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.save-button {
+  margin-top: 15px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background: #0056b3;
+}
+
+
+/*  END CSS FOR accountpage.php  */
+
 
 /*	 START CSS: error messages 	*/
 .error-border {
@@ -1197,3 +1290,6 @@ input:checked + .slider:before {
 	visibility: hidden;
 }
 /*	 END CSS: error messages	*/
+
+
+
