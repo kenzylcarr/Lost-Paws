@@ -13,15 +13,22 @@ CS 476: Lost Paws Project
 document.addEventListener("DOMContentLoaded", function()
 {
   let loginForm = document.getElementById("login-form");
-  if (loginForm)
-  loginForm.addEventListener("submit", validateLogin);
+  let loginButton = document.querySelector(".login-button");
 
-  // add event listeners after the DOM is loaded
-  let username = document.getElementById("username");
-  username.addEventListener("blur", usernameHandler);
+  if (loginForm) {
+    loginForm.addEventListener("submit", function(event) {
+      if (loginButton) {
+        loginButton.disabled = true;
+      }
+    });
 
-  let pwd = document.getElementById("password");
-  pwd.addEventListener("blur", passwordHandler);
+    // add event listeners after the DOM is loaded
+    let username = document.getElementById("username");
+    username.addEventListener("blur", usernameHandler);
+
+    let pwd = document.getElementById("password");
+    pwd.addEventListener("blur", passwordHandler);
+  }
 });
 
 

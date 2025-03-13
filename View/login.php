@@ -55,9 +55,10 @@
             mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
             if (mysqli_stmt_fetch($stmt)) {
               if (password_verify($password, $hashed_password)) {
-                // Password is valid, start new session
-                session_start();
-
+                if (session_status() == PHP_SESSION_NONE) {
+                  // Password is valid, start new session
+                  session_start();
+                }
                 // Store data in session variables
                 $_SESSION["signedin"] = true;
                 $_SESSION["id"] = $user_id;
@@ -65,9 +66,12 @@
 
                 // Redirect user to mainpage after login
                 header("location: mainpage-afterlogin.php");
+                exit();
               } else {
-                // Display error message if password is invalid
+                // Display error message if password is invalid and prevent user from logging in
                 $login_err = "Invalid username or password.";
+                header("location: login.php");
+                exit();
               }
             }
           } else {
