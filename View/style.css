@@ -455,16 +455,23 @@ input {
 
  /*   START CSS: mainpage-beforelogin.php  
                                               */  
+  #mainpage-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 100vh;
+  }
+
   #lost-found-database {
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
     
-      display: grid;
-      grid-template-rows: 0.6fr 5fr auto;
-      height: 600px;
-      margin-top: 70px;
+    display: grid;
+    grid-template-rows: 0.6fr 4.5fr auto;
+    margin-top: 70px;
   }
   
   .lost-or-found-buttons {
@@ -518,9 +525,8 @@ input {
   .pet-database-container {
     grid-row-start: 3;
     grid-row-end: 4;
-    margin-top: -450px;
+    margin-top: -750px;  ;;;;;;;;;;;;;;;
     padding: 40px;
-
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
@@ -541,6 +547,7 @@ input {
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
+    margin-top: 70px;
     background-color: #FFECBD;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
