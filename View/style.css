@@ -1086,6 +1086,9 @@ input:checked + .slider:before {
   box-sizing: border-box;
   width: 100%;
   margin-top: 5vh;
+
+  position: relative;
+  z-index: 3;
 }
 
 .index-top-half h1 {
