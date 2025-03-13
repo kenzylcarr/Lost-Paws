@@ -8,8 +8,7 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: style.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&family=IBM+Plex+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
 /* START OF COMMON CSS STYLES FOR ALL PAGES 
                                          */
@@ -23,7 +22,7 @@ body, p {
 }
 
 h1, h2 {
-  font-family: "Frank Ruhl Libre", serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -81,7 +80,6 @@ h1, h2 {
   margin-top: 30px;
 }
 
-/* styling the links */
 .nav-links a {
   text-decoration: none;
   color: black;
@@ -248,6 +246,105 @@ p.description {
 
 /*   END CSS: aboutpage.php */
 
+
+/*   START CSS: signup.php  
+                                          */     
+#main-left-signup {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding-left: 0px;
+  padding-top: 190px;
+  width: 40vw; 
+
+  background-color: #FFECBD;	/* Yellow Color */
+}
+
+#main-left-signup > h1 {
+  padding-left: 250px;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+#main-left-signup > h2 {
+  padding-left: 150px;
+  font-size: 30px;
+}
+
+#main-right-signup {
+  padding-left: 150px;
+  padding-top: 40px;
+  background-color: white;
+  font-size: 20px;
+
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+  display: grid;
+  grid-template-rows: 0.6fr 0.6fr auto;
+  width: 52vw;
+}
+
+.signup-header {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.signup-header h2 {
+  font-size: 1.5em;
+  padding: 5%;
+  padding-left: 0%;
+}
+
+.auth-form-signup {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  border: lightgray 1px solid;
+  border-radius: 7px;
+  margin-top: -18vw;
+  height: 25vw;
+  width: 40vw;
+}
+
+.signup-field {
+  margin: 25px;
+  margin-bottom: 20px;
+  font-size: smaller;
+}
+
+.signup-footnote {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  font-size: smaller;
+
+  padding-left: 10px;
+  margin-top: -255px;
+}
+
+.signup-footnote a {
+text-decoration: none;
+}
+
+input {
+  float: right;
+  width: 55%;
+  background-color: rgb(245, 243, 243);
+  border-radius: 0.3vw;
+} 
+
+.signup-button {
+  background-color: #1E3F66;
+  width: 15vw;
+  padding: 5px;
+  text-align: center;
+  border-radius: 1vw;
+  font-size: medium;
+  color: white;
+}
+/*   END CSS: signup.php */                               
 
 
 /*   START CSS: login.php 
