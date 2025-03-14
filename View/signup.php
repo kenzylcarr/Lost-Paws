@@ -22,23 +22,34 @@ function test_input($data) {
 }
 
 $errors = array();
-$email = "";
+$firstname = "";
+$lastname = "";
 $username = "";
+$email = "";
 $password = "";
 $phone = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstname = test_input($_POST["firstname"]);
+    $lastname = test_input($_POST["lastname"]);
     $username = test_input($_POST["username"]);
     $email = test_input($_POST["email"]);
     $password = test_input($_POST["password"]);
     $cpassword = test_input($_POST["cpassword"]);
     $phone = test_input($_POST["phone"]);
 
+    $nameRegex = "/^[a-zA-Z\s]+$/";
     $unameRegex = "/^[a-zA-Z0-9_]+$/";
     $emailRegex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     $passwordRegex = "/^(?=.*\W).{6,}$/";
     $phoneRegex = "/^\d{10}$/";
 
+    if (!preg_match($nameRegex, $firstname)) {
+        $errors['firstname'] = "Invalid first name";
+    }
+    if (!preg_match($nameRegex, $lastname)) {
+        $errors['lastname'] = "Invalid last name";
+    }
     if (!preg_match($unameRegex, $username)) {
         $errors['username'] = "Invalid Username";
     }
@@ -166,49 +177,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
   <!-- Prompts user to input their information -->
           <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post">
-              <!-- Username -->
-              <div class="signup-field">
-                  <label for="username">Username</label>
-                  <input type="text" name="username" id="username"/><br />
-                  <span id="error-text-username" class="error-text hidden">Invalid username.</span><br />
-              </div>
+                <!-- First Name -->
+                <div class="signup-field">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" id="firstname"/><br />
+                    <span id="error-text-firstname" class="error-text hidden">Invalid first name.</span><br />
+                </div>    
+                <!-- Last Name -->
+                <div class="signup-field">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" id="lastname"/><br />
+                    <span id="error-text-lastname" class="error-text hidden">Invalid last name.</span><br />
+                </div>
             
-              <!-- Email Address -->
-              <div class="signup-field">
-                  <label for="email">Email</label>
-                  <input type="email" name="email" id="email"/><br />
-                  <span id="error-text-email" class="error-text hidden">Invalid email address.</span><br />
-              </div>
+                <!-- Email Address -->
+                <div class="signup-field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email"/><br />
+                    <span id="error-text-email" class="error-text hidden">Invalid email address.</span><br />
+                </div>
             
-              <!-- Phone Number -->
-              <div class="signup-field">
-                  <label for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone"/><br />
-                  <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
-              </div>
-              <!-- Password -->
-              <div class="signup-field">
-                  <label for="password">Password</label>
-                  <input type="password" name="password" id="password"/><br />
-                  <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span><br />
-              </div>
-              <!-- Confirm Password -->
-              <div class="signup-field">
-                  <label for="cpassword">Confirm Password</label>
-                  <input type="password" name="cpassword" id="cpassword"/><br />
-                  <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span><br />
-              </div>
-              <!-- Profile Photo -->
-              <div class="signup-field">
-                  <label for="profile_photo">Profile Picture</label>
-                  <input type="file" id="profile_photo" name="profile_photo" />
-                  <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
-              </div>
-              <!-- Submit button that redirects user to mainpage -->
-              <div class="signup-field">
-                   <input class="signup-button" type="submit" value="Sign Up!" action="login.php"/>
-              </div>
-          </form>
+                <!-- Phone Number -->
+                <div class="signup-field">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone"/><br />
+                    <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
+                </div>
+                <!-- Password -->
+                <div class="signup-field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password"/><br />
+                    <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span><br />
+                </div>
+                <!-- Confirm Password -->
+                <div class="signup-field">
+                    <label for="cpassword">Confirm Password</label>
+                    <input type="password" name="cpassword" id="cpassword"/><br />
+                    <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span><br />
+                </div>
+                <!-- Profile Photo -->
+                <div class="signup-field">
+                    <label for="profile_photo">Profile Picture</label>
+                    <input type="file" id="profile_photo" name="profile_photo" />
+                    <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
+                </div>
+                <!-- Submit button that redirects user to mainpage -->
+                <div class="signup-field">
+                    <input class="signup-button" type="submit" value="Sign Up!" action="login.php"/>
+                </div>
+            </form>
       <!-- If user already has an account  -->
       <div class="signup-footnote">
           <p>Already have an account? <a class="login-button" href="/View/login.php">Login</a></p>
