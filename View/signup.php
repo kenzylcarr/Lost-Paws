@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["Database Error:"] = "Failed to insert user";
         } else {
             // Handle file upload
-            $target_dir = "../View/uploads/";
+            $target_dir = "/View/uploads/";
             $uploadOK = true;
             $imageFileType = strtolower(pathinfo($_FILES["profile_photo"]["name"], PATHINFO_EXTENSION));
             $uid = $conn->insert_id; // Get the last inserted ID
@@ -233,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- Profile Photo -->
                 <div class="signup-field">
                     <label for="profilephoto">Profile Picture</label>
-                    <input type="file" id="profilephoto" name="profilephoto" />
+                    <input type="file" id="profile_photo" name="profile_photo" />
                     <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
                 </div>
                 <!-- Submit button that redirects user to mainpage -->
