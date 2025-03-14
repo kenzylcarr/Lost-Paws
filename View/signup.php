@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if username already exists
-    $stmt = $conn->prepare("SELECT username, email_address, phone_number, FROM users WHERE username = ? OR email_address = ? OR phone_number = ?");
+    $stmt = $conn->prepare("SELECT username, email_address, phone_number FROM users WHERE username = ? OR email_address = ? OR phone_number = ?");
     $stmt->bind_param("sss", $username, $email, $phone);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $avatar_temp = "avatar_temp"; // Temporary value for profile photo
 
         // Insert user into the database
-        $stmt = $conn->prepare("INSERT INTO Users (username, email_address, password, phone, profile_photo) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO users (username, email_address, password, phone, profile_photo) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $username, $email, $hashedPassword, $phone, $avatar_temp);
         $result = $stmt->execute();
 
@@ -121,8 +121,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($uploadOK) {
                 if (move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $target_file)) {
-                    // Update the user's profile_photo field in the Users table
-                    $stmt = $conn->prepare("UPDATE Users SET profile_photo = ? WHERE username = ?");
+                    // Update the user's profile_photo field in the users table
+                    $stmt = $conn->prepare("UPDATE users SET profile_photo = ? WHERE username = ?");
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
                     header("Location: login.php");
@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             } else {
                 // Remove the temporary user record if upload fails
-                $stmt = $conn->prepare("DELETE FROM Users WHERE username = ?");
+                $stmt = $conn->prepare("DELETE FROM users WHERE username = ?");
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
             }
