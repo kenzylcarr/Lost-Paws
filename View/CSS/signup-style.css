@@ -173,18 +173,18 @@ h1, h2 {
 }
     
 .auth-form-signup {
-    border: #1E3F66 2px solid;
+    border: #1E3F66 1.5px solid;
+    background-color: #fdfdfd;
     border-radius: 15px;
-    margin-top: -18vw;
-    height: 35vw;
+    height: 45vw;
     width: 45vw;
-    margin-left: 7vw;
+    margin-left: center;
 }
     
 .signup-field {
     margin: 25px;
     margin-bottom: 20px;
-    font-size: smaller;
+    font-size: 16px;
 }
 
 .signup-button {
