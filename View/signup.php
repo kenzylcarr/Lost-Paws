@@ -201,7 +201,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <!-- Profile Photo -->
               <div class="signup-field">
                   <label for="profile_photo">Profile Picture</label>
-                  <input type="file" id="profile_photo" name="profile_photo" />
+                  <input type="file" id="profilephoto" name="profilephoto" />
                   <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
               </div>
               <!-- Submit button that redirects user to mainpage -->
