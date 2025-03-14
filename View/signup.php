@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $avatar_temp = "avatar_temp"; // Temporary value for profile photo
 
         // Insert user into the database
-        $stmt = $conn->prepare("INSERT INTO Users (username, email_address, password, phone, profilephoto) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO Users (username, email_address, password, phone, profile_photo) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $username, $email, $hashedPassword, $phone, $avatar_temp);
         $result = $stmt->execute();
 
@@ -79,35 +79,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Handle file upload
             $target_dir = "../View/uploads/";
             $uploadOK = true;
-            $imageFileType = strtolower(pathinfo($_FILES["profilephoto"]["name"], PATHINFO_EXTENSION));
+            $imageFileType = strtolower(pathinfo($_FILES["profile_photo"]["name"], PATHINFO_EXTENSION));
             $uid = $conn->insert_id; // Get the last inserted ID
             $target_file = $target_dir . "$uid.$imageFileType";
 
             if (file_exists($target_file)) {
-                $errors['profilephoto'] = "Sorry, this file already exists.";
+                $errors['profile_photo'] = "Sorry, this file already exists.";
                 $uploadOK = false;
             }
 
-            if ($_FILES["profilephoto"]["size"] > 1000000) {
-                $errors["profilephoto"] = "File is too large. Maximum 1MB.";
+            if ($_FILES["profile_photo"]["size"] > 1000000) {
+                $errors["profile_photo"] = "File is too large. Maximum 1MB.";
                 $uploadOK = false;
             }
 
             if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
-                $errors['profilephoto'] = "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
+                $errors['profile_photo'] = "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
                 $uploadOK = false;
             }
 
             if ($uploadOK) {
-                if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
-                    // Update the user's profilephoto field in the Users table
-                    $stmt = $conn->prepare("UPDATE Users SET profilephoto = ? WHERE username = ?");
+                if (move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $target_file)) {
+                    // Update the user's profile_photo field in the Users table
+                    $stmt = $conn->prepare("UPDATE Users SET profile_photo = ? WHERE username = ?");
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
                     header("Location: login.php");
                     exit();
                 } else {
-                    $errors['profilephoto'] = "Sorry, the image could not be moved.";
+                    $errors['profile_photo'] = "Sorry, the image could not be moved.";
                 }
             } else {
                 // Remove the temporary user record if upload fails
@@ -200,9 +200,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </div>
               <!-- Profile Photo -->
               <div class="signup-field">
-                  <label for="profilephoto">Profile Picture</label>
-                  <input type="file" id="profilephoto" name="profilephoto" />
-                  <p id="error-text-profilephoto" class="error-text hidden">Choose a valid file.</p>
+                  <label for="profile_photo">Profile Picture</label>
+                  <input type="file" id="profile_photo" name="profile_photo" />
+                  <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
               </div>
               <!-- Submit button that redirects user to mainpage -->
               <div class="signup-field">

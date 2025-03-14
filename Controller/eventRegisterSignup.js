@@ -99,7 +99,7 @@ function profilePhotoHandler(event) {
       // No file selected
       console.log("No file selected.");
       profilePhoto.classList.add("error-border");
-      document.getElementById("error-text-profilephoto").classList.remove("hidden");
+      document.getElementById("error-text-profile_photo").classList.remove("hidden");
   } else {
       // Validate the file type
       let file = profilePhoto.files[0];
@@ -192,7 +192,7 @@ function validateSignup(event)
   }
 
   // validating profile photo
-  let profilePhoto = document.getElementById("profilephoto");
+  let profilePhoto = document.getElementById("profile_photo");
   if (profilePhoto.files.length === 0 || !validateProfilePhoto(profilePhoto.files[0].name))
   {
     profilePhoto.classList.add('error-border');
