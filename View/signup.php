@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $avatar_temp = "avatar_temp"; // Temporary value for profile photo
 
         // Insert user into the database
-        $stmt = $conn->prepare("INSERT INTO Users (username, email_address, password, phone, profile_photo) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO Users (username, email_address, password, phone, profilephoto) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $username, $email, $hashedPassword, $phone, $avatar_temp);
         $result = $stmt->execute();
 
@@ -84,30 +84,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $target_file = $target_dir . "$uid.$imageFileType";
 
             if (file_exists($target_file)) {
-                $errors['profile_photo'] = "Sorry, this file already exists.";
+                $errors['profilephoto'] = "Sorry, this file already exists.";
                 $uploadOK = false;
             }
 
             if ($_FILES["profilephoto"]["size"] > 1000000) {
-                $errors["profile_photo"] = "File is too large. Maximum 1MB.";
+                $errors["profilephoto"] = "File is too large. Maximum 1MB.";
                 $uploadOK = false;
             }
 
             if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
-                $errors['profile_photo'] = "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
+                $errors['profilephoto'] = "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
                 $uploadOK = false;
             }
 
             if ($uploadOK) {
                 if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
-                    // Update the user's profile_photo field in the Users table
-                    $stmt = $conn->prepare("UPDATE Users SET profile_photo = ? WHERE username = ?");
+                    // Update the user's profilephoto field in the Users table
+                    $stmt = $conn->prepare("UPDATE Users SET profilephoto = ? WHERE username = ?");
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
                     header("Location: login.php");
                     exit();
                 } else {
-                    $errors['profile_photo'] = "Sorry, the image could not be moved.";
+                    $errors['profilephoto'] = "Sorry, the image could not be moved.";
                 }
             } else {
                 // Remove the temporary user record if upload fails
