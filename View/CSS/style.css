@@ -853,9 +853,43 @@ padding: 8px;
 /* END CSS FOR reportpetpage.php */
 
 /* 
-	START CSS: petmap.php */
+	START CSS: petmap.html */
+	
+.petmap-page header {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: #f8f8f8; 
+  padding: 10px 20px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.petmap-page main {
+  min-height: 100%;
+  flex-grow: 1;
+}
+
+.petmap-page .logo {
+  font-size: 20px; 
+  font-weight: bold; 
+}
+
+.petmap-page nav a {
+  margin: 0 10px; 
+  text-decoration: none; 
+  color: #333; 
+}
+
+.petmap-page .auth-buttons button {
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  padding: 5px 10px; 
+  margin-left: 5px; 
+  cursor: pointer; 
+}
 						
-body {
+.petmap-page.body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -864,19 +898,19 @@ body {
   margin: 0;
 }
 
-#petmap-container {
+.petmap-page #petmap-container {
   display: grid;
-  grid-template-columns: 1fr; /* One column layout for centering */
+  grid-template-columns: 1fr; 
   gap: 20px;
   padding: 20px;
-  width: 97%; /* Make it responsive */
-  max-width: 1500px; /* Max width for larger screens */
+  width: 97%; 
+  max-width: 1500px; 
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#filter-section {
+.petmap-page #filter-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -885,39 +919,40 @@ body {
   background-color: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 70px;
 }
 
-#filter-section label {
+.petmap-page #filter-section label {
   margin-right: 10px;
 }
 
-#filter-section select {
+.petmap-page #filter-section select {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-#petmap-map {
+.petmap-page #petmap-map {
   width: 100%;
   height: 600px; 
   border-radius: 10px;
   overflow: hidden;
 }
 
-.switch {
+.petmap-page .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
 
-.switch input {
+.petmap-page .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.slider {
+.petmap-page .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -929,7 +964,7 @@ body {
   border-radius: 34px;
 }
 
-.slider:before {
+.petmap-page .slider:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -941,21 +976,32 @@ body {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+.petmap-page input:checked + .slider {
   background-color: #4CAF50;
 }
 
-input:checked + .slider:before {
+.petmap-page input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* 
-	END CSS: petmap.php  */
+.petmap-page footer {
+  background-color: #ceedf1;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  margin-top: auto; 
+  margin-bottom: 0; 
+  position: relative;
+  margin-top: 0;
+  padding-top: 10px;
+  clear: both;
+}
+
+/*  END CSS: petmap.html  */
 
 /* 
 	START CSS: accountpage.php */
 	
-
 /* Account Settings Layout */
 .settings-container {
   display: flex;
