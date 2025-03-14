@@ -19,6 +19,7 @@
 </head>
 
 <body>
+<div class="reportpet-page">
   <div id="container">
      <!-- Lost Paws Logo -->
     <nav class="navmenu">
@@ -79,6 +80,7 @@
 			<label for="petImages">Choose Files</label> <!-- Custom "Choose Files" button -->
 			<button type="submit" id="submitImages" class="upload-button">Submit Images</button>
 		</div>
+      </div>
 
 	</main>
 </html>
