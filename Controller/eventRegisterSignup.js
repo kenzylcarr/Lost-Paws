@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function()
   let cpassword = document.getElementById("cpassword");
   cpassword.addEventListener("blur", cpasswordHandler);
   
-  let profilePhoto = document.getElementById("profilephoto");
+  let profilePhoto = document.getElementById("profile_photo");
   profilePhoto.addEventListener("blur", profilePhotoHandler);
 });
 
