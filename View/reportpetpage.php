@@ -13,7 +13,9 @@
 <?php
 session_start();
 require_once("../Model/db_config.php");
-  // Get form data
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Get form data
   $animal_type = $_POST['animal_type'];
   $status = $_POST['status'];
   $location_ip = $_POST['location_ip'];
@@ -27,20 +29,52 @@ require_once("../Model/db_config.php");
 
   // Handle file uploads
   if (isset($_FILES['petPhotos'])) {
-    $target_dir = "../View/pet-uploads";
+    $target_dir = "../View/pet-uploads/";
     $total_files = count($_FILES['petPhotos']['name']);
 
-    for ($i = 0; i < $total_files; $i++) {
+    for ($i = 0; $i < $total_files; $i++) {
       $file_name = basename($_FILES['petPhotos']['name'][$i]);
       $target_file = $target_dir . $file_name;
-      $uploadOk = 1;
+      $uploadOK = 1;
 
       // Check if the file is an image
+      $check = getimagesize($_FILES['petPhotos']['tmp_name'][$i]);
+      if ($check === false) {
+        echo "File is not an image.";
+        $uploadOK = 0;
+      }
+
+      // Check file size
+      if ($_FILES['petPhotos']['size'][$i] > 1000000) {
+        echo "File is too large. Maximum 1MB.";
+        $uploadOK = 0;
+      }
       
+      // Allow certain file types
+      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+      if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
+        echo "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
+        $uploadOK = false;
+      }
+
+      if ($uploadOK == 1) {
+        if (move_uploaded_file($_FILES['petPhotos']['tmp_name'][$i], $target_file)) {
+          $picture_paths[] = $target_file;
+        } else {
+          echo "Sorry, there was an error uploading your file.";
+        }
+      }
     }
   }
-
-
+    // Insert into the database
+    foreach ($picture_paths as $picture) {
+      $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
+      $stmt->execute();
+    }
+    echo "Pet reported successfully!";
+    header("Location: lostandfound.php");
+    exit();
+  }
 ?>
 
 <!DOCTYPE html>
