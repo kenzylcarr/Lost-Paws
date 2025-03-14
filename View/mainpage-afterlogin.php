@@ -28,7 +28,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-  $user = $result->fetch_assoc;
+  $user = $result->fetch_assoc();
 } else {
   echo "User not found.";
   exit();
