@@ -12,117 +12,118 @@
 <!-- PHP validation for the form begins -->
 <?php
 session_start();
-// Include the db_config.php file to connect to database
-require_once '../Model/db_config.php';
+require_once("../Model/db_config.php");
 
 function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
-// Array to keep track of any errors while processing the form
-$username = "";
+$errors = array();
 $email = "";
-$phone = "";
+$username = "";
 $password = "";
+$phone = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate username
-    if (empty(trim($_POST["username"]))) {
-      $username_err = "Please enter a username.";
-    } else {
-      // Prepare SELECT query
-      $sql = "SELECT user_id FROM users WHERE username = ?";
-      if ($stmt = mysqli_prepare($conn, $sql)) {
-        mysqli_stmt_bind_param($stmt, "s", $param_username);
-        $param_username = trim($_POST["username"]);
-        if (mysqli_stmt_execute($stmt)) {
-          $username_err = "This username is already taken.";
+    $username = test_input($_POST["username"]);
+    $email = test_input($_POST["email"]);
+    $password = test_input($_POST["password"]);
+    $cpassword = test_input($_POST["cpassword"]);
+    $phone = test_input($_POST["phone"]);
+
+    $unameRegex = "/^[a-zA-Z0-9_]+$/";
+    $emailRegex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+    $passwordRegex = "/^(?=.*\W).{6,}$/";
+    $phoneRegex = "/^\d{10}$/";
+
+    if (!preg_match($unameRegex, $username)) {
+        $errors['username'] = "Invalid Username";
+    }
+    if (!preg_match($emailRegex, $email)) {
+        $errors['email'] = "Invalid Email";
+    }
+    if (!preg_match($passwordRegex, $password)) {
+        $errors['password'] = "Invalid Password";
+    }
+    if ($password !== $cpassword) {
+        $errors['cpassword'] = "Passwords do not match";
+    }
+    if (!preg_match($phoneRegex, $phone)) { // Validate phone number
+        $errors['phone'] = "Invalid Phone Number";
+    }
+
+    // Check if username already exists
+    $stmt = $conn->prepare("SELECT username FROM Users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->fetch_assoc()) {
+        $errors["Account Taken"] = "A user with that username already exists.";
+    }
+
+    if (empty($errors)) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $avatar_temp = "avatar_temp"; // Temporary value for profile photo
+
+        // Insert user into the database
+        $stmt = $conn->prepare("INSERT INTO Users (username, email_address, password, phone, profile_photo) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $username, $email, $hashedPassword, $phone, $avatar_temp);
+        $result = $stmt->execute();
+
+        if (!$result) {
+            $errors["Database Error:"] = "Failed to insert user";
         } else {
-          $username = trim($_POST["username"]);
+            // Handle file upload
+            $target_dir = "uploads/";
+            $uploadOK = true;
+            $imageFileType = strtolower(pathinfo($_FILES["profilephoto"]["name"], PATHINFO_EXTENSION));
+            $uid = $conn->insert_id; // Get the last inserted ID
+            $target_file = $target_dir . "$uid.$imageFileType";
+
+            if (file_exists($target_file)) {
+                $errors['profile_photo'] = "Sorry, this file already exists.";
+                $uploadOK = false;
+            }
+
+            if ($_FILES["profilephoto"]["size"] > 1000000) {
+                $errors["profile_photo"] = "File is too large. Maximum 1MB.";
+                $uploadOK = false;
+            }
+
+            if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
+                $errors['profile_photo'] = "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
+                $uploadOK = false;
+            }
+
+            if ($uploadOK) {
+                if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
+                    // Update the user's profile_photo field in the Users table
+                    $stmt = $conn->prepare("UPDATE Users SET profile_photo = ? WHERE username = ?");
+                    $stmt->bind_param("ss", $target_file, $username);
+                    $stmt->execute();
+                    header("Location: login.php");
+                    exit();
+                } else {
+                    $errors['profile_photo'] = "Sorry, the image could not be moved.";
+                }
+            } else {
+                // Remove the temporary user record if upload fails
+                $stmt = $conn->prepare("DELETE FROM Users WHERE username = ?");
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+            }
         }
-      } else {
-        echo "Something went wrong. Please try again later.";
-      }
-      mysqli_stmt_close($stmt);
     }
 
-  // Validate email address
-  $email = isset($_POST["email"]) ? trim($_POST["email"]) : ""; // Check if email exists
-  if (empty($email)) {
-    $email_err = "Please enter an email address.";
-  }
-
-  // Validate phone number
-  $phone = isset($_POST["phone"]) ? trim($_POST["phone"]) : ""; // Check if phone exists
-  if (empty($phone)) {
-    $phone_err = "Please enter a phone number.";
-  }
-
-  // Validate password
-  $password = isset($_POST["password"]) ? trim($_POST["password"]) : ""; // Check if password exists
-  if (empty($password)) {
-    $password_err = "Please enter a password.";
-  } elseif (strlen($password) < 6) {
-    $password_err = "Password must contain at least 6 characters.";
-  }
-
-  // Validate confirm password
-  $cpassword = isset($_POST["cpassword"]) ? trim($_POST["cpassword"]) : ""; // Check if confirm password exists
-  if ($password !== $cpassword) {
-    $password_err = "Passwords do not match.";
-  }
-
-  // Check for input errors before submitting to database
-  if (empty($username_err) && empty($email_err) && empty($phone_err) && empty($password_err)) {
-    // Handle file upload for profile photo
-    $profile_photo = "";
-    if (isset($_FILES["profilephoto"]) && $_FILES["profilephoto"]["name"]) {
-      $target_dir = "../View/uploads/";
-      if (!file_exists($target_dir)) {
-        mkdir($target_dir, 0777, true);
-      }
-      $target_file = $target_dir . basename($_FILES["profilephoto"]["name"]);
-      if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
-        $profile_photo = basename($_FILES["profilephoto"]["name"]);
-      }
+    if (!empty($errors)) {
+        foreach ($errors as $type => $message) {
+            print("$type: $message \n<br />");
+        }
     }
-
-    // Hash password before storing it
-    $param_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Prepare INSERT statement
-    $sql = "INSERT INTO users (username, email_address, phone_number, password, profile_photo) VALUES (?, ?, ?, ?, ?)";
-    if ($stmt = mysqli_prepare($conn, $sql)) {
-      mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
-
-      // Set parameters
-      $param_username = $username;
-      $param_email = $email;
-      $param_phone = $phone;
-      $param_profile_photo = $profile_photo;
-
-      // Attempt to execute the prepared statement
-      if (mysqli_stmt_execute($stmt)) {
-        // Redirect to login page
-        header("location: ../View/login.php");
-        exit();
-      } else {
-        echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
-      }
-      mysqli_stmt_close($stmt);
-    }
-  } else {
-    // Display validation errors
-    if (!empty($username_err)) echo $username_err . "<br>";
-    if (!empty($email_err)) echo $email_err . "<br>";
-    if (!empty($phone_err)) echo $phone_err . "<br>";
-    if (!empty($password_err)) echo $password_err . "<br>";
-  }
 }
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
