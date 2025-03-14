@@ -13,7 +13,28 @@ document.addEventListener('DOMContentLoaded', function()
 {
   function fetchPets()
   {
+    var xhr = new XMLHttpRequest();
     
+    xhr.open = new XMLHttpRequest();
+    xhr.open("GET", "ajax-lostfound.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");   // ** JSON STUFF ** 
+    xhr.onreadystatechange = function()
+    {
+      if (xhr.readyState === 4 && xhr.status === 200)
+      {
+        try
+        {
+          var response = JSON.parse(xhr.responseText);
+          updatePets(response);
+        }
+        catch (e)
+        {
+          console.error("ERROR parsing JSON:", e);
+        }
+
+      }
+    };
+    xhr.send();
   }
 
   function updatePets()
