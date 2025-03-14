@@ -133,11 +133,11 @@ if ($result->num_rows > 0) {
 
     <main id="mainpage-right-afterlogin">
         <div class="user-photo">
-            <img src="images/user-photo.jpg" alt="user photo" />
+          <img src="<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
         </div>
     
         <div class="user-name">
-            <p>John Doe</p>
+          <p><?php echo htmlspecialchars($username); ?></p>
         </div>
     
         <div class="user-options">
