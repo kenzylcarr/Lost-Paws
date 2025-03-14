@@ -94,7 +94,7 @@
 
 <head>
   <title>Login Page</title>
-  <link rel="stylesheet" type="text/css" href="/View/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <script src="../Controller/eventHandler.js"></script>
 </head>
 

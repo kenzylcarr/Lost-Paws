@@ -14,7 +14,7 @@
 
 <head>
   <title>Lost & Found</title>
-  <link rel="stylesheet" type="text/css" href="/View/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 

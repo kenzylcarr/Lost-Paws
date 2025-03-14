@@ -129,8 +129,8 @@ mysqli_close($conn);
 <html lang="en">
 <head>
   <title>Signup Page</title>
-  <link rel="stylesheet" type="text/css" href="/View/style.css">
-  <link rel="stylesheet" type="text/css" href="/View/signup-style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/signup-style.css">
   <script src="../Controller/eventHandler.js"></script>
 </head>
 
