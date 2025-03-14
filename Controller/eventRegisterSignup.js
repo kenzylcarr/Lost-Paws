@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function()
   let cpassword = document.getElementById("cpassword");
   cpassword.addEventListener("blur", cpasswordHandler);
   
-  let avatar = document.getElementById("profilephoto");
-  avatar.addEventListener("blur", avatarHandler);
+  let profilePhoto = document.getElementById("profilephoto");
+  profilePhoto.addEventListener("blur", profilePhotoHandler);
 });
 
 
@@ -93,24 +93,24 @@ function cpasswordHandler(event) {
   }
 }
 
-function avatarHandler(event) {
-  let avatar = event.target;
-  if (avatar.files.length === 0) {
+function profilePhotoHandler(event) {
+  let profilePhoto = event.target;
+  if (profilePhoto.files.length === 0) {
       // No file selected
       console.log("No file selected.");
-      avatar.classList.add("error-border");
+      profilePhoto.classList.add("error-border");
       document.getElementById("error-text-profilephoto").classList.remove("hidden");
   } else {
       // Validate the file type
-      let file = avatar.files[0];
+      let file = profilePhoto.files[0];
       if (!validateProfilePhoto(file.name)) {
-          console.log("'" + file.name + "' is not a valid avatar");
-          avatar.classList.add("error-border");
+          console.log("'" + file.name + "' is not a valid profile photo");
+          profilePhoto.classList.add("error-border");
           document.getElementById("error-text-profilephoto").classList.remove("hidden");
       } else {
-          avatar.classList.remove("error-border");
+          profilePhoto.classList.remove("error-border");
           document.getElementById("error-text-profilephoto").classList.add("hidden");
-          console.log("'" + file.name + "' is a valid avatar");
+          console.log("'" + file.name + "' is a valid profile photo");
       }
   }
 }
@@ -193,7 +193,7 @@ function validateSignup(event)
 
   // validating profile photo
   let profilePhoto = document.getElementById("profilephoto");
-  if (!validateProfilePhoto(profilePhoto.value))
+  if (profilePhoto.files.length === 0 || !validateProfilePhoto(profilePhoto.files[0].name))
   {
     profilePhoto.classList.add('error-border');
     document.getElementById("error-text-profilephoto").classList.remove("hidden");
