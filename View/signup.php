@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["Database Error:"] = "Failed to insert user";
         } else {
             // Handle file upload
-            $target_dir = "/View/uploads/";
+            $target_dir = ;
             $uploadOK = true;
             $imageFileType = strtolower(pathinfo($_FILES["profile_photo"]["name"], PATHINFO_EXTENSION));
             $uid = $conn->insert_id; // Get the last inserted ID
