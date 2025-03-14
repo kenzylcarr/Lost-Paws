@@ -869,16 +869,6 @@ padding: 8px;
   border-radius: 10px; 
 }
 
-/* footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background-color: #FFECBD;
-  color: Black; 
-  padding: 10px 0;
-} */
-
 /* Container for the file input and submit button */
 .reportpet-page .upload-container {
   display: flex;
@@ -931,6 +921,7 @@ padding: 8px;
 }
 
 /*  END CSS FOR reportpetpage.php  */
+
 /* 
 	START CSS: petmap.php */
 						
