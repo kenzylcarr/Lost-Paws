@@ -192,7 +192,7 @@ function validateSignup(event)
   }
 
   // validating profile photo
-  let profilePhoto = document.getElementById("profilephoto");
+  let profilePhoto = document.getElementById("profile_photo");
   if (profilePhoto.files.length === 0 || !validateProfilePhoto(profilePhoto.files[0].name))
   {
     profilePhoto.classList.add('error-border');
