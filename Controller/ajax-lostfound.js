@@ -37,8 +37,26 @@ document.addEventListener('DOMContentLoaded', function()
     xhr.send();
   }
 
-  function updatePets()
+  function updatePets(pets)
   {
-    
+    let list = document.querySelector('#pet-list');
+    list.innerHTML = '';    // clear existing list
+
+    pet.forEach(function(pet)
+    {
+      var petDiv = document.createElement('div');
+      petDiv.className = 'pet-brief-info';
+      petDiv.innerHTMl = <img src="$(pet.picture)" alt="Photo of a $(pet.animal_type)">
+                         <p>Type: $(pet.animal_type)</p>
+                         <p>Status: $(pet.status)</p>
+                         <p>Location: $(pet.location_ip)</p>
+                         <p><a href="/View/selectpostpage>html ? id=$(pet.pet_id)">View Pet Post</a></p>
+      ;
+      list.appendChild(petDiv);
+    });
   }
+
+  // fetching and reloading every 2 minutes
+  fetchPets();
+  setInterval(fetchPets, 120000);
 });
