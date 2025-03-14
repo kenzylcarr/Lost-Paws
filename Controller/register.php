@@ -92,7 +92,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $target_file = $target_dir . basename($_FILES["profilephoto"]["name"]);
       if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
         $profile_photo = basename($_FILES["profilephoto"]["name"]);
-      }
+        echo "The file ". basename($_FILES["profilephoto"]["name"]). " has been uploaded.";
+      } else {
+        // Error occurred
+        echo "Sorry, there was an error uploading your file.";
+    }
     }
 
     // Hash password before storing it
