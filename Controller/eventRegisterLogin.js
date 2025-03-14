@@ -16,14 +16,10 @@ document.addEventListener("DOMContentLoaded", function()
 
   if (loginForm) {
     loginForm.addEventListener("submit", function(event) {
-      if (!validateLogin(event)) {
-        event.preventDefault();
-      } else {
-        if (loginButton) {
-          loginButton.disabled = true;
-        }
-        console.log("Validation successful. Sending data over to server.");
+    if (loginButton) {
+        loginButton.disabled = true;
       }
+      validateLogin(event);
     });
 
     // add event listeners after the DOM is loaded
@@ -71,6 +67,7 @@ function validateLogin(event) {
   // accessing the login form's input elements
   let username = document.getElementById("username");
   let password = document.getElementById("password");
+  let loginButton = document.querySelector(".login-button");
   let formIsValid = true;
 
   // if loop to check the username isn't valid by calling the validator function
@@ -95,10 +92,14 @@ function validateLogin(event) {
     document.getElementById("error-text-password").classList.add("hidden");
   }
   // in case the form isn't valid
-  if (formIsValid == false) {
+  if (!formIsValid) {
     event.preventDefault();
+    if (loginButton) {
+      loginButton.disabled = false;
+    }
   } else {
-    console.log("validation was successful, sending data over to the server");
+    console.log("Validation was successful. Sending data over to the server.");
+    loginButton.disabled = true;
   }
 }
 
