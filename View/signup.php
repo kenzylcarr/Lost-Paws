@@ -189,7 +189,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="lastname" id="lastname"/><br />
                     <span id="error-text-lastname" class="error-text hidden">Invalid last name.</span><br />
                 </div>
-            
+                <!-- Username -->
+                <div class="signup-field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" />
+                        <span id="error-text-username" class="error-text hidden">Invalid username.</span><br />
+                </div>
                 <!-- Email Address -->
                 <div class="signup-field">
                     <label for="email">Email</label>
