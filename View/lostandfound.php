@@ -42,7 +42,7 @@ require_once("../Model/db_config.php");
         </div>
   
         <div class="button">
-          <p>Already have an account?</p>
+          <p>Already have an account? </p>
           <a id="login-button" href="/View/login.php">Login</a>
         </div>
       </nav>

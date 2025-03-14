@@ -243,7 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
       <!-- If user already has an account  -->
       <div class="signup-footnote">
-          <p>Already have an account? <a class="login-button" href="/View/login.php">Login</a></p>
+          <p>Already have an account? <a id="login-button" href="/View/login.php">Login</a></p>
       </div>
    </main>
   </div>
