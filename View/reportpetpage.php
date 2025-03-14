@@ -118,14 +118,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="aboutpage.php">About Lost Paws</a>
-        <a href="reportpetpage.php">Report a Pet</a>
-        <a href="lostandfound.php">Lost & Found</a>	
+        <a href="homepage.php">Homepage</a>	
         <a href="petmap.php">Pet Map</a>
       </div>
 
       <div class="button">
-        <a id="signup-button" href="signup.php">Sign Up!</a>
-        <a id="login-button" href="login.php">Login</a>
+        <a id="login-button" href="logout.php">Logout</a>
       </div>
     </nav>
     
