@@ -60,11 +60,14 @@ function emailHandler(event) {
 
 function phoneHandler(event) {
   let phone = event.target;
-  if (!validatePhone(phone.value)) {
-    console.log("'" + phone.value + "' is not a valid phone number");
+  if (!validatePhoneNumber(phone.value)) {
+    phone.classList.add("error-border");
+    document.getElementById("error-text-phone");
+    formIsValid = false;
   } else {
-    console.log("'" + phone.value + "' is a valid phone number");
-  }
+      phone.classList.remove("error-border");
+      document.getElementById("error-text-phone");
+    }
 }
 
 function passwordHandler(event) {
@@ -92,9 +95,123 @@ function cpasswordHandler(event) {
 
 function avatarHandler(event) {
   let avatar = event.target;
-  if(!validateAvatar(avatar.value)) {
-    console.log("'" + avatar.value + "' is not a valid avatar");
+  if (avatar.files.length === 0) {
+      // No file selected
+      console.log("No file selected.");
+      avatar.classList.add("error-border");
+      document.getElementById("error-text-profilephoto").classList.remove("hidden");
   } else {
-    console.log("'" + avatar.value + "' is a valid avatar");
+      // Validate the file type
+      let file = avatar.files[0];
+      if (!validateProfilePhoto(file.name)) {
+          console.log("'" + file.name + "' is not a valid avatar");
+          avatar.classList.add("error-border");
+          document.getElementById("error-text-profilephoto").classList.remove("hidden");
+      } else {
+          avatar.classList.remove("error-border");
+          document.getElementById("error-text-profilephoto").classList.add("hidden");
+          console.log("'" + file.name + "' is a valid avatar");
+      }
+  }
+}
+
+/* EVENT HANDLERS AND FUNCTION VALIDATORS FOR SIGNUP PAGE */
+
+function validateSignup(event)
+{
+  let formIsValid = true;
+
+  // validating username
+  let username = document.getElementById("username");
+  if (!validateUsername(username.value))
+  {
+    username.classList.add('error-border');
+    document.getElementById("error-text-username").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    username.classList.remove('error-border');
+    document.getElementById("error-text-username").classList.add("hidden");
+  }
+
+  // validating email
+  let email = document.getElementById("email");
+  if (!validateEmail(email.value))
+  {
+    email.classList.add('error-border');
+    document.getElementById("error-text-email").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    email.classList.remove('error-border');
+    document.getElementById("error-text-email").classList.add("hidden");
+  }
+
+  // validating phone number
+  let phone = document.getElementById("phone");
+  if (!validatePhoneNumber(phone.value))
+  {
+    phone.classList.add("error-border");
+    document.getElementById("error-text-phone").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    phone.classList.remove("error-border");
+    document.getElementById("error-text-phone").classList.add("hidden");
+  }
+
+  // validating password
+  let password = document.getElementById("password");
+  if (!validatePassword(password.value))
+  {
+    password.classList.add('error-border');
+    document.getElementById("error-text-password").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    password.classList.remove('error-border');
+    document.getElementById("error-text-password").classList.add("hidden");
+  }
+
+  // validating password confirmation
+  let cpassword = document.getElementById("cpassword");
+  if (password.value !== cpassword.value)
+  {
+    cpassword.classList.add("error-border");
+    document.getElementById("error-text-cpassword").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    cpassword.classList.remove("error-border");
+    document.getElementById("error-text-cpassword").classList.add("hidden");
+  }
+
+  // validating profile photo
+  let profilePhoto = document.getElementById("profilephoto");
+  if (!validateProfilePhoto(profilePhoto.value))
+  {
+    profilePhoto.classList.add('error-border');
+    document.getElementById("error-text-profilephoto").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    profilePhoto.classList.remove('error-border');
+    document.getElementById("error-text-profilephoto").classList.add("hidden");
+  }
+
+  // if form is not valid
+  if (formIsValid)
+  {
+    console.log("Validation was successful, now sending data over to the server.");
+  }
+  else
+  {
+    event.preventDefault();
   }
 }
