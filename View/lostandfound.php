@@ -9,6 +9,14 @@
   File name: lostandfound.php
 -->
 
+<!-- PHP validation for the form begins -->
+<?php
+session_start();
+require_once("../Model/db_config.php");
+  // Fetch pet data from database
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +42,7 @@
         </div>
   
         <div class="button">
-          <a id="signup-button" href="/View/signup.php">Sign Up!</a>
+          <p>Already have an account?</p>
           <a id="login-button" href="/View/login.php">Login</a>
         </div>
       </nav>
@@ -107,7 +115,7 @@
   
       <main id="mainpage-right-beforelogin">
         <h3>Sign in to get alerts and to connect with your community!</h3>
-        <p>Don't have an account?<a class="signup-button" href="/View/signup.php">Register</a></p>
+        <p>Don't have an account?<a id="signup-button" href="/View/signup.php">Sign Up!</a></p>
       </main>
   
     </div>
