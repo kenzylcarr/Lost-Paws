@@ -61,7 +61,7 @@ if ($result->num_rows > 0) {
 
       <div class="button">
         <a id="signup-button" href="/View/signup.php">Sign Up!</a>
-        <a id="login-button" href="../index.php">Logout</a>
+        <a id="login-button" href="logout.php">Logout</a>
       </div>
         </nav>
 
