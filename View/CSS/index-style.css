@@ -111,6 +111,10 @@
   .index-top-half a:hover {
     background-color: #64aef3;
   }
+
+  .index-top-half-text {
+    max-width: 45%;
+  }
   
   .index-bottom-half {
       background-color: white;
