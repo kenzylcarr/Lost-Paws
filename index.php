@@ -35,9 +35,12 @@
     <div class="index-container">
       <!-- Top Half -->
       <div class="index-top-half">
-        <h1>Lost Paws</h1>
-        <p>Sign up now and join the community to report lost pets and lost pet sightings!</p>
-        <a href="/View/signup.php">Sign Up!</a>
+        <div class="index-top-half-text">
+          <h1>Lost Paws</h1>
+          <p>Sign up now and join the community to report lost pets and lost pet sightings!</p>
+          <a href="/View/signup.php">Sign Up!</a>
+        </div>
+        <img src="" alt="Group of Pets" class="index-image">
       </div>
       
       <!-- Wave Half-->
