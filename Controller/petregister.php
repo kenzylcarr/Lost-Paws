@@ -12,124 +12,94 @@
 <?php 
 // Include the db_config.php file to connect to database
 require_once '../Model/db_config.php';
+session_start();
 
 // Check if connection is successful
 if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
+// Retrieve user information
+if (!isset($_SESSION['user_id'])) {
+    die("You must be logged in to report a pet.");
+}
+
 // Declare variables with empty values
-$username = $email = $phone = $password = "";
-$username_err = $email_err = $phone_err = $password_err = "";
+$animal_type = $status = $location_ip = $picture = "";
+$animal_err = $status_err = $location_err = $picture_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate username
-    if(empty(trim($_POST["username"]))) {
-        $username_err = "Please enter a username.";
+    // Validate animal type
+    if (empty($_POST["animal_type"]) || !in_array($_POST["animal_type"], ["cat", "dog"])) {
+        $animal_type_err = "Please select an animal type.";
     } else {
-        // Prepare SELECT query
-        $sql = "SELECT user_id FROM users WHERE username = ?";
+        $animal_type = trim($_POST["animal_type"]);
+    }
 
-        if($stmt = mysqli_prepare($conn, $sql)) {
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            $param_username = trim($_POST["username"]);
+    // Validate status
+    if (empty($_POST["status"]) || !in_array($_POST["status"], ["lost", "found"])) {
+        $status_err = "Please select the status of the pet.";
+    } else {
+        $status = trim($_POST["status"]);
+    }
 
-            // Execute the statement
-            if(mysqli_stmt_execute($stmt)) {
-                // Store result
-                mysqli_stmt_store_result($stmt);
-                // Check if username exists
-                if(mysqli_stmt_num_rows($stmt) > 0) {
-                    $username_err = "This username is already taken.";
-                } else {
-                    $username = trim($_POST["username"]);
-                }
-            } else {
-                echo "Something went wrong. Please try again later.";
-            }
-        mysqli_stmt_close($stmt);
-        } else {
-            echo "Something went wrong. Please try again later.";
+    // Validate location
+    if (empty($_POST["location_ip"])) {
+        $location_err = "Please enter the location.";
+    } else {
+        $location_ip = trim($_POST["location_ip"]);
+    }
+    
+    // Handle file upload for pet picture
+    if (isset($_FILES["picture"]) && $_FILES["picture"]["name"]) {
+        $target_dir = "../View/uploads/";
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir, 0777, true);
         }
+        $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+        if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+            $picture = basename($_FILES["picture"]["name"]);
+        } else {
+            $picture_err = "Error uploading picture.";
+        }
+    } else {
+        $picture_err = "Please upload a picture of the animal.";
     }
 
-  // Validate email address
-  $email = isset($_POST["email"]) ? trim($_POST["email"]) : ""; // Check if email exists
-  if (empty($email)) {
-    $email_err = "Please enter an email address.";
-  }
+    // Check for input errors before submitting to the database
+    if (empty($animal_err) && empty($status_err) && empty($location_err) && empty($picture_err)) {
+        // Prepare INSERT statement
+        $sql = "INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)";
 
-  // Validate phone number
-  $phone = isset($_POST["phone"]) ? trim($_POST["phone"]) : ""; // Check if phone exists
-  if (empty($phone)) {
-    $phone_err = "Please enter a phone number.";
-  }
+        if ($stmt = mysqli_prepare($conn, $sql)) {
+            // Bind parameters
+            mysqli_stmt_bind_param($stmt, "issss", $param_user_id, $param_animal, $param_status, $param_location, $param_picture);
 
-  // Validate password
-  $password = isset($_POST["password"]) ? trim($_POST["password"]) : ""; // Check if password exists
-  if (empty($password)) {
-    $password_err = "Please enter a password.";
-  } elseif (strlen($password) < 6) {
-    $password_err = "Password must contain at least 6 characters.";
-  }
+            // Set parameters
+            $param_user_id = $_SESSION['user_id'];
+            $param_animal = $animal_type;
+            $param_status = $status;
+            $param_location = $location_ip;
+            $param_picture = $picture;
 
-  // Validate confirm password
-  $cpassword = isset($_POST["cpassword"]) ? trim($_POST["cpassword"]) : ""; // Check if confirm password exists
-  if ($password !== $cpassword) {
-    $password_err = "Passwords do not match.";
-  }
-
-  // Check for input errors before submitting to database
-  if (empty($username_err) && empty($email_err) && empty($phone_err) && empty($password_err)) {
-    // Handle file upload for profile photo
-    $profile_photo = "";
-    if (isset($_FILES["profilephoto"]) && $_FILES["profilephoto"]["name"]) {
-      $target_dir = "../View/uploads/";
-      if (!file_exists($target_dir)) {
-        mkdir($target_dir, 0777, true);
-      }
-      $target_file = $target_dir . basename($_FILES["profilephoto"]["name"]);
-      if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
-        $profile_photo = basename($_FILES["profilephoto"]["name"]);
-        echo "The file ". basename($_FILES["profilephoto"]["name"]). " has been uploaded.";
-      } else {
-        // Error occurred
-        echo "Sorry, there was an error uploading your file.";
+            // Attempt to execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                // Redirect to the pet listings page
+                header("location: ../View/pet_list.php");
+                exit();
+            } else {
+                echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
+            }
+            mysqli_stmt_close($stmt);
+        }
+    } else {
+        // Display validation errors
+        if (!empty($animal_err)) echo $animal_err . "<br>";
+        if (!empty($status_err)) echo $status_err . "<br>";
+        if (!empty($location_err)) echo $location_err . "<br>";
+        if (!empty($picture_err)) echo $picture_err . "<br>";
     }
-    }
-
-    // Hash password before storing it
-    $param_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Prepare INSERT statement
-    $sql = "INSERT INTO users (username, email_address, phone_number, password, profile_photo) VALUES (?, ?, ?, ?, ?)";
-    if ($stmt = mysqli_prepare($conn, $sql)) {
-      mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
-
-      // Set parameters
-      $param_username = $username;
-      $param_email = $email;
-      $param_phone = $phone;
-      $param_profile_photo = $profile_photo;
-
-      // Attempt to execute the prepared statement
-      if (mysqli_stmt_execute($stmt)) {
-        // Redirect to login page
-        header("location: ../View/login.php");
-        exit();
-      } else {
-        echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
-      }
-      mysqli_stmt_close($stmt);
-    }
-  } else {
-    // Display validation errors
-    if (!empty($username_err)) echo $username_err . "<br>";
-    if (!empty($email_err)) echo $email_err . "<br>";
-    if (!empty($phone_err)) echo $phone_err . "<br>";
-    if (!empty($password_err)) echo $password_err . "<br>";
-  }
 }
 mysqli_close($conn);
 ?>
