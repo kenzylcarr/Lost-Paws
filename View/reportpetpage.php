@@ -14,6 +14,27 @@
 session_start();
 require_once("../Model/db_config.php");
 
+// Check if the user is signed in
+if (!isset($_SESSION['username'])) {
+  header("Location: ../index.php");
+  exit();
+}
+
+// Fetch data from database
+$username = $_SESSION['username'];
+$stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  $user = $result->fetch_assoc();
+  $user_id = $user['user_id'];
+} else {
+  echo "User not found.";
+  exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Get form data
   $animal_type = $_POST['animal_type'];
@@ -22,9 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Prepare INSERT statement for putting data into database
   $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
-
-  // Set user_id to NULL so that submissions can be made without an account
-  $user_id = NULL;
   $picture_paths = [];
 
   // Handle file uploads
