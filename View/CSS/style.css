@@ -696,30 +696,32 @@ padding: 8px;
 /* 
     START CSS: reportpetpage.php 
                                       */
-/*Header Styles */
+
 .reportpet-page header {
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
-  background-color: #f8f8f8; /* Example background */
+  background-color: #f8f8f8; 
   padding: 10px 20px; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-/* Logo Styles */
+.reportpet-page main {
+  min-height: 100%;
+  flex-grow: 1;
+}
+
 .reportpet-page .logo {
   font-size: 20px; 
   font-weight: bold; 
 }
 
-/* Navigation Links Styles */
 .reportpet-page nav a {
   margin: 0 10px; 
   text-decoration: none; 
   color: #333; 
 }
 
-/* Auth Button Styles */
 .reportpet-page .auth-buttons button {
   background-color: #007bff; 
   color: white;
@@ -729,16 +731,15 @@ padding: 8px;
   cursor: pointer; 
 }
 
-/* Container for Form and Map */
 .reportpet-page .container {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
   margin-top: 20px;
-  gap: 20px;  /* Optional: space between map and form */
-  flex-wrap: wrap; /* Ensures the layout wraps on smaller screens */
+  flex-grow: 1; 
 }
 
-/* Styles for both Form and Map Containers */
 .reportpet-page .form-container, .map-container {
   background: white; 
   padding: 20px; 
@@ -746,45 +747,38 @@ padding: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-/* Form Container Styles */
 .reportpet-page .form-container {
   width: 45%; 
   text-align: left; 
   height: 550px;
 }
 
-/* Map Container Styles */
 .reportpet-page .map-container {
   width: 45%; 
   height: 550px;
 }
 
-/* Map Area Styles */
 .reportpet-page .map {
   height: 400px; 
   background: lightgray; 
   border-radius: 10px; 
 }
 
-/* Container for the file input and submit button */
 .reportpet-page .upload-container {
-  display: flex;
+  display: flex; 
   flex-direction: row;
-  align-items: left;
-  gap: 10px; /* Space between elements */
-  margin-top: -280px;
+  align-items: center;  
+  gap: 10px; 
   padding: 30px;
+  margin-top: -280px;  
 }
 
-/* Style for the file input button */
 .reportpet-page .upload-container input[type="file"] {
-  display: none;
+  display: none; 
 }
-
-/* Custom label for file input */
 
 .reportpet-page .upload-container label {
-  display: inline-block; /* Ensure it's visible */
+  display: inline-block;
   background-color: #007bff;
   color: white;
   padding: 10px 20px;
@@ -793,17 +787,14 @@ padding: 8px;
   border-radius: 20px;
   text-align: center;
   width: auto;
-  visibility: visible; /* Ensure it's visible */
 }
 
-/* Hover effect for label */
 .reportpet-page .upload-container label:hover {
   background-color: #0056b3;
 }
 
-/* Style for the submit button */
 .reportpet-page .upload-container button {
-  background-color: #007bff; 
+  background-color: #007bff;
   color: white;
   padding: 10px 20px;
   font-size: 16px;
@@ -812,12 +803,54 @@ padding: 8px;
   border-radius: 20px;
 }
 
-/* Hover effect for submit button */
 .reportpet-page .upload-container button:hover {
   background-color: #0056b3;
 }
 
-/*  END CSS FOR reportpetpage.php  */
+.reportpet-page .upload-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reportpet-page .upload-button:hover {
+  background-color: #0056b3;
+}
+
+
+.reportpet-page html, body {
+  height: 100%; 
+  margin: 0; 
+}
+
+.reportpet-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+}
+
+.reportpet-page main {
+  flex-grow: 1; 
+}
+
+.reportpet-page footer {
+  background-color: #ceedf1;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  margin-top: auto; 
+  margin-bottom: 0; 
+  position: relative;
+  margin-top: 0;
+  padding-top: 10px;
+  clear: both;
+}
+
+/* END CSS FOR reportpetpage.php */
 
 /* 
 	START CSS: petmap.php */

@@ -84,15 +84,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($username_err) && empty($email_err) && empty($phone_err) && empty($password_err)) {
     // Handle file upload for profile photo
     $profile_photo = "";
-    if (isset($_FILES["profilephoto"]) && $_FILES["profilephoto"]["name"]) {
+    if (isset($_FILES["profile_photo"]) && $_FILES["profile_photo"]["name"]) {
       $target_dir = "../View/uploads/";
       if (!file_exists($target_dir)) {
         mkdir($target_dir, 0777, true);
       }
-      $target_file = $target_dir . basename($_FILES["profilephoto"]["name"]);
-      if (move_uploaded_file($_FILES["profilephoto"]["tmp_name"], $target_file)) {
-        $profile_photo = basename($_FILES["profilephoto"]["name"]);
-        echo "The file ". basename($_FILES["profilephoto"]["name"]). " has been uploaded.";
+      $target_file = $target_dir . basename($_FILES["profile_photo"]["name"]);
+      if (move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $target_file)) {
+        $profile_photo = basename($_FILES["profile_photo"]["name"]);
+        echo "The file ". basename($_FILES["profile_photo"]["name"]). " has been uploaded.";
       } else {
         // Error occurred
         echo "Sorry, there was an error uploading your file.";
