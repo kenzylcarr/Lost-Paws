@@ -134,7 +134,7 @@
             </div>
 
             <!-- Password -->
-            <div class="login-fi2eld">
+            <div class="login-field">
               <label for="password">Password</label>
               <input type="password" name="password" id="password"/>
               <p id="error-text-password" class="error-text hidden">Invalid password</p>
