@@ -9,3 +9,15 @@
   File name: ajax-lostfound.js
 */
 
+document.addEventListener('DOMContentLoaded', function()
+{
+  function fetchPets()
+  {
+    
+  }
+
+  function updatePets()
+  {
+    
+  }
+});
