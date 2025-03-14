@@ -9,6 +9,32 @@
   File name: mainpage-afterlogin.php
 -->
 
+<!-- PHP validation for the form begins -->
+<?php
+session_start();
+require_once("../Model/db_config.php");
+
+// Check if the user is signed in
+if (!isset($_SESSION['username'])) {
+  header("Location: ../index.php");
+  exit();
+}
+
+// Fetch data from database
+$username = $_SESSION['username'];
+$stmt = $conn->prepare("SELECT email_address, phone, profile_photo FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  $user = $result->fetch_assoc;
+} else {
+  echo "User not found.";
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
