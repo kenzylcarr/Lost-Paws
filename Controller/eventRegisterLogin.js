@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function()
         }
         console.log("Validation successful. Sending data over to server.");
       }
-      validateLogin(event);
     });
 
     // add event listeners after the DOM is loaded
