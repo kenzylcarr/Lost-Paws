@@ -85,7 +85,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle file upload for profile photo
     $profile_photo = "";
     if (isset($_FILES["profilephoto"]) && $_FILES["profilephoto"]["name"]) {
-      $target_dir = "../View/uploads/";
+      $target_dir = "../View/images/";
       if (!file_exists($target_dir)) {
         mkdir($target_dir, 0777, true);
       }
