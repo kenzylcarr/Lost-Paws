@@ -33,6 +33,17 @@ if ($result->num_rows > 0) {
   echo "User not found.";
   exit();
 }
+  // Fetch pet data from database
+  $pets = [];
+  $stmt = $conn->prepare("SELECT pet_id, animal_type, status, location_ip, picture FROM pets");
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $pets[] = $row;
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -82,51 +93,15 @@ if ($result->num_rows > 0) {
         </div>
 
         <div class="pet-database-container"> 
-            <div class="pet-brief-info">
-                <img alt="Photo">
-                <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.php">View Post</a></p>
-            </div>
-            <div class="pet-brief-info">
-                <img alt="Photo">
-                <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.php">View Post</a></p>
-            </div>
-            <div class="pet-brief-info">
-                <img alt="Photo">
-                <p>Brief Pet Information</p>
-                <p><a href="/View/selectpostpage.php">View Post</a></p>
-            </div>
-            <div class="pet-brief-info">
-              <img alt="Photo">
-              <p>Brief Pet Information</p>
-              <p><a href="/View/selectpostpage.php">View Post</a></p>
-          </div>
-          <div class="pet-brief-info">
-              <img alt="Photo">
-              <p>Brief Pet Information</p>
-              <p><a href="/View/selectpostpage.php">View Post</a></p>
-          </div>
-          <div class="pet-brief-info">
-            <img alt="Photo">
-            <p>Brief Pet Information</p>
-            <p><a href="/View/selectpostpage.php">View Post</a></p>
-         </div>
-         <div class="pet-brief-info">
-            <img alt="Photo">
-            <p>Brief Pet Information</p>
-            <p><a href="/View/selectpostpage.php">View Post</a></p>
-        </div>
-        <div class="pet-brief-info">
-          <img alt="Photo">
-          <p>Brief Pet Information</p>
-          <p><a href="/View/selectpostpage.php">View Post</a></p>
-        </div>
-        <div class="pet-brief-info">
-          <img alt="Photo">
-          <p>Brief Pet Information</p>
-          <p><a href="/View/selectpostpage.php">View Post</a></p>
-        </div>
+        <?php foreach ($pets as $pet): ?>
+              <div class="pet-brief-info">
+                <img src="<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
+                <p> Type: <?php echo htmlspecialchars($pet['animal_type']); ?></p>
+                <p> Status: <?php echo htmlspecialchars($pet['status']); ?></p>
+                <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
+                <p><a href="/View/selectpostpage.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
+              </div>
+              <?php endforeach; ?>
       </div>
     </main>
 
