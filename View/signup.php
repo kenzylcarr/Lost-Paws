@@ -176,7 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post">
+          <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post" enctype="multipart/form-data">
                 <!-- First Name -->
                 <div class="signup-field">
                     <label for="firstname">First Name</label>
@@ -217,8 +217,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <!-- Profile Photo -->
                 <div class="signup-field">
-                    <label for="profile_photo">Profile Picture</label>
-                    <input type="file" id="profile_photo" name="profile_photo" />
+                    <label for="profilephoto">Profile Picture</label>
+                    <input type="file" id="profilephoto" name="profilephoto" />
                     <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
                 </div>
                 <!-- Submit button that redirects user to mainpage -->
