@@ -9,6 +9,40 @@
   File name: reportpetpage.php
 -->
 
+<!-- PHP validation for the form begins -->
+<?php
+session_start();
+require_once("../Model/db_config.php");
+  // Get form data
+  $animal_type = $_POST['animal_type'];
+  $status = $_POST['status'];
+  $location_ip = $_POST['location_ip'];
+
+  // Prepare INSERT statement for putting data into database
+  $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
+
+  // Set user_id to NULL so that submissions can be made without an account
+  $user_id = NULL;
+  $picture_paths = [];
+
+  // Handle file uploads
+  if (isset($_FILES['petPhotos'])) {
+    $target_dir = "../View/pet-uploads";
+    $total_files = count($_FILES['petPhotos']['name']);
+
+    for ($i = 0; i < $total_files; $i++) {
+      $file_name = basename($_FILES['petPhotos']['name'][$i]);
+      $target_file = $target_dir . $file_name;
+      $uploadOk = 1;
+
+      // Check if the file is an image
+      
+    }
+  }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
