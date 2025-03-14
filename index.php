@@ -40,7 +40,7 @@
           <p>Sign up now and join the community to report lost pets and lost pet sightings!</p>
           <a href="/View/signup.php">Sign Up!</a>
         </div>
-        <img src="" alt="Group of Pets" class="index-image">
+        <img src="View/images/index-pets.png" alt="Group of Pets" class="index-image">
       </div>
       
       <!-- Wave Half-->
