@@ -68,9 +68,10 @@
     background-color: #c5d7b3;
     height: 65vh;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15vh 10% 0 10%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15vh 10%;
     box-sizing: border-box;
     width: 100%;
     margin-top: 5vh;
