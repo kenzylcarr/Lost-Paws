@@ -29,7 +29,7 @@
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
+        <a href="/View/lostandfound.php">Lost & Found</a>
       </div>
 
       <div class="button">

@@ -24,7 +24,7 @@
       </a>
       <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
+        <a href="/View/lostandfound.php">Lost & Found</a>
       </div>
       <div class="button">
       <a href="/View/login.php" id="index-login-button">Login</a>
@@ -44,7 +44,7 @@
       <div class="wave-container">
         <div class="wave-text">
           <p>Together, we can make a positive impact on the lives of countless animals. Sign up now and become part of our compassionate community. Your support means the world to us and to the animals we care for.</p>
-          <a href="/View/mainpage-beforelogin.php">View Lost Pet Sightings</a>
+          <a href="/View/lostandfound.php">View Lost Pet Sightings</a>
         </div>
 
         <!-- The wave, waves characteristic made from haikei app -->

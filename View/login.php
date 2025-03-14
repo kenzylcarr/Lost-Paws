@@ -64,7 +64,7 @@
                 $_SESSION["username"] = $username;
 
                 // Redirect user to mainpage after login
-                header("location: mainpage-afterlogin.php");
+                header("location: homepage.php");
                 exit();
               } else {
                 // Display error message if password is invalid and prevent user from logging in
@@ -111,7 +111,7 @@
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="aboutpage.php">About Lost Paws</a>
-        <a href="mainpage-beforelogin.php">Lost & Found</a>
+        <a href="lostandfound.php">Lost & Found</a>
         </div>
     </nav>
 
@@ -147,7 +147,7 @@
 
             <!-- Submit Button to Login -->
             <div class="login-field">
-              <input class="login-button" type="submit" value="Login" action="mainpage-afterlogin.php">
+              <input class="login-button" type="submit" value="Login" action="homepage.php">
             </div>
           </form>
         <!-- If user does not have an account  -->

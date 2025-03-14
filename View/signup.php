@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="/View/mainpage-beforelogin.php">Lost & Found</a>
+        <a href="/View/lostandfound.php">Lost & Found</a>
       </div>
     </nav>
 
