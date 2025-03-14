@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<div class="petmap-page">
   <div id="container">
   
 	  <!-- Lost Paws Logo -->
@@ -107,7 +108,7 @@
       }
     });
   </script>
-
+</div>
 </body>
 
 </html>
