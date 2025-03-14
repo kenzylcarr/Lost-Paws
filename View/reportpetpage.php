@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
       if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
         echo "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
-        $uploadOK = false;
+        $uploadOK = 0;
       }
 
       if ($uploadOK == 1) {
