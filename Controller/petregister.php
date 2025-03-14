@@ -26,7 +26,7 @@ if (!isset($_SESSION['user_id'])) {
 
 // Declare variables with empty values
 $animal_type = $status = $location_ip = $picture = "";
-$animal_err = $status_err = $location_err = $picture_err = "";
+$animal_type_err = $status_err = $location_err = $picture_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check for input errors before submitting to the database
-    if (empty($animal_err) && empty($status_err) && empty($location_err) && empty($picture_err)) {
+    if (empty($animal_type_err) && empty($status_err) && empty($location_err) && empty($picture_err)) {
         // Prepare INSERT statement
         $sql = "INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)";
 
@@ -95,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // Display validation errors
-        if (!empty($animal_err)) echo $animal_err . "<br>";
+        if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
         if (!empty($status_err)) echo $status_err . "<br>";
         if (!empty($location_err)) echo $location_err . "<br>";
         if (!empty($picture_err)) echo $picture_err . "<br>";
