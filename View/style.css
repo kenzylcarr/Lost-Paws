@@ -799,9 +799,8 @@ padding: 8px;
 /* 
     START CSS: reportpetpage.php 
                                       */
-
 /*Header Styles */
-header {
+.reportpet-page header {
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
@@ -811,20 +810,20 @@ header {
 }
 
 /* Logo Styles */
-.logo {
+.reportpet-page .logo {
   font-size: 20px; 
   font-weight: bold; 
 }
 
 /* Navigation Links Styles */
-nav a {
+.reportpet-page nav a {
   margin: 0 10px; 
   text-decoration: none; 
   color: #333; 
 }
 
 /* Auth Button Styles */
-.auth-buttons button {
+.reportpet-page .auth-buttons button {
   background-color: #007bff; 
   color: white;
   border: none;
@@ -834,7 +833,7 @@ nav a {
 }
 
 /* Container for Form and Map */
-.container {
+.reportpet-page .container {
   display: flex;
   justify-content: space-between; 
   margin-top: 20px;
@@ -843,7 +842,7 @@ nav a {
 }
 
 /* Styles for both Form and Map Containers */
-.form-container, .map-container {
+.reportpet-page .form-container, .map-container {
   background: white; 
   padding: 20px; 
   border-radius: 10px; 
@@ -851,20 +850,20 @@ nav a {
 }
 
 /* Form Container Styles */
-.form-container {
+.reportpet-page .form-container {
   width: 45%; 
   text-align: left; 
   height: 550px;
 }
 
 /* Map Container Styles */
-.map-container {
+.reportpet-page .map-container {
   width: 45%; 
   height: 550px;
 }
 
 /* Map Area Styles */
-.map {
+.reportpet-page .map {
   height: 400px; 
   background: lightgray; 
   border-radius: 10px; 
@@ -881,7 +880,7 @@ nav a {
 } */
 
 /* Container for the file input and submit button */
-.upload-container {
+.reportpet-page .upload-container {
   display: flex;
   flex-direction: row;
   align-items: left;
@@ -891,13 +890,13 @@ nav a {
 }
 
 /* Style for the file input button */
-.upload-container input[type="file"] {
+.reportpet-page .upload-container input[type="file"] {
   display: none;
 }
 
 /* Custom label for file input */
 
-.upload-container label {
+.reportpet-page .upload-container label {
   display: inline-block; /* Ensure it's visible */
   background-color: #007bff;
   color: white;
@@ -911,12 +910,12 @@ nav a {
 }
 
 /* Hover effect for label */
-.upload-container label:hover {
+.reportpet-page .upload-container label:hover {
   background-color: #0056b3;
 }
 
 /* Style for the submit button */
-.upload-container button {
+.reportpet-page .upload-container button {
   background-color: #007bff; 
   color: white;
   padding: 10px 20px;
@@ -927,7 +926,7 @@ nav a {
 }
 
 /* Hover effect for submit button */
-.upload-container button:hover {
+.reportpet-page .upload-container button:hover {
   background-color: #0056b3;
 }
 
