@@ -108,6 +108,7 @@ if ($result->num_rows > 0) {
     <main id="mainpage-right-afterlogin">
         <div class="user-photo">
           <img src="<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+          <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
         </div>
     
         <div class="user-name">
