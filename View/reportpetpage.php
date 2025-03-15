@@ -131,7 +131,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="signup-header">
           <h2>Report a Lost or Found Pet:</h2>
       </div>
-      <!-- Prompts user to input their information -->
+	   								 <!-- Remove sign-up form? -->
+      <!-- Prompts user to input their information -->     
       <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post" enctype="multipart/form-data">
           <!-- First Name -->
           <div class="signup-field">
@@ -188,7 +189,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           </div>
         </form>
 
-        <!-- <h1> Report a Lost or Found Pet:</h1>
+        <h1> Report a Lost or Found Pet:</h1>
         <div class="container">
             <div class="map-container">
                 <h2>Drop a pin on the map:</h2>
