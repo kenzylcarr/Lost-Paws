@@ -42,6 +42,7 @@
         </div>
         <img src="View/images/index-pets.png" alt="Group of Pets" class="index-image">
       </div>
+    </div>
       
       <!-- Wave Half-->
       <div class="wave-container">
@@ -60,6 +61,5 @@
           <rect x="0" y="300" width="1440" height="300" fill="#FFFFFF"></rect>  <!-- !!! change rec colour IF changing wave colour!!! -->
         </svg>
       </div>
-    </div>
   </body>
 </html>
