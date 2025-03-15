@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
   <title>Report A Pet</title>
-  <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/reportpet-style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
 </head>
 
