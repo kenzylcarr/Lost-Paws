@@ -112,7 +112,7 @@ if ($result->num_rows > 0) {
         </div>
     
         <div class="user-name">
-          <p><?php echo htmlspecialchars($username); ?></p>
+          <p><?php echo htmlspecialchars($firstname . ' ' . $lastname); ?></p>
         </div>
     
         <div class="user-options">
