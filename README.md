@@ -18,7 +18,6 @@ Follow these simple steps to navigate the website:
 4. **Contact Users**: Send messages if you find a match.
 
 ## Team Members
-- Butool Basabrain
 - Anna Chu
 - Ibrahim Hassan
 - Makenzy Laursen-Carr (team leader)
