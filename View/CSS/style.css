@@ -172,7 +172,7 @@ h1, h2 {
 #aboutPage-info {
   display: grid;
   padding: 10px;
-  background-color: white;
+  background-color: #F5F5F4;
   color: black;
   font-size: 20px;
   width: 100%;
@@ -219,23 +219,23 @@ h1, h2 {
 
     grid-template-columns: 1fr 0.5fr 2fr; 
 }
-    .aboutPage-offer {
-        grid-column-start: 1;
-        grid-column-end: 2;
-    }
+  .aboutPage-offer {
+      grid-column-start: 1;
+      grid-column-end: 2;
+  }
 
-    .aboutPage-photo2 {
-        grid-column-start: 2;
-        grid-column-end: 3;
-    }
+  .aboutPage-photo2 {
+      grid-column-start: 2;
+      grid-column-end: 3;
+  }
 
-    .aboutPage-mission-statement {
-        grid-column-start: 3;
-        grid-column-end: 4;
-    }
+  .aboutPage-mission-statement {
+      grid-column-start: 3;
+      grid-column-end: 4;
+  }
 
 p.description {
-    background-color: #faac6c;
+    background-color: #FFECBD;
     padding: 1vw;
     text-align: center;
     border-radius: 17px 17px 17px 17px;
@@ -275,7 +275,7 @@ p.description {
 #main-right-signup {
   padding-left: 150px;
   padding-top: 40px;
-  background-color: white;
+  background-color: #F5F5F4;
   font-size: 20px;
 
   grid-column-start: 2;
