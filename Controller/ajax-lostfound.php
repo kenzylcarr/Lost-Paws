@@ -8,3 +8,26 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: ajax-lostfound.php
 */
+
+session_start();
+require_once("../Model/db_config.php");
+
+header("Content-Type: application/json";)
+
+$pets = [];
+$stmt = $conn->prepare();            // FILL LATER
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0)
+{
+  while ($row = $result->fetch_assoc())
+  {
+    $pets[] = [
+                                    // FILL LATER
+    ];
+  }    
+}
+
+echo json_encode($pets);
+?>
