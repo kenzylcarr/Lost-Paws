@@ -136,7 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <form action="reportpetpage.php" method="post" enctype="multipart/form-data">
           <!-- Animal Type -->
           <label for="animal_type">Animal Type:</label>
-          <input type="text" name="animal_type" required>
+          <select name="animal_type">
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+          </select>
 
           <!-- Status -->
           <label for="status">Status:</label>
