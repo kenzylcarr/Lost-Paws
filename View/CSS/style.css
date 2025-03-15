@@ -1145,6 +1145,23 @@ padding: 8px;
 
 /* START CSS FOR messages.php */
 
+.messages-page .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 2px;
+  max-width: 80px;
+  height: 70px;
+  margin-left: 0px;
+}
+
+.messages-page .nav-logo {
+  height: 70px;
+  width: auto;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
 .messages-page {
   display: flex;
   flex-direction: column;
