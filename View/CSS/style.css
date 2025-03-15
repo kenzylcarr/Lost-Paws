@@ -769,8 +769,8 @@ padding: 8px;
   flex-direction: row;
   align-items: center;  
   gap: 10px; 
-  padding: 30px;
-  margin-top: -280px;  
+  padding: 10px;
+  margin-top: 5px;  
 }
 
 .reportpet-page .upload-container input[type="file"] {
