@@ -205,11 +205,12 @@
 
       </div>
     </main>
+  </div>
+  </div>
 
-    <footer>
+      <footer>
       <p>CS 476: Software Development Project</p>
     </footer>
-  </div>
-  </div>
+  
 </body>
 </html>
