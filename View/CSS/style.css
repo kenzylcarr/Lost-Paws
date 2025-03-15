@@ -1106,14 +1106,36 @@ padding: 8px;
 
 /*  END CSS FOR accountpage.php  */
 
-/*  START CSS FOR messages.php  */
+/* START CSS FOR messages.php */
 
-/* Style for Conversation List */
-.conversation-list {
+.messages-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full height */
+}
+
+.messages-page #messages-main {
+  flex-grow: 1; /* Push the footer down */
+  padding-top: 80px;
+  padding-left: 10px;
+}
+
+.messages-page .settings-page footer {
+  background-color: #ceedf1;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  margin-top: auto; 
+  margin-bottom: 0;
+  position: relative; 
+  width: 100%; 
+}
+
+.messages-page .conversation-list {
   margin-top: 20px;
 }
 
-.conversation-item {
+.messages-page .conversation-item {
   background-color: #cce4fc;
   padding: 15px;
   margin: 10px 0;
@@ -1122,58 +1144,56 @@ padding: 8px;
   transition: background-color 0.3s ease;
 }
 
-.conversation-item:hover {
+.messages-page .conversation-item:hover {
   background-color: #dfeaed;
 }
 
-.conversation-header {
+.messages-page .conversation-header {
   font-weight: bold;
   font-size: 1.1em;
 }
 
-.conversation-item p {
+.messages-page .conversation-item p {
   margin: 0;
 }
 
-.conversation-item small {
+.messages-page .conversation-item small {
   color: #888;
 }
 
-/* Style for Message Thread */
-.message-thread {
+.messages-page .message-thread {
   display: none;
   margin-top: 20px;
   border-top: 1px solid #ddd;
   padding-top: 20px;
 }
 
-.thread-header h3 {
+.messages-page .thread-header h3 {
   font-size: 1.3em;
   font-weight: bold;
 }
 
-.message-item {
+.messages-page .message-item {
   padding: 10px;
   margin: 10px 0;
   border-radius: 8px;
 }
 
-.message-item.received {
+.messages-page .message-item.received {
   background-color: #faf0f0;
 }
 
-.message-item.sent {
+.messages-page .message-item.sent {
   background-color: #d4edda;
   text-align: right;
 }
 
-.message-item p {
+.messages-page .message-item p {
   margin: 0;
   font-size: 1em;
 }
 
-/* Message Input Area */
-textarea {
+.messages-page textarea {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -1181,7 +1201,7 @@ textarea {
   border-radius: 5px;
 }
 
-.send-reply {
+.messages-page .send-reply {
   background-color: #64acf9;
   color: white;
   padding: 10px 20px;
@@ -1190,12 +1210,11 @@ textarea {
   cursor: pointer;
 }
 
-.send-reply:hover {
+.messages-page .send-reply:hover {
   background-color: #0056b3;
 }
 
-
-/*  END CSS FOR messages.php  */
+/* END CSS FOR messages.php */
 
 
 /*	 START CSS: error messages 	*/
