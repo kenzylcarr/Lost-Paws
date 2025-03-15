@@ -109,7 +109,11 @@
     });
   </script>
 </div>
-</body>
 
+<footer>
+  <p>CS 476: Software Development Project</p>
+</footer>
+	
+</body>
 </html>
 
