@@ -120,7 +120,7 @@
     <main id="main-left-login">  
       <div class="login-header">
         <h1>LOST PAWS</h1>
-        <h2>Welcome to Lost Paws!</h2>
+        <h2>Welcome back to Lost Paws!</h2>
       </div>
           <!-- Prompts for user input to login -->
           <form class="auth-form-login" id="login-form" action="../View/login.php" method="post">
