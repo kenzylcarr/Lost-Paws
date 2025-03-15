@@ -185,14 +185,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
 		</br> -->
-		
-		<div class="upload-container">
-			<p><strong>Please upload 1-5 images of your pet:</strong></p>
-			<input type="file" id="petImages" name="petImages" accept="image/*" multiple>
-			<label for="petImages">Choose Files</label> <!-- Custom "Choose Files" button -->
-			<button type="submit" id="submitImages" class="upload-button">Submit Images</button>
-		</div>
-      </div>
-
+    </div>
 	</main>
 </html>
