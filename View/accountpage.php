@@ -151,12 +151,13 @@
         </section>
       </div>
     </main>
-
-    <footer>
-      <p>CS 476: Software Development Project</p>
-    </footer>
   </div>
 </div>
+
+<footer>
+<p>CS 476: Software Development Project</p>
+</footer>
+	
 </body>
 </html>
 
