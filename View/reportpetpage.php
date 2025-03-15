@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $stmt->execute();
     }
     echo "Pet reported successfully!";
-    header("Location: lostandfound.php");
+    header("Location: homepage.php");
     exit();
   }
 ?>
