@@ -42,6 +42,7 @@
   </script>
 </head>
 <body>
+  <div class="messages-page">
   <div id="container">
     <nav class="navmenu">
       <div class="logo">
@@ -208,6 +209,7 @@
     <footer>
       <p>CS 476: Software Development Project</p>
     </footer>
+  </div>
   </div>
 </body>
 </html>
