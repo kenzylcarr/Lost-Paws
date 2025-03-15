@@ -1002,8 +1002,7 @@ padding: 8px;
 /* 
 	START CSS: accountpage.php */
 	
-/* Account Settings Layout */
-.settings-container {
+.settings-page .settings-container {
   display: flex;
   width: 80%;
   margin: 20px auto;
@@ -1013,60 +1012,64 @@ padding: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Sidebar */
-.sidebar {
+.settings-page #account-settings-main {
+  margin-top: 70px;
+}
+
+
+.settings-page .sidebar {
   width: 30%;
   padding: 20px;
   border-right: 1px solid #ddd;
 }
 
-.profile-info {
+.settings-page .profile-info {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.profile-pic {
+.settings-page .profile-pic {
   width: 80px;
   height: 80px;
   border-radius: 50%;
 }
 
-.username {
+.settings-page .username {
   font-weight: bold;
   margin-top: 10px;
 }
 
-.settings-menu {
+.settings-page .settings-menu {
   list-style: none;
   padding: 0;
 }
 
-.settings-menu li {
+.settings-page .settings-menu li {
   margin: 10px 0;
 }
 
-.settings-menu a {
+.settings-page .settings-menu a {
   text-decoration: none;
   color: #64acf9;
 }
 
-/* Main Content */
-.settings-content {
+
+.settings-page .settings-content {
   width: 70%;
   padding: 20px;
 }
 
-.settings-section {
+.settings-page .settings-section {
   margin-bottom: 20px;
 }
 
-label {
+.settings-page label {
   display: block;
   font-weight: bold;
   margin-top: 10px;
 }
 
-input {
+.settings-page input {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -1074,7 +1077,7 @@ input {
   border-radius: 5px;
 }
 
-.save-button {
+.settings-page .save-button {
   margin-top: 15px;
   background: #64acf9;
   color: white;
@@ -1084,10 +1087,22 @@ input {
   cursor: pointer;
 }
 
-.save-button:hover {
+.settings-page .save-button:hover {
   background: #0056b3;
 }
 
+.settings-page footer {
+  background-color: #ceedf1;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  margin-top: auto; 
+  margin-bottom: 0; 
+  position: fixed;
+  margin-top: 0;
+  padding-top: 10px;
+  clear: both;
+}
 
 /*  END CSS FOR accountpage.php  */
 
