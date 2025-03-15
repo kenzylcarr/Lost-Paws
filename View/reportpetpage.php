@@ -133,64 +133,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
 	   								 <!-- Remove sign-up form? -->
       <!-- Prompts user to input their information -->     
-      <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post" enctype="multipart/form-data">
-          <!-- First Name -->
-          <div class="signup-field">
-              <label for="firstname">First Name</label>
-              <input type="text" name="firstname" id="firstname"/><br />
-              <span id="error-text-firstname" class="error-text hidden">Invalid first name.</span><br />
-          </div>    
-          <!-- Last Name -->
-          <div class="signup-field">
-              <label for="lastname">Last Name</label>
-              <input type="text" name="lastname" id="lastname"/><br />
-              <span id="error-text-lastname" class="error-text hidden">Invalid last name.</span><br />
-          </div>
-          <!-- Username -->
-          <div class="signup-field">
-                  <label for="username">Username</label>
-                  <input type="text" id="username" name="username" />
-                  <span id="error-text-username" class="error-text hidden">Invalid username.</span><br />
-          </div>
-          <!-- Email Address -->
-          <div class="signup-field">
-              <label for="email">Email</label>
-              <input type="email" name="email" id="email"/><br />
-              <span id="error-text-email" class="error-text hidden">Invalid email address.</span><br />
-          </div>
-      
-          <!-- Phone Number -->
-          <div class="signup-field">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone"/><br />
-              <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
-          </div>
-          <!-- Password -->
-          <div class="signup-field">
-              <label for="password">Password</label>
-              <input type="password" name="password" id="password"/><br />
-              <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span><br />
-          </div>
-          <!-- Confirm Password -->
-          <div class="signup-field">
-              <label for="cpassword">Confirm Password</label>
-              <input type="password" name="cpassword" id="cpassword"/><br />
-              <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span><br />
-          </div>
-          <!-- Profile Photo -->
-          <div class="signup-field">
-              <label for="profilephoto">Profile Picture</label>
-              <input type="file" id="profile_photo" name="profile_photo" />
-              <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
-          </div>
-          <!-- Submit button that redirects user to mainpage -->
-          <div class="signup-field">
-              <input class="signup-button" type="submit" value="Sign Up!" action="login.php"/>
-          </div>
-        </form>
+      <form action="reportpetpage.php" method="post" enctype="multipart/form-data">
+          <!-- Animal Type -->
+          <label for="animal_type">Animal Type:</label>
+          <input type="text" name="animal_type" required>
 
-        <h1> Report a Lost or Found Pet:</h1>
-        <div class="container">
+          <!-- Status -->
+          <label for="status">Status:</label>
+          <select name="status">
+            <option value="lost">Lost</option>
+            <option value="found">Found</option>
+          </select>
+
+          <!-- Location IP -->
+          <label for="location_ip">Location:</label>
+          <input type="text" name="location_ip" required>
+
+          <!-- Animal Photo -->
+          <label for="petPhoto">Upload Animal Photo:</label>
+          <input type="file" name="petPhotos[]" multiple accept="image/*">
+
+          <button type="submit">Submit</button>
+      </form>
+        <!-- <h1> Report a Lost or Found Pet:</h1> -->
+        <!-- <div class="container">
             <div class="map-container">
                 <h2>Drop a pin on the map:</h2>
               
@@ -211,8 +177,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p> Report a pet by providing the following information!</p>
 				</br>
                 
-                <!-- Embedded Form -->
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeX-rwts6_gJn5A0nXWU2nHLG06chqNJUSW3mN022037sx4FA/viewform?usp=header" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+                <-- Embedded Form -->
+                <!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeX-rwts6_gJn5A0nXWU2nHLG06chqNJUSW3mN022037sx4FA/viewform?usp=header" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 		</br> -->
