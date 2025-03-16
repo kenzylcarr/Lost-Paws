@@ -36,7 +36,6 @@
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="aboutpage.php">About Lost Paws</a>
-        <a href="reportpetpage.php">Report a Pet</a>
         <a href="lostandfound.php">Lost & Found</a> 	
         <a href="petmap.php">Pet Map</a>
       </div>
