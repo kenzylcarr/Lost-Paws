@@ -102,6 +102,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <title>Report A Pet</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/reportpet-style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
+  <style>
+    #map1, #map2 { height: 400px; width: 100%; margin-bottom: 20px; }
+    #submitBtn {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -187,4 +196,137 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		</br> -->
     </div>
 	</main>
+
+  <h1>Click on the map to select a location, then submit to save it</h1>
+  
+  <!-- First Map -->
+  <div id="map1"></div>
+  
+  <button id="submitBtn" style="display:none;">Submit Location</button>
+
+  <!-- Second Map -->
+  <h2>All Saved Locations - automatically displays a new pinned location in REAL TIME</h2>
+  <div id="map2"></div>
+  
+  <script>
+    let map1;
+    let map2;
+    let currentMarker = null;  // Store the current marker
+    let selectedLocation = null;  // Store the selected location (lat, lng)
+
+    // Initialize both maps
+    function initMap() {
+      // First Map Initialization
+      map1 = new google.maps.Map(document.getElementById("map1"), {
+        center: { lat: 50.4454, lng: -104.6189 },  // Regina coordinates
+        zoom: 12,
+      });
+
+      // Second Map Initialization (show all saved locations)
+      map2 = new google.maps.Map(document.getElementById("map2"), {
+        center: { lat: 50.4454, lng: -104.6189 },  // Same center as the first map
+        zoom: 12,
+      });
+
+      // Add a click event listener to the first map
+      google.maps.event.addListener(map1, "click", function(event) {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+
+        // If a marker already exists, remove it
+        if (currentMarker) {
+          currentMarker.setMap(null);
+        }
+
+        // Create a new marker at the clicked position
+        currentMarker = new google.maps.Marker({
+          position: event.latLng,
+          map: map1,
+        });
+
+        // Store the location for submission
+        selectedLocation = { lat, lng };
+
+        // Show the submit button after a location is selected
+        document.getElementById("submitBtn").style.display = "inline-block";
+      });
+
+      // Load all locations on the second map
+      loadAllLocations();
+    }
+
+    // Function to save the selected location
+    function saveLocation(lat, lng) {
+      fetch("save_location.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ lat, lng }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Location saved:", data);
+        alert('Location saved successfully!');
+        
+        // After saving the location, reload all markers on the second map
+        loadAllLocations();
+      })
+      .catch(error => {
+        console.error("Error saving location:", error);
+        alert('Error saving location!');
+      });
+    }
+
+    // Function to load all locations from the database and display them on map2
+    function loadAllLocations() {
+      fetch("get_locations.php")
+        .then(response => response.json())
+        .then(data => {
+          // Clear all existing markers before adding new ones
+          clearMarkers(map2);
+
+          data.forEach(location => {
+            const latLng = new google.maps.LatLng(location.latitude, location.longitude);
+            new google.maps.Marker({
+              position: latLng,
+              map: map2,
+            });
+          });
+        })
+        .catch(error => {
+          console.error("Error loading locations:", error);
+        });
+    }
+
+    // Function to clear existing markers on a given map
+    function clearMarkers(map) {
+      const markers = map.markers || [];
+      markers.forEach(marker => {
+        marker.setMap(null);
+      });
+      map.markers = [];
+    }
+
+    // Function to handle submit click
+    function handleSubmit() {
+      if (selectedLocation) {
+        const { lat, lng } = selectedLocation;
+        saveLocation(lat, lng);
+
+        // Reset the selected location and hide the submit button
+        selectedLocation = null;
+        document.getElementById("submitBtn").style.display = "none";
+
+        // Optionally, you can remove the marker here if needed:
+        currentMarker.setMap(null);
+      } else {
+        alert('Please select a location on the map before submitting!');
+      }
+    }
+
+    // Attach the handleSubmit function to the button's click event
+    document.getElementById("submitBtn").addEventListener("click", handleSubmit);
+  </script>
+</body>
 </html>
