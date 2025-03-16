@@ -156,7 +156,7 @@ if (isset($_GET['id'])) {
           <!-- Container for Comment Section -->
           <div class="comment-container">
               <h3>Comments</h3>
-              <form action="viewpet_member.php" method="post">
+              <form action="" method="post">
                 <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
