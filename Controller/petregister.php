@@ -111,19 +111,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           
         // Check for input errors before submitting to the database
         if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
-            // Prepare INSERT statement
-            $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
-            
-            // Insert into the database
-            foreach ($picture_paths as $picture) {
-            $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
-            if ($stmt->execute()) {
-                echo "Error: " . $stmt->error;
+            if (empty($picture_paths)) {
+                echo "No pictures were uploaded.";
+            } else {
+                // Prepare INSERT statement
+                $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
+                
+                // Insert into the database
+                foreach ($picture_paths as $picture) {
+                $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
+                if ($stmt->execute()) {
+                    echo "Error: " . $stmt->error;
+                }
+                }
+                echo "Pet reported successfully!";
+                header("Location: ../View/homepage.php");
+                exit();
             }
-            }
-            echo "Pet reported successfully!";
-            header("Location: ../View/homepage.php");
-            exit();
         } else {
             // Display validation errors
             if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
