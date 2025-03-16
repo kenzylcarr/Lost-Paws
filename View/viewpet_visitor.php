@@ -6,7 +6,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: selectpostpage_visitor.php
+  File name: viewpet_visitor.php
 -->
 <?php
 session_start();
@@ -106,7 +106,7 @@ if (isset($_GET['id'])) {
           <!-- Container for Comment Section -->
             <div class="comment-container">
               <h3>Comments</h3>
-              <form action="selectpostpage_visitor.php" method="post" enctype="multipart/form-data">
+              <form action="viewpet_visitor.php" method="post" enctype="multipart/form-data">
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
             </form>
