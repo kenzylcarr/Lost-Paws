@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
 
   // Fetch pet data from database
   $pets = [];
-  $stmt = $conn->prepare("SELECT pet_id, animal_type, status, location_ip, picture FROM pets");
+  $stmt = $conn->prepare("SELECT pet_id, user_id, animal_type, status, location_ip, picture FROM pets");
   $stmt->execute();
   $result = $stmt->get_result();
 

@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
   $pet_id = $_GET['id'];
 
   // Fetch specific pet data from the database
-  $stmt = $conn->prepare("SELECT pet_id, animal_type, status, location_ip, picture, user_id FROM pets WHERE pet_id = ?");
+  $stmt = $conn->prepare("SELECT pet_id, user_id, animal_type, status, location_ip, picture, user_id FROM pets WHERE pet_id = ?");
   $stmt->bind_param("i", $pet_id);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -98,18 +98,18 @@ if (isset($_GET['id'])) {
       <main id="select-post-main-center">
         <!-- Lost or Found Label -->
             <div class="lost-or-found-label">
-                <h1>Lost Pet</h1>
+              <h1><?php echo htmlspecialchars($pet['status']); ?> Pet</h1> 
             </div>
         <!-- Title of Post -->
             <div class="title-post">
-            <h1><?php echo htmlspecialchars($pet['status']); ?> Pet</h1> 
+            <h1>Title of Post</h1> 
             </div>
         <!-- Container for Information -->
             <div class="description-container">
               <!-- Column 1: Pet Photo, Contact User-->
               <div class="description-column1">
               <img src="<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
-              <p>Posted by: <?php echo htmlspecialchars($pet['username']); ?></p>
+              <p>Posted by: <?php echo htmlspecialchars($pet['user_id']); ?></p>
                 <button id="contact-user-button">Contact User</button>
               </div>
               <!-- Column 2: Written Pet Description -->
