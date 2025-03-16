@@ -3,13 +3,18 @@ header('Content-Type: application/json');
 
 // Include the DB configuration file
 require_once("../Model/db_config.php");  // Make sure the path is correct
+session_start();
 
-// Create connection
-$conn = new mysqli($db_host, $db_user, $db_pwd, $db_db);
+// Check if connection is successful
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Check if the user is signed in
+if (!isset($_SESSION['username'])) {
+    // Redirect to login page if not logged in
+    header("Location: ../View/login.php"); 
+    exit();
 }
 
 // Get the JSON data from the request
@@ -34,5 +39,5 @@ if (isset($data['lat']) && isset($data['lng'])) {
     echo json_encode(["error" => "Invalid data"]);
 }
 
-$conn->close();
+mysqli_close($conn);
 ?>

@@ -4,12 +4,16 @@ header('Content-Type: application/json');
 // Include the DB configuration file
 require_once("../Model/db_config.php");  // Make sure the path is correct
 
-// Create connection
-$conn = new mysqli($db_host, $db_user, $db_pwd, $db_db);
+// Check if connection is successful
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Check if the user is signed in
+if (!isset($_SESSION['username'])) {
+    // Redirect to login page if not logged in
+    header("Location: ../View/login.php"); 
+    exit();
 }
 
 // Retrieve all locations from the database
@@ -28,5 +32,5 @@ if ($result->num_rows > 0) {
 
 echo json_encode($locations);
 
-$conn->close();
+mysqli_close($conn);
 ?>
