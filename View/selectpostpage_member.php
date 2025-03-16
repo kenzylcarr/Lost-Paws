@@ -105,7 +105,7 @@ if (isset($_GET['id'])) {
             </div>
         <!-- Title of Post -->
             <div class="title-post">
-            <h1>Title of Post</h1> 
+              <h1>Title of Post</h1> 
             </div>
         <!-- Container for Information -->
             <div class="description-container">
