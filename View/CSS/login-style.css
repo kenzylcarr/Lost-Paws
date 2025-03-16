@@ -9,6 +9,12 @@
   padding-top: 190px;
   width: 60vw; 
   background-color: #cde6f1c0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  paddig: 20px;
 }
 
 #main-left-login {
@@ -99,5 +105,13 @@ input {
 .forgot-password {
   float: right;
 }
+
+.login-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rbga(0, 0, 0, 0.2);    /* might delete later */
+}
+
 /*   END CSS: login.php 
                                       */
