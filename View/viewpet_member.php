@@ -33,31 +33,6 @@ if ($result->num_rows > 0) {
   exit();
 }
 
-// Get the pet_id from the URL
-if (isset($_GET['id'])) {
-  $pet_id = $_GET['id'];
-
-  // Fetch specific pet data from the database along with the username
-  $stmt = $conn->prepare("
-    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, users.username 
-    FROM pets 
-    JOIN users ON pets.user_id = users.user_id 
-    WHERE pets.pet_id = ?");
-  $stmt->bind_param("i", $pet_id);
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-  if ($result->num_rows > 0) {
-      $pet = $result->fetch_assoc();
-  } else {
-      echo "Pet not found.";
-      exit();
-  }
-} else {
-  echo "Pet ID not provided.";
-  exit();
-}
-
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   // Get the pet_id and comment from the form
@@ -66,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   
   if (!empty($pet_id) && !empty($comment)) {
     // Insert the comment into the database
-    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment_content, comment_date) VALUES (?, ?, ?, NOW())");
     $stmt->bind_param("iis", $pet_id, $user_id, $comment);
     
     if ($stmt->execute()) {
