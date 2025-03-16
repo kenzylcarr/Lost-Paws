@@ -88,7 +88,7 @@ require_once("../Model/db_config.php");
       </main>
   
       <main id="mainpage-right-beforelogin">
-        <h3>Sign in to get alerts and to connect with your community!</h3>
+        <h3>Sign in to connect with your community!</h3>
         <p>Don't have an account?<a id="signup-button" href="/View/signup.php">Sign Up!</a></p>
       </main>
   
