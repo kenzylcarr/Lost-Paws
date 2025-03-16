@@ -161,23 +161,23 @@ if (isset($_GET['id'])) {
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
               </form>
-            </div>
 
-          <!-- Display Comments -->
-          <div class="all-comments">
-            <?php
-            if ($comment_result->num_rows > 0) {
-              while ($comment = $comment_result->fetch_assoc()) {
-                echo '<div class="comment-item">';
-                echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
-                echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
-                echo '</div>';
-              }
-            } else {
-              echo '<p>No comments yet.</p>';
-            }
-            ?>
-        </div>
+            <!-- Display Comments -->
+            <div class="all-comments">
+              <?php
+                if ($comment_result->num_rows > 0) {
+                  while ($comment = $comment_result->fetch_assoc()) {
+                    echo '<div class="comment-item">';
+                    echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
+                    echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                    echo '</div>';
+                  }
+                } else {
+                  echo '<p>No comments yet.</p>';
+                }
+              ?>
+            </div>
+          </div>
       </main>
   
       <!-- Right Section: Display User Profile -->
