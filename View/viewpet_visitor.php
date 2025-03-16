@@ -18,6 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
   $comment = htmlspecialchars($_POST['comment']);
   
+    // Set default username and user_id for non-logged-in users
+  if (isset($_SESSION['username'])) {
+      $user_id = $_SESSION['user_id'];
+      $username = $_SESSION['username'];
+  } else {
+      // For non-logged-in users, set a default user
+      $user_id = 0;  // Assuming 0 will represent a guest
+      $username = "Lost-Paws-Guest";
+  }
+
   if (!empty($pet_id) && !empty($comment)) {
     // Insert the comment into the database
     $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment_content, comment_date) VALUES (?, ?, ?, NOW())");
