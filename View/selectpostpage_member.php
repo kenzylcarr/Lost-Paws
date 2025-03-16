@@ -122,8 +122,19 @@ if ($result->num_rows > 0) {
   
       <!-- Right Section: User Prompt to Signup/Login-->
       <main id="select-post-main-right">
-        <h3>Sign in to get alerts and to connect with your community!</h3>
-        <p>Don't have an account?<a class="signup-button" href="/View/signup.php">Register</a></p>
+      <div class="user-photo">
+          <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+        </div>
+    
+        <div class="user-name">
+          <p><?php echo htmlspecialchars($username); ?></p>
+        </div>
+    
+        <div class="user-options">
+            <!-- <p><a href="">View My Posts</a></p> -->
+            <p><a href="/View/accountpage.php">Account Settings</a></p>	
+            <p><a href="/View/messages.php">Messages</a></p>
+        </div>
       </main>
   
     </div>
