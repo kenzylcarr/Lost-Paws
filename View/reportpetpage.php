@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
       }
     }
-    
+
     // Check for input errors before submitting to the database
     if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
         // Prepare INSERT statement
@@ -121,6 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         }
         echo "Pet reported successfully!";
+        header("Location: ../View/homepage.php");
         exit();
     } else {
         // Display validation errors
