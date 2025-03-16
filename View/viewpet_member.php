@@ -74,7 +74,22 @@ if (isset($_GET['id'])) {
       echo "Pet not found.";
       exit();
   }
-} 
+  else {
+    exit();
+  }
+
+  // Fetch comments for the pet
+  $stmt = $conn->prepare("SELECT comments.comment_content, comments.comment_date, users.username 
+                          FROM comments 
+                          JOIN users ON comments.user_id = users.user_id 
+                          WHERE comments.pet_id = ? 
+                          ORDER BY comments.comment_date DESC");
+  $stmt->bind_param("i", $pet_id);
+  $stmt->execute();
+  $comment_result = $stmt->get_result();
+} else {
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -148,8 +163,24 @@ if (isset($_GET['id'])) {
                 <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
-            </form>
+              </form>
             </div>
+
+          <!-- Display Comments -->
+          <div class="all-comments">
+            <?php
+            if ($comment_result->num_rows > 0) {
+              while ($comment = $comment_result->fetch_assoc()) {
+                echo '<div class="comment-item">';
+                echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
+                echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                echo '</div>';
+              }
+            } else {
+              echo '<p>No comments yet.</p>';
+            }
+            ?>
+        </div>
       </main>
   
       <!-- Right Section: Display User Profile -->
