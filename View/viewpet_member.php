@@ -45,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
     $stmt->bind_param("iis", $pet_id, $user_id, $comment);
     
     if ($stmt->execute()) {
-      echo "Comment added successfully!";
+      echo "<script>window.location.href = window.location.href;</script>";
+      exit();
     } else {
       echo "Error adding comment.";
     }
