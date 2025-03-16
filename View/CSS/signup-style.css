@@ -84,7 +84,7 @@ h1, h2 {
     transition: background-color 0.3s ease;
 }
   
-#signup-button:hover, #login-button:hover {
+.signup-button:hover, .login-button:hover {
     background-color: #64aef3;
 }
 
@@ -179,12 +179,33 @@ h1, h2 {
     height: 30vw;
     width: 40vw;
     margin-left: center;
+    margin-bottom: 100px;
 }
-    
+
 .signup-field {
-    margin: 25px;
-    margin-bottom: 20px;
-    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: -20px;
+}
+
+.signup-field label {
+    width: 150px; 
+    text-align: left; 
+}
+
+.signup-field input {
+    flex: 1; 
+    max-width: 300px; 
+}
+
+.error-text {
+    width: 100%;
+    margin-left: 160px;
+    margin-top: -3px;
+    color: red;
+    font-size: 0.9em;
 }
 
 .signup-button {
@@ -195,18 +216,20 @@ h1, h2 {
     border-radius: 1vw;
     font-size: medium;
     color: white;
-    margin-top: 50px;
-    margin-left: 80px;
+    margin-top: 15px;
+    margin-left: 130px;
+    margin-right: 100px;
 }
 
 .signup-footnote {
     font-size: 15px;
     padding-left: 10px;
-    margin-left: 10px;
-    margin-top: 2px;
+    margin-left: 160px;
+    margin-top: 10px;
 }
     
 .signup-footnote a {
+    margin-left: 10px;
     text-decoration: none;
 }
     
