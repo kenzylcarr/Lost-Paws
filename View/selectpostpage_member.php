@@ -86,9 +86,8 @@ if (isset($_GET['id'])) {
         </div>
   
         <div class="button">
-          <a id="signup-button" href="signup.php">Sign Up!</a>
-          <a id="login-button" href="/View/login.php">Login</a>
-        </div>
+        <a id="login-button" href="logout.php">Logout</a>
+      </div>
       </nav>
       
       <!-- Left Section: Map-->
