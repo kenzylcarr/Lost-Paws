@@ -235,6 +235,7 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
+    margin-right: 20px;
 }
 
 .user-name {
@@ -243,7 +244,7 @@
   grid-row-start: 1;
   grid-row-end: 2;
   font-size: 1.5em;
-  margin-left: -50px;
+  padding-left: 20px;
 }
 
 .user-options {
