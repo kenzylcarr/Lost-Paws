@@ -53,6 +53,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
     echo "Comment or pet_id is missing.";
   }
 }
+
+// Get the pet_id from the URL
+if (isset($_GET['id'])) {
+  $pet_id = $_GET['id'];
+
+  // Fetch specific pet data from the database along with the username
+  $stmt = $conn->prepare("
+    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, users.username 
+    FROM pets 
+    JOIN users ON pets.user_id = users.user_id 
+    WHERE pets.pet_id = ?");
+  $stmt->bind_param("i", $pet_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows > 0) {
+      $pet = $result->fetch_assoc();
+  } else {
+      echo "Pet not found.";
+      exit();
+  }
+} 
 ?>
 
 <!DOCTYPE html>
