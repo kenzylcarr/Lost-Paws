@@ -132,14 +132,10 @@ if (isset($_GET['id'])) {
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
               </div>
             </div>
-          
-          <!-- Container for Comment Section -->
-          <div class="comment-container">
-              <h3>Comments</h3>
-            </div>
 
           <!-- Display Comments -->
           <div class="all-comments">
+            <h3>Comments</h3>
             <?php
             if ($comment_result->num_rows > 0) {
               while ($comment = $comment_result->fetch_assoc()) {
