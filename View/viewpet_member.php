@@ -33,6 +33,27 @@ if ($result->num_rows > 0) {
   exit();
 }
 
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
+  // Get the pet_id and comment from the form
+  $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
+  $comment = htmlspecialchars($_POST['comment']);
+  
+  if (!empty($pet_id) && !empty($comment)) {
+    // Insert the comment into the database
+    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment) VALUES (?, ?, ?)");
+    $stmt->bind_param("iis", $pet_id, $user_id, $comment);
+    
+    if ($stmt->execute()) {
+      echo "Comment added successfully!";
+    } else {
+      echo "Error adding comment.";
+    }
+  } else {
+    echo "Comment or pet_id is missing.";
+  }
+}
+
 // Get the pet_id from the URL
 if (isset($_GET['id'])) {
   $pet_id = $_GET['id'];
@@ -56,27 +77,6 @@ if (isset($_GET['id'])) {
 } else {
   echo "Pet ID not provided.";
   exit();
-}
-
-// Check if the form has been submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
-  // Get the pet_id and comment from the form
-  $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
-  $comment = htmlspecialchars($_POST['comment']);
-  
-  if (!empty($pet_id) && !empty($comment)) {
-    // Insert the comment into the database
-    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment) VALUES (?, ?, ?)");
-    $stmt->bind_param("iis", $pet_id, $user_id, $comment);
-    
-    if ($stmt->execute()) {
-      echo "Comment added successfully!";
-    } else {
-      echo "Error adding comment.";
-    }
-  } else {
-    echo "Comment or pet_id is missing.";
-  }
 }
 ?>
 
