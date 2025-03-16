@@ -86,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
     // Insert into the database
     foreach ($picture_paths as $picture) {
+      $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
       $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
       $stmt->execute();
     }
