@@ -57,6 +57,26 @@ if (isset($_GET['id'])) {
   echo "Pet ID not provided.";
   exit();
 }
+
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
+  // Get the comment from the form
+  $comment = htmlspecialchars($_POST['comment']);
+  
+  if (!empty($comment)) {
+    // Insert the comment into the database
+    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment) VALUES (?, ?, ?)");
+    $stmt->bind_param("iis", $pet_id, $user_id, $comment);
+    
+    if ($stmt->execute()) {
+      echo "Comment added successfully!";
+    } else {
+      echo "Error adding comment.";
+    }
+  } else {
+    echo "Comment cannot be empty.";
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -124,15 +144,16 @@ if (isset($_GET['id'])) {
             </div>
           
           <!-- Container for Comment Section -->
-            <div class="comment-container">
+          <div class="comment-container">
               <h3>Comments</h3>
-              <form action="">
+              <form action="selectpostpage_member.php" method="post" enctype="multipart/form-data">
                 <input type="text" placeholder="Add a comment" name="comment">
+                <button type="submit">Submit</button>
             </form>
             </div>
       </main>
   
-      <!-- Right Section: User Prompt to Signup/Login-->
+      <!-- Right Section: Display User Profile -->
       <main id="select-post-main-right-member">
       <div class="user-photo">
           <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
