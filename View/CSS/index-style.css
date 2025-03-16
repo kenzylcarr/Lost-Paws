@@ -93,7 +93,7 @@
 
   .index-image {
     width: 120%;
-    max-wdith: 900px;
+    max-width: 900px;
     height: auto;
     object-fit: cover;
     positon: absolute;
