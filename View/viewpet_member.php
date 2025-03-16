@@ -103,9 +103,7 @@ if (isset($_GET['id'])) {
     <nav class="navmenu">
         <!-- Lost Paws Logo -->
         <div class="logo"> 
-          <a href="../index.php">
-            <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
-          </a>
+          <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
         </div>
         <!-- Navigation menu -->
         <div class="nav-links">
