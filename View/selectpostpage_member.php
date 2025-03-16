@@ -121,7 +121,7 @@ if ($result->num_rows > 0) {
       </main>
   
       <!-- Right Section: User Prompt to Signup/Login-->
-      <main id="select-post-main-right">
+      <main id="select-post-main-right-member">
       <div class="user-photo">
           <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
         </div>

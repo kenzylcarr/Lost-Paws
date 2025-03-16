@@ -476,6 +476,25 @@ input {
   #select-post-main-right > p {
     text-align: center;
   }
+
+  #select-post-main-right-member {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-template-rows: 80px auto;
+
+    background-color: #F5F5F4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    width: 22vw;
+    padding-left: 30px;
+    margin-right: -100px;
+    margin-top: 70px;
+    padding-top: 20px;
+  }
   
   #select-post-main-right a {
     background-color: rgba(230, 180, 120, 0.801);
