@@ -192,7 +192,7 @@ mysqli_close($conn);
           <input type="text" name="location_ip" required>
 
           <!-- Animal Photo -->
-          <label for="petPhoto">Upload Animal Photo:</label>
+          <label for="petPhotos">Upload Animal Photo:</label>
           <input type="file" name="petPhotos" multiple accept="image/*">
 
           <button type="submit">Submit</button>
