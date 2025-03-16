@@ -147,12 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
           <!-- Container for Comment Section -->
           <div class="comment-container">
               <h3>Comments</h3>
-<<<<<<< HEAD:View/viewpet_member.php
               <form action="viewpet_member.php" method="post" enctype="multipart/form-data">
-=======
-              <form action="selectpostpage_member.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
->>>>>>> da25d89 (update php for comment):View/selectpostpage_member.php
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
             </form>
