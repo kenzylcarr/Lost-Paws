@@ -22,7 +22,7 @@ if (!isset($_SESSION['username'])) {
 
 // Fetch data from database
 $username = $_SESSION['username'];
-$stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+$stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
