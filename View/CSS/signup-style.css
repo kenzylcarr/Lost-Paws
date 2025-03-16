@@ -156,19 +156,11 @@ h1, h2 {
 }
     
 #main-right-signup {
-    padding-left: 150px;
-    padding-top: 40px;
-    background-color: white;
-    font-size: 20px;
-    
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    
-    display: grid;
-    grid-template-rows: 0.6fr 0.6fr auto;
-    width: 52vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
 }
     
 .auth-form-signup {
