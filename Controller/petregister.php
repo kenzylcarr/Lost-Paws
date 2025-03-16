@@ -44,6 +44,7 @@ if ($result->num_rows > 0) {
 // Declare variables with empty values
 $animal_type = $status = $location_ip = $picture = "";
 $animal_type_err = $status_err = $location_err = $picture_err = "";
+$picture_paths = [];
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -73,7 +74,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare INSERT statement
         $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
 
-        $picture_paths = [];
+        foreach ($picture_paths as $picture) {
+            $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
+            $stmt->execute();
+        }
 
         // Handle file upload for pet picture
         if (isset($_FILES['petImages'])) {
@@ -115,19 +119,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         }
+    }
         // Insert into database
-        foreach($picture_paths as $picture) {
-            $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
-            $stmt->execute();
-        }
-        echo "Pet reported successfully.";
-        header("Location: homepage.php");
-        exit();
-    } else {
-        // Display validation errors
-        if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
-        if (!empty($status_err)) echo $status_err . "<br>";
-        if (!empty($location_err)) echo $location_err . "<br>";
+        if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
+            $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
+            foreach($picture_paths as $picture) {
+                $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
+                $stmt->execute();
+            }
+            echo "Pet reported successfully.";
+            header("Location: homepage.php");
+            exit();
+        } else {
+            // Display validation errors
+            if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
+            if (!empty($status_err)) echo $status_err . "<br>";
+            if (!empty($location_err)) echo $location_err . "<br>";
     }
 }
 mysqli_close($conn);
