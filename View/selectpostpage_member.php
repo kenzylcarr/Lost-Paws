@@ -70,13 +70,13 @@ if (isset($_GET['id'])) {
 
 <body>
     <div id="container">
-       <!-- Lost Paws Logo -->
-      <div class="logo"> 
+    <nav class="navmenu">
+        <!-- Lost Paws Logo -->
+        <div class="logo"> 
           <a href="../index.php">
             <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
           </a>
-      </div>
-      <nav class="navmenu">
+        </div>
         <!-- Navigation menu -->
         <div class="nav-links">
           <a href="/View/aboutpage.php">About Lost Paws</a>
