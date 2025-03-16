@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
     
     if ($stmt->execute()) {
       echo "<script>window.location.href = window.location.href;</script>";
-      exit();
     } else {
       echo "Error adding comment.";
     }
