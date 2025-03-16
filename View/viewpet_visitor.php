@@ -12,6 +12,27 @@
 session_start();
 require_once("../Model/db_config.php");
 
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
+  // Get the pet_id and comment from the form
+  $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
+  $comment = htmlspecialchars($_POST['comment']);
+  
+  if (!empty($pet_id) && !empty($comment)) {
+    // Insert the comment into the database
+    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment_content, comment_date) VALUES (?, ?, ?, NOW())");
+    $stmt->bind_param("iis", $pet_id, $user_id, $comment);
+    
+    if ($stmt->execute()) {
+      echo "<script>window.location.href = window.location.href;</script>";
+    } else {
+      echo "Error adding comment.";
+    }
+  } else {
+    echo "Comment or pet_id is missing.";
+  }
+}
+
 // Get the pet_id from the URL
 if (isset($_GET['id'])) {
   $pet_id = $_GET['id'];
@@ -33,9 +54,18 @@ if (isset($_GET['id'])) {
       exit();
   }
 } else {
-  echo "Pet ID not provided.";
-  exit();
-}
+    exit();
+  }
+
+  // Fetch comments for the pet
+  $stmt = $conn->prepare("SELECT comments.comment_content, comments.comment_date, users.username 
+                          FROM comments 
+                          JOIN users ON comments.user_id = users.user_id 
+                          WHERE comments.pet_id = ? 
+                          ORDER BY comments.comment_date DESC");
+  $stmt->bind_param("i", $pet_id);
+  $stmt->execute();
+  $comment_result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -104,13 +134,30 @@ if (isset($_GET['id'])) {
             </div>
           
           <!-- Container for Comment Section -->
-            <div class="comment-container">
+          <div class="comment-container">
               <h3>Comments</h3>
-              <form action="viewpet_visitor.php" method="post" enctype="multipart/form-data">
+              <form action="" method="post">
+                <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
-            </form>
+              </form>
             </div>
+
+          <!-- Display Comments -->
+          <div class="all-comments">
+            <?php
+            if ($comment_result->num_rows > 0) {
+              while ($comment = $comment_result->fetch_assoc()) {
+                echo '<div class="comment-item">';
+                echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
+                echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                echo '</div>';
+              }
+            } else {
+              echo '<p>No comments yet.</p>';
+            }
+            ?>
+        </div>
       </main>
   
       <!-- Right Section: User Prompt to Signup/Login-->
