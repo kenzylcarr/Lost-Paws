@@ -70,13 +70,13 @@ if (isset($_GET['id'])) {
 
 <body>
     <div id="container">
-       <!-- Lost Paws Logo -->
-      <div class="logo"> 
+    <nav class="navmenu">
+        <!-- Lost Paws Logo -->
+        <div class="logo"> 
           <a href="../index.php">
             <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
           </a>
-      </div>
-      <nav class="navmenu">
+        </div>
         <!-- Navigation menu -->
         <div class="nav-links">
           <a href="/View/aboutpage.php">About Lost Paws</a>
@@ -86,9 +86,8 @@ if (isset($_GET['id'])) {
         </div>
   
         <div class="button">
-          <a id="signup-button" href="signup.php">Sign Up!</a>
-          <a id="login-button" href="/View/login.php">Login</a>
-        </div>
+        <a id="login-button" href="logout.php">Logout</a>
+      </div>
       </nav>
       
       <!-- Left Section: Map-->
