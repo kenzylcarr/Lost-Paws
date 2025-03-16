@@ -81,11 +81,11 @@ if (isset($_GET['id'])) {
       <main id="select-post-main-center">
         <!-- Lost or Found Label -->
             <div class="lost-or-found-label">
-                <h1>Lost Pet</h1>
+              <h1><?php echo htmlspecialchars($pet['status']); ?> Pet</h1> 
             </div>
         <!-- Title of Post -->
             <div class="title-post">
-            <h1><?php echo htmlspecialchars($pet['status']); ?> Pet</h1> 
+              <h1>Title of Post</h1> 
             </div>
         <!-- Container for Information -->
             <div class="description-container">
@@ -106,8 +106,9 @@ if (isset($_GET['id'])) {
           <!-- Container for Comment Section -->
             <div class="comment-container">
               <h3>Comments</h3>
-              <form action="">
+              <form action="selectpostpage_visitor.php" method="post" enctype="multipart/form-data">
                 <input type="text" placeholder="Add a comment" name="comment">
+                <button type="submit">Submit</button>
             </form>
             </div>
       </main>
