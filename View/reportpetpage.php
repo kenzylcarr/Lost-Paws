@@ -117,7 +117,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="aboutpage.php">About Lost Paws</a>
         <a href="homepage.php">Homepage</a>	
         <a href="petmap.php">Pet Map</a>
       </div>
