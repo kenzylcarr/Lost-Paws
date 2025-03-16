@@ -106,8 +106,9 @@ if (isset($_GET['id'])) {
           <!-- Container for Comment Section -->
             <div class="comment-container">
               <h3>Comments</h3>
-              <form action="">
+              <form action="selectpostpage_visitor.php" method="post" enctype="multipart/form-data">
                 <input type="text" placeholder="Add a comment" name="comment">
+                <button type="submit">Submit</button>
             </form>
             </div>
       </main>
