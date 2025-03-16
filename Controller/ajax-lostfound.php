@@ -9,6 +9,7 @@
   File name: ajax-lostfound.php
 */
 
+<?php
 session_start();
 require_once("../Model/db_config.php");
 
