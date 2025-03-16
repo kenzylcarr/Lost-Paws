@@ -350,7 +350,7 @@ input {
 
 
 
-/*   START CSS: selectpostpage.php  */   
+/*   START CSS: viewpet.php  */   
 
   #select-post-main-left {
       grid-column-start: 1;
@@ -507,7 +507,23 @@ input {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
 
-/*   END CSS: selectpostpage.php */  
+  .comment-item {
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 10px; /* Space inside the comment box */
+    margin-bottom: 10px; /* Space between comments */
+    border-radius: 5px; /* Optional: rounded corners for the border */
+    background-color: #f9f9f9; /* Light background for better readability */
+  }
+  
+  .comment-item p {
+    margin: 5px 0; /* Add some space between elements inside the comment */
+  }
+  
+  .comment-item em {
+    font-size: 0.9em;
+    color: #777; /* Light gray color for date */
+  }
+/*   END CSS: viewpet.php */  
 
 
 /* START CSS: reportpetpage.php */

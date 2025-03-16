@@ -140,6 +140,7 @@ if (isset($_GET['id'])) {
 
           <!-- Display Comments -->
           <div class="all-comments">
+            <h3>Comments</h3>
             <?php
             if ($comment_result->num_rows > 0) {
               while ($comment = $comment_result->fetch_assoc()) {
