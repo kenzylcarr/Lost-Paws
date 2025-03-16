@@ -74,7 +74,7 @@ if (isset($_GET['id'])) {
       echo "Pet not found.";
       exit();
   }
-  else {
+} else {
     exit();
   }
 
@@ -87,9 +87,6 @@ if (isset($_GET['id'])) {
   $stmt->bind_param("i", $pet_id);
   $stmt->execute();
   $comment_result = $stmt->get_result();
-} else {
-  exit();
-}
 ?>
 
 <!DOCTYPE html>
