@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   
   if (!empty($pet_id) && !empty($comment)) {
     // Insert the comment into the database
-    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment_content, comment_date) VALUES (?, ?, ?)");
     $stmt->bind_param("iis", $pet_id, $user_id, $comment);
     
     if ($stmt->execute()) {
