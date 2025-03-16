@@ -93,14 +93,14 @@ if ($result->num_rows > 0) {
             </div>
         <!-- Title of Post -->
             <div class="title-post">
-              <h1>Title of Post</h1>  
+            <h1><?php echo htmlspecialchars($pet['status']); ?> Pet</h1> 
             </div>
         <!-- Container for Information -->
             <div class="description-container">
               <!-- Column 1: Pet Photo, Contact User-->
               <div class="description-column1">
               <img src="<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
-                <p>Posted by: John Doe</p>
+              <p>Posted by: <?php echo htmlspecialchars($pet['username']); ?></p>
                 <button id="contact-user-button">Contact User</button>
               </div>
               <!-- Column 2: Written Pet Description -->
