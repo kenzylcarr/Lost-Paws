@@ -60,10 +60,11 @@ if (isset($_GET['id'])) {
 
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
-  // Get the comment from the form
+  // Get the pet_id and comment from the form
+  $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
   $comment = htmlspecialchars($_POST['comment']);
   
-  if (!empty($comment)) {
+  if (!empty($pet_id) && !empty($comment)) {
     // Insert the comment into the database
     $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment) VALUES (?, ?, ?)");
     $stmt->bind_param("iis", $pet_id, $user_id, $comment);
@@ -74,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
       echo "Error adding comment.";
     }
   } else {
-    echo "Comment cannot be empty.";
+    echo "Comment or pet_id is missing.";
   }
 }
 ?>
@@ -146,7 +147,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
           <!-- Container for Comment Section -->
           <div class="comment-container">
               <h3>Comments</h3>
+<<<<<<< HEAD:View/viewpet_member.php
               <form action="viewpet_member.php" method="post" enctype="multipart/form-data">
+=======
+              <form action="selectpostpage_member.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
+>>>>>>> da25d89 (update php for comment):View/selectpostpage_member.php
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
             </form>
