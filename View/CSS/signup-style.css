@@ -125,8 +125,8 @@ h1, h2 {
 }
 
 .signup-header {
-    grid-row-start: 1;
-    grid-row-end: 2;
+    text-align: center;
+    margin-bottom: 10px;
 }
     
 .signup-header h2 {
@@ -179,6 +179,7 @@ h1, h2 {
     height: 30vw;
     width: 40vw;
     margin-left: center;
+    height: 600px;
 }
     
 .signup-field {
