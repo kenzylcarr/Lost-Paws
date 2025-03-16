@@ -37,8 +37,12 @@ if ($result->num_rows > 0) {
 if (isset($_GET['id'])) {
   $pet_id = $_GET['id'];
 
-  // Fetch specific pet data from the database
-  $stmt = $conn->prepare("SELECT pet_id, user_id, animal_type, status, location_ip, picture, user_id FROM pets WHERE pet_id = ?");
+  // Fetch specific pet data from the database along with the username
+  $stmt = $conn->prepare("
+    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, users.username 
+    FROM pets 
+    JOIN users ON pets.user_id = users.user_id 
+    WHERE pets.pet_id = ?");
   $stmt->bind_param("i", $pet_id);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -109,7 +113,7 @@ if (isset($_GET['id'])) {
               <!-- Column 1: Pet Photo, Contact User-->
               <div class="description-column1">
               <img src="<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
-              <p>Posted by: <?php echo htmlspecialchars($pet['user_id']); ?></p>
+              <p>Posted by: <?php echo htmlspecialchars($pet['username']); ?></p>
                 <button id="contact-user-button">Contact User</button>
               </div>
               <!-- Column 2: Written Pet Description -->
