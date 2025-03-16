@@ -88,6 +88,11 @@
     grid-template-rows: auto auto auto;
   }
 
+  .pet-database-container img {
+    max-width: 500px;
+    max-height: 500px;
+  }
+
   .pet-brief-info {
     border-style: solid;
     border-width: 2px;
