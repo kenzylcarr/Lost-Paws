@@ -67,68 +67,134 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $location_ip = trim($_POST["location_ip"]);
     }
+
+        // Handle file uploads
+        if (isset($_FILES['petPhotos']) && is_array($_FILES['petPhotos']['name'])) {
+            $target_dir = "../View/pet-uploads/";
+            $total_files = count($_FILES['petPhotos']['name']);
     
-    // Validate image
-    if ($_FILES["petPhoto"]["error"] !== 0)
-    {
-      $photo_err = "Error uploading file.";
-    }
-    else
-    {
-      $target_dir = "../View/pet-uploads/";
-      $file_name = basename($_FILES["petPhoto"]["name"]);
-      $target_file = $target_dir . $fire_name;
-      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-      // Checking uploaded file is in image format or not
-      $check = getimagesize($_FILES["petPhoto"]["tmp_name"]);
-      if ($check === false)
-      {
-        $photo_err = "Files is not an image.";
-      }
-
-      // Checking file size, where the limit is 1MB
-      if ($_FILES["petPhoto"]["size"] > 1000000)
-      {
-        $photo_err = "File is too large. Max 1MB.";
-      }
-
-      // Checking file is jpg, jpeg, pnh, or gif
-      if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif']))
-      {
-        $photo_err = "Only JPG, JPEF, PNG, or GIF files are accepted.";
-      }
-
-      // If there are no errors present, the move the file to into directory
-      if (empty($photo_err))
-      {
-        if (!move_uploaded_file($_FILES["petPhoto"]["tmp_name"], $target_file))
-        {
-          $photo_err = "Error moving uploaded file.";
+            for ($i = 0; $i < $total_files; $i++) {
+                $file_name = basename($_FILES['petPhotos']['name'][$i]);
+                $target_file = $target_dir . $file_name;
+                $uploadOK = 1;
+    
+                // Check if the file is an image
+                $check = getimagesize($_FILES['petPhotos']['tmp_name'][$i]);
+                if ($check === false) {
+                    echo "File is not an image.";
+                    $uploadOK = 0;
+                }
+    
+                // Check file size
+                if ($_FILES['petPhotos']['size'][$i] > 1000000) {
+                    echo "File is too large. Maximum 1MB.";
+                    $uploadOK = 0;
+                }
+    
+                // Allow certain file types
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
+                    echo "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
+                    $uploadOK = 0;
+                }
+    
+                // Attempt to upload the file if all checks pass
+                if ($uploadOK == 1) {
+                    if (move_uploaded_file($_FILES['petPhotos']['tmp_name'][$i], $target_file)) {
+                        $picture_paths[] = $target_file; // Store the path for database insertion
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+            }
         }
-      }
-    }
-      
-    // Check for input errors before submitting to the database
-    if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
-        // Prepare INSERT statement
-        $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $user_id, $animal_type, $status, $location_ip);
-        
-        // Execute the statement
-        if ($stmt->execute()) {
-            echo "Pet reported successfully!";
-            header("Location: homepage.php");
-            exit();
+          
+        // Check for input errors before submitting to the database
+        if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
+            // Prepare INSERT statement
+            $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("isss", $user_id, $animal_type, $status, $location_ip);
+            
+            // Execute the statement
+            if ($stmt->execute()) {
+                echo "Pet reported successfully!";
+                header("Location: homepage.php");
+                exit();
+            } else {
+                echo "Error: " . $stmt->error;
+            }
         } else {
-            echo "Error: " . $stmt->error;
+            // Display validation errors
+            if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
+            if (!empty($status_err)) echo $status_err . "<br>";
+            if (!empty($location_err)) echo $location_err . "<br>";
         }
-    } else {
-        // Display validation errors
-        if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
-        if (!empty($status_err)) echo $status_err . "<br>";
-        if (!empty($location_err)) echo $location_err . "<br>";
     }
-}
-mysqli_close($conn);
-?>
+    mysqli_close($conn);
+    ?>
+    
+
+//     // Validate image
+//     if ($_FILES["petPhoto"]["error"] !== 0)
+//     {
+//       $photo_err = "Error uploading file.";
+//     }
+//     else
+//     {
+//       $target_dir = "../View/pet-uploads/";
+//       $file_name = basename($_FILES["petPhoto"]["name"]);
+//       $target_file = $target_dir . $fire_name;
+//       $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+// 
+//       // Checking uploaded file is in image format or not
+//       $check = getimagesize($_FILES["petPhoto"]["tmp_name"]);
+//       if ($check === false)
+//       {
+//         $photo_err = "Files is not an image.";
+//       }
+// 
+//       // Checking file size, where the limit is 1MB
+//       if ($_FILES["petPhoto"]["size"] > 1000000)
+//       {
+//         $photo_err = "File is too large. Max 1MB.";
+//       }
+// 
+//       // Checking file is jpg, jpeg, pnh, or gif
+//       if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif']))
+//       {
+//         $photo_err = "Only JPG, JPEF, PNG, or GIF files are accepted.";
+//       }
+// 
+//       // If there are no errors present, the move the file to into directory
+//       if (empty($photo_err))
+//       {
+//         if (!move_uploaded_file($_FILES["petPhoto"]["tmp_name"], $target_file))
+//         {
+//           $photo_err = "Error moving uploaded file.";
+//         }
+//       }
+//     }
+//       
+//     // Check for input errors before submitting to the database
+//     if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
+//         // Prepare INSERT statement
+//         $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip) VALUES (?, ?, ?, ?)");
+//         $stmt->bind_param("isss", $user_id, $animal_type, $status, $location_ip);
+//         
+//         // Execute the statement
+//         if ($stmt->execute()) {
+//             echo "Pet reported successfully!";
+//             header("Location: homepage.php");
+//             exit();
+//         } else {
+//             echo "Error: " . $stmt->error;
+//         }
+//     } else {
+//         // Display validation errors
+//         if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
+//         if (!empty($status_err)) echo $status_err . "<br>";
+//         if (!empty($location_err)) echo $location_err . "<br>";
+//     }
+// }
+// mysqli_close($conn);
+// ?>
