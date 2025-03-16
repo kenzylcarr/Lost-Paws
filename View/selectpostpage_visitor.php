@@ -12,12 +12,6 @@
 session_start();
 require_once("../Model/db_config.php");
 
-// Check if the user is signed in
-if (!isset($_SESSION['username'])) {
-  header("Location: ../index.php");
-  exit();
-}
-
 // Fetch data from database
 $username = $_SESSION['username'];
 $stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
