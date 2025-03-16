@@ -190,9 +190,9 @@ mysqli_close($conn);
           <input type="text" name="location_ip" required>
 
           <!-- Animal Photo -->
-          <!-- <label for="petPhoto">Upload Animal Photo:</label>
-          <input type="file" name="petPhotos" multiple accept="image/*">
- -->
+          <label for="petPhoto">Upload Animal Photo:</label>
+          <input type="file" name="petPhotos" multiple accept="image/*"> -->
+
           <button type="submit">Submit</button>
       </form>
         <!-- <h1> Report a Lost or Found Pet:</h1> -->
