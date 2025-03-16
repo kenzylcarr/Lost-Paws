@@ -156,14 +156,14 @@
       background-color: #c5d7b3;
       text-align: center;
       width: 100%;
-      height: 120vh;
+      height: 40vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding-top: 150px;	/* adjust text position */
-      margin-top: -15vh;	/* negative to make overlap into index-top-half !!!NEED TO FIX BACKGROUND OVERLAP!!! */
+      padding-top: 170px;	/* adjust text position */
+      margin-top: -55vh;	/* negative to make overlap into index-top-half !!!NEED TO FIX BACKGROUND OVERLAP!!! */
   }
   
   .wave-container svg {
