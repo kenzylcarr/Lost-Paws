@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   
   if (!empty($pet_id) && !empty($comment)) {
     // Insert the comment into the database
-    $stmt = $conn->prepare("INSERT INTO comments (comment_id, pet_id, user_id, comment) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment) VALUES (?, ?, ?)");
     $stmt->bind_param("iis", $pet_id, $user_id, $comment);
     
     if ($stmt->execute()) {
@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
           <!-- Container for Comment Section -->
           <div class="comment-container">
               <h3>Comments</h3>
-              <form action="viewpet_member.php" method="post" enctype="multipart/form-data">
+              <form action="viewpet_member.php" method="post">
                 <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
                 <input type="text" placeholder="Add a comment" name="comment">
                 <button type="submit">Submit</button>
