@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Handle file uploads
-    if (isset($_FILES['petPhotos'])) {
+    if (isset($_FILES['petPhotos']) && is_array($_FILES['petPhotos']['name'])) {
       $target_dir = "../View/pet-uploads/";
       $total_files = count($_FILES['petPhotos']['name']);
   
@@ -106,7 +106,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         }
       }
-    }
+    } else {
+      echo "No files were uploaded or the file input is not valid.";
+  }
 
     // Check for input errors before submitting to the database
     if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
@@ -191,7 +193,7 @@ mysqli_close($conn);
 
           <!-- Animal Photo -->
           <label for="petPhoto">Upload Animal Photo:</label>
-          <input type="file" name="petPhotos" multiple accept="image/*"> -->
+          <input type="file" name="petPhotos" multiple accept="image/*">
 
           <button type="submit">Submit</button>
       </form>
