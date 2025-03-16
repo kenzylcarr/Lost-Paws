@@ -106,10 +106,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         }
       }
-    } else {
-      echo "No files were uploaded or the file input is not valid.";
-  }
-
+    }
+    
     // Check for input errors before submitting to the database
     if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
         // Prepare INSERT statement
