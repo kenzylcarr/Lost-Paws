@@ -41,8 +41,9 @@ if ($result->num_rows > 0) {
 }
 
 // Declare variables with empty values
-$animal_type = $status = $location_ip = "";
-$animal_type_err = $status_err = $location_err = "";
+$animal_type = $status = $location_ip = $picture = "";
+$animal_type_err = $status_err = $location_err = $picture_err = "";
+$picture_paths = [];
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -66,90 +67,70 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $location_ip = trim($_POST["location_ip"]);
     }
-    
+
+    // Handle file uploads
+    if (isset($_FILES['petPhotos'])) {
+      $target_dir = "../View/pet-uploads/";
+      $total_files = count($_FILES['petPhotos']['name']);
+  
+      for ($i = 0; $i < $total_files; $i++) {
+        $file_name = basename($_FILES['petPhotos']['name'][$i]);
+        $target_file = $target_dir . $file_name;
+        $uploadOK = 1;
+  
+        // Check if the file is an image
+        $check = getimagesize($_FILES['petPhotos']['tmp_name'][$i]);
+        if ($check === false) {
+          echo "File is not an image.";
+          $uploadOK = 0;
+        }
+  
+        // Check file size
+        if ($_FILES['petPhotos']['size'][$i] > 1000000) {
+          echo "File is too large. Maximum 1MB.";
+          $uploadOK = 0;
+        }
+        
+        // Allow certain file types
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
+          echo "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
+          $uploadOK = 0;
+        }
+        // Attempt to upload the file if all checks pass
+        if ($uploadOK == 1) {
+          if (move_uploaded_file($_FILES['petPhotos']['tmp_name'][$i], $target_file)) {
+              $picture_paths[] = $target_file; // Store the path for database insertion
+          } else {
+              echo "Sorry, there was an error uploading your file.";
+          }
+        }
+      }
+    }
+
     // Check for input errors before submitting to the database
     if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
         // Prepare INSERT statement
-        $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $user_id, $animal_type, $status, $location_ip);
+        $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
         
-        // Execute the statement
-        if ($stmt->execute()) {
-            echo "Pet reported successfully!";
-            header("Location: homepage.php");
-            exit();
-        } else {
+        // Insert into the database
+        foreach ($picture_paths as $picture) {
+          $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
+          if ($stmt->execute()) {
             echo "Error: " . $stmt->error;
+          }
         }
+        echo "Pet reported successfully!";
+        exit();
     } else {
         // Display validation errors
         if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
         if (!empty($status_err)) echo $status_err . "<br>";
         if (!empty($location_err)) echo $location_err . "<br>";
+        if (!empty($picture_err)) echo $picture_err . "<br>";
     }
 }
 mysqli_close($conn);
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-// // Get form data
-//   $animal_type = $_POST['animal_type'];
-//   $status = $_POST['status'];
-//   $location_ip = $_POST['location_ip'];
-// 
-//   // Prepare INSERT statement for putting data into database
-//   $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip) VALUES (?, ?, ?, ?)");
-//   // $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
-//   // $picture_paths = [];
-// 
-//   // Handle file uploads
-// //   if (isset($_FILES['petPhotos'])) {
-// //     $target_dir = "../View/pet-uploads/";
-// //     $total_files = count($_FILES['petPhotos']['name']);
-// // 
-// //     for ($i = 0; $i < $total_files; $i++) {
-// //       $file_name = basename($_FILES['petPhotos']['name'][$i]);
-// //       $target_file = $target_dir . $file_name;
-// //       $uploadOK = 1;
-// // 
-// //       // Check if the file is an image
-// //       $check = getimagesize($_FILES['petPhotos']['tmp_name'][$i]);
-// //       if ($check === false) {
-// //         echo "File is not an image.";
-// //         $uploadOK = 0;
-// //       }
-// // 
-// //       // Check file size
-// //       if ($_FILES['petPhotos']['size'][$i] > 1000000) {
-// //         echo "File is too large. Maximum 1MB.";
-// //         $uploadOK = 0;
-// //       }
-// //       
-// //       // Allow certain file types
-// //       $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-// //       if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
-// //         echo "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
-// //         $uploadOK = 0;
-// //       }
-// // 
-// //       if ($uploadOK == 1) {
-// //         if (move_uploaded_file($_FILES['petPhotos']['tmp_name'][$i], $target_file)) {
-// //           $picture_paths[] = $target_file;
-// //         } else {
-// //           echo "Sorry, there was an error uploading your file.";
-// //         }
-// //       }
-// //     }
-// //   }
-// //     // Insert into the database
-// //     foreach ($picture_paths as $picture) {
-// //       $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
-// //       $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
-// //       $stmt->execute();
-// //     }
-//     echo "Pet reported successfully!";
-//     header("Location: homepage.php");
-//     exit();
-//   }
 ?>
 
 <!DOCTYPE html>
@@ -187,7 +168,7 @@ mysqli_close($conn);
       <div class="signup-header">
           <h2>Report a Lost or Found Pet:</h2>
       </div>
-	   								 <!-- Remove sign-up form? -->
+
       <!-- Prompts user to input their information -->     
       <form action="reportpetpage.php" method="post" enctype="multipart/form-data">
           <!-- Animal Type -->
@@ -209,9 +190,9 @@ mysqli_close($conn);
           <input type="text" name="location_ip" required>
 
           <!-- Animal Photo -->
-          <!-- <label for="petPhoto">Upload Animal Photo:</label>
+          <label for="petPhoto">Upload Animal Photo:</label>
           <input type="file" name="petPhotos[]" multiple accept="image/*">
- -->
+
           <button type="submit">Submit</button>
       </form>
         <!-- <h1> Report a Lost or Found Pet:</h1> -->
