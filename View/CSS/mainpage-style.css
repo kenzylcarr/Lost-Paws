@@ -26,66 +26,97 @@
     grid-row-end: 3;
     
     display: grid;
-    grid-template-rows: 0.6fr 4.5fr auto;
-    margin-top: 70px;
+    grid-template-rows: min-content min-content auto;
+    margin-top: 30px;
+    gap: 10px;
   }
   
   .lost-or-found-buttons {
     grid-row-start: 1;
-    grid-row-end: 2;
-    padding: 25px;
+    padding-top: 65px;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
   
   .lost-or-found-buttons button {
-    background: rgba(255, 255, 255, 0.863);
-    color: black;
+    background-color: #1E3F66;
+    color: white;
     cursor: pointer;
-    border-radius: 0.3vw;
-    padding: 10px 50px;
-    font-size: 30px;
+    border-radius: 1vw;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    width: auto;
+    margin-top: 0;
   }
   
   #lost-button {
     margin-right: 20px;
-    padding: 10px 65px;
+    padding: 10px 30px;
+  }
+
+  #found-button {
+    padding: 10px 30px;
   }
   
+  .search-filter {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-top: 0;
+    margin-left: 20px;
+  }
+
   .search-field {
-    grid-row-start: 2;
-    grid-row-end: 3;
-  
-    float: left;
-    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 8px;
+    width: 300px;
+    margin-top: 0;
   }
+
   
   .search-field input[type=text]{
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-    width: 225px;
+    float: none;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0;
+    font-size: 14px;
+    width: 100%;
+    background-color: white;
   }
   
   .search-field button {
-    float: right;
-    padding: 6px 10px;
-    margin-top: 8px;
-    margin-right: 8px;
-    background: #dadadb;
-    font-size: 17px;
+    padding: 8px 16px;
+    margin: 0 0 0 8px;
+    background: #0066cc;
+    color: white;
+    font-size: 14px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s;
   }
+
+  .search-field button:hover {
+    background-color: #0052a3;
+  }
+
   .pet-database-container {
-    grid-row-start: 3;
-    grid-row-end: 4;
-    margin-top: -750px;  
-    padding: 40px;
+    grid-row: 2;
+    margin-top: 0;
+    padding: 10px 40px;
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: calc(100% - 80px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .pet-database-container img {
@@ -132,6 +163,10 @@
     text-align: center;
     transition: background-color 0.2s;
     font-weight: 500;
+  }
+
+  .pet-brief-info a:hover {
+    background-color: #e5e5e5;
   }
   
   #mainpage-right-beforelogin{
