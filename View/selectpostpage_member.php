@@ -18,7 +18,7 @@ if (!isset($_SESSION['username'])) {
   exit();
 }
 
-// Fetch data from database
+// Fetch user data from database
 $username = $_SESSION['username'];
 $stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
@@ -33,17 +33,26 @@ if ($result->num_rows > 0) {
   exit();
 }
 
-  // Fetch pet data from database
-  $pets = [];
-  $stmt = $conn->prepare("SELECT pet_id, animal_type, status, location_ip, picture FROM pets");
+// Get the pet_id from the URL
+if (isset($_GET['id'])) {
+  $pet_id = $_GET['id'];
+
+  // Fetch specific pet data from the database
+  $stmt = $conn->prepare("SELECT pet_id, animal_type, status, location_ip, picture, user_id FROM pets WHERE pet_id = ?");
+  $stmt->bind_param("i", $pet_id);
   $stmt->execute();
   $result = $stmt->get_result();
 
   if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      $pets[] = $row;
-    }
+      $pet = $result->fetch_assoc();
+  } else {
+      echo "Pet not found.";
+      exit();
   }
+} else {
+  echo "Pet ID not provided.";
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
