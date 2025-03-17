@@ -208,9 +208,10 @@
   </div>
   </div>
 
+  <!--  remove footer? 
       <footer>
       <p>CS 476: Software Development Project</p>
-    </footer>
+    </footer>   -->
   
 </body>
 </html>
