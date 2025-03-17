@@ -16,7 +16,7 @@
   <title>Account Settings</title>
   <link rel="stylesheet" type="text/css" href="style2.css">
   <script src="../Controller/eventHandler.js"></script>
-  <script>
+    <script>
     // JavaScript function to toggle visibility of sections
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('.settings-section');
@@ -29,27 +29,17 @@
       });
     }
 
-    // Username validation script
-    document.addEventListener("DOMContentLoaded", function () {
-      const usernameInputs = document.querySelectorAll("input[name='username']");
-      usernameInputs.forEach(usernameInput => {
-        const errorMsg = document.createElement("p");
-        errorMsg.style.color = "red";
-        errorMsg.style.fontSize = "12px";
-        errorMsg.style.marginTop = "5px";
-        errorMsg.textContent = "Username cannot contain spaces.";
-        errorMsg.style.display = "none";
-        usernameInput.insertAdjacentElement("afterend", errorMsg);
-
-        usernameInput.addEventListener("input", function () {
-          if (usernameInput.value.includes(" ")) {
-            errorMsg.style.display = "block";
-          } else {
-            errorMsg.style.display = "none";
-          }
-        });
-      });
-    });
+    // Function to validate username (no spaces allowed)
+    function validateUsername(input) {
+      const usernameError = document.getElementById("username-error");
+      if (input.value.includes(" ")) {
+        usernameError.textContent = "Username cannot contain spaces";
+        input.style.borderColor = "red";
+      } else {
+        usernameError.textContent = "";
+        input.style.borderColor = "";
+      }
+    }
 
     // Function to validate email format
     function validateEmail(input) {
