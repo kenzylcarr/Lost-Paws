@@ -10,6 +10,7 @@
 -->
 
 <!-- PHP validation for the form begins -->
+
 <?php
 session_start();
 require_once("../Model/db_config.php");
@@ -190,45 +191,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- First Name -->
                 <div class="signup-field">
                     <label for="firstname">First Name</label>
-                    <input type="text" name="firstname" id="firstname"/><br />
-                    <span id="error-text-firstname" class="error-text hidden">Invalid first name.</span><br />
+                    <input type="text" name="firstname" id="firstname"/> 
+                    <span id="error-text-firstname" class="error-text hidden">Invalid first name.</span> 
                 </div>    
                 <!-- Last Name -->
                 <div class="signup-field">
                     <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname" id="lastname"/><br />
-                    <span id="error-text-lastname" class="error-text hidden">Invalid last name.</span><br />
+                    <input type="text" name="lastname" id="lastname"/> 
+                    <span id="error-text-lastname" class="error-text hidden">Invalid last name.</span> 
                 </div>
                 <!-- Username -->
                 <div class="signup-field">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" />
-                        <span id="error-text-username" class="error-text hidden">Invalid username.</span><br />
+                        <span id="error-text-username" class="error-text hidden">Invalid username.</span> 
                 </div>
                 <!-- Email Address -->
                 <div class="signup-field">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email"/><br />
-                    <span id="error-text-email" class="error-text hidden">Invalid email address.</span><br />
+                    <input type="email" name="email" id="email"/> 
+                    <span id="error-text-email" class="error-text hidden">Invalid email address.</span> 
                 </div>
             
                 <!-- Phone Number -->
                 <div class="signup-field">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone"/><br />
+                    <input type="tel" id="phone" name="phone"/> 
                     <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
                 </div>
                 <!-- Password -->
                 <div class="signup-field">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password"/><br />
-                    <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span><br />
+                    <input type="password" name="password" id="password"/> 
+                    <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span> 
                 </div>
                 <!-- Confirm Password -->
                 <div class="signup-field">
                     <label for="cpassword">Confirm Password</label>
-                    <input type="password" name="cpassword" id="cpassword"/><br />
-                    <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span><br />
+                    <input type="password" name="cpassword" id="cpassword"/> 
+                    <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span> 
                 </div>
                 <!-- Profile Photo -->
                 <div class="signup-field">
