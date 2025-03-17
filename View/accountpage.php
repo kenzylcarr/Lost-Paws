@@ -75,6 +75,49 @@
         input.style.borderColor = "";
       }
     }
+
+// Function to validate phone number format
+    function validatePhoneNumber(input) {
+      const phoneError = document.getElementById("phone-error");
+      // Regular expression to match the three formats
+      const phonePattern = /^(?:\(\d{3}\)\s?\d{3}-\d{4}|\d{10}|\d{3}-\d{3}-\d{4})$/;
+
+      if (input.value && !phonePattern.test(input.value)) {
+        phoneError.textContent = "Phone number must be in one of the following formats: (000) 000-0000, 0000000000, or 000-000-0000.";
+        input.style.borderColor = "red";
+      } else {
+        phoneError.textContent = "";
+        input.style.borderColor = "";
+      }
+    }
+
+    // JavaScript to dynamically populate cities based on selected province
+    const citiesByProvince = {
+      BC: ['Vancouver', 'Victoria', 'Kelowna'],
+	  AB: ['Calgary', 'Edmonton', 'Lethbridge'],
+	  SK: ['Regina', 'Saskatoon', 'Moose Jaw'],
+	  MB: ['Brandon', 'Winnipeg', 'Churchill'],
+      ON: ['Toronto', 'Ottawa', 'Hamilton'],
+      };
+
+    function updateCities() {
+      const province = document.getElementById('province').value;
+      const cityDropdown = document.getElementById('city');
+      cityDropdown.innerHTML = '<option value="">Select City</option>'; // Clear previous cities
+
+      if (province) {
+        const cities = citiesByProvince[province] || [];
+        cities.forEach(city => {
+          const option = document.createElement('option');
+          option.value = city.toLowerCase();
+          option.textContent = city;
+          cityDropdown.appendChild(option);
+        });
+        cityDropdown.disabled = false; // Enable city dropdown
+      } else {
+        cityDropdown.disabled = true; // Disable city dropdown if no province selected
+      }
+    }
   </script>
 
 </head>
