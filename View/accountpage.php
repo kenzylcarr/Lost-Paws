@@ -27,7 +27,7 @@
 
     // Function to validate username (only letters and numbers allowed)
     function validateUsername(input) {
-      const usernameError = document.getElementById(input.id + "-error"); // Dynamically get correct error element
+      const usernameError = document.getElementById(input.id + "-error");
       const usernamePattern = /^[A-Za-z0-9]+$/; // Only allows letters and numbers
 
       if (input.value.trim() === "") {
@@ -130,23 +130,8 @@
         input.style.borderColor = "";
       }
     }
- 
-   // Validate New Password
-	function validatePassword(input) {
-	  const password = input.value;
-	  const errorMessage = document.getElementById("new-password-error");
 
-	  // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
-	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
-
-	  if (!password.match(passwordRegex)) {
-		errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
-	  } else {
-		errorMessage.textContent = "";
-	  }
-	}
-	
-	  // Validate Current Password
+    // Validate Current Password
 	function validateCurrentPassword(input) {
 	  const password = input.value;
 	  const errorMessage = document.getElementById("current-password-error");
@@ -161,7 +146,22 @@
 	  }
 	}
 
-	  // Validate Confirm Password
+	// Validate New Password
+	function validatePassword(input) {
+	  const password = input.value;
+	  const errorMessage = document.getElementById("new-password-error");
+
+	  // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
+	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
+
+	  if (!password.match(passwordRegex)) {
+		errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	  } else {
+		errorMessage.textContent = "";
+	  }
+	}
+
+	// Validate Confirm Password
 	function validateConfirmPassword(input) {
 	  const confirmPassword = input.value;
 	  const newPassword = document.getElementById("new-password").value;
@@ -174,7 +174,7 @@
 	  }
 	}
 
-// Validate Current Password and New Password Cannot Be the Same
+	// Validate Current Password and New Password Cannot Be the Same
 	function validatePasswordChange() {
 	  const currentPassword = document.getElementById("current-password").value;
 	  const newPassword = document.getElementById("new-password").value;
@@ -188,157 +188,5 @@
 	  }
 	  return true;
 	}
-	  
+
   </script>
-</head>
-
-<body>
-  <div class="settings-page">
-    <div id="container">
-      <nav class="navmenu">
-        <div class="logo">
-          <a href="index.php">
-            <img src="images/lp-logo.png" alt="Lost Paws Logo" class="logo" />
-          </a>
-        </div>
-        <div class="nav-links">
-          <a href="aboutpage.php">About Lost Paws</a>
-          <a href="reportpetpage.php">Report a Pet</a>
-          <a href="mainpage-beforelogin.php">Lost & Found</a>
-          <a href="petmap.php">Pet Map</a>
-        </div>
-        <div class="button">
-          <a href="logout.php">Logout</a>
-        </div>
-      </nav>
-
-      <main id="account-settings-main">
-        <div class="settings-container">
-          <!-- Sidebar -->
-          <aside class="sidebar">
-            <div class="profile-info">
-              <img src="images/default-profile.png" alt="Profile Picture" class="profile-pic">
-              <p class="username">John Doe</p>
-            </div>
-            <ul class="settings-menu">
-              <li><a href="javascript:void(0);" onclick="toggleSection('profile')">Profile</a></li>
-              <li><a href="javascript:void(0);" onclick="toggleSection('account')">Account</a></li>
-              <li><a href="javascript:void(0);" onclick="toggleSection('password')">Change Password</a></li>
-              <li><a href="javascript:void(0);" onclick="toggleSection('delete')">Delete Account</a></li>
-            </ul>
-          </aside>
-
-          <!-- Main Content -->
-          <section class="settings-content">
-            <h1>Account Settings</h1>
-
-            <!-- Profile Section -->
-            <div id="profile" class="settings-section" style="display: block;">
-              <h3>Profile Information</h3>
-              <form id="profile-form" method="post" action="save-profile.php">
-                <label for="profile-username">Username</label>
-                <input type="text" name="username" id="profile-username" value="" oninput="validateUsername(this)" />
-                <p id="profile-username-error" class="error-message"></p>
-
-                <label for="profile-email">Email</label>
-                <input type="email" name="email" id="profile-email" value="" oninput="validateEmail(this)" />
-                <p id="profile-email-error" class="error-message"></p>
-
-                <input type="submit" value="Save Changes" class="save-button" />
-              </form>
-            </div>
-
-            <!-- Account Section -->
-            <div id="account" class="settings-section" style="display: none;">
-              <h3>Account Settings</h3>
-              <p>Here you can update your account settings.</p>
-
-              <form id="account-settings-form" method="post" action="save-account-settings.php">
-                <!-- Full Name -->
-                <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" id="fullname" value="" required oninput="validateFullName(this)" />
-                <p id="fullname-error" class="error-message"></p>
-
-                <!-- Username -->
-                <label for="account-username">Username</label>
-                <input type="text" name="username" id="account-username" value="" required oninput="validateUsername(this)" />
-                <p id="account-username-error" class="error-message"></p>
-
-                <!-- Email Address -->
-                <label for="account-email">Email Address</label>
-                <input type="email" name="email" id="account-email" value="" required oninput="validateEmail(this)" />
-                <p id="account-email-error" class="error-message"></p>
-
-                <!-- Phone Number -->
-                <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" value="" oninput="validatePhoneNumber(this)" />
-                <p id="phone-error" class="error-message"></p>
-
-                <!-- Province -->
-                <label for="province">Province</label>
-                <select name="province" id="province" onchange="updateCities()">
-                  <option value="">Select Province</option>
-                  <option value="BC">British Columbia</option>
-                  <option value="AB">Alberta</option>
-                  <option value="SK">Saskatchewan</option>
-                  <option value="MB">Manitoba</option>
-                  <option value="on">Ontario</option>
-                </select>
-
-                <!-- City -->
-                <label for="city">City</label>
-                <select name="city" id="city" disabled>
-                  <option value="">Select City</option>
-                  <!-- Cities will be populated here based on province -->
-                </select>
-
-                <!-- Address -->
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address" value="" oninput="validateAddress(this)" />
-                <p id="address-error" class="error-message"></p>
-
-                <input type="submit" value="Save Changes" class="save-button" />
-              </form>
-            </div>
-
-             <!-- Password Section -->
-            <div id="password" class="settings-section" style="display: none;">
-              <h3>Change Password</h3>
-              <form method="post" action="change-password.php" onsubmit="return validatePasswordChange()">
-                <label for="current-password">Current Password</label>
-				<input type="password" name="current-password" id="current-password" required oninput="validateCurrentPassword(this)" />
-				<p id="current-password-error" class="error-message"></p>
-
-                <label for="new-password">New Password</label>
-                <input type="password" name="new-password" id="new-password" required oninput="validatePassword(this)" />
-                <p id="new-password-error" class="error-message"></p>
-
-                <label for="confirm-password">Confirm New Password</label>
-                <input type="password" name="confirm-password" id="confirm-password" required oninput="validateConfirmPassword(this)" />
-                <p id="confirm-password-error" class="error-message"></p>
-
-                <button type="submit" class="save-button">Save Changes</button>
-              </form>
-            </div>
-
-		  <!-- Delete Account Section -->
-            <div id="delete" class="settings-section" style="display: none;">
-              <h3>Delete Account</h3>
-              <p>Are you sure you want to delete your account? This action is irreversible.</p>
-              <form method="post" action="delete-account.php">
-                <button type="submit" class="delete-button">Delete My Account</button>
-              </form>
-            </div>
-		  
-          </section>
-        </div>
-      </main>
-    </div>
-
-    <footer>
-      <p>CS 476: Software Development Project</p>
-    </footer>
-  </div>
-</body>
-
-</html>
