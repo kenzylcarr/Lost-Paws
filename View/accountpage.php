@@ -160,6 +160,19 @@
 		errorMessage.textContent = "";
 	  }
 	}
+
+	  // Validate Confirm Password
+	function validateConfirmPassword(input) {
+	  const confirmPassword = input.value;
+	  const newPassword = document.getElementById("new-password").value;
+	  const errorMessage = document.getElementById("confirm-password-error");
+
+	  if (confirmPassword !== newPassword) {
+		errorMessage.textContent = "Passwords do not match.";
+	  } else {
+		errorMessage.textContent = "";
+	  }
+	}
 	  
   </script>
 </head>
