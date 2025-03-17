@@ -131,63 +131,55 @@
       }
     }
 
-    // Validate Current Password
+	    // Validate Current Password
 	function validateCurrentPassword(input) {
 	  const password = input.value;
 	  const errorMessage = document.getElementById("current-password-error");
-
+	
 	  // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
 	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
-
+	
 	  if (!password.match(passwordRegex)) {
-		errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	    errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	    input.style.borderColor = "red";
 	  } else {
-		errorMessage.textContent = "";
+	    errorMessage.textContent = ""; // Clear error message when validation passes
+	    input.style.borderColor = ""; // Reset the border color to default
 	  }
 	}
-
+	
 	// Validate New Password
 	function validatePassword(input) {
 	  const password = input.value;
 	  const errorMessage = document.getElementById("new-password-error");
-
+	
 	  // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
 	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
-
+	
 	  if (!password.match(passwordRegex)) {
-		errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	    errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	    input.style.borderColor = "red";
 	  } else {
-		errorMessage.textContent = "";
+	    errorMessage.textContent = ""; // Clear error message when validation passes
+	    input.style.borderColor = ""; // Reset the border color to default
 	  }
 	}
-
+	
 	// Validate Confirm Password
 	function validateConfirmPassword(input) {
 	  const confirmPassword = input.value;
 	  const newPassword = document.getElementById("new-password").value;
 	  const errorMessage = document.getElementById("confirm-password-error");
-
+	
 	  if (confirmPassword !== newPassword) {
-		errorMessage.textContent = "Passwords do not match.";
+	    errorMessage.textContent = "Passwords do not match.";
+	    input.style.borderColor = "red";
 	  } else {
-		errorMessage.textContent = "";
+	    errorMessage.textContent = ""; // Clear error message when passwords match
+	    input.style.borderColor = ""; // Reset the border color to default
 	  }
 	}
 
-	// Validate Current Password and New Password Cannot Be the Same
-	function validatePasswordChange() {
-	  const currentPassword = document.getElementById("current-password").value;
-	  const newPassword = document.getElementById("new-password").value;
-	  const currentPasswordError = document.getElementById("current-password-error");
-
-	  if (currentPassword === newPassword) {
-		currentPasswordError.textContent = "Old password and new password cannot be the same.";
-		return false;
-	  } else {
-		currentPasswordError.textContent = "";
-	  }
-	  return true;
-	}
 
   </script>
 
