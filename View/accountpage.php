@@ -320,6 +320,15 @@
                 <button type="submit" class="save-button">Save Changes</button>
               </form>
             </div>
+
+		  <!-- Delete Account Section -->
+            <div id="delete" class="settings-section" style="display: none;">
+              <h3>Delete Account</h3>
+              <p>Are you sure you want to delete your account? This action is irreversible.</p>
+              <form method="post" action="delete-account.php">
+                <button type="submit" class="delete-button">Delete My Account</button>
+              </form>
+            </div>
 		  
           </section>
         </div>
