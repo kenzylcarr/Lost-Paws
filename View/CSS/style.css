@@ -347,10 +347,12 @@ input {
 /*   END CSS: signup.php */                               
 
   
-
-
-
-/*   START CSS: selectpostpage.php  */   
+/*   START CSS: viewpet.php  */   
+#container-viewpet {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+}
 
   #select-post-main-left {
       grid-column-start: 1;
@@ -359,6 +361,7 @@ input {
       grid-row-end: 3;
       padding: 20px;
       width: 15vw;
+      margin-top: 70px;
 
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
       overflow: hidden;
@@ -382,6 +385,7 @@ input {
     display: grid;
     grid-template-rows: 1fr 1fr 2fr 1fr;
     width: 65vw;
+    height: 130vh;
     padding: 25px;
 }
 
@@ -395,23 +399,24 @@ input {
     width: 10vw;
     box-shadow: 0 3px 5px rgba(221, 35, 35, 0.89);
     text-align: center;
-    margin-top: -20px;
+    margin-top: 50px;
   }
 
   .title-post {
     grid-row-start: 2;
     grid-row-end: 3;
     margin-left: 30px;
-    margin-top: -110px;
+    margin-top: -80px;
   }
   
   .description-container {
     grid-row-start: 3;
     grid-row-end: 4;
     margin-left: 30px;
-    margin-top: -180px;
+    margin-top: -220px;
     padding: 25px;
     width: 55vw;
+    height: 60vh;
     display: grid;
     grid-template-columns: 1.5fr 2fr;
 
@@ -423,9 +428,22 @@ input {
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
-    overflow: scroll;
     max-width: 600px;
-    max-height: 300px;
+  }
+
+  .description-column1 img {
+    max-height: 590px;
+    max-width: 590px;
+  }
+
+  .description-column1 p {
+    padding-top: 20px;
+  }
+
+  .description-column1 button {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: medium;
   }
 
   .description-column2 {
@@ -437,7 +455,6 @@ input {
     padding: 25px;
     overflow: scroll;
     max-width: 600px;
-    max-height: 300px;
   }
 
   .comment-container {
@@ -458,6 +475,8 @@ input {
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
+
+    margin-top: 70px;
     background-color: #e9e9e9;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     width: 15vw;
@@ -487,7 +506,7 @@ input {
     grid-template-columns: 0.5fr 1fr;
     grid-template-rows: 80px auto;
 
-    background-color: #F5F5F4;
+    background-color: #f4f5f5;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     width: 22vw;
     padding-left: 30px;
@@ -507,7 +526,23 @@ input {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
 
-/*   END CSS: selectpostpage.php */  
+  .comment-item {
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 10px; /* Space inside the comment box */
+    margin-bottom: 10px; /* Space between comments */
+    border-radius: 5px; /* Optional: rounded corners for the border */
+    background-color: #f9f9f9; /* Light background for better readability */
+  }
+  
+  .comment-item p {
+    margin: 5px 0; /* Add some space between elements inside the comment */
+  }
+  
+  .comment-item em {
+    font-size: 0.9em;
+    color: #777; /* Light gray color for date */
+  }
+/*   END CSS: viewpet.php */  
 
 
 /* START CSS: reportpetpage.php */
@@ -956,6 +991,12 @@ input {
   margin-top: 0;
   padding-top: 10px;
   clear: both;
+}
+
+.settings-page .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 /*  END CSS FOR accountpage.php  */

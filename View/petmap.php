@@ -25,25 +25,20 @@
 <div class="petmap-page">
   <div id="container">
   
-	  <!-- Lost Paws Logo -->
+    <!-- Lost Paws Logo -->
     <nav class="navmenu">
         <div class="logo"> 
-            <a href="../index.php">
-			<p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
-		</a>
+          <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
         </div>
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="aboutpage.php">About Lost Paws</a>
-        <a href="reportpetpage.php">Report a Pet</a>
-        <a href="lostandfound.php">Lost & Found</a> 	
-        <a href="petmap.php">Pet Map</a>
+        <a href="/View/reportpetpage.php">Report a Pet</a>
+        <a href="homepage.php">Homepage</a> 	
       </div>
 
       <div class="button">
-        <a id="signup-button" href="signup.php">Sign Up!</a>
-        <a id="login-button" href="login.php">Login</a>
+        <a id="login-button" href="logout.php">Logout</a>
       </div>
     </nav>
 
@@ -109,10 +104,6 @@
     });
   </script>
 </div>
-
-<footer>
-  <p>CS 476: Software Development Project</p>
-</footer>
 	
 </body>
 </html>

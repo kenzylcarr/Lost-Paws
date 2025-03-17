@@ -42,8 +42,8 @@ if ($result->num_rows > 0) {
 }
 
 // Declare variables with empty values
-$animal_type = $status = $location_ip = $picture = "";
-$animal_type_err = $status_err = $location_err = $picture_err = "";
+$animal_type = $status = $location_ip = "";
+$animal_type_err = $status_err = $location_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -67,47 +67,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $location_ip = trim($_POST["location_ip"]);
     }
-    
-    // Check for input errors before submitting to the database
-    if (empty($animal_type_err) && empty($status_err) && empty($location_err) && empty($picture_err)) {
-        // Prepare INSERT statement
-        $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
 
-        $picture_paths = [];
-
-        // Handle file upload for pet picture
-        if (isset($_FILES['petImages'])) {
+        // Handle file uploads
+        if (isset($_FILES['petPhotos']) && is_array($_FILES['petPhotos']['name'])) {
             $target_dir = "../View/pet-uploads/";
-            $total_files = count($_FILES['petImages']['name']);
-
+            $total_files = count($_FILES['petPhotos']['name']);
+    
             for ($i = 0; $i < $total_files; $i++) {
-                $file_name = basename($_FILES['petImages']['name'][$i]);
+                $file_name = basename($_FILES['petPhotos']['name'][$i]);
                 $target_file = $target_dir . $file_name;
                 $uploadOK = 1;
-
+    
                 // Check if the file is an image
-                $check = getimagesize($_FILES['petImages']['tmp_name'][$i]);
+                $check = getimagesize($_FILES['petPhotos']['tmp_name'][$i]);
                 if ($check === false) {
                     echo "File is not an image.";
                     $uploadOK = 0;
                 }
-
+    
                 // Check file size
-                if ($_FILES['petImages']['size'][$i] > 1000000) {
+                if ($_FILES['petPhotos']['size'][$i] > 1000000) {
                     echo "File is too large. Maximum 1MB.";
                     $uploadOK = 0;
                 }
-
+    
                 // Allow certain file types
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
                 if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
                     echo "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
                     $uploadOK = 0;
                 }
-
+    
                 // Attempt to upload the file if all checks pass
                 if ($uploadOK == 1) {
-                    if (move_uploaded_file($_FILES['petImages']['tmp_name'][$i], $target_file)) {
+                    if (move_uploaded_file($_FILES['petPhotos']['tmp_name'][$i], $target_file)) {
                         $picture_paths[] = $target_file; // Store the path for database insertion
                     } else {
                         echo "Sorry, there was an error uploading your file.";
@@ -115,20 +108,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         }
-        // Insert into database
-        foreach($picture_paths as $picture) {
-            $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
-            $stmt->execute();
+          
+        // Check for input errors before submitting to the database
+        if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
+            if (empty($picture_paths)) {
+                echo "No pictures were uploaded.";
+            } else {
+                // Prepare INSERT statement
+                $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
+                
+                // Insert into the database
+                foreach ($picture_paths as $picture) {
+                $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
+                if ($stmt->execute()) {
+                    echo "Error: " . $stmt->error;
+                }
+                }
+                echo "Pet reported successfully!";
+                header("Location: ../View/homepage.php");
+                exit();
+            }
+        } else {
+            // Display validation errors
+            if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
+            if (!empty($status_err)) echo $status_err . "<br>";
+            if (!empty($location_err)) echo $location_err . "<br>";
+            if (!empty($picture_err)) echo $picture_err . "<br>";
         }
-        echo "Pet reported successfully.";
-        header("Location: homepage.php");
-        exit();
-    } else {
-        // Display validation errors
-        if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
-        if (!empty($status_err)) echo $status_err . "<br>";
-        if (!empty($location_err)) echo $location_err . "<br>";
     }
-}
 mysqli_close($conn);
 ?>

@@ -81,14 +81,14 @@ require_once("../Model/db_config.php");
                 <p> Type: <?php echo htmlspecialchars($pet['animal_type']); ?></p>
                 <p> Status: <?php echo htmlspecialchars($pet['status']); ?></p>
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
-                <p><a href="/View/selectpostpage_visitor.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
+                <p><a href="/View/viewpet_visitor.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
               </div>
               <?php endforeach; ?>
         </div>
       </main>
   
       <main id="mainpage-right-beforelogin">
-        <h3>Sign in to get alerts and to connect with your community!</h3>
+        <h3>Sign in to connect with your community!</h3>
         <p>Don't have an account?<a id="signup-button" href="/View/signup.php">Sign Up!</a></p>
       </main>
   
