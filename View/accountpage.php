@@ -301,26 +301,26 @@
               </form>
             </div>
 
-             <!-- Change Password Section -->
-			<div id="password" class="settings-section" style="display: none;">
-			  <h3>Change Password</h3>
-			  <form id="change-password-form" method="post" action="save-password.php" onsubmit="return validatePasswordChange()">
-				<label for="current-password">Current Password</label>
-				<input type="password" name="current-password" id="current-password" required />
-
+             <!-- Password Section -->
+            <div id="password" class="settings-section" style="display: none;">
+              <h3>Change Password</h3>
+              <form method="post" action="change-password.php" onsubmit="return validatePasswordChange()">
+                <label for="current-password">Current Password</label>
+				<input type="password" name="current-password" id="current-password" required oninput="validateCurrentPassword(this)" />
 				<p id="current-password-error" class="error-message"></p>
 
-				<label for="new-password">New Password</label>
-				<input type="password" name="new-password" id="new-password" required oninput="validatePassword(this)" />
-				<p id="new-password-error" class="error-message"></p>
+                <label for="new-password">New Password</label>
+                <input type="password" name="new-password" id="new-password" required oninput="validatePassword(this)" />
+                <p id="new-password-error" class="error-message"></p>
 
-				<label for="confirm-password">Confirm New Password</label>
-				<input type="password" name="confirm-password" id="confirm-password" required oninput="validateConfirmPassword(this)" />
-				<p id="confirm-password-error" class="error-message"></p>
+                <label for="confirm-password">Confirm New Password</label>
+                <input type="password" name="confirm-password" id="confirm-password" required oninput="validateConfirmPassword(this)" />
+                <p id="confirm-password-error" class="error-message"></p>
 
-				<input type="submit" value="Save Changes" class="save-button" />
-			  </form>
-			</div>
+                <button type="submit" class="save-button">Save Changes</button>
+              </form>
+            </div>
+		  
           </section>
         </div>
       </main>
