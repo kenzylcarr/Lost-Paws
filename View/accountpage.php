@@ -16,34 +16,37 @@
   <title>Account Settings</title>
   <link rel="stylesheet" type="text/css" href="style2.css">
   <script src="../Controller/eventHandler.js"></script>
-    <script>
+
+  <script>
     // JavaScript function to toggle visibility of sections
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('.settings-section');
       sections.forEach(section => {
-        if (section.id === sectionId) {
-          section.style.display = section.style.display === 'none' ? 'block' : 'none';
-        } else {
-          section.style.display = 'none';
-        }
+        section.style.display = section.id === sectionId ? 'block' : 'none';
       });
     }
 
-    // Function to validate username (no spaces allowed)
-    function validateUsername(input) {
-      const usernameError = document.getElementById("username-error");
-      if (input.value.includes(" ")) {
-        usernameError.textContent = "Username cannot contain spaces";
-        input.style.borderColor = "red";
-      } else {
-        usernameError.textContent = "";
-        input.style.borderColor = "";
-      }
-    }
+    // Function to validate username (only letters and numbers allowed)
+	function validateUsername(input) {
+	  const usernameError = document.getElementById(input.id + "-error"); // Dynamically get correct error element
+	  const usernamePattern = /^[A-Za-z0-9]+$/; // Only allows letters and numbers
+
+	  if (input.value.trim() === "") {
+		usernameError.textContent = "Username cannot be empty.";
+		input.style.borderColor = "red";
+	  } else if (!usernamePattern.test(input.value)) {
+		usernameError.textContent = "Username can only contain letters and numbers (no spaces or special characters).";
+		input.style.borderColor = "red";
+	  } else {
+		usernameError.textContent = "";
+		input.style.borderColor = "";
+	  }
+	}
+
 
     // Function to validate email format
     function validateEmail(input) {
-      const emailError = document.getElementById("email-error");
+      const emailError = document.getElementById(input.id + "-error");
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailPattern.test(input.value)) {
         emailError.textContent = "Please enter a valid email address";
@@ -53,7 +56,27 @@
         input.style.borderColor = "";
       }
     }
+
+    // Function to validate Full Name (Only letters & spaces, Auto Title Case)
+    function validateFullName(input) {
+      const fullNameError = document.getElementById("fullname-error");
+      const namePattern = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
+
+      // Automatically format name to "Title Case"
+      input.value = input.value
+        .toLowerCase()
+        .replace(/\b\w/g, char => char.toUpperCase());
+
+      if (!namePattern.test(input.value)) {
+        fullNameError.textContent = "Full name can only contain letters and spaces.";
+        input.style.borderColor = "red";
+      } else {
+        fullNameError.textContent = "";
+        input.style.borderColor = "";
+      }
+    }
   </script>
+
 </head>
 
 <body>
