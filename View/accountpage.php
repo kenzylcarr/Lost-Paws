@@ -130,6 +130,22 @@
         input.style.borderColor = "";
       }
     }
+ 
+   // Validate New Password
+	function validatePassword(input) {
+	  const password = input.value;
+	  const errorMessage = document.getElementById("new-password-error");
+
+	  // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
+	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
+
+	  if (!password.match(passwordRegex)) {
+		errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	  } else {
+		errorMessage.textContent = "";
+	  }
+	}
+	  
   </script>
 </head>
 
