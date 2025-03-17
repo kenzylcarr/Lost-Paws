@@ -50,6 +50,19 @@
         });
       });
     });
+
+    // Function to validate email format
+    function validateEmail(input) {
+      const emailError = document.getElementById("email-error");
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(input.value)) {
+        emailError.textContent = "Please enter a valid email address";
+        input.style.borderColor = "red";
+      } else {
+        emailError.textContent = "";
+        input.style.borderColor = "";
+      }
+    }
   </script>
 </head>
 
