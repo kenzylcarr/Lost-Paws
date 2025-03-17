@@ -173,6 +173,21 @@
 		errorMessage.textContent = "";
 	  }
 	}
+
+// Validate Current Password and New Password Cannot Be the Same
+	function validatePasswordChange() {
+	  const currentPassword = document.getElementById("current-password").value;
+	  const newPassword = document.getElementById("new-password").value;
+	  const currentPasswordError = document.getElementById("current-password-error");
+
+	  if (currentPassword === newPassword) {
+		currentPasswordError.textContent = "Old password and new password cannot be the same.";
+		return false;
+	  } else {
+		currentPasswordError.textContent = "";
+	  }
+	  return true;
+	}
 	  
   </script>
 </head>
