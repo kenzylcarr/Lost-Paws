@@ -476,7 +476,8 @@ input {
   }
 
   .all-comments {
-    overflow: scroll;
+    overflow-x: hidden; 
+    overflow-y: scroll; 
   }
 
   #select-post-main-right {

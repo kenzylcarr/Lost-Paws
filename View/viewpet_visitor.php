@@ -12,12 +12,6 @@
 session_start();
 require_once("../Model/db_config.php");
 
-// Check if the user is signed in
-if (!isset($_SESSION['username'])) {
-  header("Location: ../index.php");
-  exit();
-}
-
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   // Get the pet_id and comment from the form
