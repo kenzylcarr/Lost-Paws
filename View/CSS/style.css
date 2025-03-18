@@ -424,8 +424,8 @@ input {
   }
 
   .description-container > img {
-    max-height: 600px;
-    max-width: 590px;
+    max-height: 400px;
+    max-width: 300px;
   }
 
   .description-column1 {
