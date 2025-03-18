@@ -8,7 +8,71 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: viewpet_visitor.php
 -->
+<?php
+session_start();
+require_once("../Model/db_config.php");
 
+// Check if the user is signed in
+if (!isset($_SESSION['username'])) {
+  header("Location: ../index.php");
+  exit();
+}
+
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
+  // Get the pet_id and comment from the form
+  $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
+  $comment = htmlspecialchars($_POST['comment']);
+  
+  if (!empty($pet_id) && !empty($comment)) {
+    // Insert the comment into the database
+    $stmt = $conn->prepare("INSERT INTO comments (pet_id, user_id, comment_content, comment_date) VALUES (?, ?, ?, NOW())");
+    $stmt->bind_param("iis", $pet_id, $user_id, $comment);
+    
+    if ($stmt->execute()) {
+      echo "<script>window.location.href = window.location.href;</script>";
+    } else {
+      echo "Error adding comment.";
+    }
+  } else {
+    echo "Comment or pet_id is missing.";
+  }
+}
+
+// Get the pet_id from the URL
+if (isset($_GET['id'])) {
+  $pet_id = $_GET['id'];
+
+  // Fetch specific pet data from the database along with the username
+  $stmt = $conn->prepare("
+    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, users.username 
+    FROM pets 
+    JOIN users ON pets.user_id = users.user_id 
+    WHERE pets.pet_id = ?");
+  $stmt->bind_param("i", $pet_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows > 0) {
+      $pet = $result->fetch_assoc();
+  } else {
+      echo "Pet not found.";
+      exit();
+  }
+} else {
+    exit();
+  }
+
+  // Fetch comments for the pet
+  $stmt = $conn->prepare("SELECT comments.comment_content, comments.comment_date, users.username 
+                          FROM comments 
+                          JOIN users ON comments.user_id = users.user_id 
+                          WHERE comments.pet_id = ? 
+                          ORDER BY comments.comment_date DESC");
+  $stmt->bind_param("i", $pet_id);
+  $stmt->execute();
+  $comment_result = $stmt->get_result();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
