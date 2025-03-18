@@ -9,84 +9,84 @@
   File name: login.php
 -->
 <?php
-  // Start the session
-  session_start();
+// Start the session
+session_start();
 
-  // Include database configuration file
-  require_once '../Model/db_config.php';
+// Include database configuration file
+require_once '../Model/db_config.php';
 
-  // Initialize variables
-  $username = "";
-  $password = "";
-  $username_err = "";
-  $password_err = "";
-  $login_err = "";
+// Initialize variables
+$username = "";
+$password = "";
+$username_err = "";
+$password_err = "";
+$login_err = "";
 
-  // Process the form when submitted
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate username
-    if (empty(trim($_POST["username"]))) {
-      $username_err = "Please enter your username.";
-    } else {
-      $username = trim($_POST["username"]);
-    }
-    // Validate password
-    if (empty(trim($_POST["password"]))) {
-      $password_err = "Please enter your password.";
-    } else {
-      $password = trim($_POST["password"]);
-    }
-    // Check for errors before querying database
-    if (empty($username_err) && empty($password_err)) {
-      // Prepare SELECT statement
-      $sql = "SELECT user_id, username, password FROM users WHERE username = ?";
+// Process the form when submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Validate username
+  if (empty(trim($_POST["username"]))) {
+    $username_err = "Please enter your username.";
+  } else {
+    $username = trim($_POST["username"]);
+  }
+  // Validate password
+  if (empty(trim($_POST["password"]))) {
+    $password_err = "Please enter your password.";
+  } else {
+    $password = trim($_POST["password"]);
+  }
+  // Check for errors before querying database
+  if (empty($username_err) && empty($password_err)) {
+    // Prepare SELECT statement
+    $sql = "SELECT user_id, username, password FROM users WHERE username = ?";
 
-      if ($stmt = mysqli_prepare($conn, $sql)) {
-        mysqli_stmt_bind_param($stmt, "s", $param_username);
-        $param_username = $username;
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+      mysqli_stmt_bind_param($stmt, "s", $param_username);
+      $param_username = $username;
 
-        // Execute prepared statement
-        if (mysqli_stmt_execute($stmt)) {
-          mysqli_stmt_store_result($stmt);
+      // Execute prepared statement
+      if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_store_result($stmt);
 
-          // Check if the username exists, then verify password if it does
-          if (mysqli_stmt_num_rows($stmt) == 1) {
-            mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
-            if (mysqli_stmt_fetch($stmt)) {
-              if (password_verify($password, $hashed_password)) {
-                if (session_status() == PHP_SESSION_NONE) {
-                  // Password is valid, start new session
-                  session_start();
-                }
-                // Store data in session variables
-                $_SESSION["signedin"] = true;
-                $_SESSION["id"] = $user_id;
-                $_SESSION["username"] = $username;
-
-                // Redirect user to mainpage after login
-                header("location: homepage.php");
-                exit();
-              } else {
-                // Display error message if password is invalid and prevent user from logging in
-                $login_err = "Invalid username or password.";
-                header("location: login.php");
-                exit();
+        // Check if the username exists, then verify password if it does
+        if (mysqli_stmt_num_rows($stmt) == 1) {
+          mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
+          if (mysqli_stmt_fetch($stmt)) {
+            if (password_verify($password, $hashed_password)) {
+              if (session_status() == PHP_SESSION_NONE) {
+                // Password is valid, start new session
+                session_start();
               }
+              // Store data in session variables
+              $_SESSION["signedin"] = true;
+              $_SESSION["id"] = $user_id;
+              $_SESSION["username"] = $username;
+
+              // Redirect user to mainpage after login
+              header("location: homepage.php");
+              exit();
+            } else {
+              // Display error message if password is invalid and prevent user from logging in
+              $login_err = "Invalid username or password.";
+              header("location: login.php");
+              exit();
             }
-          } else {
-            // Display error message if username does not exist
-            $login_err = "Invalid username.";
           }
         } else {
-          echo "Something went wrong. Please try again later.";
+          // Display error message if username does not exist
+          $login_err = "Invalid username.";
         }
-        // Close statment
-        mysqli_stmt_close($stmt);
+      } else {
+        echo "Something went wrong. Please try again later.";
       }
+      // Close statment
+      mysqli_stmt_close($stmt);
     }
-    // Close connection
-    mysqli_close($conn);
   }
+  // Close connection
+  mysqli_close($conn);
+}
 ?>
 
 <!DOCTYPE html>
@@ -101,67 +101,68 @@
 
 <body>
   <div id="container">
+    <!-- Lost Paws Logo -->
+    <div class="logo">
+      <a href="../index.php">
+        <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo" /></p>
+      </a>
+    </div>
+    <!-- Navigation menu -->
+    <div class="nav-links-right">
+      <a href="aboutpage.php">About Lost Paws</a>
+      <a href="reportpetpage.php">Report a Pet</a>
+      <a href="lostandfound.php">Lost & Found</a>
+      <a href="petmap.php">Pet Map</a>
+    </div>
 
-    <nav class="navmenu">
-      <!-- Lost Paws Logo -->
-      <div class="logo"> 
-          <a href="../index.php">
-            <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
-          </a>
-      </div>
-      <!-- Navigation menu -->
-      <div class="nav-links">
-        <a href="aboutpage.php">About Lost Paws</a>
-        <a href="lostandfound.php">Lost & Found</a>
-        </div>
-    </nav>
 
-      <!-- Left-hand side of page  -->
-    <main id="main-left-login">  
+    <!-- Left-hand side of page  -->
+    <main id="main-left-login">
       <div class="login-header">
-        <h1>LOST PAWS</h1>
-        <h2>Welcome back to Lost Paws!</h2>
+        <h1>L·ᴥ·st Paws</h1>
+        <h2>Welcome to Lost Paws!</h2>
       </div>
-          <!-- Prompts for user input to login -->
-          <form class="auth-form-login" id="login-form" action="../View/login.php" method="post">
-            <h3>Login</h3>
-            
-            <!-- Username -->
-            <div class="login-field">
-              <label for="username">Username</label>
-              <input type="text" name="username" id="username"/>
-              <p id="error-text-username" class="error-text hidden">Invalid username</p>
-            </div>
+      <!-- Prompts for user input to login -->
+      <form class="auth-form-login" id="login-form" action="../View/login.php" method="post">
+        <h3>Login</h3>
 
-            <!-- Password -->
-            <div class="login-field">
-              <label for="password">Password</label>
-              <input type="password" name="password" id="password"/>
-              <p id="error-text-password" class="error-text hidden">Invalid password</p>
-            </div>
+        <!-- Username -->
+        <div class="login-field">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" />
+          <p id="error-text-username" class="error-text hidden">Invalid username</p>
+        </div>
 
-            <!-- Incase of Forgotten Password
+        <!-- Password -->
+        <div class="login-field">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+          <p id="error-text-password" class="error-text hidden">Invalid password</p>
+        </div>
+
+        <!-- Incase of Forgotten Password
             <div class="login-field">
               <p><a href="forgotpassword.php" class="forgot-password">Forgot Password</a></p>
              <br>
             </div> -->
 
-            <!-- Submit Button to Login -->
-            <div class="login-field">
-              <input class="login-button" type="submit" value="Login" action="homepage.php">
-            </div>
-          </form>
-        <!-- If user does not have an account  -->
-        <div class="login-footnote">
-            <p>Don't have an account? <a class="signup-button" href="signup.php">Signup</a></p>
+        <!-- Submit Button to Login -->
+        <div class="login-field">
+          <input class="login-button" type="submit" value="Login" action="homepage.php">
         </div>
+      </form>
+      <!-- If user does not have an account  -->
+      <div class="login-footnote">
+        <p>Don't have an account? <a class="signup-button" href="signup.php">Signup</a></p>
+      </div>
     </main>
 
     <!-- Right-hand side of page -->
     <main id="main-right-login">
-        <img>
+      <img src="images/DogStack.png" alt="Stack of Dogs">
     </main>
     <script src="../Controller/eventRegisterLogin.js"></script>
+  </div>
 </body>
 
 </html>
