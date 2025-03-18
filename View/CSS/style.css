@@ -393,13 +393,14 @@ input {
     grid-row-start: 1;
     grid-row-end: 2;
     padding: 25px;
+    background-color: #FFECBD;
   }
 
   .lost-or-found-label h1{
     width: 10vw;
-    box-shadow: 0 3px 5px rgba(221, 35, 35, 0.89);
+    box-shadow: 0 3px 5px rgba(248, 241, 200, 0.89);
     text-align: center;
-    margin-top: 50px;
+    margin-top: 55px;
   }
 
   .title-post {
@@ -447,6 +448,7 @@ input {
 
   .description-column1 button {
     margin-top: 10px;
+    margin-bottom: 20px;
     padding: 5px;
     font-size: medium;
   }
