@@ -11,11 +11,11 @@
 
 <!-- PHP validation for the form begins -->
 <?php
-session_start();
-require_once("../Model/db_config.php");
+  session_start();
+  require_once("../Model/db_config.php");
 
-// Get the 'status' parameter from the URL (if present)
-$status = isset($_GET['status']) ? $_GET['status'] : '';
+  // Get the 'status' parameter from the URL (if present)
+  $status = isset($_GET['status']) ? $_GET['status'] : '';
 
   // Fetch pet data from database, with filtering based on status if present
   $pets = [];
@@ -24,11 +24,12 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
       $query .= " WHERE status = ?";
   }
   $stmt = $conn->prepare($query);
-  
+
   // If filtering by status, bind the parameter
   if ($status == 'lost' || $status == 'found') {
       $stmt->bind_param("s", $status);
   }
+
   $stmt->execute();
   $result = $stmt->get_result();
 
@@ -106,30 +107,17 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
       </main>
     </div>
 
-      <!-- testing JavaScript to handle button clicks and update URL -->
+      <!-- Adding JavaScript to handle lost-or-found button clicks -->
     <script>
-      // select buttons
-      const lostButton = document.getElementById('lost-button');
-      const foundButton = document.getElementById('found-button');
-
-      // add event listeners to buttons
-      lostButton.addEventListener('click', function() {
-        // Update URL to filter by 'lost' status
-        window.location.href = "?status=lost";
-        
-        // highlight the clicked button
-        lostButton.classList.add('active-button');
-        foundButton.classList.remove('active-button'); // Remove the active class from the found button
+      // when the "Lost Pets" button is clicked
+      document.getElementById('lost-button').addEventListener('click', function() {
+        window.location.href = "?status=lost";  // update URL with status parameter
       });
 
-      foundButton.addEventListener('click', function() {
-        // update URL to filter by 'found' status
-        window.location.href = "?status=found";
-        
-        // highlight the clicked button
-        foundButton.classList.add('active-button');
-        lostButton.classList.remove('active-button'); // Remove the active class from the lost button
+      // when the "Found Pets" button is clicked
+      document.getElementById('found-button').addEventListener('click', function() {
+        window.location.href = "?status=found";  // update URL with status parameter
       });
-  </script>
+    </script>
   </body>
   </html>
