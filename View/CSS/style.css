@@ -554,7 +554,7 @@ input {
   width: 22vw;
   padding-left: 30px;
   margin-right: -100px;
-  margin-top: 70px;
+  margin-top: 50px;
   padding-top: 20px;
 }
 
@@ -606,14 +606,17 @@ border-radius: 0.3vw;
 
 .add-comment input {
   height: 40px;
-  width: 700px;
+  width: 90%;
   float: left;
 }
 
 .add-comment button {
  padding: 5px;
- font-size: 11pt;
+ font-size: 12pt;
  margin: 8px;
+ margin-left: 10px;
+ border-radius: 3px;
+ background-color: #bddef5;
 }
 /*   END CSS: viewpet_member.php  */   
 
