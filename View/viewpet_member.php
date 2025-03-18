@@ -149,31 +149,31 @@ if (isset($_GET['id'])) {
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
               </div>
             </div>
-          
-          <!-- Container for Comment Section -->
-          <div class="comment-container">
-              <h3>Comments</h3>
-              <form action="" method="post">
-                <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
-                <input type="text" placeholder="Add a comment" name="comment">
-                <button type="submit">Submit</button>
-              </form>
 
           <!-- Display Comments -->
           <div class="display-comments">
-            <div class="all-comments">
-              <?php
-              if ($comment_result->num_rows > 0) {
-                while ($comment = $comment_result->fetch_assoc()) {
-                  echo '<div class="comment-item">';
-                  echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
-                  echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
-                  echo '</div>';
+            <h3>Comments</h3>
+              <div class="add-comment">
+                <form action="" method="post">
+                  <input type="hidden" name="pet_id" value="<?php echo htmlspecialchars($pet['pet_id']); ?>"> <!-- Hidden pet_id -->
+                  <input type="text" placeholder="Add a comment" name="comment">
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+              
+              <div class="all-comments">
+                <?php
+                if ($comment_result->num_rows > 0) {
+                  while ($comment = $comment_result->fetch_assoc()) {
+                    echo '<div class="comment-item">';
+                    echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
+                    echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                    echo '</div>';
+                  }
+                } else {
+                  echo '<p>No comments yet.</p>';
                 }
-              } else {
-                echo '<p>No comments yet.</p>';
-              }
-              ?>
+                ?>
             </div>
         </div>
       </main>
