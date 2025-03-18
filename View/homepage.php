@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])) {
   exit();
 }
 
-// Fetch data from database
+// Fetch user data from database
 $username = $_SESSION['username'];
 $stmt = $conn->prepare("SELECT email_address, phone_number, profile_photo FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
@@ -33,9 +33,23 @@ if ($result->num_rows > 0) {
   echo "User not found.";
   exit();
 }
-  // Fetch pet data from database
+
+  // Get the 'status' parameter from the URL (if present)
+  $status = isset($_GET['status']) ? $_GET['status'] : '';
+
+  // Fetch pet data from database, with filtering based on status if present
   $pets = [];
-  $stmt = $conn->prepare("SELECT pet_id, animal_type, status, location_ip, picture FROM pets");
+  $query = "SELECT pet_id, animal_type, status, location_ip, picture FROM pets";
+  if ($status == 'lost' || $status == 'found') {
+      $query .= " WHERE status = ?";
+  }
+  $stmt = $conn->prepare($query);
+
+  // If filtering by status, bind the parameter
+  if ($status == 'lost' || $status == 'found') {
+      $stmt->bind_param("s", $status);
+  }
+
   $stmt->execute();
   $result = $stmt->get_result();
 
@@ -103,10 +117,10 @@ if ($result->num_rows > 0) {
                 <p><a href="/View/viewpet_member.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
               </div>
               <?php endforeach; ?>
-      </div>
-    </main>
+        </div>
+      </main>
 
-    <main id="mainpage-right-afterlogin">
+      <main id="mainpage-right-afterlogin">
         <div class="user-photo">
           <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
         </div>
@@ -120,8 +134,20 @@ if ($result->num_rows > 0) {
             <p><a href="/View/accountpage.php">Account Settings</a></p>	
             <p><a href="/View/messages.php">Messages</a></p>
         </div>
-    </main>
-
+      </main>
     </div>
+
+      <!-- Adding JavaScript to handle lost-or-found button clicks -->
+      <script>
+        // when the "Lost Pets" button is clicked
+        document.getElementById('lost-button').addEventListener('click', function() {
+        window.location.href = "?status=lost";  // update URL with status parameter
+        });
+
+        // when the "Found Pets" button is clicked
+        document.getElementById('found-button').addEventListener('click', function() {
+        window.location.href = "?status=found";  // update URL with status parameter
+        });
+    </script>
 </body>
 </html>
