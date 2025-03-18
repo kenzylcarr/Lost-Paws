@@ -74,20 +74,22 @@
             </div>
 
           <!-- Display Comments -->
-          <div class="all-comments">
+          <div class="display-comments">
             <h3>Comments</h3>
-            <?php
-            if ($comment_result->num_rows > 0) {
-              while ($comment = $comment_result->fetch_assoc()) {
-                echo '<div class="comment-item">';
-                echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
-                echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
-                echo '</div>';
+            <div class="all-comments">
+              <?php
+              if ($comment_result->num_rows > 0) {
+                while ($comment = $comment_result->fetch_assoc()) {
+                  echo '<div class="comment-item">';
+                  echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
+                  echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                  echo '</div>';
+                }
+              } else {
+                echo '<p>No comments yet.</p>';
               }
-            } else {
-              echo '<p>No comments yet.</p>';
-            }
-            ?>
+              ?>
+            </div>
         </div>
       </main>
   

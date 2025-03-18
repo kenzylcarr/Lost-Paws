@@ -423,6 +423,11 @@ input {
     box-shadow: 0 2px 5px rgba(216, 213, 213, 0.5);
   }
 
+  .description-container > img {
+    max-height: 600px;
+    max-width: 590px;
+  }
+
   .description-column1 {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -468,6 +473,10 @@ input {
   .comment-container input{
     float: left;
     height: 2vw;
+  }
+
+  .all-comments {
+    overflow: scroll;
   }
 
   #select-post-main-right {
