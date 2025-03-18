@@ -478,7 +478,7 @@ input {
   .all-comments {
     overflow-x: hidden; 
     overflow-y: scroll; 
-    max-height: 50px;
+    max-height: 150px;
   }
 
   #select-post-main-right {
