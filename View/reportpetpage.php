@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
 // Declare variables with empty values
 $animal_type = $status = $location_ip = $picture = "";
 $animal_type_err = $status_err = $location_err = $picture_err = "";
-$picture_paths = [];
+$picture_paths = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -116,11 +116,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert into the database
         foreach ($picture_paths as $picture) {
           $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
-          if ($stmt->execute()) {
+          if (!$stmt->execute()) {
             echo "Error: " . $stmt->error;
           }
         }
-        echo "Pet reported successfully!";
         header("Location: ../View/homepage.php");
         exit();
     } else {
