@@ -13,9 +13,22 @@
 <?php
 session_start();
 require_once("../Model/db_config.php");
-  // Fetch pet data from database
+
+// Get the 'status' parameter from the URL (if present)
+$status = isset($_GET['status']) ? $_GET['status'] : '';
+
+  // Fetch pet data from database, with filtering based on status if present
   $pets = [];
-  $stmt = $conn->prepare("SELECT pet_id, animal_type, status, location_ip, picture FROM pets");
+  $query = "SELECT pet_id, animal_type, status, location_ip, picture FROM pets";
+  if ($status == 'lost' || $status == 'found') {
+      $query .= " WHERE status = ?";
+  }
+  $stmt = $conn->prepare($query);
+  
+  // If filtering by status, bind the parameter
+  if ($status == 'lost' || $status == 'found') {
+      $stmt->bind_param("s", $status);
+  }
   $stmt->execute();
   $result = $stmt->get_result();
 
@@ -91,7 +104,19 @@ require_once("../Model/db_config.php");
         <h3>Sign in to connect with your community!</h3>
         <p>Don't have an account?<a id="signup-button" href="/View/signup.php">Sign Up!</a></p>
       </main>
-  
     </div>
+
+      <!-- testing JavaScript to handle button clicks and update URL -->
+  <script>
+    // when the "Lost Pets" button is clicked
+    document.getElementById('lost-button').addEventListener('click', function() {
+      window.location.href = "?status=lost";  // update URL with status parameter
+    });
+
+    // when the "Found Pets" button is clicked
+    document.getElementById('found-button').addEventListener('click', function() {
+      window.location.href = "?status=found";  // update URL with status parameter
+    });
+  </script>
   </body>
   </html>
