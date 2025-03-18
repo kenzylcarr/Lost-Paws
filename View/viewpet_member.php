@@ -161,7 +161,6 @@ if (isset($_GET['id'])) {
 
           <!-- Display Comments -->
           <div class="display-comments">
-            <h3>Comments</h3>
             <div class="all-comments">
               <?php
               if ($comment_result->num_rows > 0) {
