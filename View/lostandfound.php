@@ -107,16 +107,29 @@ $status = isset($_GET['status']) ? $_GET['status'] : '';
     </div>
 
       <!-- testing JavaScript to handle button clicks and update URL -->
-  <script>
-    // when the "Lost Pets" button is clicked
-    document.getElementById('lost-button').addEventListener('click', function() {
-      window.location.href = "?status=lost";  // update URL with status parameter
-    });
+    <script>
+      // select buttons
+      const lostButton = document.getElementById('lost-button');
+      const foundButton = document.getElementById('found-button');
 
-    // when the "Found Pets" button is clicked
-    document.getElementById('found-button').addEventListener('click', function() {
-      window.location.href = "?status=found";  // update URL with status parameter
-    });
+      // add event listeners to buttons
+      lostButton.addEventListener('click', function() {
+        // Update URL to filter by 'lost' status
+        window.location.href = "?status=lost";
+        
+        // highlight the clicked button
+        lostButton.classList.add('active-button');
+        foundButton.classList.remove('active-button'); // Remove the active class from the found button
+      });
+
+      foundButton.addEventListener('click', function() {
+        // update URL to filter by 'found' status
+        window.location.href = "?status=found";
+        
+        // highlight the clicked button
+        foundButton.classList.add('active-button');
+        lostButton.classList.remove('active-button'); // Remove the active class from the lost button
+      });
   </script>
   </body>
   </html>

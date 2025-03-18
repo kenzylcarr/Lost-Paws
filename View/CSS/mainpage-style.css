@@ -202,6 +202,11 @@
     font-size: large;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
+
+  .active-button {
+    background-color: #1E3F66;
+    color: white;
+  }
 /*   END CSS: lostandfound.php  */  
 
 
