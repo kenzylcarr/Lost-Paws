@@ -9,84 +9,84 @@
   File name: login.php
 -->
 <?php
-// // Start the session
-// session_start();
+// Start the session
+session_start();
 
-// // Include database configuration file
-// require_once '../Model/db_config.php';
+// Include database configuration file
+require_once '../Model/db_config.php';
 
-// // Initialize variables
-// $username = "";
-// $password = "";
-// $username_err = "";
-// $password_err = "";
-// $login_err = "";
+// Initialize variables
+$username = "";
+$password = "";
+$username_err = "";
+$password_err = "";
+$login_err = "";
 
-// // Process the form when submitted
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//   // Validate username
-//   if (empty(trim($_POST["username"]))) {
-//     $username_err = "Please enter your username.";
-//   } else {
-//     $username = trim($_POST["username"]);
-//   }
-//   // Validate password
-//   if (empty(trim($_POST["password"]))) {
-//     $password_err = "Please enter your password.";
-//   } else {
-//     $password = trim($_POST["password"]);
-//   }
-//   // Check for errors before querying database
-//   if (empty($username_err) && empty($password_err)) {
-//     // Prepare SELECT statement
-//     $sql = "SELECT user_id, username, password FROM users WHERE username = ?";
+// Process the form when submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Validate username
+  if (empty(trim($_POST["username"]))) {
+    $username_err = "Please enter your username.";
+  } else {
+    $username = trim($_POST["username"]);
+  }
+  // Validate password
+  if (empty(trim($_POST["password"]))) {
+    $password_err = "Please enter your password.";
+  } else {
+    $password = trim($_POST["password"]);
+  }
+  // Check for errors before querying database
+  if (empty($username_err) && empty($password_err)) {
+    // Prepare SELECT statement
+    $sql = "SELECT user_id, username, password FROM users WHERE username = ?";
 
-//     if ($stmt = mysqli_prepare($conn, $sql)) {
-//       mysqli_stmt_bind_param($stmt, "s", $param_username);
-//       $param_username = $username;
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+      mysqli_stmt_bind_param($stmt, "s", $param_username);
+      $param_username = $username;
 
-//       // Execute prepared statement
-//       if (mysqli_stmt_execute($stmt)) {
-//         mysqli_stmt_store_result($stmt);
+      // Execute prepared statement
+      if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_store_result($stmt);
 
-//         // Check if the username exists, then verify password if it does
-//         if (mysqli_stmt_num_rows($stmt) == 1) {
-//           mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
-//           if (mysqli_stmt_fetch($stmt)) {
-//             if (password_verify($password, $hashed_password)) {
-//               if (session_status() == PHP_SESSION_NONE) {
-//                 // Password is valid, start new session
-//                 session_start();
-//               }
-//               // Store data in session variables
-//               $_SESSION["signedin"] = true;
-//               $_SESSION["id"] = $user_id;
-//               $_SESSION["username"] = $username;
+        // Check if the username exists, then verify password if it does
+        if (mysqli_stmt_num_rows($stmt) == 1) {
+          mysqli_stmt_bind_result($stmt, $user_id, $username, $hashed_password);
+          if (mysqli_stmt_fetch($stmt)) {
+            if (password_verify($password, $hashed_password)) {
+              if (session_status() == PHP_SESSION_NONE) {
+                // Password is valid, start new session
+                session_start();
+              }
+              // Store data in session variables
+              $_SESSION["signedin"] = true;
+              $_SESSION["id"] = $user_id;
+              $_SESSION["username"] = $username;
 
-//               // Redirect user to mainpage after login
-//               header("location: homepage.php");
-//               exit();
-//             } else {
-//               // Display error message if password is invalid and prevent user from logging in
-//               $login_err = "Invalid username or password.";
-//               header("location: login.php");
-//               exit();
-//             }
-//           }
-//         } else {
-//           // Display error message if username does not exist
-//           $login_err = "Invalid username.";
-//         }
-//       } else {
-//         echo "Something went wrong. Please try again later.";
-//       }
-//       // Close statment
-//       mysqli_stmt_close($stmt);
-//     }
-//   }
-//   // Close connection
-//   mysqli_close($conn);
-// }
+              // Redirect user to mainpage after login
+              header("location: homepage.php");
+              exit();
+            } else {
+              // Display error message if password is invalid and prevent user from logging in
+              $login_err = "Invalid username or password.";
+              header("location: login.php");
+              exit();
+            }
+          }
+        } else {
+          // Display error message if username does not exist
+          $login_err = "Invalid username.";
+        }
+      } else {
+        echo "Something went wrong. Please try again later.";
+      }
+      // Close statment
+      mysqli_stmt_close($stmt);
+    }
+  }
+  // Close connection
+  mysqli_close($conn);
+}
 ?>
 
 <!DOCTYPE html>
