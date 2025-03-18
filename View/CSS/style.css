@@ -605,7 +605,15 @@ border-radius: 0.3vw;
 }
 
 .add-comment input {
-  background-color: blue;
+  height: 40px;
+  width: 700px;
+  float: left;
+}
+
+.add-comment button {
+ padding: 5px;
+ font-size: 11pt;
+ margin: 8px;
 }
 /*   END CSS: viewpet_member.php  */   
 
