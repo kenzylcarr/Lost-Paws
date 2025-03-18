@@ -416,7 +416,7 @@ input {
     margin-top: -220px;
     padding: 25px;
     width: 55vw;
-    height: 60vh;
+    height: 55vh;
     display: grid;
     grid-template-columns: 1.5fr 2fr;
 
@@ -437,8 +437,8 @@ input {
   }
 
   .description-column1 img {
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 500px;
+    max-width: 450px;
   }
 
   .description-column1 p {
