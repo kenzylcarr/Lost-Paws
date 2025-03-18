@@ -603,6 +603,10 @@ padding: 8px;
 color: black;
 border-radius: 0.3vw;
 }
+
+.add-comment input {
+  background-color: blue;
+}
 /*   END CSS: viewpet_member.php  */   
 
 
