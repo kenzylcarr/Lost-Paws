@@ -437,8 +437,8 @@ input {
   }
 
   .description-column1 img {
-    max-height: 590px;
-    max-width: 590px;
+    max-height: 50px;
+    max-width: 50px;
   }
 
   .description-column1 p {
@@ -458,7 +458,8 @@ input {
     grid-row-end: 3;
     background-color: #f1f1f1;
     padding: 25px;
-    overflow: scroll;
+    overflow-x: hidden; 
+    overflow-y: scroll; 
     max-width: 600px;
   }
 
@@ -478,7 +479,24 @@ input {
   .all-comments {
     overflow-x: hidden; 
     overflow-y: scroll; 
-    max-height: 150px;
+    max-height: 250px;
+  }
+
+  .comment-item {
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 10px; /* Space inside the comment box */
+    margin-bottom: 10px; /* Space between comments */
+    border-radius: 5px; /* Optional: rounded corners for the border */
+    background-color: #f9f9f9; /* Light background for better readability */
+  }
+  
+  .comment-item p {
+    margin: 5px 0; /* Add some space between elements inside the comment */
+  }
+  
+  .comment-item em {
+    font-size: 0.9em;
+    color: #777; /* Light gray color for date */
   }
 
   #select-post-main-right {
@@ -533,23 +551,6 @@ input {
     margin-right: -100px;
     margin-top: 70px;
     padding-top: 20px;
-  }
-
-  .comment-item {
-    border: 1px solid #ddd; /* Light gray border */
-    padding: 10px; /* Space inside the comment box */
-    margin-bottom: 10px; /* Space between comments */
-    border-radius: 5px; /* Optional: rounded corners for the border */
-    background-color: #f9f9f9; /* Light background for better readability */
-  }
-  
-  .comment-item p {
-    margin: 5px 0; /* Add some space between elements inside the comment */
-  }
-  
-  .comment-item em {
-    font-size: 0.9em;
-    color: #777; /* Light gray color for date */
   }
 /*   END CSS: viewpet.php */  
 
