@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
 // Declare variables with empty values
 $animal_type = $status = $location_ip = $picture = "";
 $animal_type_err = $status_err = $location_err = $picture_err = "";
-$picture_paths = "";
+$picture_paths = array();
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
