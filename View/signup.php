@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-        while ($result->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             if ($row['username'] === $username) {
                 $errors['username'] = "A user with that username already exists.";
             }
