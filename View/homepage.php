@@ -77,8 +77,7 @@ if ($result->num_rows > 0) {
        <nav class="navmenu">
         <div class="logo"> 
 			<p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
-		</a>
-        </div>
+    </div>
 
       <!-- Navigation menu -->
       <div class="nav-links">
@@ -96,6 +95,7 @@ if ($result->num_rows > 0) {
             <div class="lost-or-found-buttons">
                 <button id="lost-button">Lost Pets</button>
                 <button id="found-button">Found Pets</button>
+                <button id="all-button">All Pets</button>
             </div>
          <!-- Search and Filter Row -->
          <div class="search-filter">         
@@ -142,12 +142,17 @@ if ($result->num_rows > 0) {
       <script>
         // when the "Lost Pets" button is clicked
         document.getElementById('lost-button').addEventListener('click', function() {
-        window.location.href = "?status=lost";  // update URL with status parameter
+          window.location.href = "?status=lost";  // update URL with status parameter
         });
 
         // when the "Found Pets" button is clicked
         document.getElementById('found-button').addEventListener('click', function() {
-        window.location.href = "?status=found";  // update URL with status parameter
+          window.location.href = "?status=found";  // update URL with status parameter
+        });
+        
+        // when the "All Pets" button is clicked
+        document.getElementById('all-button').addEventListener('click', function() {
+          window.location.href = window.location.pathname;
         });
     </script>
 </body>

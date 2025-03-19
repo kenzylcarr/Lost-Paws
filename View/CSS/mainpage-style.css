@@ -62,6 +62,23 @@
     padding: 10px 30px;
   }
   
+  .all-button button {
+    background-color: #1E3F66;
+    color: white;
+    cursor: pointer;
+    border-radius: 1vw;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    width: auto;
+    margin-top: 0;
+  }
+
+  #all-button {
+    padding: 10px 30px;  
+  }
+
   .search-filter {
     display: flex;
     align-items: center;
