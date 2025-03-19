@@ -256,6 +256,6 @@ mysqli_close($conn);
             </div>
         </div>
 		</br> -->
-  <script src="../Controller/map-location.js"></script>
+  <script src="../Controller/map-saveLocation.js"></script>
 </body>
 </html>
