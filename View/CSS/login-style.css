@@ -37,7 +37,8 @@ img {
 
 .login-image1 img {
   width: 450px;
-  height: 900px;
+  height: 770px;
+  margin-bottom: 60px;
 
   float: left;
 }
