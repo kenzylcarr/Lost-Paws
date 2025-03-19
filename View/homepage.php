@@ -93,9 +93,9 @@ if ($result->num_rows > 0) {
     <main id="lost-found-database">
         <!-- Lost or Found Buttons Row -->
             <div class="lost-or-found-buttons">
-                <button id="lost-button">Lost Pets</button>
-                <button id="found-button">Found Pets</button>
                 <button id="all-button">All Pets</button>
+		<button id="lost-button">Lost Pets</button>
+                <button id="found-button">Found Pets</button>
             </div>
          <!-- Search and Filter Row -->
          <div class="search-filter">         
