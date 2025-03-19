@@ -57,7 +57,7 @@
         <a href="petmap.php">Pet Map</a>
       </div>
       <div class="button">
-        <a href="logout.php">Logout</a>
+        <a id="login-button" href="logout.php">Logout</a>
       </div>
     </nav>
 
