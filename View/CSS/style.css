@@ -371,11 +371,6 @@ input {
     font-size: medium;
   }
 
-  #map{
-    max-height: 500px;
-    max-width: 500px;
-  }
-  
   #select-post-main-center{
     grid-column-start: 2;
     grid-column-end: 3;

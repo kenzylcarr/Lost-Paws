@@ -76,6 +76,12 @@ if (isset($_GET['id'])) {
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
+  <style>
+    #map {
+      height: 300px;
+      width: 280px;
+    }
+  </style>
 </head>
 
 <body>
