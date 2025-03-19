@@ -76,20 +76,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!file_exists($target_dir)) {
                 mkdir($target_dir, 0777, true);
             }
-            
+
             $total_files = count($_FILES['pet_photo']['name']);
     
             for ($i = 0; $i < $total_files; $i++) {
                 $file_name = basename($_FILES['pet_photo']['name'][$i]);
                 $target_file = $target_dir . $file_name;
                 $uploadOK = 1;
-    
-                // Check if the file is an image
-                $check = getimagesize($_FILES['pet_photo']['tmp_name'][$i]);
-                if ($check === false) {
-                    echo "File is not an image.";
-                    $uploadOK = 0;
-                }
     
                 // Check file size
                 if ($_FILES['pet_photo']['size'][$i] > 1000000) {
@@ -126,21 +119,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Insert into the database
                 foreach ($pet_photo as $picture) {
                 $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
-                if ($stmt->execute()) {
-                    echo "Error: " . $stmt->error;
+                if (!$stmt->execute()) {
+                    echo "Error executing query: " . $stmt->error;
+                } else {
+                    echo "Pet reported successfully!";
                 }
-                }
-                echo "Pet reported successfully!";
-                header("Location: ../View/homepage.php");
-                exit();
-            }
-        } else {
-            // Display validation errors
-            if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
-            if (!empty($status_err)) echo $status_err . "<br>";
-            if (!empty($location_err)) echo $location_err . "<br>";
-            if (!empty($picture_err)) echo $picture_err . "<br>";
+             }
+            header("Location: ../View/homepage.php");
+            exit();
         }
+    } else {
+        // Display validation errors
+        if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
+        if (!empty($status_err)) echo $status_err . "<br>";
+        if (!empty($location_err)) echo $location_err . "<br>";
+        if (!empty($picture_err)) echo $picture_err . "<br>";
     }
+}
 mysqli_close($conn);
 ?>
