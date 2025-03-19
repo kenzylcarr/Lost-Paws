@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
 
   // Fetch specific pet data from the database along with the username
   $stmt = $conn->prepare("
-    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, users.username 
+    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, pets.latitude, pets.longitude, users.username 
     FROM pets 
     JOIN users ON pets.user_id = users.user_id 
     WHERE pets.pet_id = ?");
@@ -78,8 +78,8 @@ if (isset($_GET['id'])) {
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
   <style>
     #map {
-      height: 50px;
-      width: 50px;
+      height: 500px;
+      width: 500px;
     }
   </style>
 </head>
@@ -171,10 +171,11 @@ if (isset($_GET['id'])) {
     <script>
       let map;
       let marker;
-      const petLat = <?php echo $pet['latitude']; ?>;
-      const petLng = <?php echo $pet['longitude']; ?>;
+      const petLat = <?php echo isset($pet['latitude']) ? $pet['latitude'] : '0'; ?>;
+      const petLng = <?php echo isset($pet['longitude']) ? $pet['longitude'] : '0'; ?>;
 
       function initMap() {
+      if (petLat !== 0 && petLng !== 0) {
         // Initialize the map centered around the pet's location
         map = new google.maps.Map(document.getElementById("map"), {
           center: { lat: petLat, lng: petLng },
@@ -187,7 +188,14 @@ if (isset($_GET['id'])) {
           map: map,
           title: "Pet Location",
         });
+      } else {
+        // If latitude and longitude are not set, you can center the map elsewhere
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 0, lng: 0 },
+          zoom: 2, // Zoom out to show the whole world if no coordinates
+        });
       }
-    </script>
+    }
+  </script>
   </body>
   </html>
