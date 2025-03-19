@@ -42,8 +42,9 @@ if ($result->num_rows > 0) {
 }
 
 // Declare variables with empty values
-$animal_type = $status = $location_ip = $picture = "";
-$animal_type_err = $status_err = $location_err = $picture_err = "";
+$animal_type = $status = $location_ip = $picture = $latitude = $longitude = "";
+$animal_type_err = $status_err = $location_err = $picture_err = $latitude_err = $longitude_err = "";
+$pet_photo = array();
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -66,6 +67,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $location_err = "Please enter the location.";
     } else {
         $location_ip = trim($_POST["location_ip"]);
+    }
+
+    // Validate latitude and longitude
+    if (empty($_POST["latitude"]) || empty($_POST["longitude"])) {
+        $latitude_err = "Please select a location on the map.";
+    } else {
+        $latitude = trim($_POST["latitude"]);
+        $longitude = trim($_POST["longitude"]);
     }
 
         // Handle file uploads
@@ -109,16 +118,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
           
         // Check for input errors before submitting to the database
-        if (empty($animal_type_err) && empty($status_err) && empty($location_err)) {
+        if (empty($animal_type_err) && empty($status_err) && empty($location_err) && empty($latitude_err) && empty($longitude_err)) {
             if (empty($pet_photo)) {
                 echo "No pictures were uploaded.";
             } else {
                 // Prepare INSERT statement
-                $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
+                $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 
                 // Insert into the database
                 foreach ($pet_photo as $picture) {
-                $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
+                $stmt->bind_param("issssff", $user_id, $animal_type, $status, $location_ip, $picture, $latitude, $longitude);
                 if (!$stmt->execute()) {
                     echo "Error executing query: " . $stmt->error;
                 } else {
@@ -134,6 +143,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($status_err)) echo $status_err . "<br>";
         if (!empty($location_err)) echo $location_err . "<br>";
         if (!empty($picture_err)) echo $picture_err . "<br>";
+        if (!empty($latitude_err)) echo $latitude_err . "<br>";
+        if (!empty($longitude_err)) echo $longitude_err . "<br>";
     }
 }
 mysqli_close($conn);
