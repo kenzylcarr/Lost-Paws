@@ -159,7 +159,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Right-hand side of page -->
     <main id="main-right-login">
-      <img src="images/DogStack.png" alt="Stack of Dogs">
+      <div class="login-image1"> 
+        <img src="images/PawPrints.png" alt="Paw Prints">
+      </div>
+      <div class="login-image2"> 
+        <img src="images/DogStack.png" alt="Stack of Dogs">
+      </div>
     </main>
     <script src="../Controller/eventRegisterLogin.js"></script>
   </div>

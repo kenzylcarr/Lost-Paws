@@ -18,6 +18,7 @@ img {
   width: 41.8%;
   height: auto;
 }
+
 #main-right-login {
   display: flex; 
   flex-direction: column;
@@ -26,9 +27,25 @@ img {
   grid-row-start: 2;
   grid-row-end: 3;
   width: 55vw; 
-  background-color: #cde6f1c0;
+  background-color: white;
   justify-content: center;
   align-items: flex-end;
+
+  display: grid;
+  grid-template-columns: 0.6fr 0.6fr
+}
+
+.login-image1 img {
+  width: 450px;
+  height: 900px;
+
+  float: left;
+}
+
+.login-image2 img {
+  width: 450px;
+  height: 900px;
+  float: right;
 }
 
 #main-left-login {
@@ -75,7 +92,7 @@ img {
   width: 70%;
   padding-right: 40px;
   padding-left: 30px;
-  margin-top: -100px;
+  margin-top: -200px;
   margin-left: 60px;
   height: 70%;
 }
@@ -92,7 +109,7 @@ img {
   grid-row-end: 4;
   font-size: smaller;
   padding-left: 65px;
-  margin-top: -100px;
+  margin-top: -310px;
 }
 
 .login-footnote a {
