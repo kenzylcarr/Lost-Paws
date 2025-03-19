@@ -96,6 +96,13 @@ if (isset($_GET['id'])) {
   <title>View Post</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
+  <style>
+    #map {
+      height: 300px;
+      width: 280px;
+    }
+  </style>
 </head>
 
 <body>
@@ -121,7 +128,9 @@ if (isset($_GET['id'])) {
       <main id="select-post-main-left">
         <a href="homepage.php"><button id="view-all-button">&#x1F804; View All Pets</button> </a>
         <h3>Location Last Seen</h3>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81279.3134140618!2d-104.66390488857418!3d50.460124225863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x531c1e40fba53deb%3A0x354a3296b77b54b1!2sRegina%2C%20SK!5e0!3m2!1sen!2sca!4v1740001571797!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        <!-- Google Map -->
+        <div id="map"></div>
       </main>
 
       <!-- Center Section: Full Post Information-->
@@ -194,8 +203,13 @@ if (isset($_GET['id'])) {
             <p><a href="/View/messages.php">Messages</a></p>
         </div>
       </main>
-  
     </div>
+
+  <script>
+    const petLat = <?php echo isset($pet['latitude']) ? $pet['latitude'] : '0'; ?>;
+    const petLng = <?php echo isset($pet['longitude']) ? $pet['longitude'] : '0'; ?>;
+  </script>
+
+  <script src="../Controller/map-loadLocation.js"></script>
   </body>
-  
   </html>
