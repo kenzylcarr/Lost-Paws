@@ -22,7 +22,7 @@ if (!isset($_SESSION['username'])) {
 
 // Fetch user data from database
 $username = $_SESSION['username'];
-$stmt = $conn->prepare("SELECT email_address, phone_number, profile_photo FROM users WHERE username = ?");
+$stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -123,7 +123,7 @@ if ($result->num_rows > 0) {
 
       <main id="mainpage-right-afterlogin">
         <div class="user-photo">
-          <img src="<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+          <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
         </div>
     
         <div class="user-name">
