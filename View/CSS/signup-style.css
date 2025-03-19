@@ -141,6 +141,8 @@ h1, h2 {
     padding-left: 0px;
     padding-top: 0px;
     background-color: #FFECBD;
+    text-align: left;
+    padding-left: 20px;
 }
     
 #main-left-signup > h1 {
@@ -148,12 +150,14 @@ h1, h2 {
     font-size: 50px;
     margin-top: 350px;
     text-align: center;
+    margin-left: -80px;
 }
     
 #main-left-signup > h2 {
     font-size: 25px;
     text-align: center;
     justify-content: center;
+    margin-left: -190px;
 }
     
 #main-right-signup {
