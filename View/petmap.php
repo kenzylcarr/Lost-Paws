@@ -79,10 +79,7 @@ mysqli_close($conn);
 </head>
 
 <body>
-<div class="petmap-page">
-  <div id="container">
-  
-    <!-- Lost Paws Logo -->
+<!-- Lost Paws Logo -->
     <nav class="navmenu">
         <div class="logo"> 
 	  <a href="../index.php">
@@ -99,7 +96,9 @@ mysqli_close($conn);
         <a id="login-button" href="logout.php">Logout</a>
       </div>
     </nav>
-
+	
+<div class="petmap-page">
+  <div id="container">
     <main>
       <div id="petmap-container">
         <!-- Centered Toggle and Filter Section -->
