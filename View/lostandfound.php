@@ -73,13 +73,14 @@
       
       <main id="lost-found-database">
         <!-- Lost or Found Buttons Row -->
-            <div class="lost-or-found-buttons">
+        <div class="lost-or-found-buttons">
+              <div class="lost-found-buttons">
                 <button id="lost-button">Lost Pets</button>
                 <button id="found-button">Found Pets</button>
-                <button id="all-button">All Pets</button>
-            </div>
+                          <!--                 <button id="all-button">All Pets</button> -->
+              </div>
          <!-- Search and Filter Row -->
-         <div class="search-filter">         
+                            <!--          <div class="search-filter">          -->
             <div class="search-field">
              <!-- Submit Button to Search -->
                 <form action="">
