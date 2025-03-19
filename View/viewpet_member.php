@@ -206,10 +206,35 @@ if (isset($_GET['id'])) {
     </div>
 
   <script>
+    let map;
+    let marker;
+
     const petLat = <?php echo isset($pet['latitude']) ? $pet['latitude'] : '0'; ?>;
     const petLng = <?php echo isset($pet['longitude']) ? $pet['longitude'] : '0'; ?>;
+
+    function initMap() {
+    if (petLat !== 0 && petLng !== 0) {
+      // Initialize the map centered around the pet's location
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: petLat, lng: petLng },
+        zoom: 15,
+      });
+
+      // Place a marker at the pet's location
+      marker = new google.maps.Marker({
+        position: { lat: petLat, lng: petLng },
+        map: map,
+        title: "Pet Location",
+      });
+    } else {
+      // If latitude and longitude are not set, you can center the map elsewhere
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 0, lng: 0 },
+        zoom: 2, // Zoom out to show the whole world if no coordinates
+      });
+    }
+    }
   </script>
 
-  <script src="../Controller/map-loadLocation.js"></script>
   </body>
   </html>
