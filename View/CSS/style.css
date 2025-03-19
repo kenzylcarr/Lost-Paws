@@ -371,7 +371,7 @@ input {
     font-size: medium;
   }
 
-  #select-post-main-left iframe{
+  #map{
     max-height: 300px;
     max-width: 280px;
   }
