@@ -47,6 +47,11 @@ $pet_photo = array();
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // debugging
+    echo "Latitude: " . $_POST["latitude"] . "<br>";
+    echo "Longitude: " . $_POST["longitude"] . "<br>";
+
     // Validate animal type
     if (empty($_POST["animal_type"]) || !in_array($_POST["animal_type"], ["cat", "dog"])) {
         $animal_type_err = "Please select an animal type.";
