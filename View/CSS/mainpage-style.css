@@ -112,7 +112,7 @@
     overflow: hidden;
 }
 
-.seracg-field input {
+.search-field input {
     border: none;
     padding: 10px;
     width: 250px;
@@ -152,7 +152,7 @@
     transition: background-color 0.2s;
   }
 
-  . serach-field button i {
+  . search-field button i {
     font-size: 16px;
   }
 
