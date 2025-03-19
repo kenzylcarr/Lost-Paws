@@ -75,6 +75,13 @@ if (isset($_GET['id'])) {
   <title>View Post</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
+  <style>
+    #map {
+      height: 50px;
+      width: 50px;
+    }
+  </style>
 </head>
 
 <body>
@@ -102,7 +109,9 @@ if (isset($_GET['id'])) {
       <main id="select-post-main-left">
         <a href="lostandfound.php"><button id="view-all-button">&#x1F804; View All Pets</button> </a>
         <h3>Location Last Seen</h3>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81279.3134140618!2d-104.66390488857418!3d50.460124225863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x531c1e40fba53deb%3A0x354a3296b77b54b1!2sRegina%2C%20SK!5e0!3m2!1sen!2sca!4v1740001571797!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        <!-- Google Map -->
+        <div id="map"></div>
       </main>
 
       <!-- Center Section: Full Post Information-->
@@ -158,6 +167,27 @@ if (isset($_GET['id'])) {
       </main>
   
     </div>
+
+    <script>
+      let map;
+      let marker;
+      const petLat = <?php echo $pet['latitude']; ?>;
+      const petLng = <?php echo $pet['longitude']; ?>;
+
+      function initMap() {
+        // Initialize the map centered around the pet's location
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: petLat, lng: petLng },
+          zoom: 15,
+        });
+
+        // Place a marker at the pet's location
+        marker = new google.maps.Marker({
+          position: { lat: petLat, lng: petLng },
+          map: map,
+          title: "Pet Location",
+        });
+      }
+    </script>
   </body>
-  
   </html>
