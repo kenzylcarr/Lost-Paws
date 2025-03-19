@@ -242,7 +242,38 @@ mysqli_close($conn);
         </div>
 		</br> -->
 
-
+    <script>
+      // initialize Google Map
+      let map, marker;
+    
+      function initMap() {
+        const initialLocation = { lat: 50.4601, lng: -104.6186 }; // Regina, Saskatchewan
+    
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: initialLocation
+        });
+    
+        // add a draggable marker
+        marker = new google.maps.Marker({
+          position: initialLocation,
+          map: map,
+          draggable: true
+        });
+    
+        // update the hidden fields with the marker's latitude and longitude
+        google.maps.event.addListener(marker, 'dragend', function() {
+          const position = marker.getPosition();
+          document.getElementById('latitude').value = position.lat();
+          document.getElementById('longitude').value = position.lng();
+        });
+      }
+    
+      // initialize map when the page loads
+      window.onload = function() {
+        initMap();
+      }
+    </script>
 
 </body>
 </html>
