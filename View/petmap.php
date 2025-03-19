@@ -19,6 +19,7 @@
   <title>Pet Map | Lost Paws</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
 </head>
 
 <body>
@@ -61,46 +62,73 @@
           </select>
         </div>
 
-        <!-- Embedded Google Map -->
-        <div id="petmap-map">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81279.3134140618!2d-104.66390488857418!3d50.460124225863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x531c1e40fba53deb%3A0x354a3296b77b54b1!2sRegina%2C%20SK!5e0!3m2!1sen!2sca!4v1740001571797!5m2!1sen!2sca" 
-            width="100%" 
-            height="600" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
+        <!-- Google Map -->
+        <div id="petmap-map" style="height: 600px;"></div>
       </div>
     </main>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    let map;
+    let markers = [];
+
+    // initialize map
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('petmap-map'), {
+        center: { lat: 50.4601, lng: -104.6639 },  // Set initial center (Regina, SK for example)
+        zoom: 12,
+      });
+
+      // fetch pets data
+      fetchPetsData();
+    }
+
+    // fetch pet data from the server
+    function fetchPetsData() {
+      const status = document.getElementById('toggle-lost-found').checked ? 'found' : 'lost';
+      const petType = document.getElementById('pet-type-filter').value;
+
+      // send AJAX request to server to get pets data
+      fetch(`/Controller/get-pets.php?status=${status}&pet_type=${petType}`)
+        .then(response => response.json())
+        .then(data => {
+          // Clear existing markers
+          clearMarkers();
+
+          // add new markers
+          data.forEach(pet => {
+            const marker = new google.maps.Marker({
+              position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
+              map: map,
+              title: pet.animal_type + ' - ' + pet.status,
+            });
+            markers.push(marker);
+          });
+        })
+        .catch(error => console.error('Error fetching pet data:', error));
+    }
+
+    // clear all markers from the map
+    function clearMarkers() {
+      markers.forEach(marker => {
+        marker.setMap(null);
+      });
+      markers = [];
+    }
+
+    // event listeners for filters
+      document.addEventListener("DOMContentLoaded", function () {
       const toggleSwitch = document.getElementById("toggle-lost-found");
-      const toggleLabel = document.getElementById("toggle-label");
       const petFilter = document.getElementById("pet-type-filter");
 
       toggleSwitch.addEventListener("change", function () {
-        toggleLabel.textContent = this.checked ? "Found Pets" : "Lost Pets";
-        updateMap();
+        document.getElementById("toggle-label").textContent = this.checked ? "Found Pets" : "Lost Pets";
+        fetchPetsData();
       });
 
       petFilter.addEventListener("change", function () {
-        updateMap();
+        fetchPetsData();
       });
-
-      function updateMap() {
-        const isFoundPets = toggleSwitch.checked;
-        const selectedType = petFilter.value;
-
-        console.log(`Displaying ${isFoundPets ? "Found" : "Lost"} Pets of type: ${selectedType}`);
-
-        // Placeholder for map update logic
-        // This would involve updating markers dynamically based on filters
-      }
     });
   </script>
 </div>
