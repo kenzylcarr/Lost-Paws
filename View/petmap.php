@@ -112,8 +112,8 @@ mysqli_close($conn);
           <!-- Dropdown Filter for Pet Type -->
           <select id="pet-type-filter">
             <option value="all">All Pets</option>
-            <option value="feline">Cat</option>
-            <option value="canine">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
           </select>
         </div>
 
@@ -144,7 +144,7 @@ mysqli_close($conn);
       const petType = document.getElementById('pet-type-filter').value;
 
       // send AJAX request to server to get pets data
-      fetch(`/Controller/get-pets.php?status=${status}&pet_type=${petType}`)
+      fetch('Controller/getpets.php?status=' + status + '&pet_type=' + petType)
         .then(response => response.json())
         .then(data => {
           // Clear existing markers
