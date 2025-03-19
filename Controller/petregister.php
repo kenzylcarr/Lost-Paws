@@ -44,8 +44,6 @@ if ($result->num_rows > 0) {
 // Declare variables with empty values
 $animal_type = $status = $location_ip = $picture = "";
 $animal_type_err = $status_err = $location_err = $picture_err = "";
-$pet_photo = array();
-
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -71,8 +69,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
         // Handle file uploads
+        $pet_photo = [];
         if (isset($_FILES['pet_photo']) && is_array($_FILES['pet_photo']['name'])) {
             $target_dir = "../View/pet-uploads/";
+            // Check if the target directory exists, if not create one
+            if (!file_exists($target_dir)) {
+                mkdir($target_dir, 0777, true);
+            }
+            
             $total_files = count($_FILES['pet_photo']['name']);
     
             for ($i = 0; $i < $total_files; $i++) {
