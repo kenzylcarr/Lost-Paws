@@ -208,7 +208,7 @@ mysqli_close($conn);
           </select>
 
           <!-- Location IP -->
-          <label for="location_ip">Location:</label>
+          <label for="location_ip">Location Name:</label>
           <input type="text" name="location_ip" required>
 
           <!-- Animal Photo -->
