@@ -15,17 +15,21 @@ require_once("../Model/db_config.php");
 
 header("Content-Type: application/json";)
 
-$pets = [];
-$stmt = $conn->prepare();            // FILL LATER
+$stmt = $conn->prepare(SELECT pet_id, animal_type, status, location_ip, picture FROM pets");
 $stmt->execute();
 $result = $stmt->get_result();
+$pets = [];
 
 if ($result->num_rows > 0)
 {
   while ($row = $result->fetch_assoc())
   {
     $pets[] = [
-                                    // FILL LATER
+        "pet_id" -> $row["pet_id],
+        "animal_type" => $row["animal_type"],
+        "status" =? $row["status"],
+        "location_ip" => $row["location_ip],
+        "pictyure" => $row["picture"]
     ];
   }    
 }
