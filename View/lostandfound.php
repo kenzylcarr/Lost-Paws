@@ -76,26 +76,27 @@
             <div class="lost-or-found-buttons">
                 <button id="lost-button">Lost Pets</button>
                 <button id="found-button">Found Pets</button>
+                <button id="all-button">All Pets</button>
             </div>
-        <!-- Search and Filter Row -->
-            <div class="search-filter">         
-                <div class="search-field">
-                 <!-- Submit Button to Search -->
-                    <form action="">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit" value="Search"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
+         <!-- Search and Filter Row -->
+         <div class="search-filter">         
+            <div class="search-field">
+             <!-- Submit Button to Search -->
+                <form action="">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit" value="Search"><i class="fa fa-search"></i></button>
+                </form>
             </div>
+        </div>
 
-            <div class="pet-database-container">
-              <?php foreach ($pets as $pet): ?>
+        <div class="pet-database-container"> 
+        <?php foreach ($pets as $pet): ?>
               <div class="pet-brief-info">
                 <img src="<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
                 <p> Type: <?php echo htmlspecialchars($pet['animal_type']); ?></p>
                 <p> Status: <?php echo htmlspecialchars($pet['status']); ?></p>
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
-                <p><a href="/View/viewpet_visitor.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
+                <p><a href="/View/viewpet_member.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
               </div>
               <?php endforeach; ?>
         </div>
