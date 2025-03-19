@@ -9,6 +9,62 @@
   File name: petmap.php
 -->
 
+<!-- PHP validation for the form begins -->
+<?php
+session_start();
+require_once("../Model/db_config.php");
+
+// Check if connection is successful
+if (!$conn) {
+  die("Database connection failed: " . mysqli_connect_error());
+}
+
+// Get filters from the request
+$status = isset($_GET['status']) ? $_GET['status'] : 'all';
+$animal_type = isset($_GET['animal_type']) ? $_GET['animal_type'] : 'all';
+
+// Fetch data from database
+$sql = "SELECT p.animal_type, p.status, p.latitude, p.longitude, u.first_name, u.last_name
+        FROM pets p
+        LEFT JOIN users u ON p.user_id = u.user_id";
+
+// Add filtering by status and animal type
+if ($status !== 'all') {
+  $sql .= " WHERE p.status = '" . mysqli_real_escape_string($conn, $status) . "'";
+}
+
+// Add filtering by animal type
+if ($animal_type !== 'all') {
+  if ($status !== 'all') {
+    $sql .= " AND p.animal_type = '" . mysqli_real_escape_string($conn, $animal_type) . "'";
+  } else {
+    $sql .= " WHERE p.animal_type = '" . mysqli_real_escape_string($conn, $animal_type) . "'";
+  }
+}
+
+// Execute the query
+$result = mysqli_query($conn, $sql);
+
+// Check for errors
+if (!$result) {
+  echo json_encode(["error" => "Failed to retrieve pet data."]);
+  exit();
+}
+
+// Fetch all data
+$pets = [];
+while ($row = mysqli_fetch_assoc($result)) {
+  $pets[] = $row;
+}
+
+// Return data as JSON
+header('Content-Type: application/json');
+echo json_encode($pets);
+
+// Close connection
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,9 +112,8 @@
           <!-- Dropdown Filter for Pet Type -->
           <select id="pet-type-filter">
             <option value="all">All Pets</option>
-            <option value="feline">Feline</option>
-            <option value="canine">Canine</option>
-            <option value="other">Other</option>
+            <option value="feline">Cat</option>
+            <option value="canine">Dog</option>
           </select>
         </div>
 
