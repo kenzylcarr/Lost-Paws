@@ -85,6 +85,7 @@ mysqli_close($conn);
     <!-- Lost Paws Logo -->
     <nav class="navmenu">
         <div class="logo"> 
+	  <a href="../index.php">
           <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
         </div>
 
