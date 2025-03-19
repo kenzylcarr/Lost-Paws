@@ -267,6 +267,18 @@ mysqli_close($conn);
           document.getElementById('latitude').value = position.lat();
           document.getElementById('longitude').value = position.lng();
         });
+
+        // allow the user to click to add a new marker on the map
+        google.maps.event.addListener(map, 'click', function(event) {
+        const clickedLocation = event.latLng;
+
+        // move the marker to the clicked location
+        marker.setPosition(clickedLocation);
+
+        // update the hidden fields with the new latitude and longitude
+        document.getElementById('latitude').value = clickedLocation.lat();
+        document.getElementById('longitude').value = clickedLocation.lng();
+    });
       }
     
       // initialize map when the page loads
