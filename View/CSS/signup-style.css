@@ -156,7 +156,7 @@ h1, h2 {
 #main-left-signup > h2 {
     font-size: 25px;
     text-align: center;
-    justify-content: center;
+    justify-content: left;
     margin-left: -190px;
 }
     
