@@ -90,8 +90,8 @@ mysqli_close($conn);
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="/View/reportpetpage.php">Report a Pet</a>
-        <a href="homepage.php">Homepage</a> 	
+        <a href="homepage.php">Homepage</a> 
+        <a href="reportpetpage.php">Report a Pet</a>	
       </div>
 
       <div class="button">
