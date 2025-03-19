@@ -15,9 +15,8 @@ document.addEventListener('DOMContentLoaded', function()
   {
     var xhr = new XMLHttpRequest();
     
-    xhr.open = new XMLHttpRequest();
     xhr.open("GET", "ajax-lostfound.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");   // ** JSON STUFF ** 
+    xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function()
     {
       if (xhr.readyState === 4 && xhr.status === 200)
@@ -42,16 +41,18 @@ document.addEventListener('DOMContentLoaded', function()
     let list = document.querySelector('#pet-list');
     list.innerHTML = '';    // clear existing list
 
-    pet.forEach(function(pet)
+    pets.forEach(function(pet)
     {
       var petDiv = document.createElement('div');
       petDiv.className = 'pet-brief-info';
-      petDiv.innerHTMl = <img src="$(pet.picture)" alt="Photo of a $(pet.animal_type)">
+      petDiv.innerHTML = `
+                         <img src="$(pet.picture)" alt="Photo of a $(pet.animal_type)">
                          <p>Type: $(pet.animal_type)</p>
                          <p>Status: $(pet.status)</p>
                          <p>Location: $(pet.location_ip)</p>
-                         <p><a href="/View/selectpostpage>html ? id=$(pet.pet_id)">View Pet Post</a></p>
-      ;
+                         <p><a href="/View/selectpostpage>html?id=$(pet.pet_id)">View Pet Post</a></p>
+      `;
+      
       list.appendChild(petDiv);
     });
   }
