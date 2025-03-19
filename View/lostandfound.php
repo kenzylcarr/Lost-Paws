@@ -73,21 +73,21 @@
       
       <main id="lost-found-database">
         <!-- Lost or Found Buttons Row -->
-        <div class="lost-or-found-buttons">
-              <div class="lost-found-buttons">
-                <button id="lost-button">Lost Pets</button>
-                <button id="found-button">Found Pets</button>
-                          <!--                 <button id="all-button">All Pets</button> -->
-              </div>
-         <!-- Search and Filter Row -->
-                            <!--          <div class="search-filter">          -->
-            <div class="search-field">
+        <div class="lost-found-search-container">
+          <div class="lost-found-buttons">
+              <button id="lost-button">Lost Pets</button>
+              <button id="found-button">Found Pets</button>
+                        <!--                 <button id="all-button">All Pets</button> -->
+          </div>
+             <!-- Search and Filter Row -->
+                                <!--          <div class="search-filter">          -->
+          <div class="search-field">
              <!-- Submit Button to Search -->
                 <form action="">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit" value="Search"><i class="fa fa-search"></i></button>
                 </form>
-            </div>
+          </div>
         </div>
 
         <div class="pet-database-container"> 
