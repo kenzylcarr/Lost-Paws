@@ -81,8 +81,8 @@
           </div>
              <!-- Search and Filter Row -->
                                 <!--          <div class="search-filter">          -->
+          <!-- Submit Button to Search -->
           <div class="search-field">
-             <!-- Submit Button to Search -->
                 <form action="">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit" value="Search"><i class="fa fa-search"></i></button>
