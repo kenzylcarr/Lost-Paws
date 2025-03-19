@@ -140,7 +140,7 @@ if (isset($_GET['id'])) {
               <div class="description-column1">
               <img src="<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
               <p>Posted by: <?php echo htmlspecialchars($pet['username']); ?></p>
-                <button id="contact-user-button">Contact User</button>
+              <a href="messages.php"><button id="contact-user-button">Contact User</button></a>
               </div>
               <!-- Column 2: Written Pet Description -->
               <div class="description-column2">
