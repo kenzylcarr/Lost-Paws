@@ -127,7 +127,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 // Insert into the database
                 foreach ($pet_photo as $picture) {
-                $stmt->bind_param("issssff", $user_id, $animal_type, $status, $location_ip, $picture, $latitude, $longitude);
+                $stmt->bind_param("issssdd", $user_id, $animal_type, $status, $location_ip, $picture, $latitude, $longitude);
                 if (!$stmt->execute()) {
                     echo "Error executing query: " . $stmt->error;
                 } else {
