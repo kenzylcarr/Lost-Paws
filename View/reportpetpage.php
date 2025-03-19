@@ -123,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Insert into the database
         foreach ($pet_photo as $picture) {
-          $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture, $latitude, $longitude);
+          $stmt->bind_param("issssff", $user_id, $animal_type, $status, $location_ip, $picture, $latitude, $longitude);
           if (!$stmt->execute()) {
             echo "Error: " . $stmt->error;
           }
@@ -136,6 +136,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($status_err)) echo $status_err . "<br>";
         if (!empty($location_err)) echo $location_err . "<br>";
         if (!empty($picture_err)) echo $picture_err . "<br>";
+        if (!empty($latitude_err)) echo $latitude_err . "<br>";
+        if (!empty($longitude_err)) echo $longitude_err . "<br>";
     }
 }
 mysqli_close($conn);
@@ -274,6 +276,10 @@ mysqli_close($conn);
           const position = marker.getPosition();
           document.getElementById('latitude').value = position.lat();
           document.getElementById('longitude').value = position.lng();
+
+          // debugging - log to console
+          console.log("Latitude: " + position.lat());
+          console.log("Longitude: " + position.lng());
         });
 
         // allow the user to click to add a new marker on the map
@@ -286,7 +292,11 @@ mysqli_close($conn);
         // update the hidden fields with the new latitude and longitude
         document.getElementById('latitude').value = clickedLocation.lat();
         document.getElementById('longitude').value = clickedLocation.lng();
-    });
+    
+        // debugging - log to console
+        console.log("Latitude: " + clickedLocation.lat());
+        console.log("Longitude: " + clickedLocation.lng());
+      });
       }
     
       // initialize map when the page loads
