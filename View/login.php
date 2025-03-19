@@ -101,19 +101,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
   <div id="container">
-    <!-- Lost Paws Logo -->
-    <div class="logo">
-      <a href="../index.php">
-        <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo" /></p>
-      </a>
-    </div>
-    <!-- Navigation menu -->
-    <div class="nav-links-right">
-      <a href="aboutpage.php">About Lost Paws</a>
-      <a href="reportpetpage.php">Report a Pet</a>
-      <a href="lostandfound.php">Lost & Found</a>
-      <a href="petmap.php">Pet Map</a>
-    </div>
+    <nav class="navmenu">
+      <!-- Lost Paws Logo -->
+      <div class="logo">
+        <a href="../index.php">
+          <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo" /></p>
+        </a>
+      </div>
+      <!-- Navigation menu -->
+      <div class="nav-links-right">
+        <a href="aboutpage.php">About Lost Paws</a>
+        <a href="reportpetpage.php">Report a Pet</a>
+        <a href="lostandfound.php">Lost & Found</a>
+        <a href="petmap.php">Pet Map</a>
+      </div>
+    </nav>
 
 
     <!-- Left-hand side of page  -->
