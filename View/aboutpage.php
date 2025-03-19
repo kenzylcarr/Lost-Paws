@@ -12,7 +12,7 @@
 <html lang="en">
 
 <head>
-  <title>About Lost Paws</title>
+  <title>About Us | Lost Paws</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
 </head>

@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Signup Page</title>
+  <title>Signup | Lost Paws</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" type="text/css" href="/View/CSS/signup-style.css">
   <script src="../Controller/eventHandler.js"></script>

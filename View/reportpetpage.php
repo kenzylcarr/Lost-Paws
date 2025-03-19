@@ -152,7 +152,7 @@ mysqli_close($conn);
 <html lang="en">
 
 <head>
-  <title>Report A Pet</title>
+  <title>Report A Pet | Lost Paws</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/reportpet-style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>

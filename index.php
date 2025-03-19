@@ -11,7 +11,7 @@
 <!DOCTYPE html>
   <html lang="en">
   <head>
-    <title>Homepage</title>
+    <title>Homepage | Lost Paws</title>
     <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
     <link rel="stylesheet" type="text/css" href="/View/CSS/index-style.css">
   </head>

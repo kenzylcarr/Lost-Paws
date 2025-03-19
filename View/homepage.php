@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
 <html lang="en">
 
 <head>
-  <title>Lost & Found</title>
+  <title>Lost & Found | Lost Paws</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
