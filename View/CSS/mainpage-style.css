@@ -79,8 +79,14 @@
   #found-button {
     padding: 10px 30px;
   }
-  
 
+.search-field form {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
   .search-filter {
     display: flex;
@@ -89,6 +95,37 @@
     margin-top: 0;
     margin-left: 20px;
   }
+
+.lost-foud-search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+}
+
+.lost-found-search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+}
+
+.search-field form {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.seracg-field input {
+    border: none;
+    padding: 10px;
+    width: 250px;
+    outline: none;
+}
 
   .search-field {
     display: flex;
@@ -114,13 +151,17 @@
   .search-field button {
     padding: 8px 16px;
     margin: 0 0 0 8px;
-    background: #0066cc;
+    background-color: #0066cc;
     color: white;
     font-size: 14px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
+  }
+
+  . serach-field button i {
+    font-size: 16px;
   }
 
   .search-field button:hover {
@@ -223,6 +264,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
 /*   END CSS: lostandfound.php  */  
+
 
 
 /*   START CSS: homepage.php  */
