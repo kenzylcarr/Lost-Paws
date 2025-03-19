@@ -74,7 +74,7 @@
       <main id="lost-found-database">
         <!-- Lost or Found Buttons Row -->
         <div class="lost-found-search-container">
-          <div class="lost-found-buttons">
+          <div class="lost-or-found-buttons">
                <button id="all-button">All Pets</button>
                <button id="lost-button">Lost Pets</button>
                <button id="found-button">Found Pets</button>
