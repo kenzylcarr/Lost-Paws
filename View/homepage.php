@@ -29,6 +29,7 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
   $user = $result->fetch_assoc();
+  $user_id = $user['user_id'];
 } else {
   echo "User not found.";
   exit();
