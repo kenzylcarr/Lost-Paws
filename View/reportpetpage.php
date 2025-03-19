@@ -140,7 +140,16 @@ mysqli_close($conn);
   <title>Report A Pet</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/reportpet-style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
 </head>
+
+<style>
+  /* Set a height for the map */
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+</style>
 
 <body>
 <div class="reportpet-page">
@@ -191,8 +200,20 @@ mysqli_close($conn);
           <label for="pet_photo">Upload Animal Photo:</label>
           <input type="file" id="pet_photo" name="pet_photo[]" multiple>
 
+          <!-- Google Map for Location -->
+          <label for="map">Select Location on Map:</label>
+          <div id="map"></div>
+          
+          <!-- Hidden Fields for Latitude and Longitude -->
+          <input type="hidden" name="latitude" id="latitude">
+          <input type="hidden" name="longitude" id="longitude">
+
           <button type="submit">Submit</button>
       </form>
+
+    </main>
+  </div>
+</div>
         <!-- <h1> Report a Lost or Found Pet:</h1> -->
         <!-- <div class="container">
             <div class="map-container">
@@ -220,6 +241,8 @@ mysqli_close($conn);
             </div>
         </div>
 		</br> -->
-    </div>
-	</main>
+
+
+
+</body>
 </html>
