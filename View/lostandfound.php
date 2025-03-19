@@ -75,9 +75,9 @@
         <!-- Lost or Found Buttons Row -->
         <div class="lost-found-search-container">
           <div class="lost-found-buttons">
-              <button id="lost-button">Lost Pets</button>
-              <button id="found-button">Found Pets</button>
-              <button id="all-button">All Pets</button>
+               <button id="all-button">All Pets</button>
+               <button id="lost-button">Lost Pets</button>
+               <button id="found-button">Found Pets</button>
           </div>
           
           <!-- Search and Filter Row -->
