@@ -140,6 +140,11 @@ if ($result->num_rows > 0) {
 
       <!-- Adding JavaScript to handle lost-or-found button clicks -->
       <script>
+        // when the "All Pets" button is clicked
+        document.getElementById('all-button').addEventListener('click', function() {
+          window.location.href = window.location.pathname;
+        });
+
         // when the "Lost Pets" button is clicked
         document.getElementById('lost-button').addEventListener('click', function() {
           window.location.href = "?status=lost";  // update URL with status parameter
@@ -148,11 +153,6 @@ if ($result->num_rows > 0) {
         // when the "Found Pets" button is clicked
         document.getElementById('found-button').addEventListener('click', function() {
           window.location.href = "?status=found";  // update URL with status parameter
-        });
-        
-        // when the "All Pets" button is clicked
-        document.getElementById('all-button').addEventListener('click', function() {
-          window.location.href = window.location.pathname;
         });
     </script>
 </body>
