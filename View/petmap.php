@@ -58,8 +58,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 // Return data as JSON
-header('Content-Type: application/json');
-echo json_encode($pets);
+// header('Content-Type: application/json');
+// echo json_encode($pets);
 
 // Close connection
 mysqli_close($conn);
