@@ -77,11 +77,10 @@
           <div class="lost-found-buttons">
               <button id="lost-button">Lost Pets</button>
               <button id="found-button">Found Pets</button>
-                        <!--                 <button id="all-button">All Pets</button> -->
+              <button id="all-button">All Pets</button>
           </div>
-             <!-- Search and Filter Row -->
-                                <!--          <div class="search-filter">          -->
-          <!-- Submit Button to Search -->
+          
+          <!-- Search and Filter Row -->
           <div class="search-field">
                 <form action="">
                     <input type="text" placeholder="Search.." name="search">
