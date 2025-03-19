@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
 // Declare variables with empty values
 $animal_type = $status = $location_ip = $picture = "";
 $animal_type_err = $status_err = $location_err = $picture_err = "";
-$picture_paths = array();
+$pet_photo = array();
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -69,24 +69,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Handle file uploads
-    if (isset($_FILES['petPhotos']) && is_array($_FILES['petPhotos']['name'])) {
+    if (isset($_FILES['pet_photo']) && is_array($_FILES['pet_photo']['name'])) {
       $target_dir = "../View/pet-uploads/";
-      $total_files = count($_FILES['petPhotos']['name']);
+      $total_files = count($_FILES['pet_photo']['name']);
   
       for ($i = 0; $i < $total_files; $i++) {
-        $file_name = basename($_FILES['petPhotos']['name'][$i]);
+        $file_name = basename($_FILES['pet_photo']['name'][$i]);
         $target_file = $target_dir . $file_name;
         $uploadOK = 1;
   
         // Check if the file is an image
-        $check = getimagesize($_FILES['petPhotos']['tmp_name'][$i]);
+        $check = getimagesize($_FILES['pet_photo']['tmp_name'][$i]);
         if ($check === false) {
           echo "File is not an image.";
           $uploadOK = 0;
         }
   
         // Check file size
-        if ($_FILES['petPhotos']['size'][$i] > 1000000) {
+        if ($_FILES['pet_photo']['size'][$i] > 1000000) {
           echo "File is too large. Maximum 1MB.";
           $uploadOK = 0;
         }
@@ -99,8 +99,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         // Attempt to upload the file if all checks pass
         if ($uploadOK == 1) {
-          if (move_uploaded_file($_FILES['petPhotos']['tmp_name'][$i], $target_file)) {
-              $picture_paths[] = $target_file; // Store the path for database insertion
+          if (move_uploaded_file($_FILES['pet_photo']['tmp_name'][$i], $target_file)) {
+              $pet_photo[] = $target_file; // Store the path for database insertion
           } else {
               echo "Sorry, there was an error uploading your file.";
           }
@@ -114,7 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $conn->prepare("INSERT INTO pets (user_id, animal_type, status, location_ip, picture) VALUES (?, ?, ?, ?, ?)");
         
         // Insert into the database
-        foreach ($picture_paths as $picture) {
+        foreach ($pet_photo as $picture) {
           $stmt->bind_param("issss", $user_id, $animal_type, $status, $location_ip, $picture);
           if (!$stmt->execute()) {
             echo "Error: " . $stmt->error;
@@ -188,8 +188,8 @@ mysqli_close($conn);
           <input type="text" name="location_ip" required>
 
           <!-- Animal Photo -->
-          <label for="petPhotos">Upload Animal Photo:</label>
-          <input type="file" id="petPhotos" name="petPhotos">
+          <label for="pet_photo">Upload Animal Photo:</label>
+          <input type="file" id="pet_photo" name="pet_photo">
 
           <button type="submit">Submit</button>
       </form>
