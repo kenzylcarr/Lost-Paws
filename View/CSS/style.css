@@ -372,8 +372,8 @@ input {
   }
 
   #map{
-    max-height: 300px;
-    max-width: 280px;
+    max-height: 500px;
+    max-width: 500px;
   }
   
   #select-post-main-center{
