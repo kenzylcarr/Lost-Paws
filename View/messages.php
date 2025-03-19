@@ -46,9 +46,7 @@
   <div id="container">
     <nav class="navmenu">
       <div class="logo">
-        <a href="index.php">
-          <img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/>
-        </a>
+        <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
       </div>
       <div class="nav-links">
         <a href="homepage.php">Homepage</a>
