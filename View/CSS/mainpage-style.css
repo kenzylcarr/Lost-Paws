@@ -52,16 +52,7 @@
     width: auto;
     margin-top: 0;
   }
-  
-  #lost-button {
-    margin-right: 20px;
-    padding: 10px 30px;
-  }
 
-  #found-button {
-    padding: 10px 30px;
-  }
-  
   .all-button button {
     background-color: #1E3F66;
     color: white;
@@ -76,8 +67,20 @@
   }
 
   #all-button {
+    margin-right: 20px;
     padding: 10px 30px;  
   }
+  
+  #lost-button {
+    margin-right: 20px;
+    padding: 10px 30px;
+  }
+
+  #found-button {
+    padding: 10px 30px;
+  }
+  
+
 
   .search-filter {
     display: flex;
