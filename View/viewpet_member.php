@@ -60,7 +60,7 @@ if (isset($_GET['id'])) {
 
   // Fetch specific pet data from the database along with the username
   $stmt = $conn->prepare("
-    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, users.username 
+    SELECT pets.pet_id, pets.user_id, pets.animal_type, pets.status, pets.location_ip, pets.picture, pets.latitude, pets.longitude, users.username 
     FROM pets 
     JOIN users ON pets.user_id = users.user_id 
     WHERE pets.pet_id = ?");
