@@ -111,7 +111,7 @@ if ($result->num_rows > 0) {
         <div class="pet-database-container"> 
         <?php foreach ($pets as $pet): ?>
               <div class="pet-brief-info">
-                <img src="<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
+                <img src="/View/pet-uploads/<?php echo htmlspecialchars($pet['picture']); ?>" alt="Photo of a <?php echo htmlspecialchars($pet['animal_type']); ?>">
                 <p> Type: <?php echo htmlspecialchars($pet['animal_type']); ?></p>
                 <p> Status: <?php echo htmlspecialchars($pet['status']); ?></p>
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
