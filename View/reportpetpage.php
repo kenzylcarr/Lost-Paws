@@ -189,7 +189,7 @@ mysqli_close($conn);
 
           <!-- Animal Photo -->
           <label for="pet_photo">Upload Animal Photo:</label>
-          <input type="file" id="pet_photo" name="pet_photo">
+          <input type="file" id="pet_photo" name="pet_photo[]" multiple>
 
           <button type="submit">Submit</button>
       </form>
