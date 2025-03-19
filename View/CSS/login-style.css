@@ -11,6 +11,24 @@
   padding: 15px;
   background-color: #B6D0E2;
 }
+
+.navmenu {
+  background-color: #B6D0E2;
+  margin-bottom: 20px;
+  padding: 35px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 5vh;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
 .nav-links-right {
   background-color: #B6D0E2;
   padding-top: 15px;
