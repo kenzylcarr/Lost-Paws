@@ -29,6 +29,7 @@
       <div class="button">
         <a href="/View/login.php" id="index-login-button">Login</a>
         <a href="/View/signup.php" id="index-signup-button">Sign up!</a>
+        <a href="/View/petmap.php" id="index-signup-button">Pet Map</a>
       </div>
     </nav>
 
