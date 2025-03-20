@@ -103,20 +103,27 @@ mysqli_close($conn);
     <main>
       <div id="petmap-container">
         <!-- Centered Toggle and Filter Section -->
-        <div id="filter-section">
+
+        <div id="filter-section" class="lost-or-found-buttons" >
+          <button id="all-button">All Pets</button>
+          <button id="lost-button">Lost Pets</button>
+          <button id="found-button">Found Pets</button>
+	    </div>
+
+        <!-- <div id="filter-section">
           <label class="switch">
             <input type="checkbox" id="toggle-lost-found">
             <span class="slider round"></span>
           </label>
           <span id="toggle-label">Lost Pets</span>
 
-          <!-- Dropdown Filter for Pet Type -->
-          <select id="pet-type-filter">
+          Dropdown Filter for Pet Type -->
+          <!-- <select id="pet-type-filter">
             <option value="all">All Pets</option>
             <option value="cat">Cat</option>
             <option value="dog">Dog</option>
           </select>
-        </div>
+        </div> --> 
 
         <!-- Google Map -->
         <div id="petmap-map" style="height: 600px;"></div>
