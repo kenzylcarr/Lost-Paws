@@ -234,8 +234,8 @@ $stmt->close();
           <!-- Sidebar -->
           <aside class="sidebar">
             <div class="profile-info">
-              <img src="<?php echo $user['profile_photo']; ?>" alt="Profile Picture" class="profile-pic" />
-              <p class="username"><?php echo $user['username']; ?></p>
+              <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+              <p><?php echo htmlspecialchars($username); ?></p>
             </div>
             <ul class="settings-menu">
               <li><a href="javascript:void(0);" onclick="toggleSection('profile')">Profile</a></li>
