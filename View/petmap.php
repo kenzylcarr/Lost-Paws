@@ -61,6 +61,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 // header('Content-Type: application/json');
 // echo json_encode($pets);
 
+const petsData = echo json_encode($pets);
+
 // Close connection
 mysqli_close($conn);
 ?>
@@ -122,6 +124,7 @@ mysqli_close($conn);
       </div>
     </main>
   </div>
+  </div>
 
   <script>
     let map;
@@ -130,63 +133,45 @@ mysqli_close($conn);
     // initialize map
     function initMap() {
       map = new google.maps.Map(document.getElementById('petmap-map'), {
-        center: { lat: 50.4601, lng: -104.6639 },  // Set initial center (Regina, SK for example)
+        center: { lat: 50.4601, lng: -104.6639 },  // set initial center (Regina, SK)
         zoom: 12,
       });
 
-      // fetch pets data
-      fetchPetsData();
+      // display all pet locations initially
+      displayPetLocations(petsData);
     }
 
-    // fetch pet data from the server
-    function fetchPetsData() {
-      const status = document.getElementById('toggle-lost-found').checked ? 'found' : 'lost';
-      const petType = document.getElementById('pet-type-filter').value;
-
-      // send AJAX request to server to get pets data
-      fetch('Controller/getpets.php?status=' + status + '&pet_type=' + petType)
-        .then(response => response.json())
-        .then(data => {
-          // Clear existing markers
-          clearMarkers();
-
-          // add new markers
-          data.forEach(pet => {
-            const marker = new google.maps.Marker({
-              position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-              map: map,
-              title: pet.animal_type + ' - ' + pet.status,
-            });
-            markers.push(marker);
-          });
-        })
-        .catch(error => console.error('Error fetching pet data:', error));
-    }
-
-    // clear all markers from the map
-    function clearMarkers() {
-      markers.forEach(marker => {
-        marker.setMap(null);
-      });
+        // Display pet locations on the map
+        function displayPetLocations(pets) {
+      // Clear existing markers
+      markers.forEach(marker => marker.setMap(null));
       markers = [];
+
+      // Loop through pets and add markers
+      pets.forEach(pet => {
+        const marker = new google.maps.Marker({
+          position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
+          map: map,
+          title: `${pet.first_name} ${pet.last_name} - ${pet.animal_type}`,
+        });
+        markers.push(marker);
+      });
     }
 
-    // event listeners for filters
-      document.addEventListener("DOMContentLoaded", function () {
-      const toggleSwitch = document.getElementById("toggle-lost-found");
-      const petFilter = document.getElementById("pet-type-filter");
+    // Filter pets based on selected type
+    document.getElementById('pet-type-filter').addEventListener('change', (e) => {
+      const selectedType = e.target.value;
+      const filteredPets = petsData.filter(pet => selectedType === 'all' || pet.animal_type === selectedType);
+      displayPetLocations(filteredPets);
+    });
 
-      toggleSwitch.addEventListener("change", function () {
-        document.getElementById("toggle-label").textContent = this.checked ? "Found Pets" : "Lost Pets";
-        fetchPetsData();
-      });
-
-      petFilter.addEventListener("change", function () {
-        fetchPetsData();
-      });
+    // Toggle between Lost and Found Pets (you can enhance this filter as per your database structure)
+    document.getElementById('toggle-lost-found').addEventListener('change', (e) => {
+      const status = e.target.checked ? 'lost' : 'found';
+      const filteredPets = petsData.filter(pet => pet.status === status || status === 'all');
+      displayPetLocations(filteredPets);
     });
   </script>
-</div>
 	
 </body>
 </html>
