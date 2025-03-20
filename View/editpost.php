@@ -100,14 +100,23 @@ if (!isset($_SESSION['username'])) {
     <main id="lost-found-database">
         <div class="pet-database-container"> 
             <form method="POST">
-                <label>Animal Type:</label>
-                <input type="text" name="animal_type" value="<?php echo htmlspecialchars($pet['animal_type']); ?>" required>
-                <label>Status:</label>
-                <input type="text" name="status" value="<?php echo htmlspecialchars($pet['status']); ?>" required>
-                <label>Location:</label>
-                <input type="text" name="location_ip" value="<?php echo htmlspecialchars($pet['location_ip']); ?>" required>
-                <button type="submit">Update</button>
-            </form>
+                    <label for="animal_type">Animal Type:</label>
+                    <select name="animal_type" required>
+                        <option value="cat" <?php echo $pet['animal_type'] == 'cat' ? 'selected' : ''; ?>>Cat</option>
+                        <option value="dog" <?php echo $pet['animal_type'] == 'dog' ? 'selected' : ''; ?>>Dog</option>
+                    </select>
+
+                    <label for="status">Status:</label>
+                    <select name="status" required>
+                        <option value="lost" <?php echo $pet['status'] == 'lost' ? 'selected' : ''; ?>>Lost</option>
+                        <option value="found" <?php echo $pet['status'] == 'found' ? 'selected' : ''; ?>>Found</option>
+                    </select>
+
+                    <label for="location_ip">Location:</label>
+                    <input type="text" name="location_ip" value="<?php echo htmlspecialchars($pet['location_ip']); ?>" required>
+
+                    <button type="submit">Update</button>
+                </form>
         </div>
       </main>
 
