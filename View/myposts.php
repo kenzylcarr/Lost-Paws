@@ -47,7 +47,9 @@ if (!isset($_SESSION['username'])) {
         $pets[] = $row;
     }
   }
-
+  if (empty($pets)) {
+    echo "<p>No pet posts found.</p>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +106,6 @@ if (!isset($_SESSION['username'])) {
         </div>
     
         <div class="user-options">
-            <p><a href="/View/myposts.php">View My Posts</a></p>	
             <p><a href="/View/accountpage.php">Account Settings</a></p>	
             <p><a href="/View/messages.php">Messages</a></p>
         </div>
