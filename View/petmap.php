@@ -88,8 +88,8 @@ mysqli_close($conn);
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="homepage.php">Homepage</a> 
-        <a href="reportpetpage.php">Report a Pet</a>	
+        <a href="aboutpage.php">About Lost Paws</a>
+        <a href="lostandfound.php">Lost & Found</a>
       </div>
 
       <div class="button">
