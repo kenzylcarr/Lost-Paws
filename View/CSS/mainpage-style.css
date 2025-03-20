@@ -157,7 +157,7 @@
 
   .pet-database-container {
     grid-row: 2;
-    margin-top: 0;
+    margin-top: 50px;
     padding: 10px 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
