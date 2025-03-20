@@ -57,19 +57,13 @@ while ($row = mysqli_fetch_assoc($result)) {
   $pets[] = $row;
 }
 
+header('Content-Type: application/json');
+
+// Return data as JSON
+echo json_encode($pets);
+
 // Close connection
 mysqli_close($conn);
-
-// If no data is found, return an empty array (for frontend handling)
-if (empty($pets)) {
-  echo json_encode([]);
-} else {
-  // Set the correct header to indicate we're sending JSON data
-  header('Content-Type: application/json');
-
-  // Send the pet data as a JSON response
-  echo json_encode($pets);
-}
 ?>
 
 <!DOCTYPE html>
