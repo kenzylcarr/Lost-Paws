@@ -411,7 +411,7 @@ input {
     width: 55vw;
     height: 65vh;
     display: grid;
-    grid-template-columns: 1.5fr 2fr;
+    grid-template-columns: 1fr 1fr;
 
     box-shadow: 0 2px 5px rgba(216, 213, 213, 0.5);
   }
