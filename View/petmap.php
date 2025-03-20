@@ -57,9 +57,10 @@ while ($row = mysqli_fetch_assoc($result)) {
   $pets[] = $row;
 }
 
-// Return data as JSON
 // header('Content-Type: application/json');
-// echo json_encode($pets);
+
+// Return data as JSON
+echo json_encode($pets);
 
 // Close connection
 mysqli_close($conn);
@@ -152,16 +153,25 @@ mysqli_close($conn);
 
         // add new markers based on the fetched pet data
         data.forEach(pet => {
-          const marker = new google.maps.Marker({
-            position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-            map: map,
-            title: pet.animal_type + ' - ' + pet.status,
-          });
-          markers.push(marker);
+          const lat = parseFloat(pet.latitude);
+          const lng = parseFloat(pet.longitude);
+          
+          if (!isNaN(lat) && !isNaN(lng)) {
+            const marker = new google.maps.Marker({
+              position: { lat, lng },
+              map: map,
+              title: pet.animal_type + ' - ' + pet.status,
+              });
+              markers.push(marker);
+            } else {
+                  console.error('Invalid coordinates for pet:', pet);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching pet data:', error);
         });
-      })
-      .catch(error => console.error('Error fetching pet data:', error));
-  }
+}
 
   // clear all markers from the map
   function clearMarkers() {
