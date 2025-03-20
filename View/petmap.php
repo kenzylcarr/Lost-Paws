@@ -102,13 +102,19 @@ mysqli_close($conn);
   <div id="container">
     <main>
       <div id="petmap-container">
-        <!-- Centered Toggle and Filter Section -->
-
+        <!-- Centered Filter Section -->
         <div id="filter-section" >
           <button id="all-button">All Pets</button>
           <button id="lost-button">Lost Pets</button>
           <button id="found-button">Found Pets</button>
-	    </div>
+
+          <!-- Dropdown filter for Pet Type -->
+          <select id="pet-type-filter">
+            <option value="all">All Pets</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+          </select>
+	      </div>
 
         <!-- <div id="filter-section">
           <label class="switch">
