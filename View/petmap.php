@@ -20,7 +20,7 @@ if (!$conn) {
 }
 
 // Get filters from the request
-$status = isset($_GET['status']) ? $_GET['status'] : 'all';
+$status = isset($_GET['status']) ? $_GET['status'] : 'lost';
 $animal_type = isset($_GET['animal_type']) ? $_GET['animal_type'] : 'all';
 
 // Fetch data from database
@@ -33,13 +33,12 @@ if ($status !== 'all') {
   $sql .= " WHERE p.status = '" . mysqli_real_escape_string($conn, $status) . "'";
 }
 
-// Add filtering by animal type
 if ($animal_type !== 'all') {
-  if ($status !== 'all') {
-    $sql .= " AND p.animal_type = '" . mysqli_real_escape_string($conn, $animal_type) . "'";
-  } else {
-    $sql .= " WHERE p.animal_type = '" . mysqli_real_escape_string($conn, $animal_type) . "'";
-  }
+  $whereClauses[] = "p.animal_type = '" . mysqli_real_escape_string($conn, $animal_type) . "'";
+}
+
+if (!empty($whereClauses)) {
+  $sql .= " WHERE " . implode(' AND ', $whereClauses);
 }
 
 // Execute the query
@@ -110,13 +109,13 @@ mysqli_close($conn);
           </label>
           <span id="toggle-label">Lost Pets</span>
 
-          <!-- Dropdown Filter for Pet Type -->
+          <!-- Dropdown Filter for Pet Type 
           <select id="pet-type-filter">
             <option value="all">All Pets</option>
             <option value="cat">Cat</option>
             <option value="dog">Dog</option>
-          </select>
-        </div>
+          </select> -->
+        </div> 
 
         <!-- Google Map -->
         <div id="petmap-map" style="height: 600px;"></div>
@@ -136,34 +135,46 @@ mysqli_close($conn);
         zoom: 12,
       });
 
-	// data from PHP (pets array)
-       const pets = <?php echo json_encode($pets); ?>;
- 
-     // add markers for each pet
-     pets.forEach(pet => {
-       const marker = new google.maps.Marker({
-         position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-         map: map,
-         title: `${pet.animal_type} - ${pet.status}`,
-       });
-	
-	markers.push(marker);
-     });
-     } 
+    // fetch and display pets on map
+    fetchPetsData('lost');  // default to showing lost pets
+  }
+
+  // fetch pets data based on selected status
+  function fetchPetsData(status) {
+    fetch(`?status=${status}`)
+      .then(response => response.json())
+      .then(data => {
+        // clear any existing markers
+        markers.forEach(marker => marker.setMap(null));
+        markers = [];
+
+        // add new markers for each pet
+        data.forEach(pet => {
+          const marker = new google.maps.Marker({
+            position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
+            map: map,
+            title: `${pet.animal_type} - ${pet.status}`,
+          });
+
+          markers.push(marker);
+        });
+      })
+      .catch(error => console.error("Error fetching pet data:", error));
+  }
 
 	// event listeners for filters
        document.addEventListener("DOMContentLoaded", function () {
        const toggleSwitch = document.getElementById("toggle-lost-found");
-       const petFilter = document.getElementById("pet-type-filter");
+      //  const petFilter = document.getElementById("pet-type-filter");
  
        toggleSwitch.addEventListener("change", function () {
          document.getElementById("toggle-label").textContent = this.checked ? "Found Pets" : "Lost Pets";
          fetchPetsData();
        });
  
-       petFilter.addEventListener("change", function () {
-         fetchPetsData();
-       });
+      //  petFilter.addEventListener("change", function () {
+      //    fetchPetsData();
+      //  });
      });
   </script>
 	
