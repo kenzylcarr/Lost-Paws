@@ -8,6 +8,57 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: accountpage.php
 -->
+<!-- PHP validation for the form begins -->
+<?php
+session_start();
+require_once("../Model/db_config.php");
+
+// Check if the user is signed in
+if (!isset($_SESSION['username'])) {
+  header("Location: ../index.php");
+  exit();
+}
+
+// Fetch user data from database
+$username = $_SESSION['username'];
+$stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  $user = $result->fetch_assoc();
+  $user_id = $user['user_id'];
+} else {
+  echo "User not found.";
+  exit();
+}
+
+  // Get the 'status' parameter from the URL (if present)
+  $status = isset($_GET['status']) ? $_GET['status'] : '';
+
+  // Fetch pet data from database, with filtering based on status if present
+  $pets = [];
+  $query = "SELECT pet_id, animal_type, status, location_ip, picture FROM pets";
+  if ($status == 'lost' || $status == 'found') {
+      $query .= " WHERE status = ?";
+  }
+  $stmt = $conn->prepare($query);
+
+  // If filtering by status, bind the parameter
+  if ($status == 'lost' || $status == 'found') {
+      $stmt->bind_param("s", $status);
+  }
+
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $pets[] = $row;
+    }
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -179,11 +230,8 @@
 	    input.style.borderColor = ""; // Reset the border color to default
 	  }
 	}
-
-
   </script>
-
-	</head>
+</head>
 
 <body>
   <div class="settings-page">
@@ -207,8 +255,8 @@
           <!-- Sidebar -->
           <aside class="sidebar">
             <div class="profile-info">
-              <img src="images/default-profile.png" alt="Profile Picture" class="profile-pic">
-              <p class="username">John Doe</p>
+              <img src="<?php echo $user['profile_photo']; ?>" alt="Profile Picture" class="profile-pic" />
+              <p class="username"><?php echo $user['username']; ?></p>
             </div>
             <ul class="settings-menu">
               <li><a href="javascript:void(0);" onclick="toggleSection('profile')">Profile</a></li>
