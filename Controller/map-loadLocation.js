@@ -6,7 +6,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: map-location.js
+  File name: map-loadLocation.js
     This file loads the pinned locations of pets saved in the database
 */
 
