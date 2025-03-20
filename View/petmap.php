@@ -169,13 +169,14 @@ mysqli_close($conn);
       const buttons = document.querySelectorAll('#filter-section button');
       buttons.forEach(button => {
       button.classList.remove('active');  // remove active class from all buttons
-    });
-    document.getElementById(buttonId).classList.add('active');  // add active class to the clicked button
+      });
+      document.getElementById(buttonId).classList.add('active');  // add active class to the clicked button
     }
 
 	  // event listeners for filter buttons
-    document.getElementById('all-button').addEventListener('click', () => {
+      document.getElementById('all-button').addEventListener('click', () => {
         displayPets(allPets);
+        setActiveButton('all-button');
       });
 
       document.getElementById('lost-button').addEventListener('click', () => {
