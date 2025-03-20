@@ -135,6 +135,7 @@ mysqli_close($conn);
   <script>
     let map;
     let markers = [];
+    let allPets = <?php echo json_encode($pets); ?>;
 
     // initialize map
     function initMap() {
@@ -142,36 +143,42 @@ mysqli_close($conn);
         center: { lat: 50.4601, lng: -104.6639 },  // set initial center (Regina, SK)
         zoom: 12,
       });
+ 
+      // function to display pets on the map
+      function displayPets(pets) {
+        // clear existing markers
+        markers.forEach(marker => marker.setMap(null));
+        markers = [];
 
-	// data from PHP (pets array)
-       const pets = <?php echo json_encode($pets); ?>;
- 
-     // add markers for each pet
-     pets.forEach(pet => {
-       const marker = new google.maps.Marker({
-         position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-         map: map,
-         title: `${pet.animal_type} - ${pet.status}`,
-       });
-	
-	    markers.push(marker);
-     });
-     } 
+        // add new markers
+        pets.forEach(pet => {
+          const marker = new google.maps.Marker({
+            position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
+            map: map,
+            title: `${pet.animal_type} - ${pet.status}`,
+          });
+          markers.push(marker);
+        });
+      }
 
-	// event listeners for filters
-       document.addEventListener("DOMContentLoaded", function () {
-       const toggleSwitch = document.getElementById("toggle-lost-found");
-       const petFilter = document.getElementById("pet-type-filter");
- 
-       toggleSwitch.addEventListener("change", function () {
-         document.getElementById("toggle-label").textContent = this.checked ? "Found Pets" : "Lost Pets";
-         fetchPetsData();
-       });
- 
-       petFilter.addEventListener("change", function () {
-         fetchPetsData();
-       });
-     });
+      // initial map load - display all pets
+      displayPets(allPets);
+
+	  // event listeners for filters
+    document.getElementById('all-button').addEventListener('click', () => {
+        displayPets(allPets);
+      });
+
+      document.getElementById('lost-button').addEventListener('click', () => {
+        const lostPets = allPets.filter(pet => pet.status === 'lost');
+        displayPets(lostPets);
+      });
+
+      document.getElementById('found-button').addEventListener('click', () => {
+        const foundPets = allPets.filter(pet => pet.status === 'found');
+        displayPets(foundPets);
+      });
+    }
   </script>
 	
 </body>
