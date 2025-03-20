@@ -22,7 +22,7 @@ if (!isset($_SESSION['username'])) {
 
 // Fetch user data from database
 $username = $_SESSION['username'];
-$stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+$stmt = $conn->prepare("SELECT user_id, first_name, last_name, email_address, phone_number, profile_photo FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -30,6 +30,8 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
   $user = $result->fetch_assoc();
   $user_id = $user['user_id'];
+  $first_name = $user['first_name'];
+  $last_name = $user['last_name'];
 } else {
   echo "User not found.";
   exit();
@@ -129,6 +131,7 @@ if ($result->num_rows > 0) {
         </div>
     
         <div class="user-name">
+          <p><?php echo htmlspecialchars($first_name) . ' ' . htmlspecialchars($last_name); ?></p>
           <p><?php echo htmlspecialchars($username); ?></p>
         </div>
     

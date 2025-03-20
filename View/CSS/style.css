@@ -61,9 +61,6 @@ h1, h2 {
   gap: 20px;
   justify-content: flex-end;
   margin-left: auto;
-
-/*   grid-column-start: 2;
-  grid-column-end: 3; */
 }
 
 .logo {
