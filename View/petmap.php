@@ -104,7 +104,7 @@ mysqli_close($conn);
       <div id="petmap-container">
         <!-- Centered Toggle and Filter Section -->
 
-        <div id="filter-section" class="lost-or-found-buttons" >
+        <div id="filter-section" >
           <button id="all-button">All Pets</button>
           <button id="lost-button">Lost Pets</button>
           <button id="found-button">Found Pets</button>
@@ -161,10 +161,19 @@ mysqli_close($conn);
         });
       }
 
-      // initial map load - display all pets
-      displayPets(allPets);
+    // initial map load - display all pets
+    displayPets(allPets);
 
-	  // event listeners for filters
+      // function to handle active button state
+    function setActiveButton(buttonId) {
+      const buttons = document.querySelectorAll('#filter-section button');
+      buttons.forEach(button => {
+      button.classList.remove('active');  // remove active class from all buttons
+    });
+    document.getElementById(buttonId).classList.add('active');  // add active class to the clicked button
+    }
+
+	  // event listeners for filter buttons
     document.getElementById('all-button').addEventListener('click', () => {
         displayPets(allPets);
       });
@@ -172,11 +181,13 @@ mysqli_close($conn);
       document.getElementById('lost-button').addEventListener('click', () => {
         const lostPets = allPets.filter(pet => pet.status === 'lost');
         displayPets(lostPets);
+        setActiveButton('lost-button');
       });
 
       document.getElementById('found-button').addEventListener('click', () => {
         const foundPets = allPets.filter(pet => pet.status === 'found');
         displayPets(foundPets);
+        setActiveButton('found-button');
       });
     }
   </script>

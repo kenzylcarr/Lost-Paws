@@ -951,6 +951,32 @@ border-radius: 0.3vw;
   clear: both;
 }
 
+#filter-section button {
+  background-color: #1E3F66;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#filter-section button:hover {
+  background-color: #a4bbd8;
+  color: black;
+}
+
+#filter-section button.active {
+  background-color: #ff6347; /* Change this to the color you want for active button */
+  color: white;
+}
+
+#filter-section button.active {
+  font-weight: bold;
+}
+
 /*  END CSS: petmap.php  */
 
 
