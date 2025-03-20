@@ -45,6 +45,7 @@ $stmt->close();
 <head>
   <title>Account Settings</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
   <script src="../Controller/eventHandler.js"></script>
   <script>
     // JavaScript function to toggle visibility of sections
@@ -234,7 +235,9 @@ $stmt->close();
           <!-- Sidebar -->
           <aside class="sidebar">
             <div class="profile-info">
-              <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+              <div class="user-photo">
+                <img src="/View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+              </div>
               <p><?php echo htmlspecialchars($username); ?></p>
             </div>
             <ul class="settings-menu">
