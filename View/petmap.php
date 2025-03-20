@@ -134,42 +134,19 @@ mysqli_close($conn);
         zoom: 12,
       });
 
-      // fetch pets data
-      fetchPetsData();
-    }
+    // data from PHP (pets array)
+      const pets = <?php echo json_encode($pets); ?>;
 
-    // fetch pet data from the server
-    function fetchPetsData() {
-      const status = document.getElementById('toggle-lost-found').checked ? 'found' : 'lost';
-      const petType = document.getElementById('pet-type-filter').value;
-
-      // send AJAX request to server to get pets data
-      fetch('Controller/getpets.php?status=' + status + '&pet_type=' + petType)
-        .then(response => response.json())
-        .then(data => {
-          // Clear existing markers
-          clearMarkers();
-
-          // add new markers
-          data.forEach(pet => {
-            const marker = new google.maps.Marker({
-              position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-              map: map,
-              title: pet.animal_type + ' - ' + pet.status,
-            });
-            markers.push(marker);
-          });
-        })
-        .catch(error => console.error('Error fetching pet data:', error));
-    }
-
-    // clear all markers from the map
-    function clearMarkers() {
-      markers.forEach(marker => {
-        marker.setMap(null);
+    // add markers for each pet
+    pets.forEach(pet => {
+      const marker = new google.maps.Marker({
+        position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
+        map: map,
+        title: `${pet.animal_type} - ${pet.status}`,
       });
-      markers = [];
-    }
+      markers.push(marker);
+    });
+    } 
 
     // event listeners for filters
       document.addEventListener("DOMContentLoaded", function () {
