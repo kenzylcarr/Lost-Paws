@@ -122,16 +122,8 @@ if (!isset($_SESSION['username'])) {
                 <!-- Animal Photo -->
                 <label for="pet_photo">Upload Animal Photo:</label>
                 <input type="file" id="pet_photo" name="pet_photo[]" multiple>
-
-                <!-- Google Map for Location -->
-                <label for="map">Select Location on Map:</label>
-                <div id="map"></div>
                 
-                <!-- Hidden Fields for Latitude and Longitude -->
-                <input type="hidden" name="latitude" id="latitude">
-                <input type="hidden" name="longitude" id="longitude">
-
-                <button type="submit">Submit</button>
+                <button type="submit">Update</button>
             </form>
         </div>
       </main>
