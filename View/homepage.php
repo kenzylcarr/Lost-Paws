@@ -76,8 +76,8 @@ if ($result->num_rows > 0) {
        <!-- Lost Paws Logo -->
        <nav class="navmenu">
         <div class="logo"> 
-			<p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
-    </div>
+          <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
+        </div>
 
       <!-- Navigation menu -->
       <div class="nav-links">

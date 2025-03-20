@@ -217,7 +217,7 @@ $stmt->close();
   <div class="settings-page">
     <div id="container">
       <nav class="navmenu">
-        <div class="logo">
+        <div class="logo"> 
           <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
         </div>
         <div class="nav-links">
