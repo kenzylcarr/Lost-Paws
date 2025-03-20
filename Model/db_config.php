@@ -38,7 +38,7 @@ try {
             die("Database connection failed: " . mysqli_connect_error());
         }
         // echo "Database connection successful!<br>";
-    } catch (PDOException $e) {
+    } catch (Exception $e) {
         die("Database connection failed: " . $e->getMessage());
     }
 } catch (Exception $e) {
