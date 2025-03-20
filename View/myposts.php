@@ -91,6 +91,11 @@ if (!isset($_SESSION['username'])) {
                 <p> Status: <?php echo htmlspecialchars($pet['status']); ?></p>
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
                 <p><a href="/View/viewpet_member.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
+                <p><a href="/View/editpost.php?id=<?php echo $pet['pet_id']; ?>">Edit</a></p>
+                <form action="/View/deletepet.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                    <input type="hidden" name="pet_id" value="<?php echo $pet['pet_id']; ?>">
+                    <button type="submit">Remove</button>
+                </form>
               </div>
               <?php endforeach; ?>
         </div>
