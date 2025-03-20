@@ -6,66 +6,55 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: homepage.php
+  File name: myposts.php
 -->
 
-<!-- PHP validation for the form begins -->
 <?php
 session_start();
 require_once("../Model/db_config.php");
 
 // Check if the user is signed in
 if (!isset($_SESSION['username'])) {
-  header("Location: ../index.php");
-  exit();
-}
+    header("Location: ../index.php");
+    exit();
+  }
+  
+  // Fetch user data from database
+  $username = $_SESSION['username'];
+  $stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+  $stmt->bind_param("s", $username);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  
+  if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+    $user_id = $user['user_id'];
+  } else {
+    echo "User not found.";
+    exit();
+  }
 
-// Fetch user data from database
-$username = $_SESSION['username'];
-$stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-  $user = $result->fetch_assoc();
-  $user_id = $user['user_id'];
-} else {
-  echo "User not found.";
-  exit();
-}
-
-  // Get the 'status' parameter from the URL (if present)
-  $status = isset($_GET['status']) ? $_GET['status'] : '';
-
-  // Fetch pet data from database, with filtering based on status if present
+  // Fetch user's pet posts
   $pets = [];
-  $query = "SELECT pet_id, animal_type, status, location_ip, picture FROM pets";
-  if ($status == 'lost' || $status == 'found') {
-      $query .= " WHERE status = ?";
-  }
+  $query = "SELECT pet_id, animal_type, status, location_ip, picture FROM pets WHERE user_id = ?";
   $stmt = $conn->prepare($query);
-
-  // If filtering by status, bind the parameter
-  if ($status == 'lost' || $status == 'found') {
-      $stmt->bind_param("s", $status);
-  }
-
+  $stmt->bind_param("i", $user_id);
   $stmt->execute();
   $result = $stmt->get_result();
 
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-      $pets[] = $row;
+        $pets[] = $row;
     }
   }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>Lost & Found | Lost Paws</title>
+  <title>My Posts | Lost Paws</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -81,6 +70,7 @@ if ($result->num_rows > 0) {
 
       <!-- Navigation menu -->
       <div class="nav-links">
+        <a href="/View/homepage.php">Homepage</a>
         <a href="/View/reportpetpage.php">Report a Pet</a>
         <a href="/View/petmap.php">Pet Map</a>
       </div>
@@ -91,25 +81,6 @@ if ($result->num_rows > 0) {
         </nav>
 
     <main id="lost-found-database">
-        <!-- Lost or Found Buttons Row -->
-	<div class="lost-found-search-container">
-	    <div class="lost-or-found-buttons">
-		<button id="all-button">All Pets</button>
-		<button id="lost-button">Lost Pets</button>
-		<button id="found-button">Found Pets</button>
-	    </div>
-		<!-- Search and Filter Row -->
-		<div class="search-filter">         
-		    <div class="search-field">
-		     <!-- Submit Button to Search -->
-			<form action="">
-			    <input type="text" placeholder="Search.." name="search">
-			    <button type="submit" value="Search"><i class="fa fa-search"></i></button>
-			</form>
-		    </div>
-	        </div>
-	</div>
-
         <div class="pet-database-container"> 
         <?php foreach ($pets as $pet): ?>
               <div class="pet-brief-info">
@@ -139,23 +110,5 @@ if ($result->num_rows > 0) {
         </div>
       </main>
     </div>
-
-      <!-- Adding JavaScript to handle lost-or-found button clicks -->
-      <script>
-        // when the "All Pets" button is clicked
-        document.getElementById('all-button').addEventListener('click', function() {
-          window.location.href = window.location.pathname;
-        });
-
-        // when the "Lost Pets" button is clicked
-        document.getElementById('lost-button').addEventListener('click', function() {
-          window.location.href = "?status=lost";  // update URL with status parameter
-        });
-
-        // when the "Found Pets" button is clicked
-        document.getElementById('found-button').addEventListener('click', function() {
-          window.location.href = "?status=found";  // update URL with status parameter
-        });
-    </script>
-</body>
+    </body>
 </html>
