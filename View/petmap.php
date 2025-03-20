@@ -130,23 +130,46 @@ mysqli_close($conn);
     // initialize map
     function initMap() {
       map = new google.maps.Map(document.getElementById('petmap-map'), {
-        center: { lat: 50.4601, lng: -104.6639 },  // Set initial center (Regina, SK for example)
+        center: { lat: 50.4601, lng: -104.6639 },  // set initial center (Regina, SK)
         zoom: 12,
       });
 
-    // data from PHP (pets array)
-      const pets = <?php echo json_encode($pets); ?>;
+    // fetch pet data initially (for default status: lost pets)
+    fetchPetsData();
+  }
 
-    // add markers for each pet
-    pets.forEach(pet => {
-      const marker = new google.maps.Marker({
-        position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-        map: map,
-        title: `${pet.animal_type} - ${pet.status}`,
-      });
-      markers.push(marker);
+  // fetch pet data based on toggle status and pet type filter
+  function fetchPetsData() {
+    const status = document.getElementById('toggle-lost-found').checked ? 'found' : 'lost'; // Check if toggle is "found" or "lost"
+    const petType = document.getElementById('pet-type-filter').value; // Get the selected pet type filter
+
+    // send AJAX request to server with the selected filters
+    fetch('Controller/getpets.php?status=' + status + '&animal_type=' + petType)
+      .then(response => response.json())
+      .then(data => {
+        // clear the existing markers
+        clearMarkers();
+
+        // add new markers based on the fetched pet data
+        data.forEach(pet => {
+          const marker = new google.maps.Marker({
+            position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
+            map: map,
+            title: pet.animal_type + ' - ' + pet.status,
+          });
+          markers.push(marker);
+        });
+      })
+      .catch(error => console.error('Error fetching pet data:', error));
+  }
+
+  // clear all markers from the map
+  function clearMarkers() {
+    markers.forEach(marker => {
+      marker.setMap(null);
     });
-    } 
+    markers = [];
+  }
 
     // event listeners for filters
       document.addEventListener("DOMContentLoaded", function () {
