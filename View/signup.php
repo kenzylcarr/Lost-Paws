@@ -171,6 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
         <a href="/View/lostandfound.php">Lost & Found</a>
+        <a href="petmap.php">Pet Map</a>
       </div>
     </nav>
 
