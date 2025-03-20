@@ -178,7 +178,6 @@ mysqli_close($conn);
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="homepage.php">Homepage</a>	
-        <a href="petmap.php">Pet Map</a>
       </div>
 
       <div class="button">
