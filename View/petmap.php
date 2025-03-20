@@ -179,6 +179,21 @@ mysqli_close($conn);
       document.getElementById(buttonId).classList.add('active');  // add active class to the clicked button
     }
 
+      // function to filter pets based on status and animal type
+      function filterPets(status, animalType) {
+        let filteredPets = allPets;
+
+        if (status !== 'all') {
+            filteredPets = filteredPets.filter(pet => pet.status === status);
+        }
+
+        if (animalType !== 'all') {
+            filteredPets = filteredPets.filter(pet => pet.animal_type === animalType);
+        }
+
+        displayPets(filteredPets);
+      }
+
 	  // event listeners for filter buttons
       document.getElementById('all-button').addEventListener('click', () => {
         displayPets(allPets);
@@ -197,6 +212,8 @@ mysqli_close($conn);
         setActiveButton('found-button');
       });
     }
+
+    
   </script>
 	
 </body>
