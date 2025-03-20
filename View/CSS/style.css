@@ -969,7 +969,7 @@ border-radius: 0.3vw;
 }
 
 #filter-section button.active {
-  background-color: #ff6347; /* Change this to the color you want for active button */
+  background-color: #c5877c; 
   color: white;
 }
 
