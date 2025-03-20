@@ -1032,7 +1032,7 @@ border-radius: 0.3vw;
 .settings-page input {
   width: 100%;
   padding: 8px;
-  margin-top: 5px;
+  margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
