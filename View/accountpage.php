@@ -8,6 +8,7 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: accountpage.php
 -->
+
 <!-- PHP validation for the form begins -->
 <?php
 session_start();
@@ -21,6 +22,7 @@ if (!isset($_SESSION['username'])) {
 
 // Fetch user data from database
 $username = $_SESSION['username'];
+
 $stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
@@ -34,30 +36,7 @@ if ($result->num_rows > 0) {
   exit();
 }
 
-  // Get the 'status' parameter from the URL (if present)
-  $status = isset($_GET['status']) ? $_GET['status'] : '';
-
-  // Fetch pet data from database, with filtering based on status if present
-  $pets = [];
-  $query = "SELECT pet_id, animal_type, status, location_ip, picture FROM pets";
-  if ($status == 'lost' || $status == 'found') {
-      $query .= " WHERE status = ?";
-  }
-  $stmt = $conn->prepare($query);
-
-  // If filtering by status, bind the parameter
-  if ($status == 'lost' || $status == 'found') {
-      $stmt->bind_param("s", $status);
-  }
-
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-  if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      $pets[] = $row;
-    }
-  }
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
