@@ -61,8 +61,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 // header('Content-Type: application/json');
 // echo json_encode($pets);
 
-const petsData = echo json_encode($pets);
-
 // Close connection
 mysqli_close($conn);
 ?>
@@ -137,40 +135,35 @@ mysqli_close($conn);
         zoom: 12,
       });
 
-      // display all pet locations initially
-      displayPetLocations(petsData);
-    }
+	// data from PHP (pets array)
+       const pets = <?php echo json_encode($pets); ?>;
+ 
+     // add markers for each pet
+     pets.forEach(pet => {
+       const marker = new google.maps.Marker({
+         position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
+         map: map,
+         title: `${pet.animal_type} - ${pet.status}`,
+       });
+	
+	markers.push(marker);
+     });
+     } 
 
-        // Display pet locations on the map
-        function displayPetLocations(pets) {
-      // Clear existing markers
-      markers.forEach(marker => marker.setMap(null));
-      markers = [];
-
-      // Loop through pets and add markers
-      pets.forEach(pet => {
-        const marker = new google.maps.Marker({
-          position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-          map: map,
-          title: `${pet.first_name} ${pet.last_name} - ${pet.animal_type}`,
-        });
-        markers.push(marker);
-      });
-    }
-
-    // Filter pets based on selected type
-    document.getElementById('pet-type-filter').addEventListener('change', (e) => {
-      const selectedType = e.target.value;
-      const filteredPets = petsData.filter(pet => selectedType === 'all' || pet.animal_type === selectedType);
-      displayPetLocations(filteredPets);
-    });
-
-    // Toggle between Lost and Found Pets (you can enhance this filter as per your database structure)
-    document.getElementById('toggle-lost-found').addEventListener('change', (e) => {
-      const status = e.target.checked ? 'lost' : 'found';
-      const filteredPets = petsData.filter(pet => pet.status === status || status === 'all');
-      displayPetLocations(filteredPets);
-    });
+	// event listeners for filters
+       document.addEventListener("DOMContentLoaded", function () {
+       const toggleSwitch = document.getElementById("toggle-lost-found");
+       const petFilter = document.getElementById("pet-type-filter");
+ 
+       toggleSwitch.addEventListener("change", function () {
+         document.getElementById("toggle-label").textContent = this.checked ? "Found Pets" : "Lost Pets";
+         fetchPetsData();
+       });
+ 
+       petFilter.addEventListener("change", function () {
+         fetchPetsData();
+       });
+     });
   </script>
 	
 </body>
