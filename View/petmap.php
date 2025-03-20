@@ -194,7 +194,7 @@ mysqli_close($conn);
         displayPets(filteredPets);
       }
 
-	  // event listeners for filter buttons
+	    // event listeners for filter buttons
       document.getElementById('all-button').addEventListener('click', () => {
         displayPets(allPets);
         setActiveButton('all-button');
@@ -211,9 +211,15 @@ mysqli_close($conn);
         displayPets(foundPets);
         setActiveButton('found-button');
       });
+
+      // event listener for pet type dropdown
+      document.getElementById('pet-type-filter').addEventListener('change', () => {
+        // Filter pets based on selected type and current status
+        const selectedStatus = document.querySelector('.active').id.split('-')[0]; // "lost" or "found"
+        filterPets(selectedStatus, document.getElementById('pet-type-filter').value);
+    });
     }
 
-    
   </script>
 	
 </body>
