@@ -457,6 +457,14 @@ input {
     max-width: 600px;
   }
 
+
+
+  .description-column2 p {
+	padding-top: 20px;
+  }
+
+
+
   .comment-container {
     grid-row-start: 4;
     grid-row-end: 5;
