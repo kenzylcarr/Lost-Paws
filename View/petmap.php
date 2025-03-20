@@ -28,16 +28,19 @@ $sql = "SELECT p.animal_type, p.status, p.latitude, p.longitude, u.first_name, u
         FROM pets p
         LEFT JOIN users u ON p.user_id = u.user_id";
 
-// Add filtering by status and animal type
+// initialize the where clauses array
+$whereClauses = [];
+
+// add filtering by status and animal type
 if ($status !== 'all') {
-  $sql .= " WHERE p.status = '" . mysqli_real_escape_string($conn, $status) . "'";
+  $whereClauses[] = "p.status = '" . mysqli_real_escape_string($conn, $status) . "'";
 }
 
 if ($animal_type !== 'all') {
   $whereClauses[] = "p.animal_type = '" . mysqli_real_escape_string($conn, $animal_type) . "'";
 }
 
-if (!empty($whereClauses)) {
+if (count($whereClauses) > 0) {
   $sql .= " WHERE " . implode(' AND ', $whereClauses);
 }
 
@@ -57,8 +60,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 // Return data as JSON
-// header('Content-Type: application/json');
-// echo json_encode($pets);
+header('Content-Type: application/json');
+echo json_encode($pets);
 
 // Close connection
 mysqli_close($conn);
@@ -141,7 +144,7 @@ mysqli_close($conn);
 
   // fetch pets data based on selected status
   function fetchPetsData(status) {
-    fetch(`?status=${status}`)
+    fetch(`petmap.php?status=${status}`)
       .then(response => response.json())
       .then(data => {
         // clear any existing markers
