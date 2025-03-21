@@ -208,6 +208,13 @@
   .pet-brief-info a:hover {
     background-color: #e5e5e5;
   }
+
+  .delete-button {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+  }
   
   #mainpage-right-beforelogin{
     grid-column-start: 3;
