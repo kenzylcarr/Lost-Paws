@@ -143,13 +143,6 @@ h1, h2 {
 /* END of common styles for navigation menu */
 
 
-/* footer {
-  background-color: #ceedf1;
-  text-align: center;
-  font-size: 15px;
-  padding: 10px;
-} */
-
 .bottom {
   text-align: center;
   padding: 20px;
@@ -187,18 +180,19 @@ h1, h2 {
     display: grid;
     grid-row-start: 1;
     grid-row-end: 2;
-
     grid-template-columns: 1fr 0.5fr 2fr;  
+    margin-left: 50px;
 }
     .aboutPage-description {
         grid-column-start: 1;
         grid-column-end: 2;
+	margin-left: 50px;
     }
 
     .aboutPage-map {
         grid-column-start: 3;
         grid-column-end: 4;
-	margin-left: -170px;
+	margin-left: -130px;
     }
 
     .aboutPage-map > h3 {
@@ -209,8 +203,8 @@ h1, h2 {
     display: grid;
     grid-row-start: 2;
     grid-row-end: 3;
-
     grid-template-columns: 1fr 0.5fr 2fr; 
+    margin-left: 70px;
 }
   .aboutPage-offer {
       grid-column-start: 1;
@@ -231,7 +225,7 @@ p.description {
 }
 
 .aboutPage-mission-statement {
-    width: 60%;
+    width: 75%;
 }
 
 #aboutpage-right-beforelogin{
