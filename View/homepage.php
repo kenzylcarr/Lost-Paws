@@ -63,9 +63,12 @@ if ($result->num_rows > 0) {
 
   if (!empty($search) && ($status == 'lost' || $status == 'found')) {
       $searchTerm = "%$search%";
-      $stmt->bind_param("s", $status);
+      $stmt->bind_param("sss", $status, $searchTerm, $searchTerm);
+  } elseif (!empty($search)) {
+      $searchTerm = "%$search%";
       $stmt->bind_param("ss", $searchTerm, $searchTerm);
-
+  } elseif ($status == 'lost' || $status == 'found') {
+      $stmt->bind_param("s", $status);
   }
   
 
