@@ -34,6 +34,17 @@ function initMap() {
         map: map,
         title: `${pet.animal_type} - ${pet.status}`,
       });
+
+      // add a click event listener to the marker to redirect based on login status
+      marker.addListener('click', () => {
+        if (loggedIn) {
+          // Redirect to the member view page if logged in
+          window.location.href = `/View/viewpet_member.php?id=${pet.pet_id}`;
+        } else {
+          // Redirect to the visitor view page if not logged in
+          window.location.href = `/View/viewpet_visitor.php?id=${pet.pet_id}`;
+        }
+      });
       markers.push(marker);
     });
   }

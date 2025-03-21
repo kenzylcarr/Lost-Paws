@@ -24,7 +24,7 @@ $status = isset($_GET['status']) ? $_GET['status'] : 'all';
 $animal_type = isset($_GET['animal_type']) ? $_GET['animal_type'] : 'all';
 
 // Fetch data from database
-$sql = "SELECT p.animal_type, p.status, p.latitude, p.longitude, u.first_name, u.last_name
+$sql = "SELECT p.pet_id, p.animal_type, p.status, p.latitude, p.longitude, u.first_name, u.last_name
         FROM pets p
         LEFT JOIN users u ON p.user_id = u.user_id";
 
@@ -122,6 +122,7 @@ mysqli_close($conn);
 
   <script>
   let allPets = <?php echo json_encode($pets); ?>;
+  const loggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
   </script>
 	
 </body>
