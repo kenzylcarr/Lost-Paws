@@ -198,6 +198,7 @@ h1, h2 {
     .aboutPage-map {
         grid-column-start: 3;
         grid-column-end: 4;
+	margin-left: -170px;
     }
 
     .aboutPage-map > h3 {
@@ -219,6 +220,7 @@ h1, h2 {
   .aboutPage-mission-statement {
       grid-column-start: 3;
       grid-column-end: 4;
+      margin-left: -170px;
   }
 
 p.description {
