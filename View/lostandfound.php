@@ -16,6 +16,7 @@
 
   // Get the 'status' parameter from the URL (if present)
   $status = isset($_GET['status']) ? $_GET['status'] : '';
+  $search = isset($_GET['search']) ? trim($_GET['search']) : '';                      //!
 
   // Fetch pet data from database, with filtering based on status if present
   $pets = [];
@@ -23,11 +24,30 @@
   if ($status == 'lost' || $status == 'found') {
       $query .= " WHERE status = ?";
   }
+
+  // Searching using key words
+  if(!empty($search))                                                                   //!
+  {
+    $query .= ($status == 'lost' || $status == 'found') ? " AND" : " WHERE";
+    $query .= " (animal_type LIKE ? OR location_ip LIKE ?)";
+  }
+
   $stmt = $conn->prepare($query);
 
   // If filtering by status, bind the parameter
-  if ($status == 'lost' || $status == 'found') {
-      $stmt->bind_param("s", $status);
+  if (!empty($search) && ($status == 'lost' || $status == 'found'))
+  {
+    $searchWildcard = "%$search%";
+    $stmt->bind_param("sss", $status, $searchWildcard, $searchWildcard);
+  }
+  elseif (!empty($search))
+  {
+    $searchWildcard = "%$search%";
+    $stmt->bind_param("ss", $searchWildcard, $searchWildcard);
+  }
+  elseif ($status == 'lost' || $status == 'found')
+  {
+    $stmt->bind_param("s", $status);
   }
 
   $stmt->execute();
@@ -83,7 +103,7 @@
           
           <!-- Search and Filter Row -->
           <div class="search-field">
-                <form action="">
+                <form action="lostandfound.php" method="GET">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit" value="Search"><i class="fa fa-search"></i></button>
                 </form>
@@ -125,6 +145,30 @@
       document.getElementById('found-button').addEventListener('click', function() {
         window.location.href = "?status=found";  // update URL with status parameter
       });
+
+      // searching while real-time filtering                                                        //!
+      document.addEventListener("DOMContentLoaded", function()
+      {
+        const searchInput = document.querySelector(".search-field input");
+        const petCards = document.querySelectorAll(".pet-brief-info");
+        
+        searchInput.addEventListener("keyup", function()
+        {
+          const searchTerm = searchInput.value.toLowerCase();
+
+          petCards.forEach(pet => 
+          {
+            const petType = pet.querySelector("p:nth-of-type(1)").textContent.toLowerCase();
+            const location = pet.querySelector("p:nth-of-type(3)").textContent.toLowerCase();
+
+            if (petType.includes(searchTerm) || location.includes(searchTerm))
+              pet.style.display = "block";
+            else
+              pet.style.display = "none";
+          });
+        });
+      });
+
     </script>
   </body>
   </html>
