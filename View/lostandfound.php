@@ -97,7 +97,7 @@
                 <p> Type: <?php echo htmlspecialchars($pet['animal_type']); ?></p>
                 <p> Status: <?php echo htmlspecialchars($pet['status']); ?></p>
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
-                <p><a href="/View/viewpet_member.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
+                <p><a href="/View/viewpet_visitor.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
               </div>
               <?php endforeach; ?>
         </div>
