@@ -74,6 +74,7 @@ if (isset($_GET['id'])) {
 <head>
   <title>View Post</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
   <style>
@@ -107,8 +108,8 @@ if (isset($_GET['id'])) {
       
       <!-- Left Section: Map-->
       <main id="select-post-main-left">
-        <a href="lostandfound.php"><button id="view-all-button">&#x1F804; View All Pets</button> </a>
-        <h3>Location Last Seen</h3>
+      <a href="lostandfound.php"><button id="all-button">View All Pets</button></a>
+        <h3>Location Last Seen:</h3>
         
         <!-- Google Map -->
         <div id="map"></div>

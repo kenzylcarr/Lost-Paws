@@ -126,8 +126,8 @@ if (isset($_GET['id'])) {
       
       <!-- Left Section: Map-->
       <main id="select-post-main-left">
-        <a href="homepage.php"><button id="all-button">View All Pets</button> </a>
-        <h3>Location Last Seen</h3>
+        <a href="homepage.php"><button id="all-button">View All Pets</button></a>
+        <h3>Location Last Seen:</h3>
         
         <!-- Google Map -->
         <div id="map"></div>
