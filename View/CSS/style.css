@@ -195,11 +195,6 @@ h1, h2 {
         grid-column-end: 2;
     }
 
-    .aboutPage-photo1 {
-        grid-column-start: 2;
-        grid-column-end: 3;
-    }
-
     .aboutPage-map {
         grid-column-start: 3;
         grid-column-end: 4;
@@ -219,11 +214,6 @@ h1, h2 {
   .aboutPage-offer {
       grid-column-start: 1;
       grid-column-end: 2;
-  }
-
-  .aboutPage-photo2 {
-      grid-column-start: 2;
-      grid-column-end: 3;
   }
 
   .aboutPage-mission-statement {
