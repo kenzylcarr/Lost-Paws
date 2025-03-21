@@ -34,6 +34,22 @@ if (!isset($_SESSION['username'])) {
     exit();
   }
 
+  // Check if the delete request was sent
+  if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pet_id'])) {
+    $pet_id = $_POST['pet_id'];
+
+    // Delete from database
+    $delete_stmt = $conn->prepare("DELETE FROM pets WHERE pet_id = ? AND user_id = ?");
+    $delete_stmt->bind_param("ii", $pet_id, $user_id);
+
+    if ($delete_stmt->execute()) {
+      echo "<p>Pet post deleted successfully.</p>";
+    } else {
+      echo "<p>Error deleting pet post.</p>";
+    }
+    $delete_stmt->close();
+  }
+
   // Fetch user's pet posts
   $pets = [];
   $query = "SELECT pet_id, animal_type, status, location_ip, picture FROM pets WHERE user_id = ?";
