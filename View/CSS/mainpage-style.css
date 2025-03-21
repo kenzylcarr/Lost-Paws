@@ -197,32 +197,34 @@
     text-decoration: none;
     color: #0066cc;
     margin-top: auto;
-    padding: 8px 16px;
+    padding: 3px 16px;
+    margin-bottom: 25px; 
     background-color: #f5f5f5;
     border-radius: 4px;
     text-align: center;
     transition: background-color 0.2s;
-    font-weight: 500;
   }
 
   .pet-brief-info a:hover {
     background-color: #e5e5e5;
   }
 
+
   .delete-button {
     text-decoration: none;
-    color: #0066cc;
+    color: black;
     margin-top: auto;
-    padding: 8px 16px;
-    background-color: #f5f5f5;
+    padding: 3px 16px;
+    margin-bottom: 25px; 
+    background-color: #F69697;
     border-radius: 4px;
     text-align: center;
     transition: background-color 0.2s;
-    font-weight: 500;
+    cursor: pointer;
   }
 
   .delete-button:hover {
-    background-color: #e5e5e5;
+    background-color: #FF2C2C;
   }
   
   #mainpage-right-beforelogin{
