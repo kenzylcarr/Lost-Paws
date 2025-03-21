@@ -301,7 +301,7 @@ $stmt->close();
                   <option value="AB">Alberta</option>
                   <option value="SK">Saskatchewan</option>
                   <option value="MB">Manitoba</option>
-                  <option value="on">Ontario</option>
+                  <option value="ON">Ontario</option>
                 </select>
 
                 <!-- City -->
