@@ -212,6 +212,7 @@ if (isset($_GET['id'])) {
 
             // Delete comment from database
             $stmt = $conn->prepare("DELETE FROM comments WHERE comment_id = ? AND user_id = ? ");
+            $stmt->bind_param("ii", $comment_id, $user_id);
             if ($stmt->execute()) {
               echo "<script>window.location.href = window.location.href;</script>";
             } else {
