@@ -210,10 +210,19 @@
   }
 
   .delete-button {
-    border: none;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
+    text-decoration: none;
+    color: #0066cc;
+    margin-top: auto;
+    padding: 8px 16px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.2s;
+    font-weight: 500;
+  }
+
+  .delete-button:hover {
+    background-color: #e5e5e5;
   }
   
   #mainpage-right-beforelogin{
