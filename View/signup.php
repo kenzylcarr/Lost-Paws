@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="../Model/register.php" method="post" enctype="multipart/form-data">
+          <form class="auth-form-signup" id="signup-form" method="post" enctype="multipart/form-data">
                 <!-- First Name -->
                 <div class="signup-field">
                     <label for="firstname">First Name</label>
