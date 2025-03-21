@@ -72,6 +72,7 @@ mysqli_close($conn);
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <script src="https://kit.fontawesome.com/da5adf624f.js" crossorigin="anonymous"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
+  <script src="../Controller/map-filterLocation.js"></script>
 </head>
 
 <body>
@@ -122,9 +123,6 @@ mysqli_close($conn);
   <script>
   let allPets = <?php echo json_encode($pets); ?>;
   </script>
-
-  <script src="js/petMap.js"></script>
-  <script src="../Controller/map-filterLocation.js"></script>
 	
 </body>
 </html>
