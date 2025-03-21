@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   // Get the pet_id and comment from the form
   $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
-  $comment = htmlspecialchars($_POST['comment']);
+  $comment = $_POST['comment'];
   
   if (!empty($pet_id) && !empty($comment)) {
     // Insert the comment into the database
