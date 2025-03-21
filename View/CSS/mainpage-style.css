@@ -80,14 +80,6 @@
     padding: 10px 30px;
   }
 
-.search-field form {
-    display: flex;
-    align-items: center;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
   .search-filter {
     display: flex;
     align-items: center;
@@ -242,7 +234,7 @@
   }
   
   #mainpage-right-beforelogin a {
-    background-color: #9AD4FF(230, 180, 120, 0.801);
+    background-color: #9AD4FF;
     border-radius: 0.2vw;
     width: 5vw;
     padding: 0.3vw;
@@ -252,7 +244,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
 /*   END CSS: lostandfound.php  */  
-
 
 
 /*   START CSS: homepage.php  */
