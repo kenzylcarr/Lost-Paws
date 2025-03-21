@@ -171,12 +171,12 @@ if (isset($_GET['id'])) {
               </div>
               
               <div class="all-comments">
-                <?php
+              <?php
                 if ($comment_result->num_rows > 0) {
                   while ($comment = $comment_result->fetch_assoc()) {
-                    $comment_id = $comment['comment_id'];
-                    $comment_content = $comment['comment_content'];
-                    $comment_user_id = $comment['user_id'];
+                    $comment_id = isset($comment['comment_id']) ? $comment['comment_id'] : null;
+                    $comment_content = isset($comment['comment_content']) ? $comment['comment_content'] : null;
+                    $comment_user_id = isset($comment['user_id']) ? $comment['user_id'] : null;
 
                     // Show edit and delete options for logged-in users only
                     if ($comment_user_id == $user_id) {
