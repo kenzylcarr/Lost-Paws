@@ -181,7 +181,7 @@ h1, h2 {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-template-columns: 1fr 0.5fr 2fr;  
-    margin-left: 50px;
+    margin-left: 10px;
 }
     .aboutPage-description {
         grid-column-start: 1;
