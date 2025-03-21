@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($errors)) {
         foreach ($errors as $type => $message) {
-            print("$type: $message \n<br />");
+            // print("$type: $message \n<br />");
         }
     }
 }
