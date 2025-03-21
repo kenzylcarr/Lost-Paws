@@ -120,8 +120,11 @@ mysqli_close($conn);
   </div>
 
   <script>
-
+  let allPets = <?php echo json_encode($pets); ?>;
   </script>
+
+  <script src="js/petMap.js"></script>
+  <script src="../Controller/map-filterLocation.js"></script>
 	
 </body>
 </html>
