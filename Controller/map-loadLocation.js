@@ -7,7 +7,7 @@
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
   File name: map-loadLocation.js
-    This file loads the pinned locations of pets saved in the database
+    This file loads and displays the specific pinned location of a pet saved in the database (for viewpet files)
 */
 
 let map;

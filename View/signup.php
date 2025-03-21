@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($errors)) {
         foreach ($errors as $type => $message) {
-            print("$type: $message \n<br />");
+            // print("$type: $message \n<br />");
         }
     }
 }
@@ -171,6 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="nav-links">
         <a href="/View/aboutpage.php">About Lost Paws</a>
         <a href="/View/lostandfound.php">Lost & Found</a>
+        <a href="petmap.php">Pet Map</a>
       </div>
     </nav>
 
@@ -187,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       
   <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" action="../Controller/register.php" method="post" enctype="multipart/form-data">
+          <form class="auth-form-signup" id="signup-form" method="post" enctype="multipart/form-data">
                 <!-- First Name -->
                 <div class="signup-field">
                     <label for="firstname">First Name</label>

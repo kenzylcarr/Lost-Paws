@@ -57,10 +57,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   $pets[] = $row;
 }
 
-// Return data as JSON
-// header('Content-Type: application/json');
-// echo json_encode($pets);
-
 // Close connection
 mysqli_close($conn);
 ?>
@@ -102,21 +98,19 @@ mysqli_close($conn);
   <div id="container">
     <main>
       <div id="petmap-container">
-        <!-- Centered Toggle and Filter Section -->
-        <div id="filter-section">
-          <label class="switch">
-            <input type="checkbox" id="toggle-lost-found">
-            <span class="slider round"></span>
-          </label>
-          <span id="toggle-label">Lost Pets</span>
+        <!-- Centered Filter Section -->
+        <div id="filter-section" >
+          <button id="all-button">All Pets</button>
+          <button id="lost-button">Lost Pets</button>
+          <button id="found-button">Found Pets</button>
 
-          <!-- Dropdown Filter for Pet Type -->
+          <!-- Dropdown filter for Pet Type -->
           <select id="pet-type-filter">
-            <option value="all">All Pets</option>
+            <option value="all">All Types</option>
             <option value="cat">Cat</option>
             <option value="dog">Dog</option>
           </select>
-        </div>
+	      </div>
 
         <!-- Google Map -->
         <div id="petmap-map" style="height: 600px;"></div>
@@ -126,46 +120,11 @@ mysqli_close($conn);
   </div>
 
   <script>
-    let map;
-    let markers = [];
-
-    // initialize map
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('petmap-map'), {
-        center: { lat: 50.4601, lng: -104.6639 },  // set initial center (Regina, SK)
-        zoom: 12,
-      });
-
-	// data from PHP (pets array)
-       const pets = <?php echo json_encode($pets); ?>;
- 
-     // add markers for each pet
-     pets.forEach(pet => {
-       const marker = new google.maps.Marker({
-         position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-         map: map,
-         title: `${pet.animal_type} - ${pet.status}`,
-       });
-	
-	markers.push(marker);
-     });
-     } 
-
-	// event listeners for filters
-       document.addEventListener("DOMContentLoaded", function () {
-       const toggleSwitch = document.getElementById("toggle-lost-found");
-       const petFilter = document.getElementById("pet-type-filter");
- 
-       toggleSwitch.addEventListener("change", function () {
-         document.getElementById("toggle-label").textContent = this.checked ? "Found Pets" : "Lost Pets";
-         fetchPetsData();
-       });
- 
-       petFilter.addEventListener("change", function () {
-         fetchPetsData();
-       });
-     });
+  let allPets = <?php echo json_encode($pets); ?>;
   </script>
+
+  <script src="js/petMap.js"></script>
+  <script src="../Controller/map-filterLocation.js"></script>
 	
 </body>
 </html>

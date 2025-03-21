@@ -7,7 +7,7 @@
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
   File name: map-saveLocation.js
-    This file allows users to pin a location on the map
+    This file allows users to pin a specific location on the map (for reportpetpage.php)
 */
 
 // initialize Google Map

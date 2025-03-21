@@ -28,6 +28,7 @@
   width: 100%;
   box-sizing: border-box;
   z-index: 1000;
+  margin-left: -20px;
 }
 .nav-links-right {
   background-color: #B6D0E2;
@@ -135,6 +136,7 @@ img {
   font-size: smaller;
   padding-left: 65px;
   margin-top: -310px;
+  margin-left: 120px;
 }
 
 .login-footnote a {

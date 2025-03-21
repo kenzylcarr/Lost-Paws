@@ -195,14 +195,10 @@ h1, h2 {
         grid-column-end: 2;
     }
 
-    .aboutPage-photo1 {
-        grid-column-start: 2;
-        grid-column-end: 3;
-    }
-
     .aboutPage-map {
         grid-column-start: 3;
         grid-column-end: 4;
+	margin-left: -170px;
     }
 
     .aboutPage-map > h3 {
@@ -221,14 +217,10 @@ h1, h2 {
       grid-column-end: 2;
   }
 
-  .aboutPage-photo2 {
-      grid-column-start: 2;
-      grid-column-end: 3;
-  }
-
   .aboutPage-mission-statement {
       grid-column-start: 3;
       grid-column-end: 4;
+      margin-left: -170px;
   }
 
 p.description {
@@ -240,6 +232,29 @@ p.description {
 
 .aboutPage-mission-statement {
     width: 60%;
+}
+
+#aboutpage-right-beforelogin{
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	background-color: #FFECBD;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	margin-top: 70px;
+}
+
+#aboutpage-right-beforelogin > h3 {
+	text-align: center;
+	width: 15vw;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 20px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+#aboutpage-right-beforelogin > p {
+	text-align: center
 }
 
 /*   END CSS: aboutpage.php */
@@ -411,6 +426,7 @@ input {
     width: 55vw;
     height: 65vh;
     display: grid;
+	  
     grid-template-columns: 1.5fr 2fr;
 
     box-shadow: 0 2px 5px rgba(216, 213, 213, 0.5);
@@ -456,6 +472,14 @@ input {
     overflow-y: scroll; 
     max-width: 600px;
   }
+
+
+
+  .description-column2 p {
+	padding-top: 20px;
+  }
+
+
 
   .comment-container {
     grid-row-start: 4;
@@ -544,9 +568,9 @@ input {
   background-color: #f4f5f5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   width: 22vw;
-  padding-left: 30px;
-  margin-right: -100px;
-  margin-top: 50px;
+  padding-left: 20px;
+  margin-right: 0px;
+  margin-top: 70px;
   padding-top: 20px;
 }
 
@@ -942,6 +966,32 @@ border-radius: 0.3vw;
   clear: both;
 }
 
+#filter-section button {
+  background-color: #1E3F66;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#filter-section button:hover {
+  background-color: #a4bbd8;
+  color: black;
+}
+
+#filter-section button.active {
+  background-color: #bd432e; 
+  color: white;
+}
+
+#filter-section button.active {
+  font-weight: bold;
+}
+
 /*  END CSS: petmap.php  */
 
 
@@ -952,6 +1002,7 @@ border-radius: 0.3vw;
   align-items: center;
   text-decoration: none;
   margin-top: 2px;
+  margin-bottom: 25px;
   max-width: 80px;
   height: 70px;
   margin-left: 0px;
@@ -1032,7 +1083,7 @@ border-radius: 0.3vw;
 .settings-page input {
   width: 100%;
   padding: 8px;
-  margin-top: 5px;
+  margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -1083,6 +1134,7 @@ border-radius: 0.3vw;
   max-width: 80px;
   height: 70px;
   margin-left: 0px;
+  margin-bottom: 20px;
 }
 
 .messages-page .nav-logo {
