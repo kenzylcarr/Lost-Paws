@@ -204,8 +204,60 @@ if (isset($_GET['id'])) {
         </div>
 
       <?php
-      // Handle edit and delete options
-      
+        // Handle edit and delete options
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          // Delete comment
+          if (isset($_POST['delete_comment'])) {
+            $comment_id = $_POST['comment_id'];
+
+            // Delete comment from database
+            $stmt = $conn->prepare("DELETE FROM comments WHERE comment_id = ? AND user_id = ? ");
+            if ($stmt->execute()) {
+              echo "<script>window.location.href = window.location.href;</script>";
+            } else {
+              echo "Error deleting comment.";
+            }
+          }
+          // Edit comment
+          if (isset($_POST['edit_comment'])) {
+            $comment_id = $_POST['edit_comment'];
+
+            // Fetch comment from database
+            $stmt = $conn->prepare("SELECT comment_content FROM comments WHERE comment_id = ? AND user_id = ? ");
+            $stmt->bind_param("ii", $comment_id, $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+              $comment_data = $result->fetch_assoc();
+              $comment_content = $comment_data['comment_content'];
+
+              // Display form for editing the comment
+              echo '
+              <div class="edit-comment">
+                <form action="" method="post">
+                  <input type="hidden" name="comment_id" value="' . $comment_id . '">
+                  <textarea name="comment" placeholder="Edit comment">' . htmlspecialchars($comment_content) . '</textarea>
+                  <button type="submit" name="update_comment">Update</button>
+                </form>
+              </div>';
+            } else {
+              echo "Comment not found.";
+            }
+          }
+          if (isset($_POST['update_comment'])) {
+            $comment_id = $_POST['comment_id'];
+            $new_comment_content = $_POST['comment'];
+
+            // Update the comment content in the database
+            $stmt = $conn->prepare("UPDATE comments SET comment_content = ? WHERE comment_id = ? AND user_id = ?");
+            $stmt->bind_param("sii", $new_comment_content, $comment_id, $user_id);
+            if ($stmt->execute()) {
+              echo "<script>window.location.href = window.location.href;</script>";
+            } else {
+              echo "Error updating comment";
+            }
+          }
+        }
       ?>
       </main>
   
