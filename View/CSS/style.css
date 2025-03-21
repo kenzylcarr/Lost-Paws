@@ -242,6 +242,25 @@ p.description {
     width: 60%;
 }
 
+#aboutpage-right-beforelogin{
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	background-color: #FFECBD;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	margin-top: 70px;
+}
+
+#aboutpage-right-beforelogin > h3 {
+	text-align: center;
+	width: 15vw;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 20px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
 /*   END CSS: aboutpage.php */
 
 
