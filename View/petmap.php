@@ -106,7 +106,7 @@ mysqli_close($conn);
 
           <!-- Dropdown filter for Pet Type -->
           <select id="pet-type-filter">
-            <option value="all">Type of Pet</option>
+            <option value="all">All Types</option>
             <option value="cat">Cat</option>
             <option value="dog">Dog</option>
           </select>
