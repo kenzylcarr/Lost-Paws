@@ -74,7 +74,6 @@ if (!isset($_SESSION['username'])) {
       <div class="nav-links">
         <a href="/View/homepage.php">Homepage</a>
         <a href="/View/reportpetpage.php">Report a Pet</a>
-        <a href="/View/petmap.php">Pet Map</a>
       </div>
 
       <div class="button">
