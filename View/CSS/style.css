@@ -253,6 +253,10 @@ p.description {
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
 }
 
+#aboutpage-right-beforelogin > p {
+	text-align: center
+}
+
 /*   END CSS: aboutpage.php */
 
 
