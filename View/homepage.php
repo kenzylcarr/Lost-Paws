@@ -39,6 +39,7 @@ if ($result->num_rows > 0) {
 
   // Get the 'status' parameter from the URL (if present)
   $status = isset($_GET['status']) ? $_GET['status'] : '';
+  $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
   // Fetch pet data from database, with filtering based on status if present
   $pets = [];
@@ -46,12 +47,27 @@ if ($result->num_rows > 0) {
   if ($status == 'lost' || $status == 'found') {
       $query .= " WHERE status = ?";
   }
+
+  if (!empty($search))
+  {
+    $query .= ($status == 'lost' || $status == 'found') ? " AND" : " WHERE";
+    $query .= " (animal_type LIKE ? OR location_ip LIKE ?)";
+  }
+
   $stmt = $conn->prepare($query);
 
   // If filtering by status, bind the parameter
   if ($status == 'lost' || $status == 'found') {
       $stmt->bind_param("s", $status);
   }
+
+  if (!empty($search) && ($status == 'lost' || $status == 'found')) {
+      $searchTerm = "%$search%";
+      $stmt->bind_param("s", $status);
+      $stmt->bind_param("ss", $searchTerm, $searchTerm);
+
+  }
+  
 
   $stmt->execute();
   $result = $stmt->get_result();
@@ -102,13 +118,13 @@ if ($result->num_rows > 0) {
 		<!-- Search and Filter Row -->
 		<div class="search-filter">         
 		    <div class="search-field">
-		     <!-- Submit Button to Search -->
-			<form action="">
-			    <input type="text" placeholder="Search.." name="search">
-			    <button type="submit" value="Search"><i class="fa fa-search"></i></button>
-			</form>
+          <!-- Submit Button to Search -->
+          <form action="homepage.php" method="GET">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit" value="Search"><i class="fa fa-search"></i></button>
+          </form>
 		    </div>
-	        </div>
+	  </div>
 	</div>
 
         <div class="pet-database-container"> 
@@ -157,6 +173,29 @@ if ($result->num_rows > 0) {
         // when the "Found Pets" button is clicked
         document.getElementById('found-button').addEventListener('click', function() {
           window.location.href = "?status=found";  // update URL with status parameter
+        });
+
+        // JavaScript to handle homepage's search bar
+        document.addEventListener("DOMContentLoaded", function()
+        {
+          const searchInput = document.querySelector(".search-field input");
+          const petCards = document.querySelectorAll(".pet-brief-info");
+
+          searchInput.addEventListener("keyup", function()
+          {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            petCards.forEach(pet =>
+            {
+              const petType = pet.querySelector("p:nth-of-type(1)").textContent.toLowerCase();
+              const location = pet.querySelector("p:nth-of-type(3)").textContent.toLowerCase();
+
+              if (petType.includes(searchTerm) || location.includes(searchTerm))
+                pet.style.display = "block";
+              else
+                pet.style.display = "none";
+            });
+          });
         });
     </script>
 </body>
