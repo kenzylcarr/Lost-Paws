@@ -34,7 +34,7 @@
       </div>
 
       <div class="button">
-        <a id="signup-button" href="/View/signup.php">Sign Up!</a>
+        <p>Already have an account? </p>
         <a id="login-button" href="/View/login.php">Login</a>
       </div>
     </nav>
