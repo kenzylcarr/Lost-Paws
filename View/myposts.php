@@ -94,7 +94,7 @@ if (!isset($_SESSION['username'])) {
                 <p><a href="/View/editpost.php?id=<?php echo $pet['pet_id']; ?>">Edit</a></p>
                 <form action="/View/deletepost.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
                     <input type="hidden" name="pet_id" value="<?php echo $pet['pet_id']; ?>">
-                    <button type="submit">Remove</button>
+                    <button type="submit">Delete</button>
                 </form>
               </div>
               <?php endforeach; ?>
