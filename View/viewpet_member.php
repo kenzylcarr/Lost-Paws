@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comment'])) {
   // Get the pet_id and comment from the form
   $pet_id = isset($_POST['pet_id']) ? $_POST['pet_id'] : null; // Get pet_id from POST data
-  $comment = htmlspecialchars($_POST['comment']);
+  $comment = $_POST['comment'];
   
   if (!empty($pet_id) && !empty($comment)) {
     // Insert the comment into the database
@@ -171,13 +171,30 @@ if (isset($_GET['id'])) {
               </div>
               
               <div class="all-comments">
-                <?php
+              <?php
                 if ($comment_result->num_rows > 0) {
                   while ($comment = $comment_result->fetch_assoc()) {
-                    echo '<div class="comment-item">';
-                    echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
-                    echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
-                    echo '</div>';
+                    $comment_id = isset($comment['comment_id']) ? $comment['comment_id'] : null;
+                    $comment_content = isset($comment['comment_content']) ? $comment['comment_content'] : null;
+                    $comment_user_id = isset($comment['user_id']) ? $comment['user_id'] : null;
+
+                    // Show edit and delete options for logged-in users only
+                    if ($comment_user_id == $user_id) {
+                      echo '<div class="comment-item">';
+                      echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
+                      echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                      echo '<form action="" method="post">
+                            <input type="hidden" name="comment_id" value="' . $comment_id . '">
+                            <button type="submit" name="delete_comment">Delete</button>
+                            <button type="submit" name="edit_comment" value="' . $comment_id . '">Edit</button>
+                            </form>';
+                      echo '</div>';
+                    } else {
+                      echo '<div class="comment-item">';
+                      echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
+                      echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                      echo '</div>';
+                    }
                   }
                 } else {
                   echo '<p>No comments yet.</p>';
@@ -185,6 +202,64 @@ if (isset($_GET['id'])) {
                 ?>
             </div>
         </div>
+
+      <?php
+        // Handle edit and delete options
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          // Delete comment
+          if (isset($_POST['delete_comment'])) {
+            $comment_id = $_POST['comment_id'];
+
+            // Delete comment from database
+            $stmt = $conn->prepare("DELETE FROM comments WHERE comment_id = ? AND user_id = ? ");
+            $stmt->bind_param("ii", $comment_id, $user_id);
+            if ($stmt->execute()) {
+              echo "<script>window.location.href = window.location.href;</script>";
+            } else {
+              echo "Error deleting comment.";
+            }
+          }
+          // Edit comment
+          if (isset($_POST['edit_comment'])) {
+            $comment_id = $_POST['edit_comment'];
+
+            // Fetch comment from database
+            $stmt = $conn->prepare("SELECT comment_content FROM comments WHERE comment_id = ? AND user_id = ? ");
+            $stmt->bind_param("ii", $comment_id, $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+              $comment_data = $result->fetch_assoc();
+              $comment_content = $comment_data['comment_content'];
+
+              // Display form for editing the comment
+              echo '
+              <div class="edit-comment">
+                <form action="" method="post">
+                  <input type="hidden" name="comment_id" value="' . $comment_id . '">
+                  <textarea name="comment" placeholder="Edit comment">' . htmlspecialchars($comment_content) . '</textarea>
+                  <button type="submit" name="update_comment">Update</button>
+                </form>
+              </div>';
+            } else {
+              echo "Comment not found.";
+            }
+          }
+          if (isset($_POST['update_comment'])) {
+            $comment_id = $_POST['comment_id'];
+            $new_comment_content = $_POST['comment'];
+
+            // Update the comment content in the database
+            $stmt = $conn->prepare("UPDATE comments SET comment_content = ? WHERE comment_id = ? AND user_id = ?");
+            $stmt->bind_param("sii", $new_comment_content, $comment_id, $user_id);
+            if ($stmt->execute()) {
+              echo "<script>window.location.href = window.location.href;</script>";
+            } else {
+              echo "Error updating comment";
+            }
+          }
+        }
+      ?>
       </main>
   
       <!-- Right Section: Display User Profile -->
