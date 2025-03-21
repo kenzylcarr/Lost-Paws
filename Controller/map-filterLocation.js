@@ -33,25 +33,9 @@ function initMap() {
         position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
         map: map,
         title: `${pet.animal_type} - ${pet.status}`,
-        icon: {
-          scaledSize: new google.maps.Size(30, 30),  // set the default size (30px by 30px)
-        }
       });
 
-      // add hover effect - scale marker size on hover
-      marker.addListener('mouseover', () => {
-        marker.setIcon({
-        scaledSize: new google.maps.Size(40, 40),  // Increase size to 40px by 40px when hovered
-        });
-      });
-
-      marker.addListener('mouseout', () => {
-        marker.setIcon({
-          scaledSize: new google.maps.Size(30, 30),  // Reset size back to 30px by 30px
-        });
-      });
-
-      // add a click event listener to each marker to redirect based on login status
+      // add a click event listener to each marker to redirect to viewpet pages based on login status
       marker.addListener('click', () => {
         if (loggedIn) {
           // Redirect to the member view page if logged in
