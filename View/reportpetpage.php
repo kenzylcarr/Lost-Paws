@@ -158,14 +158,6 @@ mysqli_close($conn);
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYcE9zeJV6TUA9qrT07nqnn3h694xcKtw&callback=initMap" async defer></script>
 </head>
 
-<style>
-  /* Set a height for the map */
-  #map {
-    height: 400px;
-    width: 100%;
-  }
-</style>
-
 <body>
 <div class="reportpet-page">
   <div id="container">
@@ -186,8 +178,8 @@ mysqli_close($conn);
     </nav>
     
     <main id="main-center">
-      <div class="signup-header">
-          <h2>Report a Lost or Found Pet:</h2>
+      <div class="report-header">
+          <h2>Report a Lost or Found Pet</h2>
       </div>
 
       <!-- Prompts user to input their information -->     
@@ -215,7 +207,7 @@ mysqli_close($conn);
           <input type="file" id="pet_photo" name="pet_photo[]" multiple>
 
           <!-- Google Map for Location -->
-          <label for="map">Select Location on Map:</label>
+          <label for="map">Select Location on Map: </label>
           <div id="map"></div>
           
           <!-- Hidden Fields for Latitude and Longitude -->
