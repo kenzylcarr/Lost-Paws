@@ -12,6 +12,7 @@
 
 let map;
 let markers = [];
+let currentStatus = 'all';  // Variable to track the selected status (lost, found, or all)
 
 // initialize map
 function initMap() {
@@ -50,42 +51,43 @@ function setActiveButton(buttonId) {
 }
 
   // function to filter pets based on status and animal type
-  function filterPets(status, animalType) {
+  function filterPets() {
     let filteredPets = allPets;
 
-    if (status !== 'all') {
-        filteredPets = filteredPets.filter(pet => pet.status === status);
-    }
+    if (currentStatus !== 'all') {
+        filteredPets = filteredPets.filter(pet => pet.status === currentStatus);
+      }
 
-    if (animalType !== 'all') {
-        filteredPets = filteredPets.filter(pet => pet.animal_type === animalType);
-    }
+    const selectedAnimalType = document.getElementById('pet-type-filter').value;
+    if (selectedAnimalType !== 'all') {
+        filteredPets = filteredPets.filter(pet => pet.animal_type === selectedAnimalType);
+      }
 
     displayPets(filteredPets);
   }
 
     // event listeners for filter buttons
   document.getElementById('all-button').addEventListener('click', () => {
-    displayPets(allPets);
+    currentStatus = 'all';
+    filterPets();
     setActiveButton('all-button');
   });
 
   document.getElementById('lost-button').addEventListener('click', () => {
-    const lostPets = allPets.filter(pet => pet.status === 'lost');
-    displayPets(lostPets);
+    currentStatus = 'lost';
+    filterPets();
     setActiveButton('lost-button');
   });
 
   document.getElementById('found-button').addEventListener('click', () => {
-    const foundPets = allPets.filter(pet => pet.status === 'found');
-    displayPets(foundPets);
+    currentStatus = 'found';
+    filterPets();
     setActiveButton('found-button');
   });
 
   // event listener for pet type dropdown
   document.getElementById('pet-type-filter').addEventListener('change', () => {
     // filter pets based on selected type and current status
-    const selectedStatus = document.querySelector('.active').id.split('-')[0]; // "lost" or "found"
-    filterPets(selectedStatus, document.getElementById('pet-type-filter').value);
+    filterPets();
 });
 }
