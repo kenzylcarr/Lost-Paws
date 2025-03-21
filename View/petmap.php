@@ -57,10 +57,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   $pets[] = $row;
 }
 
-// Return data as JSON
-// header('Content-Type: application/json');
-// echo json_encode($pets);
-
 // Close connection
 mysqli_close($conn);
 ?>
@@ -116,21 +112,6 @@ mysqli_close($conn);
           </select>
 	      </div>
 
-        <!-- <div id="filter-section">
-          <label class="switch">
-            <input type="checkbox" id="toggle-lost-found">
-            <span class="slider round"></span>
-          </label>
-          <span id="toggle-label">Lost Pets</span>
-
-          Dropdown Filter for Pet Type -->
-          <!-- <select id="pet-type-filter">
-            <option value="all">All Pets</option>
-            <option value="cat">Cat</option>
-            <option value="dog">Dog</option>
-          </select>
-        </div> --> 
-
         <!-- Google Map -->
         <div id="petmap-map" style="height: 600px;"></div>
       </div>
@@ -139,86 +120,6 @@ mysqli_close($conn);
   </div>
 
   <script>
-    let map;
-    let markers = [];
-    let allPets = <?php echo json_encode($pets); ?>;
-
-    // initialize map
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('petmap-map'), {
-        center: { lat: 50.4601, lng: -104.6639 },  // set initial center (Regina, SK)
-        zoom: 12,
-      });
- 
-      // function to display pets on the map
-      function displayPets(pets) {
-        // clear existing markers
-        markers.forEach(marker => marker.setMap(null));
-        markers = [];
-
-        // add new markers
-        pets.forEach(pet => {
-          const marker = new google.maps.Marker({
-            position: { lat: parseFloat(pet.latitude), lng: parseFloat(pet.longitude) },
-            map: map,
-            title: `${pet.animal_type} - ${pet.status}`,
-          });
-          markers.push(marker);
-        });
-      }
-
-    // initial map load - display all pets
-    displayPets(allPets);
-
-      // function to handle active button state
-    function setActiveButton(buttonId) {
-      const buttons = document.querySelectorAll('#filter-section button');
-      buttons.forEach(button => {
-      button.classList.remove('active');  // remove active class from all buttons
-      });
-      document.getElementById(buttonId).classList.add('active');  // add active class to the clicked button
-    }
-
-      // function to filter pets based on status and animal type
-      function filterPets(status, animalType) {
-        let filteredPets = allPets;
-
-        if (status !== 'all') {
-            filteredPets = filteredPets.filter(pet => pet.status === status);
-        }
-
-        if (animalType !== 'all') {
-            filteredPets = filteredPets.filter(pet => pet.animal_type === animalType);
-        }
-
-        displayPets(filteredPets);
-      }
-
-	    // event listeners for filter buttons
-      document.getElementById('all-button').addEventListener('click', () => {
-        displayPets(allPets);
-        setActiveButton('all-button');
-      });
-
-      document.getElementById('lost-button').addEventListener('click', () => {
-        const lostPets = allPets.filter(pet => pet.status === 'lost');
-        displayPets(lostPets);
-        setActiveButton('lost-button');
-      });
-
-      document.getElementById('found-button').addEventListener('click', () => {
-        const foundPets = allPets.filter(pet => pet.status === 'found');
-        displayPets(foundPets);
-        setActiveButton('found-button');
-      });
-
-      // event listener for pet type dropdown
-      document.getElementById('pet-type-filter').addEventListener('change', () => {
-        // Filter pets based on selected type and current status
-        const selectedStatus = document.querySelector('.active').id.split('-')[0]; // "lost" or "found"
-        filterPets(selectedStatus, document.getElementById('pet-type-filter').value);
-    });
-    }
 
   </script>
 	
