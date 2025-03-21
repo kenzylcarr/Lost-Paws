@@ -559,7 +559,7 @@ input {
   grid-template-columns: 0.5fr 1fr;
   grid-template-rows: 80px auto;
 
-  background-color: #FFECBD;
+  background-color: #f4f5f5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   width: 22vw;
   padding-left: 20px;
