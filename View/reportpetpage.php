@@ -183,7 +183,7 @@ mysqli_close($conn);
       </div>
 
       <!-- Prompts user to input their information -->     
-      <form class="auth-form-register" id="register-form" action="../Controller/petregister.php" method="post" enctype="multipart/form-data">
+      <form class="auth-form-register" id="register-form" action="../Model/petregister.php" method="post" enctype="multipart/form-data">
           <!-- Animal Type -->
           <label for="animal_type">Animal Type:</label>
           <select name="animal_type">
