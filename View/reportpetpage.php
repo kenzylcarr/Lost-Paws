@@ -45,6 +45,9 @@ $animal_type = $status = $location_ip = $picture = $latitude = $longitude = "";
 $animal_type_err = $status_err = $location_err = $picture_err = $latitude_err = $longitude_err = "";
 $pet_photo = array();
 
+// Start measuring the execution time
+$start_time = microtime(true);
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -145,6 +148,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($longitude_err)) echo $longitude_err . "<br>";
     }
 }
+
+$end_time = microtime(true);
+$execution_time = $end_time - $start_time;
+echo "Execution time: " . $execution_time . " seconds.";
+
 mysqli_close($conn);
 ?>
 
