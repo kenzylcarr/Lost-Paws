@@ -30,6 +30,9 @@ $email = "";
 $password = "";
 $phone = "";
 
+// Start measuring the execution time
+$start_time = microtime(true);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = test_input($_POST["firstname"]);
     $lastname = test_input($_POST["lastname"]);
@@ -142,6 +145,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+$end_time = microtime(true);
+$execution_time = $end_time - $start_time;
+echo "Execution time: " . $execution_time . " seconds.";
 ?>
 
 <!DOCTYPE html>
