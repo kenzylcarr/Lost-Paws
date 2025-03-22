@@ -38,6 +38,12 @@ if (!isset($_SESSION['username'])) {
   if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pet_id'])) {
     $pet_id = $_POST['pet_id'];
 
+    // Delete comments from database
+    $delete_comments_stmt = $conn->prepare("DELETE FROM comments WHERE pet_id = ?");
+    $delete_comments_stmt->bind_param("i", $pet_id);
+    $delete_comments_stmt->execute();
+    $delete_comments_stmt->close();
+
     // Delete from database
     $delete_stmt = $conn->prepare("DELETE FROM pets WHERE pet_id = ? AND user_id = ?");
     $delete_stmt->bind_param("ii", $pet_id, $user_id);
