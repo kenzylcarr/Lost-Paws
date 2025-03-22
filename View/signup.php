@@ -67,22 +67,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['phone'] = "Invalid Phone Number";
     }
 
-    // Check if username already exists
+    // Check if user already exists
     $stmt = $conn->prepare("SELECT username, email_address, phone_number FROM users WHERE username = ? OR email_address = ? OR phone_number = ?");
     $stmt->bind_param("sss", $username, $email, $phone);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $stmt->store_result();
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            if ($row['username'] === $username) {
-                $errors['username'] = "A user with that username already exists.";
-            }
-            if ($row['email_address'] === $email) {
-                $errors['email'] = "A user with that email address already exists.";
-            }
-            if ($row['phone_number'] === $phone) {
-                $errors['phone'] = "A user with that phone number already exists.";
-            }
+            $errors['duplicate'] = "A user with that username, email or phone number already exists.";
+            // if ($row['username'] === $username) {
+            //     $errors['username'] = "A user with that username already exists.";
+            // }
+            // if ($row['email_address'] === $email) {
+            //     $errors['email'] = "A user with that email address already exists.";
+            // }
+            // if ($row['phone_number'] === $phone) {
+            //     $errors['phone'] = "A user with that phone number already exists.";
+            // }
         }
     }
 

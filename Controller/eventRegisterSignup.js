@@ -65,6 +65,9 @@ function phoneHandler(event) {
     document.getElementById("error-text-phone");
     formIsValid = false;
   } else {
+      // AJAX request
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "check_phone.php", true)
       phone.classList.remove("error-border");
       document.getElementById("error-text-phone");
     }
