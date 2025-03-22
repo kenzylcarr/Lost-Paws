@@ -11,7 +11,7 @@
 
 <?php 
 // Include the db_config.php file to connect to database
-require_once '../Model/db_config.php';
+require_once("../Model/db_config.php");
 
 // Check if connection is successful
 if (!$conn) {

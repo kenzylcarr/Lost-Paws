@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
                     // Redirect to login page
-                    header("Location: login.php");
+                    header("location: ../View/login.php");
                     exit();
                 } else {
                     $errors['profile_photo'] = "Sorry, the image could not be moved.";
