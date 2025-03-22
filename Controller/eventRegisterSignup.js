@@ -106,10 +106,10 @@ function profilePhotoHandler(event) {
       if (!validateProfilePhoto(file.name)) {
           console.log("'" + file.name + "' is not a valid profile photo");
           profilePhoto.classList.add("error-border");
-          document.getElementById("error-text-profilephoto").classList.remove("hidden");
+          document.getElementById("error-text-profile_photo").classList.remove("hidden");
       } else {
           profilePhoto.classList.remove("error-border");
-          document.getElementById("error-text-profilephoto").classList.add("hidden");
+          document.getElementById("error-text-profile_photo").classList.add("hidden");
           console.log("'" + file.name + "' is a valid profile photo");
       }
   }
@@ -196,13 +196,13 @@ function validateSignup(event)
   if (profilePhoto.files.length === 0 || !validateProfilePhoto(profilePhoto.files[0].name))
   {
     profilePhoto.classList.add('error-border');
-    document.getElementById("error-text-profilephoto").classList.remove("hidden");
+    document.getElementById("error-text-profile_photo").classList.remove("hidden");
     formIsValid = false;
   }
   else
   {
     profilePhoto.classList.remove('error-border');
-    document.getElementById("error-text-profilephoto").classList.add("hidden");
+    document.getElementById("error-text-profile_photo").classList.add("hidden");
   }
 
   // if form is not valid
