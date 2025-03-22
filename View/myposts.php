@@ -134,7 +134,7 @@ if (!isset($_SESSION['username'])) {
           .then(data => {
             if (data.status === "success") {
               // Remove from page
-              form.closest(".pet-brief-info").remove();
+              // form.closest(".pet-brief-info").remove();
 
               // Refresh page automatically
               location.reload();
