@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $username, $email, $phone);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             if ($row['username'] === $username) {
@@ -138,12 +138,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bind_param("s", $username);
                 $stmt->execute();
             }
-        }
-    }
-
-    if (!empty($errors)) {
-        foreach ($errors as $type => $message) {
-            // print("$type: $message \n<br />");
         }
     }
 }
