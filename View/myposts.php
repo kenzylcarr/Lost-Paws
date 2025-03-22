@@ -91,9 +91,8 @@ if (!isset($_SESSION['username'])) {
                 <p> Location: <?php echo htmlspecialchars($pet['location_ip']); ?></p>
                 <p><a href="/View/viewpet_member.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
                 <p><a href="/View/editpost.php?id=<?php echo $pet['pet_id']; ?>">Edit</a></p>
-                <form action="/View/deletepost.php" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
-                    <input type="hidden" name="pet_id" value="<?php echo $pet['pet_id']; ?>">
-                    <button type="submit" class="delete-button">Delete</button>
+                <form class="delete-post-form" data-pet-id="<?php echo $pet['pet_id']; ?>">
+                    <button type="button" class="delete-button">Delete</button>
                 </form>
               </div>
               <?php endforeach; ?>
@@ -115,5 +114,34 @@ if (!isset($_SESSION['username'])) {
         </div>
       </main>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".delete-post-form").forEach(form => {
+          form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            if (!confirm("Are you sure you want to delete this post?")) {
+              return;
+            }
+
+          let petID = form.getAttribute("data-pet-id");
+          fetch("/View/deletepost.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded"},
+            body: "pet_id=" + encodeURIComponent(petID)
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === "success") {
+              // Remove from page
+              form.closest(".pet-brief-info").remove();
+            } else {
+              alert(data.message);
+            }
+          })
+          .catch(error => console.error("Error:", error));
+        });
+      });
+    });
+    </script>
     </body>
 </html>

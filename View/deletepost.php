@@ -13,9 +13,11 @@
 session_start();
 require_once("../Model/db_config.php");
 
+header("Content-Type: application/json");
+
 // Check if the user is signed in
 if (!isset($_SESSION['username'])) {
-    header("Location: ../index.php");
+    echo json_encode(["status" => "error", "message" => "Unauthorized access."]);
     exit();
   }
   
@@ -30,7 +32,7 @@ if (!isset($_SESSION['username'])) {
     $user = $result->fetch_assoc();
     $user_id = $user['user_id'];
   } else {
-    echo "User not found.";
+    echo json_encode(["status" => "error", "message" => "User not found."]);
     exit();
   }
 
@@ -49,9 +51,9 @@ if (!isset($_SESSION['username'])) {
     $delete_stmt->bind_param("ii", $pet_id, $user_id);
 
     if ($delete_stmt->execute()) {
-      echo "<p>Pet post deleted successfully.</p>";
+      echo json_encode(["status" => "success", "message" =>"Pet post deleted successfully."]);
     } else {
-      echo "<p>Error deleting pet post.</p>";
+      echo json_encode(["status" => "error", "message" =>"Error deleting pet post."]);
     }
     $delete_stmt->close();
   }
