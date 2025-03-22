@@ -18,6 +18,12 @@ document.addEventListener("DOMContentLoaded", function()
     signupForm.addEventListener("submit", validateSignup);
 
   // add event listeners after the DOM is loaded
+  let firstName = document.getElementById("firstname");
+  firstName.addEventListener("blur", firstnameHandler);
+
+  let lastName = document.getElementById("lastname");
+  lastName.addEventListener("blur", lastnameHandler);
+
   let username = document.getElementById("username");
   username.addEventListener("blur", usernameHandler);
 
