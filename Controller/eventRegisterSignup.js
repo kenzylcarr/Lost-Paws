@@ -153,6 +153,34 @@ function validateSignup(event)
 {
   let formIsValid = true;
 
+  // validating first name
+  let firstname = document.getElementById("firstname");
+  if (!validateName(firstname.value))
+  {
+    firstname.classList.add('error-border');
+    document.getElementById("error-text-firstname").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    firstname.classList.remove('error-border');
+    document.getElementById("error-text-firstname").classList.add("hidden");
+  }
+
+  // validating last name
+  let lastname = document.getElementById("lastname");
+  if (!validateName(lastname.value))
+  {
+    lastname.classList.add('error-border');
+    document.getElementById("error-text-lastname").classList.remove("hidden");
+    formIsValid = false;
+  }
+  else
+  {
+    lastname.classList.remove('error-border');
+    document.getElementById("error-text-lastname").classList.add("hidden");
+  }
+
   // validating username
   let username = document.getElementById("username");
   if (!validateUsername(username.value))
