@@ -31,6 +31,7 @@ if (!isset($_SESSION['username'])) {
     $user_id = $user['user_id'];
   } else {
     echo "User not found.";
+    header("Location: ../index.php");
     exit();
   }
 
@@ -92,7 +93,7 @@ if (!isset($_SESSION['username'])) {
                 <p><a href="/View/viewpet_member.php?id=<?php echo $pet['pet_id']; ?>">View Post</a></p>
                 <p><a href="/View/editpost.php?id=<?php echo $pet['pet_id']; ?>">Edit</a></p>
                 <form class="delete-post-form" data-pet-id="<?php echo $pet['pet_id']; ?>">
-                    <button type="button" class="delete-button">Delete</button>
+                    <button type="submit" class="delete-button">Delete</button>
                 </form>
               </div>
               <?php endforeach; ?>
@@ -139,6 +140,12 @@ if (!isset($_SESSION['username'])) {
             }
           })
           .catch(error => console.error("Error:", error));
+        });
+      });
+      // Add listener for click
+      document.querySelectorAll(".delete-button").forEach(button => {
+        button.addEventListener("click", function() {
+          this.closest("form").dispatchEvent(new Event("submit"));
         });
       });
     });
