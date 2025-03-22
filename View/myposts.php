@@ -142,12 +142,6 @@ if (!isset($_SESSION['username'])) {
           .catch(error => console.error("Error:", error));
         });
       });
-      // Add listener for click
-      document.querySelectorAll(".delete-button").forEach(button => {
-        button.addEventListener("click", function() {
-          this.closest("form").dispatchEvent(new Event("submit"));
-        });
-      });
     });
     </script>
     </body>
