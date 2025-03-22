@@ -135,6 +135,9 @@ if (!isset($_SESSION['username'])) {
             if (data.status === "success") {
               // Remove from page
               form.closest(".pet-brief-info").remove();
+
+              // Refresh page automatically
+              location.reload();
             } else {
               alert(data.message);
             }
