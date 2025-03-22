@@ -92,8 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $avatar_temp = "avatar_temp"; // Temporary value for profile photo
 
         // Insert user into the database
-        $stmt = $conn->prepare("INSERT INTO users (username, email_address, password, phone, profile_photo) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $username, $email, $hashedPassword, $phone, $avatar_temp);
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, email_address, password, phone_number, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $firstname, $lastname, $username, $email, $hashedPassword, $phone, $avatar_temp);
         $result = $stmt->execute();
 
         if (!$result) {
