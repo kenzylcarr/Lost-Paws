@@ -127,6 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt = $conn->prepare("UPDATE users SET profile_photo = ? WHERE username = ?");
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
+                    // Redirect to login page
                     header("Location: login.php");
                     exit();
                 } else {
