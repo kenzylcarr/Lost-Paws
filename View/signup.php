@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cpassword = test_input($_POST["cpassword"]);
     $phone = test_input($_POST["phone"]);
 
-    $nameRegex = "/^[a-zA-Z\s]+$/";
+    $nameRegex = "/^[A-Za-z'-]+(?: [A-Za-z'-]+)*$/";
     $unameRegex = "/^[a-zA-Z0-9_]+$/";
     $emailRegex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     $passwordRegex = "/^(?=.*\W).{6,}$/";

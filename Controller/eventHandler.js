@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function()
 /* Common validator functions begin */
 function validateName(name)
 {
-  let nameRegEx = /^[a-zA-Z\s]+$/;    // allow spaces for names
+  let nameRegEx = /^[A-Za-z'-]+(?: [A-Za-z'-]+)*$/;
 
   if (nameRegEx.test(name))
       return true;
