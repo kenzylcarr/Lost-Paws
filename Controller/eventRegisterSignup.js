@@ -39,6 +39,29 @@ document.addEventListener("DOMContentLoaded", function()
 
 
 /* FUNCTION HANDLERS FOR SIGN-UP PAGE */
+function validateName(name) {
+  // Regex for name
+  const nameRegEx = /^[a-zA-Z]+$/;
+  return nameRegEx.test(name);
+}
+
+function firstnameHandler(event) {
+  let firstname = event.target;
+  if (!validateName(firstname.value)) {
+    console.log("'" + firstname.value + "' is not a valid first name");
+  } else {
+    console.log("'" + firstname.value + "' is a valid first name");
+  }
+}
+
+function lastnameHandler(event) {
+  let lastname = event.target;
+  if (!validateName(lastname.value)) {
+    console.log("'" + lastname.value + "' is not a valid last name");
+  } else {
+    console.log("'" + lastname.value + "' is a valid last name");
+  }
+}
 
 function usernameHandler(event) {
   let username = event.target;
