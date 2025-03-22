@@ -133,15 +133,8 @@ if (!isset($_SESSION['username'])) {
           .then(response => response.json())
           .then(data => {
             if (data.status === "success") {
-              // Remove from page
-              let postElement = form.closest(".pet-brief-info");
-              if (postElement) {
-                postElement.style.transition = "opacity 0.5s ease-out";
-                postElement.style.opacity = "0";
-                setTimeout(() => postElement.remove(), 500);
-              }
               // Refresh page automatically
-              // location.reload();
+              location.reload();
             } else {
               alert(data.message);
             }
