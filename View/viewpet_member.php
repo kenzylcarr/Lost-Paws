@@ -175,13 +175,6 @@ if (isset($_GET['id'])) {
                 if ($comment_result->num_rows > 0) {
                   while ($comment = $comment_result->fetch_assoc()) {
                     $comment_id = isset($comment['comment_id']) ? $comment['comment_id'] : null;
-                    
-                    $query = "SELECT user_id FROM comments WHERE comment_id = ?";
-                    $stmt = $conn->prepare($query);
-                    $stmt->bind_param("i", $comment_id);
-                    $stmt->execute();
-                    $comment_user_id = $stmt->get_result()->fetch_assoc()['user_id']; // fetch user_id
-                    
                     $comment_content = isset($comment['comment_content']) ? $comment['comment_content'] : null;
                     $comment_user_id = isset($comment['user_id']) ? $comment['user_id'] : null;
 
@@ -194,7 +187,7 @@ if (isset($_GET['id'])) {
                     echo "Logged-in User ID: " . $user_id . "<br>"; 
 
                     // Show edit and delete options only for the comment owner
-                    if ($comment_user_id == $user_id) {
+                    if ($user_id) {
                       echo '<form action="" method="post">
                               <input type="hidden" name="comment_id" value="' . $comment_id . '">
                               <button type="submit" name="delete_comment">Delete</button>
