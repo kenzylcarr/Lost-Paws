@@ -229,6 +229,8 @@ if (isset($_POST['send_message'])) {
 
  <!-- Message Thread for Lost Pets (Conversation 1) -->     
   <div class="message-thread" id="lost-conversation1" style="display: none;">
+    <?php
+    // Assuming you have a valid connection to the database
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
