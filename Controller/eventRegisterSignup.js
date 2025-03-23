@@ -80,7 +80,7 @@ function usernameHandler(event) {
 
     // check if the username already exists in the database
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "check_taken.php", true);
+    xhr.open("POST", "register.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function() {
       if (xhr.status === 200) {
@@ -118,7 +118,7 @@ function phoneHandler(event) {
   } else {
       // AJAX request
       let xhr = new XMLHttpRequest();
-      xhr.open("POST", "check_taken.php", true)
+      xhr.open("POST", "register.php", true)
       phone.classList.remove("error-border");
       document.getElementById("error-text-phone");
     }
