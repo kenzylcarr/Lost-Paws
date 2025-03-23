@@ -213,7 +213,8 @@ echo "Execution time: " . $execution_time . " seconds.";
                 <div class="signup-field">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email"/> 
-                    <span id="error-text-email" class="error-text hidden">Invalid email address.</span> 
+                    <span id="error-text-email" class="error-text hidden">Invalid email address.<?php if (isset($errors['username'])) { echo $errors['username']; } ?>
+                    </span> 
                 </div>
             
                 <!-- Phone Number -->
