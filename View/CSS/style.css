@@ -483,6 +483,7 @@ input {
     margin-left: 30px;
     padding: 25px;
     width: 55vw;
+    max-height: auto; 
   }
   
   .comment-container input{
@@ -500,8 +501,9 @@ input {
     border: 1px solid #ddd; /* Light gray border */
     padding: 10px; /* Space inside the comment box */
     margin-bottom: 10px; /* Space between comments */
-    border-radius: 5px; /* Optional: rounded corners for the border */
+    border-radius: 5px; 
     background-color: #f9f9f9; /* Light background for better readability */
+    overflow: visible; /* Ensure buttons are visible */
   }
   
   .comment-item p {
