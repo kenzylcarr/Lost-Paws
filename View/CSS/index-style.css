@@ -65,7 +65,7 @@
   }
   
   .index-top-half {
-    background-color: #c5d7b3;
+    background-color: #d8e3eb;
     height: 65vh;
     display: flex;
     align-items: center;
@@ -141,7 +141,7 @@
   
   .wave-container {
       position: relative;
-      background-color: #c5d7b3;
+      background-color: #d8e3eb;
       text-align: center;
       width: 100%;
       height: 40vh;
