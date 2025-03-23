@@ -13,6 +13,14 @@
 // initialize Google Map
 let map, marker;
 
+// define the bounds of Regina (approximately)
+const reginaBounds = {
+  north: 50.5356,   // northernmost latitude of Regina
+  south: 50.3806,   // southernmost latitude of Regina
+  east: -104.3890,  // easternmost longitude of Regina
+  west: -104.7531   // westernmost longitude of Regina
+};
+
 function initMap() {
   const initialLocation = { lat: 50.4601, lng: -104.6186 }; // Regina, Saskatchewan
 
