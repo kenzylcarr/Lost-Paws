@@ -40,6 +40,17 @@ function initMap() {
     draggable: true
   });
 
+  // draw a red border around Regina (rectangle)
+  const reginaRectangle = new google.maps.Rectangle({
+    bounds: reginaBounds,
+    strokeColor: "#FF0000", // red color for the border
+    strokeOpacity: 0.8,     // 80% opacity for the border
+    strokeWeight: 2,        // border thickness
+    fillColor: "#FF0000",   // transparent
+    fillOpacity: 0,         // No fill color
+    map: map
+  });
+
   // update the hidden fields with the marker's latitude and longitude
   google.maps.event.addListener(marker, 'dragend', function() {
     const position = marker.getPosition();
@@ -55,7 +66,7 @@ function initMap() {
       console.log("Latitude: " + lat);
       console.log("Longitude: " + lng);
     } else {
-      // ff the marker is outside of Regina, reset the marker position to within the bounds
+      // if the marker is outside of Regina, reset the marker position to within the bounds
       marker.setPosition({
         lat: Math.min(Math.max(lat, reginaBounds.south), reginaBounds.north),
         lng: Math.min(Math.max(lng, reginaBounds.west), reginaBounds.east)
