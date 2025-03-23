@@ -43,17 +43,33 @@ function initMap() {
   // update the hidden fields with the marker's latitude and longitude
   google.maps.event.addListener(marker, 'dragend', function() {
     const position = marker.getPosition();
-    document.getElementById('latitude').value = position.lat();
-    document.getElementById('longitude').value = position.lng();
+    const lat = position.lat();
+    const lng = position.lng();
 
-    // debugging - log to console
-    console.log("Latitude: " + position.lat());
-    console.log("Longitude: " + position.lng());
+    // check if the new position is within Regina's bounds
+    if (lat >= reginaBounds.south && lat <= reginaBounds.north && lng >= reginaBounds.west && lng <= reginaBounds.east) {
+      document.getElementById('latitude').value = lat;
+      document.getElementById('longitude').value = lng;
+
+      // debugging - log to console
+      console.log("Latitude: " + lat);
+      console.log("Longitude: " + lng);
+    } else {
+      // ff the marker is outside of Regina, reset the marker position to within the bounds
+      marker.setPosition({
+        lat: Math.min(Math.max(lat, reginaBounds.south), reginaBounds.north),
+        lng: Math.min(Math.max(lng, reginaBounds.west), reginaBounds.east)
+      });
+
+      alert("You can only place the marker within Regina!");
+    }
   });
 
   // allow the user to click to add a new marker on the map
   google.maps.event.addListener(map, 'click', function(event) {
   const clickedLocation = event.latLng;
+  const lat = clickedLocation.lat();
+  const lng = clickedLocation.lng();
 
   // move the marker to the clicked location
   marker.setPosition(clickedLocation);
