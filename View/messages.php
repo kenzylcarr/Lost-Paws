@@ -96,6 +96,8 @@ if (isset($_POST['send_message'])) {
     $insertQuery = "INSERT INTO messages (sender_id, receiver_id, pet_status, content, timestamp) 
                     VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($insertQuery);
+    $stmt->bind_param("iisss", $user_id, $recipient_id, $pet_status, $message_content, $timestamp);
+    $stmt->execute();
   
 ?>
 
