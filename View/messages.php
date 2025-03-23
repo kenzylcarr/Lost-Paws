@@ -19,7 +19,13 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Fetch user data from database
-$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+$stmt = $conn->prepare("SELECT user_id, first_name, last_name, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$user_data = $result->fetch_assoc();
+$user_id = $user_data['user_id'];
 
 try {
   // Fetch conversation where the user is either the sender or receiver
@@ -242,11 +248,5 @@ try {
     </main>
   </div>
   </div>
-
-  <!--  remove footer? 
-      <footer>
-      <p>CS 476: Software Development Project</p>
-    </footer>   -->
-  
 </body>
 </html>
