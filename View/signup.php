@@ -208,13 +208,14 @@ echo "Execution time: " . $execution_time . " seconds.";
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" />
                         <span id="error-text-username" class="error-text hidden">Invalid username.</span> 
+                        <span id="error-text-username-taken" class="error-text hidden">Username already taken.</span>
                 </div>
                 <!-- Email Address -->
                 <div class="signup-field">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email"/> 
-                    <span id="error-text-email" class="error-text hidden">Invalid email address.<?php if (isset($errors['username'])) { echo $errors['username']; } ?>
-                    </span> 
+                    <span id="error-text-email" class="error-text hidden">Invalid email address.</span> 
+                    <span id="error-text-email-taken" class="error-text hidden">Email already taken.</span> 
                 </div>
             
                 <!-- Phone Number -->
@@ -222,6 +223,7 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" name="phone"/> 
                     <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
+                    <p id="error-text-phone-taken" class="error-text hidden">Phone number already taken.</p>
                 </div>
                 <!-- Password -->
                 <div class="signup-field">

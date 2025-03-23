@@ -71,6 +71,8 @@ function lastnameHandler(event) {
 
 function usernameHandler(event) {
   let username = event.target;
+  let usernameTakenError = document.getElementById("error-text-username-taken");
+
   if (!validateUsername(username.value)) {
     console.log("'" + username.value + "' is not a valid username");
   } else {
@@ -183,10 +185,12 @@ function validateSignup(event)
 
   // validating username
   let username = document.getElementById("username");
+  let usernameTakenError = document.getElementById("error-text-username-taken");
   if (!validateUsername(username.value))
   {
     username.classList.add('error-border');
     document.getElementById("error-text-username").classList.remove("hidden");
+    usernameTakenError.classList.add("hidden");
     formIsValid = false;
   }
   else
