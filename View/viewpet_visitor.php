@@ -165,6 +165,7 @@ if (isset($_GET['id'])) {
       <main id="select-post-main-right">
         <h3>Sign in to get alerts and to connect with your community!</h3>
         <p>Don't have an account?<a class="signup-button" href="/View/signup.php">Register</a></p>
+      <br>
       </main>
   
     </div>
