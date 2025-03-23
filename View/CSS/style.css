@@ -183,21 +183,22 @@ h1, h2 {
     grid-template-columns: 1fr 0.5fr 2fr;  
     margin-left: 10px;
 }
-    .aboutPage-description {
-        grid-column-start: 1;
-        grid-column-end: 2;
-	margin-left: 50px;
-    }
+.aboutPage-description {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  margin-left: 50px;
+  line-height: 1.5;
+}
 
-    .aboutPage-map {
-        grid-column-start: 3;
-        grid-column-end: 4;
-	margin-left: -130px;
-    }
+.aboutPage-map {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  margin-left: -130px;
+}
 
-    .aboutPage-map > h3 {
-      color: rgb(104, 22, 22);
-    }
+.aboutPage-map > h3 {
+  color: rgb(104, 22, 22);
+}
 
 #aboutPage-row2 {
     display: grid;
@@ -217,11 +218,12 @@ h1, h2 {
       margin-left: -170px;
   }
 
-p.description {
-    background-color: #d8e3eb;
+  p.description {
+    background-color: #d5e0df;
     padding: 1vw;
     text-align: center;
     border-radius: 17px 17px 17px 17px;
+    line-height: 1.5;
 }
 
 .aboutPage-mission-statement {
