@@ -80,6 +80,9 @@ function initMap() {
       document.getElementById('latitude').value = lat;
       document.getElementById('longitude').value = lng;
 
+      // debugging - log to console
+      console.log("Latitude: " + lat);
+      console.log("Longitude: " + lng);
     } else {
       alert("You can only click within the Regina boundaries!");
     }
