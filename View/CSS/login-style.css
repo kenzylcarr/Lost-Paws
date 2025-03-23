@@ -160,9 +160,11 @@ input {
   margin-top: 50px;
   cursor: pointer;
 }
+
 .login-button:hover {
   background-color: #d6e3e8;
 }
+
 .forgot-password {
   float: right;
 }
