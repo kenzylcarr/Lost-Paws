@@ -218,7 +218,7 @@ h1, h2 {
   }
 
 p.description {
-    background-color: #FFECBD;
+    background-color: #d8e3eb;
     padding: 1vw;
     text-align: center;
     border-radius: 17px 17px 17px 17px;
@@ -233,7 +233,7 @@ p.description {
 	grid-column-end: 4;
 	grid-row-start: 2;
 	grid-row-end: 3;
-	background-color: #FFECBD;
+	background-color: #d8e3eb;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 	margin-top: 70px;
 }
@@ -264,7 +264,7 @@ p.description {
   padding-top: 190px;
   width: 40vw; 
 
-  background-color: #FFECBD;	/* Yellow Color */
+  background-color: #d8e3eb;	/* Yellow Color */
 }
 
 #main-left-signup > h1 {
@@ -518,7 +518,7 @@ input {
     grid-row-end: 3;
 
     margin-top: 70px;
-    background-color: #FFECBD;
+    background-color: #d8e3eb;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   }
 
