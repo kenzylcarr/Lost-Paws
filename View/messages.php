@@ -248,6 +248,11 @@ if (isset($_POST['send_message'])) {
               </div>";
     }
 ?>
+
+    <!-- Input Box to Send Message -->
+    <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
+    <button class="send-reply">Send</button>
+</div>
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
