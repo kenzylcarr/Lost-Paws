@@ -39,7 +39,7 @@ try {
   $stmt->bind_param("ii", $user_id, $user_id);
   $stmt->execute();
   $result = $stmt->get_result();
-  $messages = $stmt->fetchAll(MYSQLI_ASSOC);
+  $messages = $stmt->fetch(MYSQLI_ASSOC);
 
   // Categorize messages by the conversation
   $conversations = [];
