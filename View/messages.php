@@ -79,6 +79,10 @@ try {
 } catch (mysqli_sql_exception $e) {
   die ("Database error: " . $e->getMessage());
 }
+
+// Check if the form is submitted
+if (isset($_POST['send_message'])) {
+  
 ?>
 
 <!DOCTYPE html>
