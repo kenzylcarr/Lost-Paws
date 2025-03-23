@@ -294,7 +294,7 @@ $stmt->close();
                 <p id="phone-error" class="error-message"></p>
 
                 <!-- Province -->
-                <label for="province">Province</label>
+                <!-- <label for="province">Province</label>
                 <select name="province" id="province" onchange="updateCities()">
                   <option value="">Select Province</option>
                   <option value="BC">British Columbia</option>
@@ -302,18 +302,18 @@ $stmt->close();
                   <option value="SK">Saskatchewan</option>
                   <option value="MB">Manitoba</option>
                   <option value="ON">Ontario</option>
-                </select>
+                </select> -->
 
                 <!-- City -->
-                <label for="city">City</label>
+                <!-- <label for="city">City</label>
                 <select name="city" id="city" disabled>
                   <option value="">Select City</option>
-                </select>
+                </select> -->
 
                 <!-- Address -->
-                <label for="address">Address</label>
+                <!-- <label for="address">Address</label>
                 <input type="text" name="address" id="address" value="" required oninput="validateAddress(this)" />
-                <p id="address-error" class="error-message"></p>
+                <p id="address-error" class="error-message"></p> -->
 
                 <input type="submit" value="Save Changes" class="save-button" />
               </form>
