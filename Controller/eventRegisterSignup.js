@@ -77,6 +77,8 @@ function usernameHandler(event) {
     console.log("'" + username.value + "' is not a valid username");
   } else {
     console.log("'" + username.value + "' is a valid username");
+
+
   }
 }
 
@@ -86,6 +88,24 @@ function emailHandler(event) {
     console.log("'" + email.value + "' is not a valid email address");
   } else {
     console.log("'" + email.value + "' is a valid email address");
+
+    // check if the username already exists in the database
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "check_username.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        let response = JSON.parse(xhr.responseText);
+        if (response.usernameTaken) {
+          console.log("Username is already taken.");
+          username.classList.add('error-border');
+          usernameTakenError.classList.remove("hidden");
+        } else {
+          usernameTakenError.classList.add("hidden");
+        }
+      }
+    };
+    xhr.send("username=" + encodeURIComponent(username.value));
   }
 }
 
