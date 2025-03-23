@@ -78,17 +78,6 @@ function usernameHandler(event) {
   } else {
     console.log("'" + username.value + "' is a valid username");
 
-
-  }
-}
-
-function emailHandler(event) {
-  let email = event.target;
-  if (!validateEmail(email.value)) {
-    console.log("'" + email.value + "' is not a valid email address");
-  } else {
-    console.log("'" + email.value + "' is a valid email address");
-
     // check if the username already exists in the database
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "check_username.php", true);
@@ -106,6 +95,17 @@ function emailHandler(event) {
       }
     };
     xhr.send("username=" + encodeURIComponent(username.value));
+  }
+}
+
+function emailHandler(event) {
+  let email = event.target;
+  let emailTakenError = document.getElementById("error-text-email-taken"); 
+  
+  if (!validateEmail(email.value)) {
+    console.log("'" + email.value + "' is not a valid email address");
+  } else {
+    console.log("'" + email.value + "' is a valid email address");
   }
 }
 
