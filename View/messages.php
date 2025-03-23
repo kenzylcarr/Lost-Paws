@@ -8,6 +8,44 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: messages.php
 -->
+<?php
+session_start();
+require_once("../Model/db_config.php");
+
+// Check if the user is signed in
+if (!isset($_SESSION['username'])) {
+  header("Location: ../index.php");
+  exit();
+}
+
+// Fetch user data from database
+$user_id = $_SESSION['user_id'];
+
+try {
+  // Fetch conversation where the user is either the sender or receiver
+  $query = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+            FROM messages M
+            JOIN users U1 ON M.sender_id = U1.user_id
+            JOIN users U2 ON M.receiver_id = U2.user_id
+            WHERE M.sender_id = :user_id OR M.receiver_id = :user_id
+            ORDER BY M.timestamp DESC";
+  $stmt = $conn->prepare($query);
+  $stmt->execute(['user_id' => $user_id]);
+  $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  // Categorize messages by the conversation
+  $conversations = [];
+  foreach ($messages as $msg) {
+    $key = min($msg['sender_id'], $msg['receiver_id']) . '-' . max($msg['sender_id'], $msg['receiver_id']);
+    if ($msg['pet_id']) {
+      $key .= '-' . $msg['pet_id'];
+    }
+    $conversations[$key][] = $msg;
+  }
+} catch (PDOexception $e) {
+  die ("Database error: " . $e->getMessage());
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
