@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
   }
 
   // Fetch comments for the pet
-  $stmt = $conn->prepare("SELECT comments.comment_id, comments.comment_content, comments.comment_date, users.username 
+  $stmt = $conn->prepare("SELECT comments.comment_id, comments.comment_content, comments.comment_date, users.username, comments.user_id
                           FROM comments 
                           JOIN users ON comments.user_id = users.user_id 
                           WHERE comments.pet_id = ? 
@@ -187,7 +187,7 @@ if (isset($_GET['id'])) {
                     echo "Logged-in User ID: " . $user_id . "<br>"; 
 
                     // Show edit and delete options only for the comment owner
-                    if ($comment['user_id'] == $user_id) {
+                    if ($comment_user_id == $user_id) {
                       echo '<form action="" method="post">
                               <input type="hidden" name="comment_id" value="' . $comment_id . '">
                               <button type="submit" name="delete_comment">Delete</button>
