@@ -90,6 +90,11 @@ if (isset($_POST['send_message'])) {
 
   // Get the current timestamp
   $timestamp = date('Y-m-d H:i:s');
+
+  // Prepare the SQL query to insert the message into the database
+  try {
+    $insertQuery = "INSERT INTO messages (sender_id, receiver_id, pet_status, content, timestamp) 
+                    VALUES (?, ?, ?, ?, ?)";
   
 ?>
 
