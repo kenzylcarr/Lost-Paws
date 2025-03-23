@@ -98,6 +98,10 @@ if (isset($_POST['send_message'])) {
     $stmt = $conn->prepare($insertQuery);
     $stmt->bind_param("iisss", $user_id, $recipient_id, $pet_status, $message_content, $timestamp);
     $stmt->execute();
+
+  // Redirect back to the messages page after sending the message
+    header("Location: messages.php");
+    exit();
   
 ?>
 
