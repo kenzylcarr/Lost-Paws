@@ -112,6 +112,29 @@ try {
           <button onclick="toggleTab('found-pets-tab')" class="tab-button">Found Pets</button>
         </div>
 
+        <div class="create-message">
+          <h3>Send a Message</h3>
+          <form action="messages.php" method="POST">
+            <label for="recipient">Recipient:</label>
+            <select name="recipient" id="recipient" required>
+              <!-- Dynamically add users to the list -->
+              <?php
+                $userQuery = "SELECT user_id, username FROM users WHERE user_id != ?";
+                $stmt = $conn->prepare($userQuery);
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $users = $stmt->get_result();
+
+                while ($user = $users->fetch_assoc()) {
+                  echo "<option value='" . $user['user_id'] . "'>" . htmlspecialchars($user['username']) . "</option>";
+                }
+              ?>
+              </select><br><br>
+              <label for="message">Message:</label><br>
+              <textarea name="message" id="message" rows="4" placeholder="Enter your message here..." required></textarea><br><br>
+              <button type="submit" name="send_message">Send</button>
+          </form>
+        </div>
         <!-- Lost Pets Tab Content -->
         <div id="lost-pets-tab" class="tab-content" style="display: block;">
           <div class="conversation-list">
