@@ -49,6 +49,21 @@ try {
     }
     $conversations[$key][] = $msg;
   }
+
+  // Fetch lost pet messages
+  $lostPetsQuery = "SELECT * FROM messages WHERE pet_status = 'lost' AND (sender_id = ? OR receiver_id = ?)";
+  $stmt = $conn->prepare($lostPetsQuery);
+  $stmt->bind_param("ii", $user_id, $user_id);
+  $stmt->execute();
+  $lostMessages = $stmt->get_result();
+
+  // Fetch found pet messages
+  $foundPetsQuery = "SELECT * FROM messages WHERE pet_status = 'found' AND (sender_id = ? OR receiver_id = ?)";
+  $stmt = $conn->prepare($foundPetsQuery);
+  $stmt->bind_param("ii", $user_id, $user_id);
+  $stmt->execute();
+  $foundMessages = $stmt->get_result();
+
 } catch (mysqli_sql_exception $e) {
   die ("Database error: " . $e->getMessage());
 }
@@ -138,39 +153,30 @@ try {
         <!-- Lost Pets Tab Content -->
         <div id="lost-pets-tab" class="tab-content" style="display: block;">
           <div class="conversation-list">
-            <?php foreach($conversations as $key => $messages):
-                $firstMessage = reset($messages);
-                $other_user = ($firstMessage['sender_id'] == $user_id) ? $firstMessage['receiver_name'] : $firstMessage['sender_name'];
-                $lastMessage = end($messages);
-              ?>
+            <?php while($message = $lostMessages->fetch_assoc()): ?>
             <!-- Conversation 1 for Lost Pets -->
-            <div class="conversation-item" onclick="toggleConversation('<?php echo $key; ?>')">
+            <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
               <div class="conversation-header">
-                <p><strong><?php echo htmlspecialchars($other_user); ?></strong></p>
-                <p><small>Last message: <?php echo htmlspecialchars($lastMessage['content']); ?></small></p>
+                <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
+                <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
               </div>
             </div>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
           </div>
         </div>
 
         <!-- Found Pets Tab Content -->
         <div id="found-pets-tab" class="tab-content" style="display: none;">
-          <div class="conversation-list">
+        <div class="conversation-list">
+            <?php while($message = $foundMessages->fetch_assoc()): ?>
             <!-- Conversation 1 for Found Pets -->
-            <div class="conversation-item" onclick="toggleConversation('found-conversation1')">
+            <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
               <div class="conversation-header">
-                <p><strong>Emma Green</strong> (Found Cat)</p>
-                <p><small>Last message: "I found your cat!"</small></p>
+                <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
+                <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
               </div>
             </div>
-            <!-- Conversation 2 for Found Pets -->
-            <div class="conversation-item" onclick="toggleConversation('found-conversation2')">
-              <div class="conversation-header">
-                <p><strong>Isha Khan</strong> (Found Dog)</p>
-                <p><small>Last message: "I found a dog matching the description of your missing pet!"</small></p>
-              </div>
-            </div>
+            <?php endwhile; ?>
           </div>
         </div>
 
