@@ -9,103 +9,103 @@
   File name: messages.php
 -->
 <?php
-session_start();
-require_once("../Model/db_config.php");
+  session_start();
+  require_once("../Model/db_config.php");
 
-// Check if the user is signed in
-if (!isset($_SESSION['username'])) {
-  header("Location: ../index.php");
-  exit();
-}
-
-// Fetch user data from database
-$username = $_SESSION['username'];
-$stmt = $conn->prepare("SELECT user_id, first_name, last_name, email_address, phone_number, profile_photo FROM users WHERE username = ?");
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-$user_data = $result->fetch_assoc();
-$user_id = $user_data['user_id'];
-
-try {
-  // Fetch conversation where the user is either the sender or receiver
-  $query = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
-            FROM messages M
-            JOIN users U1 ON M.sender_id = U1.user_id
-            JOIN users U2 ON M.receiver_id = U2.user_id
-            WHERE M.sender_id = ? OR M.receiver_id = ?
-            ORDER BY M.timestamp DESC";
-  $stmt = $conn->prepare($query);
-  $stmt->bind_param("ii", $user_id, $user_id);
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-  // Categorize messages by the conversation
-  $conversations = [];
-  while ($msg = $result->fetch_assoc()) {
-    $key = min($msg['sender_id'], $msg['receiver_id']) . '-' . max($msg['sender_id'], $msg['receiver_id']);
-    if ($msg['pet_id']) {
-      $key .= '-' . $msg['pet_id'];
-    }
-    $conversations[$key][] = $msg;
+  // Check if the user is signed in
+  if (!isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+    exit();
   }
 
-  // For lost pets
-  $lostPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
-                    FROM messages M
-                    JOIN users U1 ON M.sender_id = U1.user_id
-                    JOIN users U2 ON M.receiver_id = U2.user_id
-                    WHERE M.pet_status = 'lost' AND (M.sender_id = ? OR M.receiver_id = ?)
-                    ORDER BY M.timestamp DESC";
-  $stmt = $conn->prepare($lostPetsQuery);
-  $stmt->bind_param("ii", $user_id, $user_id);
+  // Fetch user data from database
+  $username = $_SESSION['username'];
+  $stmt = $conn->prepare("SELECT user_id, first_name, last_name, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+  $stmt->bind_param("s", $username);
   $stmt->execute();
-  $lostMessages = $stmt->get_result();
+  $result = $stmt->get_result();
+  $user_data = $result->fetch_assoc();
+  $user_id = $user_data['user_id'];
 
-
-  // For found pets
-  $foundPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
-                     FROM messages M
-                     JOIN users U1 ON M.sender_id = U1.user_id
-                     JOIN users U2 ON M.receiver_id = U2.user_id
-                     WHERE M.pet_status = 'found' AND (M.sender_id = ? OR M.receiver_id = ?)
-                     ORDER BY M.timestamp DESC";
-  $stmt = $conn->prepare($foundPetsQuery);
-  $stmt->bind_param("ii", $user_id, $user_id);
-  $stmt->execute();
-  $foundMessages = $stmt->get_result();
-
-
-} catch (mysqli_sql_exception $e) {
-  die ("Database error: " . $e->getMessage());
-}
-
-// Check if the form is submitted
-if (isset($_POST['send_message'])) {
-
-   // Retrieve form data
-  $recipient_id = $_POST['recipient'];
-  $pet_status = $_POST['pet_status'];
-  $message_content = $_POST['message'];
-
-  // Get the current timestamp
-  $timestamp = date('Y-m-d H:i:s');
-
-  // Prepare the SQL query to insert the message into the database
   try {
-    $insertQuery = "INSERT INTO messages (sender_id, receiver_id, pet_status, content, timestamp) 
-                    VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($insertQuery);
-    $stmt->bind_param("iisss", $user_id, $recipient_id, $pet_status, $message_content, $timestamp);
+    // Fetch conversation where the user is either the sender or receiver
+    $query = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+              FROM messages M
+              JOIN users U1 ON M.sender_id = U1.user_id
+              JOIN users U2 ON M.receiver_id = U2.user_id
+              WHERE M.sender_id = ? OR M.receiver_id = ?
+              ORDER BY M.timestamp DESC";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ii", $user_id, $user_id);
     $stmt->execute();
+    $result = $stmt->get_result();
 
-  // Redirect back to the messages page after sending the message
-    header("Location: messages.php");
-    exit();
-    } catch (mysqli_sql_exception $e) {
-    die("Database error: " . $e->getMessage());
+    // Categorize messages by the conversation
+    $conversations = [];
+    while ($msg = $result->fetch_assoc()) {
+      $key = min($msg['sender_id'], $msg['receiver_id']) . '-' . max($msg['sender_id'], $msg['receiver_id']);
+      if ($msg['pet_id']) {
+        $key .= '-' . $msg['pet_id'];
+      }
+      $conversations[$key][] = $msg;
     }
-}  
+
+    // For lost pets
+    $lostPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+                      FROM messages M
+                      JOIN users U1 ON M.sender_id = U1.user_id
+                      JOIN users U2 ON M.receiver_id = U2.user_id
+                      WHERE M.pet_status = 'lost' AND (M.sender_id = ? OR M.receiver_id = ?)
+                      ORDER BY M.timestamp DESC";
+    $stmt = $conn->prepare($lostPetsQuery);
+    $stmt->bind_param("ii", $user_id, $user_id);
+    $stmt->execute();
+    $lostMessages = $stmt->get_result();
+
+
+    // For found pets
+    $foundPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+                      FROM messages M
+                      JOIN users U1 ON M.sender_id = U1.user_id
+                      JOIN users U2 ON M.receiver_id = U2.user_id
+                      WHERE M.pet_status = 'found' AND (M.sender_id = ? OR M.receiver_id = ?)
+                      ORDER BY M.timestamp DESC";
+    $stmt = $conn->prepare($foundPetsQuery);
+    $stmt->bind_param("ii", $user_id, $user_id);
+    $stmt->execute();
+    $foundMessages = $stmt->get_result();
+
+
+  } catch (mysqli_sql_exception $e) {
+    die ("Database error: " . $e->getMessage());
+  }
+
+  // Check if the form is submitted
+  if (isset($_POST['send_message'])) {
+
+    // Retrieve form data
+    $recipient_id = $_POST['recipient'];
+    $pet_status = $_POST['pet_status'];
+    $message_content = $_POST['message'];
+
+    // Get the current timestamp
+    $timestamp = date('Y-m-d H:i:s');
+
+    // Prepare the SQL query to insert the message into the database
+    try {
+      $insertQuery = "INSERT INTO messages (sender_id, receiver_id, pet_status, content, timestamp) 
+                      VALUES (?, ?, ?, ?, ?)";
+      $stmt = $conn->prepare($insertQuery);
+      $stmt->bind_param("iisss", $user_id, $recipient_id, $pet_status, $message_content, $timestamp);
+      $stmt->execute();
+
+    // Redirect back to the messages page after sending the message
+      header("Location: messages.php");
+      exit();
+      } catch (mysqli_sql_exception $e) {
+      die("Database error: " . $e->getMessage());
+      }
+  }  
 ?>
 
 <!DOCTYPE html>

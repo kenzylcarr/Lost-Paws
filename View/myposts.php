@@ -10,13 +10,13 @@
 -->
 
 <?php
-session_start();
-require_once("../Model/db_config.php");
+  session_start();
+  require_once("../Model/db_config.php");
 
-// Check if the user is signed in
-if (!isset($_SESSION['username'])) {
-    header("Location: ../index.php");
-    exit();
+  // Check if the user is signed in
+  if (!isset($_SESSION['username'])) {
+      header("Location: ../index.php");
+      exit();
   }
   
   // Fetch user data from database
