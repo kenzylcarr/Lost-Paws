@@ -104,7 +104,8 @@ if (isset($_POST['send_message'])) {
     exit();
     } catch (mysqli_sql_exception $e) {
     die("Database error: " . $e->getMessage());
-  
+    }
+}  
 ?>
 
 <!DOCTYPE html>
