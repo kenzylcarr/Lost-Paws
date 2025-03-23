@@ -515,6 +515,11 @@ input {
     color: #777; /* Light gray color for date */
   }
 
+  .comment-item button {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: xx-large;
+}
   #select-post-main-right {
     grid-column-start: 3;
     grid-column-end: 4;
