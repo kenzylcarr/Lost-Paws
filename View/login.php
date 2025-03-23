@@ -160,9 +160,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Right-hand side of page -->
     <main id="main-right-login">
-      <div class="login-image1"> 
+      <!-- <div class="login-image1"> 
         <img src="images/PawPrints.png" alt="Paw Prints">
-      </div>
+      </div> -->
       <div class="login-image2"> 
         <img src="images/DogStack.png" alt="Stack of Dogs">
       </div>
