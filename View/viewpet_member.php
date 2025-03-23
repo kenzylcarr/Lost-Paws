@@ -187,7 +187,7 @@ if (isset($_GET['id'])) {
                     echo "Logged-in User ID: " . $user_id . "<br>"; 
 
                     // Show edit and delete options only for the comment owner
-                    if ($user_id) {
+                    if ($comment['user_id'] == $user_id) {
                       echo '<form action="" method="post">
                               <input type="hidden" name="comment_id" value="' . $comment_id . '">
                               <button type="submit" name="delete_comment">Delete</button>
