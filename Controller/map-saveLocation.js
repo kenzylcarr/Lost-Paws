@@ -71,17 +71,19 @@ function initMap() {
   const lat = clickedLocation.lat();
   const lng = clickedLocation.lng();
 
-  // move the marker to the clicked location
-  marker.setPosition(clickedLocation);
+    // check if the clicked location is within Regina's bounds
+    if (lat >= reginaBounds.south && lat <= reginaBounds.north && lng >= reginaBounds.west && lng <= reginaBounds.east) {
+      // move the marker to the clicked location
+      marker.setPosition(clickedLocation);
 
-  // update the hidden fields with the new latitude and longitude
-  document.getElementById('latitude').value = clickedLocation.lat();
-  document.getElementById('longitude').value = clickedLocation.lng();
+      // update the hidden fields with the new latitude and longitude
+      document.getElementById('latitude').value = lat;
+      document.getElementById('longitude').value = lng;
 
-  // debugging - log to console
-  console.log("Latitude: " + clickedLocation.lat());
-  console.log("Longitude: " + clickedLocation.lng());
-});
+    } else {
+      alert("You can only click within the Regina boundaries!");
+    }
+  });
 }
 
 // initialize map when the page loads
