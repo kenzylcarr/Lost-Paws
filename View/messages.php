@@ -247,6 +247,7 @@ if (isset($_POST['send_message'])) {
                   <p><strong>$sender:</strong> $content</p>
               </div>";
     }
+?>
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
