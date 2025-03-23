@@ -196,9 +196,11 @@ if (isset($_POST['send_message'])) {
               <button type="submit" name="send_message">Send</button>
           </form>
         </div>
+        
         <!-- Lost Pets Tab Content -->
         <div id="lost-pets-tab" class="tab-content" style="display: block;">
           <div class="conversation-list">
+            <!-- Dynamically populate conversations -->
             <?php while($message = $lostMessages->fetch_assoc()): ?>
             <!-- Conversation 1 for Lost Pets -->
             <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
