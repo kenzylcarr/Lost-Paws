@@ -518,7 +518,7 @@ input {
   .comment-item button {
     margin-top: 10px;
     padding: 5px;
-    font-size: xx-large;
+    font-size: medium;
 }
   #select-post-main-right {
     grid-column-start: 3;
