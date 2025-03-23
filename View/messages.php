@@ -95,6 +95,7 @@ if (isset($_POST['send_message'])) {
   try {
     $insertQuery = "INSERT INTO messages (sender_id, receiver_id, pet_status, content, timestamp) 
                     VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($insertQuery);
   
 ?>
 
