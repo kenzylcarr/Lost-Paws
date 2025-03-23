@@ -73,7 +73,7 @@
       </main>
 
     <main id="aboutpage-right-beforelogin">
-      <h3>Sign in to connect with your community!</h3>
+      <h3>Join us and connect with your community today!</h3>
       <p>Don't have an account?  <a id="signup-button" href="/View/signup.php">Sign Up!</a></p>
     </main>
 
