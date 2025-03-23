@@ -101,6 +101,7 @@ mysqli_close($conn);
       <div id="petmap-container">
         <!-- Centered Filter Section -->
         <div id="filter-section" >
+	  <h1>View Pets on Our Map: </h1>
           <button id="all-button">All Pets</button>
           <button id="lost-button">Lost Pets</button>
           <button id="found-button">Found Pets</button>
