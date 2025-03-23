@@ -121,46 +121,46 @@ $stmt->close();
     }
 
     // JavaScript to dynamically populate cities based on selected province
-    const citiesByProvince = {
-      BC: ['Vancouver', 'Victoria', 'Kelowna'],
-      AB: ['Calgary', 'Edmonton', 'Lethbridge'],
-      SK: ['Regina', 'Saskatoon', 'Moose Jaw'],
-      MB: ['Brandon', 'Winnipeg', 'Churchill'],
-      ON: ['Toronto', 'Ottawa', 'Hamilton'],
-    };
+    // const citiesByProvince = {
+    //   BC: ['Vancouver', 'Victoria', 'Kelowna'],
+    //   AB: ['Calgary', 'Edmonton', 'Lethbridge'],
+    //   SK: ['Regina', 'Saskatoon', 'Moose Jaw'],
+    //   MB: ['Brandon', 'Winnipeg', 'Churchill'],
+    //   ON: ['Toronto', 'Ottawa', 'Hamilton'],
+    // };
 
-    function updateCities() {
-      const province = document.getElementById('province').value;
-      const cityDropdown = document.getElementById('city');
-      cityDropdown.innerHTML = '<option value="">Select City</option>'; // Clear previous cities
+    // function updateCities() {
+    //   const province = document.getElementById('province').value;
+    //   const cityDropdown = document.getElementById('city');
+    //   cityDropdown.innerHTML = '<option value="">Select City</option>'; // Clear previous cities
 
-      if (province) {
-        const cities = citiesByProvince[province] || [];
-        cities.forEach(city => {
-          const option = document.createElement('option');
-          option.value = city.toLowerCase();
-          option.textContent = city;
-          cityDropdown.appendChild(option);
-        });
-        cityDropdown.disabled = false; // Enable city dropdown
-      } else {
-        cityDropdown.disabled = true; // Disable city dropdown if no province selected
-      }
-    }
+    //   if (province) {
+    //     const cities = citiesByProvince[province] || [];
+    //     cities.forEach(city => {
+    //       const option = document.createElement('option');
+    //       option.value = city.toLowerCase();
+    //       option.textContent = city;
+    //       cityDropdown.appendChild(option);
+    //     });
+    //     cityDropdown.disabled = false; // Enable city dropdown
+    //   } else {
+    //     cityDropdown.disabled = true; // Disable city dropdown if no province selected
+    //   }
+    // }
 
     // Function to validate address format
-    function validateAddress(input) {
-      const addressError = document.getElementById("address-error");
-      const addressPattern = /^[A-Za-z0-9\s,.'-]{3,}$/; // Simple check for valid address characters
+    // function validateAddress(input) {
+    //   const addressError = document.getElementById("address-error");
+    //   const addressPattern = /^[A-Za-z0-9\s,.'-]{3,}$/; // Simple check for valid address characters
 
-      if (!addressPattern.test(input.value)) {
-        addressError.textContent = "Please enter a valid address in the form 123 Main st.";
-        input.style.borderColor = "red";
-      } else {
-        addressError.textContent = "";
-        input.style.borderColor = "";
-      }
-    }
+    //   if (!addressPattern.test(input.value)) {
+    //     addressError.textContent = "Please enter a valid address in the form 123 Main st.";
+    //     input.style.borderColor = "red";
+    //   } else {
+    //     addressError.textContent = "";
+    //     input.style.borderColor = "";
+    //   }
+    // }
 
 	    // Validate Current Password
 	function validateCurrentPassword(input) {
