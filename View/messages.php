@@ -241,6 +241,12 @@ if (isset($_POST['send_message'])) {
         $sender = htmlspecialchars($message['sender_name']);
         $content = htmlspecialchars($message['content']);
         $direction = ($message['sender_id'] == $user_id) ? 'sent' : 'received';
+
+      // Display the message content
+        echo "<div class='message-item $direction'>
+                  <p><strong>$sender:</strong> $content</p>
+              </div>";
+    }
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
