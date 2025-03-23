@@ -54,12 +54,12 @@
 
         <!-- The wave, waves characteristic made from haikei app -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path fill="#FFFFFF" fill-opacity="1"
+          <path fill="#f7f5f2" fill-opacity="1"
               d="M0,300L34.3,270C68.6,240,137,180,206,180C274.3,180,343,240,411,230C480,220,549,140,617,120C685.7,100,754,140,823,150C891.4,160,960,130,1029,140C1097.1,150,1166,180,1234,170C1302.9,160,1371,100,1406,70L1440,40L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
           </path>
 
           <!-- rectangle to fill below the wave -->
-          <rect x="0" y="300" width="1440" height="300" fill="#FFFFFF"></rect>  <!-- !!! change rec colour IF changing wave colour!!! -->
+          <rect x="0" y="300" width="1440" height="300" fill="#f7f5f2"></rect>  <!-- !!! change rec colour IF changing wave colour!!! -->
         </svg>
       </div>
   </body>
