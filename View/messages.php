@@ -202,13 +202,12 @@ if (isset($_POST['send_message'])) {
           <div class="conversation-list">
             <!-- Dynamically populate conversations -->
             <?php while($message = $lostMessages->fetch_assoc()): ?>
-            <!-- Conversation 1 for Lost Pets -->
-            <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
-              <div class="conversation-header">
-                <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
-                <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
+              <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
+                <div class="conversation-header">
+                  <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
+                  <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
+                </div>
               </div>
-            </div>
             <?php endwhile; ?>
           </div>
         </div>
