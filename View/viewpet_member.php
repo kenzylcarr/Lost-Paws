@@ -183,13 +183,13 @@ if (isset($_GET['id'])) {
                     echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
       
                     // Show edit and delete options only for the comment owner
-                    if ($comment_user_id == $user_id) {
+
                       echo '<form action="" method="post">
                               <input type="hidden" name="comment_id" value="' . $comment_id . '">
                               <button type="submit" name="delete_comment">Delete</button>
                               <button type="submit" name="edit_comment" value="' . $comment_id . '">Edit</button>
                             </form>';
-                    }
+                   
                     echo '</div>';
                   }
                 } else {

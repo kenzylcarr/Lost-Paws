@@ -477,7 +477,43 @@ input {
 
 
 
+  .comment-container {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    margin-left: 30px;
+    padding: 25px;
+    width: 55vw;
+    max-height: auto; 
+  }
   
+  .comment-container input{
+    float: left;
+    height: 2vw;
+  }
+
+  .all-comments {
+    overflow-x: hidden; 
+    overflow-y: scroll; 
+    max-height: 250px;
+  }
+
+  .comment-item {
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 10px; /* Space inside the comment box */
+    margin-bottom: 10px; /* Space between comments */
+    border-radius: 5px; 
+    background-color: #f9f9f9; /* Light background for better readability */
+    overflow: visible; /* Ensure buttons are visible */
+  }
+  
+  .comment-item p {
+    margin: 5px 0; /* Add some space between elements inside the comment */
+  }
+  
+  .comment-item em {
+    font-size: 0.9em;
+    color: #777; /* Light gray color for date */
+  }
 
   .comment-item button {
     margin-top: 10px;
