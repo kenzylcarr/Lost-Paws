@@ -226,7 +226,8 @@ if (isset($_POST['send_message'])) {
           <?php endwhile; ?>
         </div>
       </div>
-
+        
+<!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
         <div class="message-thread" id="lost-conversation1" style="display: none;">
           <div class="thread-header">
@@ -320,6 +321,7 @@ if (isset($_POST['send_message'])) {
         </div>
 
       </div>
+      END TEST COMMENT -->
     </main>
   </div>
   </div>
