@@ -208,7 +208,7 @@
           <div class="conversation-list">
 
             <!-- Dynamically populate conversations -->
-            <?php foreach ($conversation as $conversation): ?>
+            <?php foreach ($conversations as $conversation): ?>
               <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
                 <div class="conversation-header">
                   <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
@@ -223,7 +223,7 @@
       <div id="found-pets-tab" class="tab-content" style="display: none;">
         <div class="conversation-list">
           <!-- Dynamically populate conversations -->
-          <?php foreach ($conversation as $conversation): ?>
+          <?php foreach ($conversations as $conversation): ?>
             <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
               <div class="conversation-header">
                 <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
