@@ -102,6 +102,8 @@ if (isset($_POST['send_message'])) {
   // Redirect back to the messages page after sending the message
     header("Location: messages.php");
     exit();
+    } catch (mysqli_sql_exception $e) {
+    die("Database error: " . $e->getMessage());
   
 ?>
 
