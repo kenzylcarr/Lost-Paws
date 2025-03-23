@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
   }
 
   // Fetch comments for the pet
-  $stmt = $conn->prepare("SELECT comments.comment_content, comments.comment_date, users.username 
+  $stmt = $conn->prepare("SELECT comments.comment_id, comments.comment_content, comments.comment_date, users.username 
                           FROM comments 
                           JOIN users ON comments.user_id = users.user_id 
                           WHERE comments.pet_id = ? 
