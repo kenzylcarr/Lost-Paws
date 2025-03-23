@@ -149,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- Submit Button to Login -->
         <div class="login-field">
-          <input class="login-button" type="submit" value="Login" action="homepage.php">
+          <input id="login-button" type="submit" value="Login" action="homepage.php">
         </div>
       </form>
       <!-- If user does not have an account  -->
