@@ -145,8 +145,15 @@ try {
                 }
               ?>
               </select><br><br>
+              <label for="pet_status">Pet Status:</label>
+              <select name="pet_status" id="pet_status" required>
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+              </select><br><br>
+
               <label for="message">Message:</label><br>
               <textarea name="message" id="message" rows="4" placeholder="Enter your message here..." required></textarea><br><br>
+              
               <button type="submit" name="send_message">Send</button>
           </form>
         </div>
