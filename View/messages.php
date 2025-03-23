@@ -240,7 +240,7 @@ if (isset($_POST['send_message'])) {
     while ($message = $messages->fetch_assoc()) {
         $sender = htmlspecialchars($message['sender_name']);
         $content = htmlspecialchars($message['content']);
-        
+        $direction = ($message['sender_id'] == $user_id) ? 'sent' : 'received';
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
