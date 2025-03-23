@@ -39,11 +39,10 @@ try {
   $stmt->bind_param("ii", $user_id, $user_id);
   $stmt->execute();
   $result = $stmt->get_result();
-  $messages = $stmt->fetch(MYSQLI_ASSOC);
 
   // Categorize messages by the conversation
   $conversations = [];
-  foreach ($messages as $msg) {
+  while ($msg = $result->fetch_assoc()) {
     $key = min($msg['sender_id'], $msg['receiver_id']) . '-' . max($msg['sender_id'], $msg['receiver_id']);
     if ($msg['pet_id']) {
       $key .= '-' . $msg['pet_id'];
