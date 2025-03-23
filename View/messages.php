@@ -213,19 +213,19 @@ if (isset($_POST['send_message'])) {
         </div>
 
         <!-- Found Pets Tab Content -->
-        <div id="found-pets-tab" class="tab-content" style="display: none;">
+      <div id="found-pets-tab" class="tab-content" style="display: none;">
         <div class="conversation-list">
-            <?php while($message = $foundMessages->fetch_assoc()): ?>
-            <!-- Conversation 1 for Found Pets -->
+          <!-- Dynamically populate conversations -->
+          <?php while($message = $foundMessages->fetch_assoc()): ?>
             <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
               <div class="conversation-header">
                 <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
                 <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
               </div>
             </div>
-            <?php endwhile; ?>
-          </div>
+          <?php endwhile; ?>
         </div>
+      </div>
 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
         <div class="message-thread" id="lost-conversation1" style="display: none;">
