@@ -27,11 +27,13 @@ try {
             FROM messages M
             JOIN users U1 ON M.sender_id = U1.user_id
             JOIN users U2 ON M.receiver_id = U2.user_id
-            WHERE M.sender_id = :user_id OR M.receiver_id = :user_id
+            WHERE M.sender_id = ? OR M.receiver_id = ?
             ORDER BY M.timestamp DESC";
   $stmt = $conn->prepare($query);
-  $stmt->execute(['user_id' => $user_id]);
-  $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $stmt->bind_param("ii", $user_id, $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $messages = $stmt->fetchAll(MYSQLI_ASSOC);
 
   // Categorize messages by the conversation
   $conversations = [];
@@ -42,7 +44,7 @@ try {
     }
     $conversations[$key][] = $msg;
   }
-} catch (PDOexception $e) {
+} catch (mysqli_sql_exception $e) {
   die ("Database error: " . $e->getMessage());
 }
 ?>
