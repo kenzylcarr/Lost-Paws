@@ -158,6 +158,7 @@ input {
   border-radius: 1vw;
   font-size: medium;
   margin-top: 50px;
+  cursor: pointer;
 }
 .login-button:hover {
   background-color: #d6e3e8;
@@ -170,5 +171,4 @@ input {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 5px 5px 15px rbga(0, 0, 0, 0.2);    /* might delete later */
 }
