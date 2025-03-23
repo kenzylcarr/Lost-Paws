@@ -50,12 +50,18 @@ try {
     $conversations[$key][] = $msg;
   }
 
-  // Fetch lost pet messages
-  $lostPetsQuery = "SELECT * FROM messages WHERE pet_status = 'lost' AND (sender_id = ? OR receiver_id = ?)";
+  // For lost pets
+  $lostPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+                    FROM messages M
+                    JOIN users U1 ON M.sender_id = U1.user_id
+                    JOIN users U2 ON M.receiver_id = U2.user_id
+                    WHERE M.pet_status = 'lost' AND (M.sender_id = ? OR M.receiver_id = ?)
+                    ORDER BY M.timestamp DESC";
   $stmt = $conn->prepare($lostPetsQuery);
   $stmt->bind_param("ii", $user_id, $user_id);
   $stmt->execute();
   $lostMessages = $stmt->get_result();
+
 
   // Fetch found pet messages
   $foundPetsQuery = "SELECT * FROM messages WHERE pet_status = 'found' AND (sender_id = ? OR receiver_id = ?)";
