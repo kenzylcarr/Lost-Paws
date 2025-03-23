@@ -63,12 +63,18 @@ try {
   $lostMessages = $stmt->get_result();
 
 
-  // Fetch found pet messages
-  $foundPetsQuery = "SELECT * FROM messages WHERE pet_status = 'found' AND (sender_id = ? OR receiver_id = ?)";
+  // For found pets
+  $foundPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+                     FROM messages M
+                     JOIN users U1 ON M.sender_id = U1.user_id
+                     JOIN users U2 ON M.receiver_id = U2.user_id
+                     WHERE M.pet_status = 'found' AND (M.sender_id = ? OR M.receiver_id = ?)
+                     ORDER BY M.timestamp DESC";
   $stmt = $conn->prepare($foundPetsQuery);
   $stmt->bind_param("ii", $user_id, $user_id);
   $stmt->execute();
   $foundMessages = $stmt->get_result();
+
 
 } catch (mysqli_sql_exception $e) {
   die ("Database error: " . $e->getMessage());
