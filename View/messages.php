@@ -82,6 +82,10 @@ try {
 
 // Check if the form is submitted
 if (isset($_POST['send_message'])) {
+
+   // Retrieve form data
+  $recipient_id = $_POST['recipient'];
+  $pet_status = $_POST['pet_status'];
   
 ?>
 
