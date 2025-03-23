@@ -117,17 +117,10 @@ try {
             <div class="conversation-item" onclick="toggleConversation('<?php echo $key; ?>')">
               <div class="conversation-header">
                 <p><strong><?php echo htmlspecialchars($other_user); ?></strong></p>
-                <p><small>Last message: <?php echo htmlspecialchars($lastMessage['content']); ?>"</small></p>
+                <p><small>Last message: <?php echo htmlspecialchars($lastMessage['content']); ?></small></p>
               </div>
             </div>
             <?php endforeach; ?>
-            <!-- Conversation 2 for Lost Pets -->
-            <div class="conversation-item" onclick="toggleConversation('lost-conversation2')">
-              <div class="conversation-header">
-                <p><strong>Mike Johnson</strong> (Lost Dog)</p>
-                <p><small>Last message: "I saw a dog running around near the park. It looks like your lost pet."</small></p>
-              </div>
-            </div>
           </div>
         </div>
 
