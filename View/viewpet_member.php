@@ -182,10 +182,6 @@ if (isset($_GET['id'])) {
                     echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
                     echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
       
-                    // debug 
-                    echo "Comment User ID: " . $comment_user_id . "<br>";
-                    echo "Logged-in User ID: " . $user_id . "<br>"; 
-
                     // Show edit and delete options only for the comment owner
                     if ($comment_user_id == $user_id) {
                       echo '<form action="" method="post">
