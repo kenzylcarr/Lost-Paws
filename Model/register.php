@@ -58,19 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = isset($_POST["email"]) ? trim($_POST["email"]) : ""; // Check if email exists
   if (empty($email)) {
     $email_err = "Please enter an email address.";
-  }  else {
-    $sql = "SELECT user_id FROM users WHERE email_address = ?";
-    if ($stmt = mysqli_prepare($conn, $sql)) {
-        mysqli_stmt_bind_param($stmt, "s", $email);
-        if (mysqli_stmt_execute($stmt)) {
-            mysqli_stmt_store_result($stmt);
-            if (mysqli_stmt_num_rows($stmt) > 0) {
-                $email_err = "This email is already taken.";
-            }
-        }
-        mysqli_stmt_close($stmt);
-    }
-  }
+  } 
 
   // Validate phone number
   $phone = isset($_POST["phone"]) ? trim($_POST["phone"]) : ""; // Check if phone exists

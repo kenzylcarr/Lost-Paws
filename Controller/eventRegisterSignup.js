@@ -80,7 +80,7 @@ function usernameHandler(event) {
 
     // check if the username already exists in the database
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "check_username.php", true);
+    xhr.open("POST", "check_taken.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function() {
       if (xhr.status === 200) {
@@ -101,7 +101,7 @@ function usernameHandler(event) {
 function emailHandler(event) {
   let email = event.target;
   let emailTakenError = document.getElementById("error-text-email-taken"); 
-  
+
   if (!validateEmail(email.value)) {
     console.log("'" + email.value + "' is not a valid email address");
   } else {
@@ -118,7 +118,7 @@ function phoneHandler(event) {
   } else {
       // AJAX request
       let xhr = new XMLHttpRequest();
-      xhr.open("POST", "check_phone.php", true)
+      xhr.open("POST", "check_taken.php", true)
       phone.classList.remove("error-border");
       document.getElementById("error-text-phone");
     }
