@@ -115,6 +115,7 @@
     color: black;
     text-align: left;
     max-width: 450px;
+    line-height: 1.75;
   }
   
   .index-top-half a{
@@ -194,6 +195,7 @@
   
   .wave-text p {
       margin-bottom: 20px;
+      line-height: 1.75;
   }
   
   /*	 END CSS: index.php		*/
