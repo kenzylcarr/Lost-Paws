@@ -257,6 +257,9 @@ if (isset($_POST['send_message'])) {
  <!-- Message Thread for Found Pets (Conversation 1) -->
 <div class="message-thread" id="found-conversation1" style="display: none;">
     <?php 
+    // Assuming you have a valid connection to the database
+    $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ?";
+    $stmt = $conn->prepare($messagesQuery);
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
