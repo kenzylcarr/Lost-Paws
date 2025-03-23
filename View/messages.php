@@ -233,6 +233,9 @@ if (isset($_POST['send_message'])) {
     // Assuming you have a valid connection to the database
     $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ?";
     $stmt = $conn->prepare($messagesQuery);
+    $stmt->bind_param("i", $conversation_id); // Set conversation_id for the thread
+    $stmt->execute();
+    $messages = $stmt->get_result();
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
