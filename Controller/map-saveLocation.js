@@ -48,7 +48,8 @@ function initMap() {
     strokeWeight: 2,        // border thickness
     fillColor: "#FF0000",   // transparent
     fillOpacity: 0,         // No fill color
-    map: map
+    map: map,
+    clickable: false        // disable interaction with the rectangle
   });
 
   // update the hidden fields with the marker's latitude and longitude
