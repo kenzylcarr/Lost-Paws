@@ -44,9 +44,9 @@
     $conversations = [];
     while ($msg = $result->fetch_assoc()) {
       $key = min($msg['sender_id'], $msg['receiver_id']) . '-' . max($msg['sender_id'], $msg['receiver_id']);
-      if ($msg['pet_id']) {
-        $key .= '-' . $msg['pet_id'];
-      }
+      // if ($msg['pet_id']) {
+      //   $key .= '-' . $msg['pet_id'];
+      // }
       $conversations[$key][] = $msg;
     }
 
@@ -81,13 +81,12 @@
   }
 
   // Check if the form is submitted
-  if (isset($_POST['send_message'])) {
+  if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['send_message'])) {
 
     // Retrieve form data
     $recipient_id = $_POST['recipient'];
     $pet_status = $_POST['pet_status'];
     $message_content = $_POST['message'];
-
     // Get the current timestamp
     $timestamp = date('Y-m-d H:i:s');
 
@@ -117,29 +116,34 @@
   <script>
     // JavaScript function to toggle between tabs (Lost Pets and Found Pets)
     function toggleTab(tabId) {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => {
-        if (tab.id === tabId) {
-          tab.style.display = 'block';
-        } else {
-          tab.style.display = 'none';
-        }
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.style.display = (tab.id === tabId) ? 'block' : 'none';
       });
+      // tabs.forEach(tab => {
+      //   if (tab.id === tabId) {
+      //     tab.style.display = 'block';
+      //   } else {
+      //     tab.style.display = 'none';
+      //   }
+      // });
     }
 
     // JavaScript function to toggle conversation threads
     function toggleConversation(conversationId) {
-      const threads = document.querySelectorAll('.message-thread');
-      threads.forEach(thread => {
-        if (thread.id === conversationId) {
-          thread.style.display = thread.style.display === 'none' ? 'block' : 'none';
-        } else {
-          thread.style.display = 'none';
-        }
+      document.querySelectorAll('.message-thread').forEach(thread => {
+        thread.style.display = (thread.id === conversationId) ? (thread.style.display === 'none' ? 'block' : 'none') : 'none';
       });
+      // threads.forEach(thread => {
+      //   if (thread.id === conversationId) {
+      //     thread.style.display = thread.style.display === 'none' ? 'block' : 'none';
+      //   } else {
+      //     thread.style.display = 'none';
+      //   }
+      // });
     }
   </script>
 </head>
+
 <body>
   <div class="messages-page">
   <div id="container">
@@ -171,6 +175,7 @@
           <form action="messages.php" method="POST">
             <label for="recipient">Recipient:</label>
             <select name="recipient" id="recipient" required>
+              
               <!-- Dynamically add users to the list -->
               <?php
                 $userQuery = "SELECT user_id, username FROM users WHERE user_id != ?";
@@ -183,6 +188,7 @@
                   echo "<option value='" . $user['user_id'] . "'>" . htmlspecialchars($user['username']) . "</option>";
                 }
               ?>
+
               </select><br><br>
               <label for="pet_status">Pet Status:</label>
               <select name="pet_status" id="pet_status" required>
@@ -200,15 +206,16 @@
         <!-- Lost Pets Tab Content -->
         <div id="lost-pets-tab" class="tab-content" style="display: block;">
           <div class="conversation-list">
+
             <!-- Dynamically populate conversations -->
-            <?php while($message = $lostMessages->fetch_assoc()): ?>
-              <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
+            <?php foreach ($conversation as $conversation): ?>
+              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
                 <div class="conversation-header">
-                  <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
+                  <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
                   <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
                 </div>
               </div>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
           </div>
         </div>
 
@@ -216,47 +223,47 @@
       <div id="found-pets-tab" class="tab-content" style="display: none;">
         <div class="conversation-list">
           <!-- Dynamically populate conversations -->
-          <?php while($message = $foundMessages->fetch_assoc()): ?>
-            <div class="conversation-item" onclick="toggleConversation('<?php echo $message['message_id']; ?>')">
+          <?php foreach ($conversation as $conversation): ?>
+            <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
               <div class="conversation-header">
-                <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
-                <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
+                <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
+                <p><small>Last message: <?php echo htmlspecialchars($conversation[0]['content']); ?></small></p>
               </div>
             </div>
-          <?php endwhile; ?>
+          <?php endforeach; ?>
         </div>
       </div>
 
- <!-- Message Thread for Lost Pets (Conversation 1) -->     
-  <div class="message-thread" id="lost-conversation1" style="display: none;">
-    <?php
-    // Assuming you have a valid connection to the database
-    $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ?";
-    $stmt = $conn->prepare($messagesQuery);
-    $stmt->bind_param("i", $conversation_id); // Set conversation_id for the thread
-    $stmt->execute();
-    $messages = $stmt->get_result();
+      <!-- Message Thread for Lost Pets (Conversation 1) -->     
+      <div class="message-thread" id="lost-conversation1" style="display: none;">
+        <?php
+        // Assuming you have a valid connection to the database
+        $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ?";
+        $stmt = $conn->prepare($messagesQuery);
+        $stmt->bind_param("i", $conversation_id); // Set conversation_id for the thread
+        $stmt->execute();
+        $messages = $stmt->get_result();
 
-    while ($message = $messages->fetch_assoc()) {
-        $sender = htmlspecialchars($message['sender_name']);
-        $content = htmlspecialchars($message['content']);
-        $direction = ($message['sender_id'] == $user_id) ? 'sent' : 'received';
+        while ($message = $messages->fetch_assoc()) {
+            $sender = htmlspecialchars($message['sender_name']);
+            $content = htmlspecialchars($message['content']);
+            $direction = ($message['sender_id'] == $user_id) ? 'sent' : 'received';
 
-      // Display the message content
-        echo "<div class='message-item $direction'>
-                  <p><strong>$sender:</strong> $content</p>
-              </div>";
-    }
-?>
+          // Display the message content
+            echo "<div class='message-item $direction'>
+                      <p><strong>$sender:</strong> $content</p>
+                  </div>";
+        }
+        ?>
     <!-- Input Box to Send Message -->
     <textarea id="reply-message-found1" placeholder="Type a message..." rows="4"></textarea>
     <button class="send-reply">Send</button>
-</div>
+<div>
 
     <!-- Input Box to Send Message -->
     <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
     <button class="send-reply">Send</button>
-</div>
+<!-- </div> -->
 
  <!-- Message Thread for Found Pets (Conversation 1) -->
 <div class="message-thread" id="found-conversation1" style="display: none;">
@@ -278,9 +285,10 @@ while ($message = $messages->fetch_assoc()) {
                   <p><strong>$sender:</strong> $content</p>
               </div>";
     }
+    ?>
         
-<!-- TEST COMMENTED OUT 
-        <!-- Message Thread for Lost Pets (Conversation 1) -->
+<!-- // TEST COMMENTED OUT  -->
+        <!-- // Message Thread for Lost Pets (Conversation 1) -->
         <div class="message-thread" id="lost-conversation1" style="display: none;">
           <div class="thread-header">
             <h3>Conversation with Sarah Lee</h3>
@@ -349,7 +357,7 @@ while ($message = $messages->fetch_assoc()) {
           <button class="send-reply">Send</button>
         </div>
 
-        <!-- Message Thread for Found Pets (Conversation 2) -->
+        // <!-- Message Thread for Found Pets (Conversation 2) -->
         <div class="message-thread" id="found-conversation2" style="display: none;">
           <div class="thread-header">
             <h3>Conversation with Isha Khan</h3>
@@ -373,7 +381,7 @@ while ($message = $messages->fetch_assoc()) {
         </div>
 
       </div>
-      END TEST COMMENT -->
+      <!-- END TEST COMMENT -->
 
     </main>
   </div>
