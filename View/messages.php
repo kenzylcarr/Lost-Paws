@@ -253,6 +253,10 @@ if (isset($_POST['send_message'])) {
     <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
     <button class="send-reply">Send</button>
 </div>
+
+ <!-- Message Thread for Found Pets (Conversation 1) -->
+<div class="message-thread" id="found-conversation1" style="display: none;">
+    <?php 
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
