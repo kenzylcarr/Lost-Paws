@@ -87,6 +87,9 @@ if (isset($_POST['send_message'])) {
   $recipient_id = $_POST['recipient'];
   $pet_status = $_POST['pet_status'];
   $message_content = $_POST['message'];
+
+  // Get the current timestamp
+  $timestamp = date('Y-m-d H:i:s');
   
 ?>
 
