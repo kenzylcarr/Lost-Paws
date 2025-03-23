@@ -236,6 +236,11 @@ if (isset($_POST['send_message'])) {
     $stmt->bind_param("i", $conversation_id); // Set conversation_id for the thread
     $stmt->execute();
     $messages = $stmt->get_result();
+
+    while ($message = $messages->fetch_assoc()) {
+        $sender = htmlspecialchars($message['sender_name']);
+        $content = htmlspecialchars($message['content']);
+        
         
 <!-- TEST COMMENTED OUT 
         <!-- Message Thread for Lost Pets (Conversation 1) -->
