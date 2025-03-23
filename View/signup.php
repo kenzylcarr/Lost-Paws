@@ -15,7 +15,8 @@
 session_start();
 require_once("../Model/db_config.php");
 
-function test_input($data) {
+function test_input($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -152,109 +153,116 @@ echo "Execution time: " . $execution_time . " seconds.";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Signup | Lost Paws</title>
-  <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
-  <link rel="stylesheet" type="text/css" href="/View/CSS/signup-style.css">
-  <script src="../Controller/eventHandler.js"></script>
+    <title>Signup | Lost Paws</title>
+    <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="/View/CSS/signup-style.css">
+    <script src="../Controller/eventHandler.js"></script>
 </head>
 
 <body>
-  <div id="container">
-    <nav class="navmenu">
-      <!-- Lost Paws Logo -->
-      <div class="logo"> 
-          <a href="../index.php">
-            <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
-          </a>
-      </div>
-  
-      <!-- Navigation menu -->
-      <div class="nav-links">
-        <a href="/View/aboutpage.php">About Lost Paws</a>
-        <a href="/View/lostandfound.php">Lost & Found</a>
-        <a href="petmap.php">Pet Map</a>
-      </div>
-    </nav>
+    <div id="container">
+        <nav class="navmenu">
+            <!-- Lost Paws Logo -->
+            <div class="logo">
+                <a href="../index.php">
+                    <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo" /></p>
+                </a>
+            </div>
 
-  <!-- Left-hand side of page  -->
-    <main id="main-left-signup">
-      <h1>Welcome</h1>
-      <h2>Join Our Lost Paws Community!</h2>
-    </main>
+            <!-- Navigation menu -->
+            <div class="nav-links">
+                <a href="/View/aboutpage.php">About Lost Paws</a>
+                <a href="/View/lostandfound.php">Lost & Found</a>
+                <a href="petmap.php">Pet Map</a>
+            </div>
+        </nav>
 
-  <!-- Right-hand side of page  -->
-    <main id="main-right-signup">
-      <div class="signup-header">
-          <h2>Hello! Tell us a bit about yourself.</h2>
-      </div>
-      
-  <!-- Prompts user to input their information -->
-          <form class="auth-form-signup" id="signup-form" method="post" enctype="multipart/form-data">
+        <!-- Left-hand side of page  -->
+        <main id="main-left-signup">
+            <h1>Welcome</h1>
+            <h2>Join Our Lost Paws Community!</h2>
+        </main>
+
+        <!-- Right-hand side of page  -->
+        <main id="main-right-signup">
+            <div class="signup-header">
+                <h2>Hello! Tell us a bit about yourself.</h2>
+            </div>
+
+            <!-- Prompts user to input their information -->
+            <form class="auth-form-signup" id="signup-form" method="post" enctype="multipart/form-data">
                 <!-- First Name -->
                 <div class="signup-field">
                     <label for="firstname">First Name</label>
-                    <input type="text" name="firstname" id="firstname"/> 
-                    <span id="error-text-firstname" class="error-text hidden">Invalid first name.</span> 
-                </div>    
+                    <input type="text" name="firstname" id="firstname" />
+                    <span id="error-text-firstname"
+                        class="error-text <?php echo empty($errors['firstname']) ? 'hidden' : ''; ?>"><?php echo $errors['firstname'] ?? ''; ?></span>
+                </div>
                 <!-- Last Name -->
                 <div class="signup-field">
                     <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname" id="lastname"/> 
-                    <span id="error-text-lastname" class="error-text hidden">Invalid last name.</span> 
+                    <input type="text" name="lastname" id="lastname" />
+                    <span id="error-text-lastname"
+                        class="error-text <?php echo empty($errors['lastname']) ? 'hidden' : ''; ?>"><?php echo $errors['lastname'] ?? ''; ?></span>
                 </div>
                 <!-- Username -->
                 <div class="signup-field">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" />
-                        <span id="error-text-username" class="error-text hidden">Invalid username.</span> 
-                        <span id="error-text-username-taken" class="error-text hidden">Username already taken.</span>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" />
+                    <span id="error-text-username"
+                        class="error-text <?php echo empty($errors['username']) ? 'hidden' : ''; ?>"><?php echo $errors['username'] ?? ''; ?></span>
                 </div>
                 <!-- Email Address -->
                 <div class="signup-field">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email"/> 
-                    <span id="error-text-email" class="error-text hidden">Invalid email address.</span> 
-                    <span id="error-text-email-taken" class="error-text hidden">Email already taken.</span> 
+                    <input type="email" name="email" id="email" />
+                    <span id="error-text-email"
+                        class="error-text <?php echo empty($errors['email']) ? 'hidden' : ''; ?>"><?php echo $errors['email'] ?? ''; ?></span>
                 </div>
-            
+
                 <!-- Phone Number -->
                 <div class="signup-field">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone"/> 
-                    <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
-                    <p id="error-text-phone-taken" class="error-text hidden">Phone number already taken.</p>
+                    <input type="tel" id="phone" name="phone" />
+                    <p id="error-text-phone" class="error-text <?php echo empty($errors['phone']) ? 'hidden' : ''; ?>">
+                        <?php echo $errors['phone'] ?? ''; ?></p>
                 </div>
                 <!-- Password -->
                 <div class="signup-field">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password"/> 
-                    <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span> 
+                    <input type="password" name="password" id="password" />
+                    <span id="error-text-password"
+                        class="error-text <?php echo empty($errors['password']) ? 'hidden' : ''; ?>"><?php echo $errors['password'] ?? ''; ?></span>
                 </div>
                 <!-- Confirm Password -->
                 <div class="signup-field">
                     <label for="cpassword">Confirm Password</label>
-                    <input type="password" name="cpassword" id="cpassword"/> 
-                    <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span> 
+                    <input type="password" name="cpassword" id="cpassword" />
+                    <span id="error-text-cpassword"
+                        class="error-text <?php echo empty($errors['cpassword']) ? 'hidden' : ''; ?>"><?php echo $errors['cpassword'] ?? ''; ?></span>
                 </div>
                 <!-- Profile Photo -->
                 <div class="signup-field">
                     <label for="profile_photo">Profile Picture</label>
                     <input type="file" id="profile_photo" name="profile_photo" />
-                    <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
+                    <p id="error-text-profile_photo"
+                        class="error-text <?php echo empty($errors['profile_photo']) ? 'hidden' : ''; ?>">
+                        <?php echo $errors['profile_photo'] ?? ''; ?></p>
                 </div>
-                <!-- Submit button that redirects user to mainpage -->
+                <!-- Submit button -->
                 <div class="signup-field">
-                    <input class="signup-button" type="submit" value="Sign Up!" action="homepage.php"/>
+                    <input class="signup-button" type="submit" value="Sign Up!" />
                 </div>
             </form>
-      <!-- If user already has an account  -->
-      <div class="signup-footnote">
-          <p>Already have an account? <a id="login-button" href="/View/login.php">Login</a></p>
-      </div>
-   </main>
-  </div>
-  <script src="../Controller/eventRegisterSignup.js"></script>
+            <!-- If user already has an account  -->
+            <div class="signup-footnote">
+                <p>Already have an account? <a id="login-button" href="/View/login.php">Login</a></p>
+            </div>
+        </main>
+    </div>
+    <script src="../Controller/eventRegisterSignup.js"></script>
 </body>
 
 </html>
