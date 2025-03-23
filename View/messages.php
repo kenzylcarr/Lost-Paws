@@ -86,6 +86,7 @@ if (isset($_POST['send_message'])) {
    // Retrieve form data
   $recipient_id = $_POST['recipient'];
   $pet_status = $_POST['pet_status'];
+  $message_content = $_POST['message'];
   
 ?>
 
