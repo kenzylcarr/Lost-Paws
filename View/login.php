@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </form>
       <!-- If user does not have an account  -->
       <div class="login-footnote">
-        <p>Don't have an account? <a class="signup-button" href="signup.php">Signup</a></p>
+        <p>Don't have an account? <a id="signup-button" href="signup.php">Signup</a></p>
       </div>
     </main>
 
