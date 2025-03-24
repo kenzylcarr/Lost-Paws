@@ -305,7 +305,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
             <div id="profile" class="settings-section" style="display: block;">
               <h3>Profile Information</h3>
               <!-- Username -->
-              <form id="profile-form" method="post">
+              <form id="profile-form" action="../View/accountpage.php" method="post">
                 <label for="profile-username">Username</label>
                 <input type="text" name="username" id="profile-username" value="<?php echo htmlspecialchars($username); ?>" placeholder="Enter your username" oninput="validateUsername(this)" />
                 <p id="profile-username-error" class="error-message"></p>
