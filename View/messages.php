@@ -333,9 +333,10 @@ while ($message = $messages->fetch_assoc()) {
                 button.classList.remove('active');
             });
 
-
-
           
+            // Add 'active' class to clicked button
+            document.querySelector(`[onclick="toggleTab('${tabId}')"]`).classList.add('active');
+        }    
         </script>
 
 <!-- END LOST FOUND SWITCH TEST -->
