@@ -319,7 +319,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
               <h3>Account Settings</h3>
               <p>Update your account information here: </p>
 
-              <form id="account-settings-form" method="post">
+              <form id="account-settings-form" action="../View/accountpage.php" method="post">
                 <!-- First Name -->
                 <label for="firstname">First Name</label>
                 <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" placeholder="Enter your First Name" required oninput="validateFirstName(this)" />
@@ -369,7 +369,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
             <!-- Change Password Section -->
 			<div id="password" class="settings-section" style="display: none;">
 			  <h3>Change Password</h3>
-			  <form id="change-password-form" method="post" onsubmit="return validatePasswordChange()">
+			  <form id="change-password-form" action="../View/accountpage.php" method="post" onsubmit="return validatePasswordChange()">
 				
 				<!-- Current Password -->
 				<label for="current-password">Current Password</label>
