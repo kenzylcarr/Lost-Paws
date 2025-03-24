@@ -17,8 +17,8 @@ let map, marker;
 const reginaBounds = {
   north: 50.533,   // northernmost latitude of Regina
   south: 50.370,   // southernmost latitude of Regina
-  east: -104.419,  // easternmost longitude of Regina
-  west: -104.826   // westernmost longitude of Regina
+  east: -104.487,  // easternmost longitude of Regina
+  west: -104.758   // westernmost longitude of Regina
 };
 
 function initMap() {
