@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
             <!-- Animal Type -->
             <label for="animal_type">Animal Type:</label>
                 <select name="animal_type">
-                    <option value="cat"> <?php if ($pet['animal-type'] == 'cat') echo 'selected'; ?>>Cat</option>
+                    <option value="cat"> <?php if ($pet['animal_type'] == 'cat') echo 'selected'; ?>>Cat</option>
                     <option value="dog"> <?php if ($pet['animal_type'] == 'dog') echo 'selected'; ?>>Dog</option>
                 </select>
                 <!-- <button type="button" id="update-animal-type">Update</button> -->
