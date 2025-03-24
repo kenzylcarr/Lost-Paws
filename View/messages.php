@@ -136,7 +136,7 @@
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <script src="../Controller/eventHandler.js"></script>
 
-
+  <!-- TEST
   <script>
     // JavaScript function to toggle between tabs (Lost Pets and Found Pets)
     function toggleTab(tabId) {
@@ -166,9 +166,9 @@
       // });
     }
   </script>
+ END TEST -->
 
-
-  <!-- START TEST
+  <!-- START LOST FOUND SWITCH TEST -->
         
         <script>
           function submitPet() {
@@ -216,7 +216,7 @@
         }    
         </script>
 
-END TEST -->
+<!-- END LOST FOUND SWITCH TEST -->
   
 </head>
 
