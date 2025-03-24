@@ -178,6 +178,18 @@ if (isset($_GET['id'])) {
                     $comment_content = isset($comment['comment_content']) ? $comment['comment_content'] : null;
                     $comment_user_id = isset($comment['user_id']) ? $comment['user_id'] : null;
 
+                 // if we're editing this comment, display the update form above it
+                if (isset($_POST['edit_comment']) && $_POST['edit_comment'] == $comment_id) {
+                    echo '
+                    <div class="edit-comment">
+                        <form action="" method="post">
+                            <input type="hidden" name="comment_id" value="' . $comment_id . '">
+                            <textarea name="comment" placeholder="Edit comment">' . htmlspecialchars($comment_content) . '</textarea>
+                            <button type="submit" name="update_comment">Update</button>
+                        </form>
+                    </div>';
+                }
+                
                     echo '<div class="comment-item">';
                     echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
                     echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
