@@ -222,7 +222,9 @@
                 }
               ?>
 
-              </select><br><br>
+              </select>
+              <br>
+              <br>
               <label for="pet_status">Pet Status:</label>
               <select name="pet_status" id="pet_status" required>
                 <option value="lost">Lost</option>
