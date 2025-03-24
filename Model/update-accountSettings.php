@@ -117,7 +117,46 @@ if (isset($_POST['current-password'], $_POST['new-password'], $_POST['confirm-pa
             exit();
         }
     }
-    
-    $stmt->close();
+
+    // If there are any fields to update, perform the update query
+    if (!empty($updatedFields)) {
+        // Build the update query dynamically based on provided fields
+        $updateQuery = "UPDATE users SET ";
+        $updateParams = [];
+        $updateTypes = "";
+
+        foreach ($updatedFields as $field => $value) {
+            $updateQuery .= "$field = ?, ";
+            $updateParams[] = $value;
+            $updateTypes .= "s";  // assuming all fields are strings. Adjust as needed
+        }
+
+        // Remove the trailing comma and space
+        $updateQuery = rtrim($updateQuery, ", ");
+
+        // Add the WHERE condition
+        $updateQuery .= " WHERE user_id = ?";
+
+        // Add the user_id to the parameters
+        $updateParams[] = $user_id;
+        $updateTypes .= "i"; // "i" for integer (user_id)
+
+        // Prepare the update statement
+        $stmt = $conn->prepare($updateQuery);
+
+        // Bind the parameters
+        $stmt->bind_param($updateTypes, ...$updateParams);
+
+        // Execute the update query
+        if ($stmt->execute()) {
+            echo "Profile updated successfully.";
+        } else {
+            echo "Error updating profile: " . $stmt->error;
+        }
+
+        $stmt->close();
+    } else {
+        echo "No changes detected.";
+    }
 }
 ?>
