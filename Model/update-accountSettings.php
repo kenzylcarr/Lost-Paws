@@ -38,35 +38,55 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 
-// Handle profile update (Full Name, Email, Phone, Username)
-if (isset($_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['phone'], $_POST['username'])) {
-    $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
-    $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-    $username_new = mysqli_real_escape_string($conn, $_POST['username']);
+// Prepare an array to hold updated data
+$updatedFields = [];
 
-    // check if the new username or email already exists in the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE (username = ? OR email_address = ?) AND user_id != ?");
-    $stmt->bind_param("ssi", $username_new, $email, $user_id);
+// Handle profile update (Full Name, Email, Phone, Username)
+if (isset($_POST['first_name'])) {
+    $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
+    $updatedFields['first_name'] = $first_name;
+}
+
+if (isset($_POST['last_name'])) {
+    $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
+    $updatedFields['last_name'] = $last_name;
+}
+
+if (isset($_POST['email'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    // Check if the new email already exists in the database
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email_address = ? AND user_id != ?");
+    $stmt->bind_param("si", $email, $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "Username or email already exists. Please choose another.";
+        echo "Email already exists. Please choose another.";
         exit();
     }
 
-    // update profile info in the database
-    $stmt = $conn->prepare("UPDATE users SET first_name = ?, last_name = ?, email_address = ?, phone_number = ?, username = ? WHERE user_id = ?");
-    $stmt->bind_param("sssssi", $first_name, $last_name, $email, $phone, $username_new, $user_id);
-    
-    if ($stmt->execute()) {
-        echo "Profile updated successfully.";
-    } else {
-        echo "Error updating profile: " . $stmt->error;
+    $updatedFields['email_address'] = $email;
+}
+
+if (isset($_POST['phone'])) {
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $updatedFields['phone_number'] = $phone;
+}
+
+if (isset($_POST['username'])) {
+    $username_new = mysqli_real_escape_string($conn, $_POST['username']);
+    // Check if the new username already exists in the database
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? AND user_id != ?");
+    $stmt->bind_param("si", $username_new, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "Username already exists. Please choose another.";
+        exit();
     }
-    $stmt->close();
+
+    $updatedFields['username'] = $username_new;
 }
 
 // Handle password update (Current Password, New Password)
@@ -87,22 +107,17 @@ if (isset($_POST['current-password'], $_POST['new-password'], $_POST['confirm-pa
             if ($new_password === $confirm_password) {
                 // hash new password
                 $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
-
-                // update password
-                $stmt = $conn->prepare("UPDATE users SET password = ? WHERE user_id = ?");
-                $stmt->bind_param("si", $hashed_new_password, $user_id);
-                if ($stmt->execute()) {
-                    echo "Password updated successfully.";
-                } else {
-                    echo "Error updating password: " . $stmt->error;
-                }
+                $updatedFields['password'] = $hashed_new_password;
             } else {
                 echo "New passwords do not match.";
+                exit();
             }
         } else {
             echo "Current password is incorrect.";
+            exit();
         }
     }
+    
     $stmt->close();
 }
 ?>
