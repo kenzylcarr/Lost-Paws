@@ -211,7 +211,6 @@
                 button.classList.remove('active');
             });
 
-          
             // Add 'active' class to clicked button
             document.querySelector(`[onclick="toggleTab('${tabId}')"]`).classList.add('active');
         }    
@@ -285,15 +284,14 @@
         <!-- Sent Messages Tab Content -->
         <div id="sent-messages-tab" class="tab-content" style="display: block;">
           <div class="conversation-list">
-
-            <?php foreach ($sentMessages as $message): ?>
-              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $message[0]['message_id']; ?>')">
+          <?php while ($message = $sentMessages->fetch_assoc()): ?>
+              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $message['message_id']; ?>')">
                 <div class="conversation-header">
-                  <p><strong><?php echo htmlspecialchars($message[0]['receiver_name']); ?></strong></p>
-                  <p><small>Last message: <?php echo isset($message[0]['content']) ? htmlspecialchars($message[0]['content']) : 'No messages yet'; ?></small></p>
+                  <p><strong><?php echo htmlspecialchars($message['receiver_name']); ?></strong></p>
+                  <p><small>Last message: <?php echo isset($message['content']) ? htmlspecialchars($message['content']) : 'No messages yet'; ?></small></p>
                 </div>
               </div>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
           </div>
         </div>
 
@@ -301,14 +299,14 @@
           <div id="received-messages-tab" class="tab-content" style="display: block;">
           <div class="conversation-list">
 
-            <?php foreach ($receivedMessages as $message): ?>
-              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $message[0]['message_id']; ?>')">
+          <?php while ($message = $receivedMessages->fetch_assoc()): ?>
+              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $message['message_id']; ?>')">
                 <div class="conversation-header">
-                  <p><strong><?php echo htmlspecialchars($message[0]['sender_name']); ?></strong></p>
-                  <p><small>Last message: <?php echo isset($message[0]['content']) ? htmlspecialchars($message[0]['content']) : 'No messages yet'; ?></small></p>
+                  <p><strong><?php echo htmlspecialchars($message['sender_name']); ?></strong></p>
+                  <p><small>Last message: <?php echo isset($message['content']) ? htmlspecialchars($message['content']) : 'No messages yet'; ?></small></p>
                 </div>
               </div>
-            <?php endforeach; ?>
+            <?php endwhile; ?>
           </div>
         </div>
 
@@ -343,30 +341,28 @@
     <button class="send-reply">Send</button>
 <!-- </div> -->
 
- <!-- Message Thread for Found Pets (Conversation 1) -->
-<div class="message-thread" id="found-conversation1" style="display: none;">
-    <?php 
-    // Assuming you have a valid connection to the database
-    $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ?";
-    $stmt = $conn->prepare($messagesQuery);
-    $stmt->bind_param("i", $conversation_id); // Set conversation_id for the thread
-    $stmt->execute();
-    $messages = $stmt->get_result();
+  <!-- Message Thread for Received Messages (Conversation 1) -->
+  <div class="message-thread" id="received-conversation1" style="display: none;">
+      <?php 
+        // Assuming you have a valid connection to the database
+        $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ? AND recipient_id = ?";
+        $stmt = $conn->prepare($messagesQuery);
+        $stmt->bind_param("i", $conversation_id, $user_id); // Set conversation_id for the thread
+        $stmt->execute();
+        $messages = $stmt->get_result();
 
-while ($message = $messages->fetch_assoc()) {
-        $sender = htmlspecialchars($conversation['sender_name']);
-        $content = htmlspecialchars($conversation['content']);
-        $direction = ($conversation['sender_id'] == $user_id) ? 'sent' : 'received';
+        while ($message = $messages->fetch_assoc()) {
+          $sender = isset($message['sender_name']) ? htmlspecialchars($message['sender_name']) : 'Unknown';
+          $content = isset($message['content']) ? htmlspecialchars($message['content']) : 'No content available';
 
-  // Display the message content
-        echo "<div class='message-item $direction'>
-                  <p><strong>$sender:</strong> $content</p>
-              </div>";
-    }
-    ?>        
-    </main>
+          // Display the message content
+          echo "<div class='message-item $direction'>
+                    <p><strong>$sender:</strong> $content</p>
+                </div>";
+        }
+      ?>  
   </div>
-  </div>
-        
+  </main>
+</div>  
 </body>
 </html>
