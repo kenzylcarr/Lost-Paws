@@ -49,7 +49,7 @@ $stmt->close();
   <script src="../Controller/eventHandler.js"></script>
   <script>
     
-    // JavaScript function to toggle visibility of sections
+    // function to toggle visibility of sections
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('.settings-section');
       sections.forEach(section => {
