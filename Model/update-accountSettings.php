@@ -57,5 +57,40 @@ if (isset($_POST['fullname'], $_POST['email'], $_POST['phone'], $_POST['username
     $stmt->close();
 }
 
+// Handle password update (Current Password, New Password)
+if (isset($_POST['current-password'], $_POST['new-password'], $_POST['confirm-password'])) {
+    $current_password = mysqli_real_escape_string($conn, $_POST['current-password']);
+    $new_password = mysqli_real_escape_string($conn, $_POST['new-password']);
+    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm-password']);
 
+    // Check current password
+    $stmt = $conn->prepare("SELECT password FROM users WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user_data = $result->fetch_assoc();
+        if (password_verify($current_password, $user_data['password'])) {
+            if ($new_password === $confirm_password) {
+                // hash new password
+                $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+                // update password
+                $stmt = $conn->prepare("UPDATE users SET password = ? WHERE user_id = ?");
+                $stmt->bind_param("si", $hashed_new_password, $user_id);
+                if ($stmt->execute()) {
+                    echo "Password updated successfully.";
+                } else {
+                    echo "Error updating password: " . $stmt->error;
+                }
+            } else {
+                echo "New passwords do not match.";
+            }
+        } else {
+            echo "Current password is incorrect.";
+        }
+    }
+    $stmt->close();
+}
 ?>
