@@ -293,7 +293,7 @@ $stmt->close();
 
                 <!-- Phone Number -->
                 <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" value="" oninput="validatePhoneNumber(this)" />
+                <input type="tel" name="phone" id="phone" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" />
                 <p id="phone-error" class="error-message"></p>
 
                 <!-- Province -->
