@@ -515,24 +515,6 @@ input {
     color: #777; /* Light gray color for date */
   }
 
-  .comment-item button {
-    padding: 5px;
-    font-size: 12pt;
-    margin: 8px;
-    margin-left: 10px;
-    margin-top: -10px;
-    border-radius: 3px;
-    background-color: #dfd5ba;
-}
-
-  .comment-item textarea {
-    min-height: 50px;
-    max-height: 300px;
-    min-width: 52vw;
-    max-width: 52vw;
-    resize: none; /* to prevent manual resizing */
-  }
-
   #select-post-main-right {
     grid-column-start: 3;
     grid-column-end: 4;
@@ -652,6 +634,42 @@ border-radius: 0.3vw;
  margin-left: 10px;
  border-radius: 3px;
  background-color: #bddef5;
+}
+
+.comment-item button {
+  padding: 2px;
+  font-size: 12pt;
+  color: rgb(216, 37, 37);
+  margin: 5px;
+  margin-left: 10px;
+  border: 2px;
+  background-color: transparent; 
+  cursor: pointer; 
+  transition: all 0.3s ease; /
+}
+
+.comment-item button[name="update_comment"] {
+padding: 5px;
+font-size: 12pt;
+margin: 8px;
+margin-left: 10px;
+margin-top: -10px;
+border-radius: 3px;
+background-color: #dfd5ba;
+color: black;
+}
+
+.comment-item button:hover {
+  color: black;
+  background-color: rgb(216, 37, 37); 
+}
+
+.comment-item textarea {
+  min-height: 50px;
+  max-height: 300px;
+  min-width: 52vw;
+  max-width: 52vw;
+  resize: none; /* to prevent manual resizing */
 }
 /*   END CSS: viewpet_member.php  */   
 
