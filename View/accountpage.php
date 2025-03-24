@@ -274,10 +274,15 @@ $stmt->close();
               <p>Update your account information here: </p>
 
               <form id="account-settings-form" method="post" action="/Model/update-accountSettings.php">
-                <!-- Full Name -->
-                <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" id="fullname" value="<?php echo htmlspecialchars($user['full_name']); ?>" placeholder="Enter your Full Name" required oninput="validateFullName(this)" />
-                <p id="fullname-error" class="error-message"></p>
+                <!-- First Name -->
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name']); ?>" placeholder="Enter your First Name" required oninput="validateFullName(this)" />
+                <p id="firstname-error" class="error-message"></p>
+
+                <!-- Last Name -->
+                <label for="lastname">Last Name</label>
+                <input type="text" name="lastname" id="lastname" value="<?php echo htmlspecialchars($user['last_name']); ?>" placeholder="Enter your Last Name" required oninput="validateFullName(this)" />
+                <p id="lastname-error" class="error-message"></p>
 
                 <!-- Email Address -->
                 <label for="account-email">Email Address</label>
