@@ -258,7 +258,7 @@ $stmt->close();
             <!-- Profile Section -->
             <div id="profile" class="settings-section" style="display: block;">
               <h3>Profile Information</h3>
-              <form id="profile-form" method="post" action="save-profile.php">
+              <form id="profile-form" method="post" action="update-accountSettings.php">
                 <label for="profile-username">Username</label>
                 <input type="text" name="username" id="profile-username" placeholder="Enter your username" oninput="validateUsername(this)" />
                 <p id="profile-username-error" class="error-message"></p>
@@ -272,7 +272,7 @@ $stmt->close();
               <h3>Account Settings</h3>
               <p>Update your account information here: </p>
 
-              <form id="account-settings-form" method="post" action="save-account-settings.php">
+              <form id="account-settings-form" method="post" action="update-accountSettings.php">
                 <!-- Full Name -->
                 <label for="fullname">Full Name</label>
                 <input type="text" name="fullname" id="fullname" placeholder="Enter your Full Name" required oninput="validateFullName(this)" />
@@ -317,7 +317,7 @@ $stmt->close();
             <!-- Change Password Section -->
 			<div id="password" class="settings-section" style="display: none;">
 			  <h3>Change Password</h3>
-			  <form id="change-password-form" method="post" action="save-password.php" onsubmit="return validatePasswordChange()">
+			  <form id="change-password-form" method="post" action="update-accountSettings.php" onsubmit="return validatePasswordChange()">
 				
 				<!-- Current Password -->
 				<label for="current-password">Current Password</label>
