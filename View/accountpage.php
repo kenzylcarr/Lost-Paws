@@ -365,16 +365,6 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
                 <input type="text" name="username" id="profile-username" value="<?php echo htmlspecialchars($username); ?>" placeholder="Enter your username" oninput="validateUsername(this)" />
                 <p id="profile-username-error" class="error-message"></p>
 
-                <input type="submit" value="Save Changes" class="save-button" />
-              </form>
-            </div>
-
-            <!-- Account Section -->
-            <div id="account" class="settings-section" style="display: none;">
-              <h3>Account Settings</h3>
-              <p>Update your account information here: </p>
-
-              <form id="account-settings-form" action="../View/accountpage.php" method="post">
                 <!-- First Name -->
                 <label for="firstname">First Name</label>
                 <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" placeholder="Enter your First Name" required oninput="validateFirstName(this)" />
@@ -394,6 +384,17 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
                 <label for="phone">Phone Number</label>
                 <input type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($user['phone_number']); ?>" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" />
                 <p id="phone-error" class="error-message"></p>
+
+                <input type="submit" value="Save Changes" class="save-button" />
+              </form>
+            </div>
+
+            <!-- Account Section -->
+            <div id="account" class="settings-section" style="display: none;">
+              <h3>Account Settings</h3>
+              <p>Update your account information here: </p>
+
+              <form id="account-settings-form" action="../View/accountpage.php" method="post">
 
                 <!-- Province -->
                 <!-- <label for="province">Province</label>
