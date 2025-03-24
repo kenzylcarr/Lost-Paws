@@ -203,8 +203,6 @@
     
         <div class="user-options">
             <p><a href="/View/myposts.php">View My Posts</a></p>	
-            <!-- <p><a href="/View/accountpage.php">Account Settings</a></p>	 -->
-            <p><a href="/View/messages.php">Messages</a></p>
         </div>
       </main>
     </div>
