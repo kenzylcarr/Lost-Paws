@@ -191,7 +191,7 @@ $stmt->close();
 	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
 	
 	  if (!password.match(passwordRegex)) {
-	    errorMessage.textContent = "Password must be 6 characters, include one capital letter, and one special character.";
+	    errorMessage.textContent = "Password must contain at least 6 characters, including 1 uppercase letter and 1 special character.";
 	    input.style.borderColor = "red";
 	  } else {
 	    errorMessage.textContent = ""; // Clear error message when validation passes
