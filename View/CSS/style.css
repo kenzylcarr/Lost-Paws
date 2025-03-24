@@ -494,7 +494,7 @@ input {
   .all-comments {
     overflow-x: hidden; 
     overflow-y: scroll; 
-    max-height: 250px;
+    max-height: 350px;
   }
 
   .comment-item {
@@ -660,8 +660,8 @@ color: black;
 }
 
 .comment-item button:hover {
-  color: black;
-  background-color: rgb(216, 37, 37); 
+  color: rgb(184, 39, 39);
+  background-color: rgb(245, 237, 237); 
 }
 
 .comment-item textarea {

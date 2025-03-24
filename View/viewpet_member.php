@@ -190,10 +190,12 @@ if (isset($_GET['id'])) {
                         </form>
                     </div>';
                   } else {
+                    $comment_date = new DateTime($comment['comment_date'], new DateTimeZone('UTC'));
+                    $comment_date->setTimezone(new DateTimeZone('America/Regina'));
                     // display the comment normally if it's not being edited
                     echo '<div class="comment-item">';
                     echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
-                    echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
+                    echo '<p><em>' . date('l, F j, Y g:i A', strtotime($comment['comment_date'])) . '</em></p>';
 
                       // Show edit and delete options only for the comment owner
                       if ($comment_user_id == $user_id) {
