@@ -24,6 +24,7 @@ $password_err = "";
 $login_err = "";
 
 
+
 // Process the form when submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Validate username
