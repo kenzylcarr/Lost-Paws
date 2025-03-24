@@ -67,18 +67,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               header("location: homepage.php");
               exit();
             } else {
-              // Display error message if password is invalid and prevent user from logging in
-              $login_err = "Invalid username or password.";
+              // Invalid password
+              $_SESSION['login_err'] = "Invalid username or password.";
               header("location: login.php");
               exit();
             }
           }
         } else {
-          // Display error message if username does not exist
-          $login_err = "Invalid username.";
+          // Invalid username
+          $_SESSION['login_err'] = "Invalid username or password.";
+          header("location: login.php");
+          exit();
         }
       } else {
-        echo "Something went wrong. Please try again later.";
+        $_SESSION['login_err'] = "Something went wrong. Please try again.";
+        header("location: login.php");
+        exit();
       }
       // Close statment
       mysqli_stmt_close($stmt);
@@ -108,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo" /></p>
         </a>
       </div>
-      
+
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="aboutpage.php">About Lost Paws</a>
@@ -124,7 +128,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>L·ᴥ·st Paws</h1>
         <h2>Welcome to Lost Paws!</h2>
       </div>
-      
+
+      <!-- Show login error if exists -->
+      <?php if (!empty($login_err)): ?>
+        <div class="login-error"><?php echo $login_err; ?></div>
+      <?php endif; ?>
+
       <!-- Prompts for user input to login -->
       <form class="auth-form-login" id="login-form" action="../View/login.php" method="post">
         <h3>Login</h3>
@@ -133,14 +142,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-field">
           <label for="username">Username</label>
           <input type="text" name="username" id="username" />
-          <p id="error-text-username" class="error-text hidden">Invalid username</p>
+          <p id="error-text-username" class="error-text <?php echo empty($username_err) ? 'hidden' : ''; ?>">
+            <?php echo $username_err; ?>
+          </p>
         </div>
 
         <!-- Password -->
         <div class="login-field">
           <label for="password">Password</label>
           <input type="password" name="password" id="password" />
-          <p id="error-text-password" class="error-text hidden">Invalid password</p>
+          <p id="error-text-password" class="error-text <?php echo empty($password_err) ? 'hidden' : ''; ?>">
+            <?php echo $password_err; ?>
+          </p>
         </div>
 
         <!-- Incase of Forgotten Password
@@ -151,10 +164,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- Submit Button to Login -->
         <div class="login-field">
-          <input id="login-button" type="submit" value="Login" action="homepage.php">
+          <input id="login-button" type="submit" value="Login">
         </div>
       </form>
-      
+
       <!-- If user does not have an account  -->
       <div class="login-footnote">
         <p>Don't have an account? <a id="signup-button" href="signup.php">Signup</a></p>
@@ -166,13 +179,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <!-- <div class="login-image1"> 
         <img src="images/PawPrints.png" alt="Paw Prints">
       </div> -->
-      <div class="login-image2"> 
+      <div class="login-image2">
         <img src="images/DogStack.png" alt="Stack of Dogs">
       </div>
     </main>
-    
+
     <script src="../Controller/eventRegisterLogin.js"></script>
-  
+
   </div>
 </body>
 
