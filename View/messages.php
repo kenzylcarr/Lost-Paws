@@ -136,39 +136,7 @@
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <script src="../Controller/eventHandler.js"></script>
 
-  <!-- TEST
-  <script>
-    // JavaScript function to toggle between tabs (Lost Pets and Found Pets)
-    function toggleTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.style.display = (tab.id === tabId) ? 'block' : 'none';
-      });
-      // tabs.forEach(tab => {
-      //   if (tab.id === tabId) {
-      //     tab.style.display = 'block';
-      //   } else {
-      //     tab.style.display = 'none';
-      //   }
-      // });
-    }
-
-    // JavaScript function to toggle conversation threads
-    function toggleConversation(conversationId) {
-      document.querySelectorAll('.message-thread').forEach(thread => {
-        thread.style.display = (thread.id === conversationId) ? (thread.style.display === 'none' ? 'block' : 'none') : 'none';
-      });
-      // threads.forEach(thread => {
-      //   if (thread.id === conversationId) {
-      //     thread.style.display = thread.style.display === 'none' ? 'block' : 'none';
-      //   } else {
-      //     thread.style.display = 'none';
-      //   }
-      // });
-    }
-  </script>
- END TEST -->
-
-  <!-- START LOST FOUND SWITCH TEST -->
+  <!-- START SENT RECEIVED SWITCH TEST -->
         
   <script>
           function submitPet() {
@@ -216,7 +184,7 @@
         }    
         </script>
 
-<!-- END LOST FOUND SWITCH TEST -->
+<!-- END SENT RECEIVED SWITCH TEST -->
   
 </head>
 
