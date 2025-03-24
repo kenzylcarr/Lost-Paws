@@ -80,11 +80,9 @@ function usernameHandler(event) {
 
     // check if the username already exists in the database
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../Model/register.php", true);
+    xhr.open("POST", "register.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function() {
-    try {
-      const response = JSON.parse(xhr.responseText);
       if (xhr.status === 200) {
         let response = JSON.parse(xhr.responseText);
         if (response.usernameTaken) {
@@ -94,13 +92,7 @@ function usernameHandler(event) {
         } else {
           usernameTakenError.classList.add("hidden");
         }
-      } else {
-        alert('Error:' + xhr.statusText);
       }
-    } catch (e) {
-      console.error('Error parsing JSON:', e);
-      alert('Server returned an error' + xhr.responseText);
-    }
     };
     xhr.send("username=" + encodeURIComponent(username.value));
   }
@@ -112,30 +104,8 @@ function emailHandler(event) {
 
   if (!validateEmail(email.value)) {
     console.log("'" + email.value + "' is not a valid email address");
-    email.classList.add('error-border');
-    emailTakenError.classList.add("hidden");
   } else {
     console.log("'" + email.value + "' is a valid email address");
-
-  // AJAX request
-  let xhr = new XMLHttpRequest();
-    xhr.open("POST", "../Model/register.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onload = function() {
-      if (xhr.status == 200) {
-        let response = JSON.parse(xhr.responseText);
-
-        if (response.emailTaken) {
-          console.log("Email is already taken.");
-          email.classList.add('error-border');
-          emailTakenError.classList.remove("hidden");
-        } else {
-          email.classList.remove('error-border');
-          emailTakenError.classList.add("hidden");
-        }
-      }
-    };
-    xhr.send("email=" + encodeURIComponent(email.value));
   }
 }
 
@@ -148,22 +118,10 @@ function phoneHandler(event) {
   } else {
       // AJAX request
       let xhr = new XMLHttpRequest();
-      xhr.open("POST", "../Model/register.php", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      xhr.onload = function() {
-        if (xhr.status == 200) {
-          let response = JSON.parse(xhr.responseText);
-        if (response.phoneTaken) {
-          console.log("Phone number is already taken.");
-          phone.classList.add('error-border');
-          document.getElementById("error-text-phone-taken").classList.remove("hidden");
-        } else {
-          document.getElementById("error-text-phone-taken").classList.add("hidden");
-        }
-      }
-    };
-    xhr.send("phone=" + encodeURIComponent(phone.value));
-  }
+      xhr.open("POST", "register.php", true)
+      phone.classList.remove("error-border");
+      document.getElementById("error-text-phone");
+    }
 }
 
 function passwordHandler(event) {
