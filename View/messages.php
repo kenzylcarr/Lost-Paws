@@ -169,17 +169,6 @@
  END TEST -->
 
   <!-- START LOST FOUND SWITCH TEST -->
-        
-        <script>
-          function submitPet() {
-            // Get values from the form
-            let petStatus = document.getElementById("petStatus").value;
-            let petMessage = document.getElementById("petMessage").value.trim();
-
-            if (petMessage === "") {
-                alert("Please enter a message.");
-                return;
-            }
 
             // Create a new list item
             let listItem = document.createElement("li");
