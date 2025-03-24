@@ -273,7 +273,7 @@ $stmt->close();
             <!-- Account Section -->
             <div id="account" class="settings-section" style="display: none;">
               <h3>Account Settings</h3>
-              <p>Here you can update your account settings.</p>
+              <p>Update your account information here: </p>
 
               <form id="account-settings-form" method="post" action="save-account-settings.php">
                 <!-- Full Name -->
