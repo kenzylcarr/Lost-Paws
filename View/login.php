@@ -108,6 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo" /></p>
         </a>
       </div>
+      
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="aboutpage.php">About Lost Paws</a>
@@ -123,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>L·ᴥ·st Paws</h1>
         <h2>Welcome to Lost Paws!</h2>
       </div>
+      
       <!-- Prompts for user input to login -->
       <form class="auth-form-login" id="login-form" action="../View/login.php" method="post">
         <h3>Login</h3>
@@ -152,6 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <input id="login-button" type="submit" value="Login" action="homepage.php">
         </div>
       </form>
+      
       <!-- If user does not have an account  -->
       <div class="login-footnote">
         <p>Don't have an account? <a id="signup-button" href="signup.php">Signup</a></p>
@@ -167,7 +170,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img src="images/DogStack.png" alt="Stack of Dogs">
       </div>
     </main>
+    
     <script src="../Controller/eventRegisterLogin.js"></script>
+  
   </div>
 </body>
 
