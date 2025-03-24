@@ -118,8 +118,8 @@
 <head>
   <title>Messages</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
-  <link rel="stylesheet" type="text/css" href="/View/CSS/messages-style.css">
   <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/messages-style.css">
 
   <script src="../Controller/eventHandler.js"></script>
 
@@ -191,22 +191,8 @@
       </div>
     </nav>
 
-    <main id="mainpage-right-afterlogin">
-        <div class="user-photo">
-          <img src="../View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
-        </div>
-    
-        <div class="user-name">
-          <p><?php echo htmlspecialchars($first_name ?? '', ENT_QUOTES, 'UTF-8') . ' ' . htmlspecialchars($last_name ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
-          <p><?php echo htmlspecialchars($username); ?></p>
-        </div>
-    
-        <div class="user-options">
-            <p><a href="/View/myposts.php">View My Posts</a></p>	
-        </div>
-      </main>
-    </div>
 
+    <div class="messages-layout">
     <main id="messages-main">
       <div class="messages-container">
         <h1>Your Messages</h1>
@@ -236,7 +222,9 @@
                 }
               ?>
 
-              </select><br><br>
+              </select>
+              <br>
+              <br>
               <label for="pet_status">Pet Status:</label>
               <select name="pet_status" id="pet_status" required>
                 <option value="lost">Lost</option>
@@ -305,13 +293,13 @@
         <button class="send-reply">Send</button>
       </div>
 
-    <!-- Input Box to Send Message -->
-    <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
-    <button class="send-reply">Send</button>
-<!-- </div> -->
+        <!-- Input Box to Send Message -->
+        <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
+        <button class="send-reply">Send</button>
+        <!-- </div> -->
 
-  <!-- Message Thread for Received Messages (Conversation 1) -->
-  <div class="message-thread" id="received-conversation1" style="display: none;">
+      <!-- Message Thread for Received Messages (Conversation 1) -->
+      <div class="message-thread" id="received-conversation1" style="display: none;">
       <?php 
         // Assuming you have a valid connection to the database
         $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ? AND recipient_id = ?";
@@ -330,8 +318,26 @@
                 </div>";
         }
       ?>  
-  </div>
-  </main>
+    </div>
+    </main>
+
+      <div id="mainpage-right-afterlogin" style="min-height: 90vh;">
+        <div class="user-photo">
+          <img src="../View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+        </div>
+    
+        <div class="user-name">
+          <p><?php echo htmlspecialchars($first_name ?? '', ENT_QUOTES, 'UTF-8') . ' ' . htmlspecialchars($last_name ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+          <p><?php echo htmlspecialchars($username); ?></p>
+        </div>
+    
+        <div class="user-options">
+            <p><a href="/View/myposts.php">View My Posts</a></p>	
+        </div>
+      </div>
+      </div>
+    </div>
+
 </div>  
 </body>
 </html>

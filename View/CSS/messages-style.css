@@ -11,6 +11,13 @@
 
 /* START CSS FOR messages.php */
 
+.messages-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
 .messages-page .logo {
     display: flex;
     align-items: center;
@@ -39,6 +46,8 @@
     flex-grow: 1; /* Push the footer down */
     padding-top: 80px;
     padding-left: 10px;
+    max-width: 1000px;
+    margin-left: 50px;
   }
   
   .messages-page .settings-page footer {

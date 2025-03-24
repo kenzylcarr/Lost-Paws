@@ -49,7 +49,7 @@ $stmt->close();
   <script src="../Controller/eventHandler.js"></script>
   <script>
     
-    // JavaScript function to toggle visibility of sections
+    // Function to toggle visibility of sections
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('.settings-section');
       sections.forEach(section => {
@@ -174,7 +174,7 @@ $stmt->close();
 	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
 	
 	  if (!password.match(passwordRegex)) {
-	    errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	    errorMessage.textContent = "Password must contain at least 6 characters, including 1 uppercase letter and 1 special character.";
 	    input.style.borderColor = "red";
 	  } else {
 	    errorMessage.textContent = ""; // Clear error message when validation passes
@@ -191,7 +191,7 @@ $stmt->close();
 	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
 	
 	  if (!password.match(passwordRegex)) {
-	    errorMessage.textContent = "Password must be 6 characters, include one capital letter, and one special character.";
+	    errorMessage.textContent = "Password must contain at least 6 characters, including 1 uppercase letter and 1 special character.";
 	    input.style.borderColor = "red";
 	  } else {
 	    errorMessage.textContent = ""; // Clear error message when validation passes
@@ -274,17 +274,12 @@ $stmt->close();
               <form id="account-settings-form" method="post" action="save-account-settings.php">
                 <!-- Full Name -->
                 <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" id="fullname" value="" required oninput="validateFullName(this)" />
+                <input type="text" name="fullname" id="fullname" placeholder="Enter your Full Name" required oninput="validateFullName(this)" />
                 <p id="fullname-error" class="error-message"></p>
-
-                <!-- Username -->
-                <label for="account-username">Username</label>
-                <input type="text" name="username" id="account-username" value="" required oninput="validateUsername(this)" />
-                <p id="account-username-error" class="error-message"></p>
 
                 <!-- Email Address -->
                 <label for="account-email">Email Address</label>
-                <input type="email" name="email" id="account-email" value="" required oninput="validateEmail(this)" />
+                <input type="email" name="email" id="account-email" placeholder="Enter your email address" required oninput="validateEmail(this)" />
                 <p id="account-email-error" class="error-message"></p>
 
                 <!-- Phone Number -->
@@ -325,17 +320,20 @@ $stmt->close();
 				
 				<!-- Current Password -->
 				<label for="current-password">Current Password</label>
-				<input type="password" name="current-password" id="current-password" required oninput="validateCurrentPassword(this)" />
+				<input type="password" name="current-password" id="current-password" required placeholder="Enter your current password" oninput="validateCurrentPassword(this)" />
+				<button type="button" class="password-toggle" onclick="togglePasswordVisibility('current-password')">view</button>
 				<p id="current-password-error" class="error-message"></p>
 
 				<!-- New Password -->
 				<label for="new-password">New Password</label>
-				<input type="password" name="new-password" id="new-password" required oninput="validatePassword(this)" />
+				<input type="password" name="new-password" id="new-password" required placeholder="Enter your new password" oninput="validatePassword(this)" />
+				<button type="button" class="password-toggle" onclick="togglePasswordVisibility('new-password')">view</button>
 				<p id="new-password-error" class="error-message"></p>
 
 				<!-- Confirm New Password -->
 				<label for="confirm-password">Confirm New Password</label>
-				<input type="password" name="confirm-password" id="confirm-password" required oninput="validateConfirmPassword(this)" />
+				<input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm your new password" oninput="validateConfirmPassword(this)" />
+				<button type="button" class="password-toggle" onclick="togglePasswordVisibility('confirm-password')">view</button>
 				<p id="confirm-password-error" class="error-message"></p>
 
 				<input type="submit" value="Save Changes" class="save-button" />
@@ -349,6 +347,21 @@ $stmt->close();
 		<br>
               <button class="delete-button">Delete Account</button>
             </div>
+
+	<!-- Password visibility -->
+	<script>
+	function togglePasswordVisibility(inputId) {
+	    var inputField = document.getElementById(inputId);
+	    var currentType = inputField.type;
+	
+	    // Toggle between 'password' and 'text'
+	    if (currentType === "password") {
+	        inputField.type = "text"; // Show password
+	    } else {
+	        inputField.type = "password"; // Hide password
+	    }
+	}
+	</script>
 			
           </section>
         
