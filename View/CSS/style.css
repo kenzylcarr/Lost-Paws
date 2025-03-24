@@ -494,7 +494,7 @@ input {
   .all-comments {
     overflow-x: hidden; 
     overflow-y: scroll; 
-    max-height: 250px;
+    max-height: 350px;
   }
 
   .comment-item {
