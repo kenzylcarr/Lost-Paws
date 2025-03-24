@@ -306,6 +306,11 @@ while ($message = $messages->fetch_assoc()) {
             // Create a new list item
             let listItem = document.createElement("li");
             listItem.textContent = petMessage;
+
+            // Append to the correct list
+            if (petStatus === "lost") {
+                document.getElementById("lostList").appendChild(listItem);
+            } 
           
         </script>
 
