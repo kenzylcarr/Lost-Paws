@@ -320,6 +320,11 @@ while ($message = $messages->fetch_assoc()) {
 
            // Function to toggle between Lost & Found tabs
         function toggleTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+
 
           
         </script>
