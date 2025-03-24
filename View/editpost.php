@@ -59,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
   }
 
   $pet_id = intval($_GET['id']);
-  $username = $_SESSION['username'];
 
   // Fetch user information
   $stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
@@ -82,22 +81,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
 
   $pet = $result->fetch_assoc();
 
-  // Handle form submission
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $animal_type = $_POST['animal_type'];
-    $status = $_POST['status'];
-    $location_ip = $_POST['location_ip'];
-
-    $stmt = $conn->prepare("UPDATE pets SET animal_type = ?, status = ?, location_ip = ? WHERE pet_id = ? AND user_id = ?");
-    $stmt->bind_param("sssii", $animal_type, $status, $location_ip, $pet_id, $user_id);
-
-    if ($stmt->execute()) {
-        header("Location: myposts.php");
-        exit();
-    } else {
-        echo "Error updating pet post.";
-    }
-  }
+//   // Handle form submission
+//   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $animal_type = $_POST['animal_type'];
+//     $status = $_POST['status'];
+//     $location_ip = $_POST['location_ip'];
+// 
+//     $stmt = $conn->prepare("UPDATE pets SET animal_type = ?, status = ?, location_ip = ? WHERE pet_id = ? AND user_id = ?");
+//     $stmt->bind_param("sssii", $animal_type, $status, $location_ip, $pet_id, $user_id);
+// 
+//     if ($stmt->execute()) {
+//         header("Location: myposts.php");
+//         exit();
+//     } else {
+//         echo "Error updating pet post.";
+//     }
+//   }
 ?>
 
 <!DOCTYPE html>
@@ -133,41 +132,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
 
     <main id="lost-found-database">
         <div class="pet-database-container"> 
-        <form method="POST" enctype="multipart/form-data">
-
-	    <div class="input-box">
-        <form id="edit-post-form">
+        <div class="input-box">
+        <form id="edit-post-form" method="POST" enctype="multipart/form-data">
             <!-- Animal Type -->
             <label for="animal_type">Animal Type:</label>
-                <select name="animal_type">
-                    <option value="cat"> <?php if ($pet['animal_type'] == 'cat'); ?>Cat</option>
-                    <option value="dog"> <?php if ($pet['animal_type'] == 'dog'); ?>Dog</option>
-                </select>
-                <!-- <button type="button" id="update-animal-type">Update</button> -->
-                <button type="button" onclick="updateField('animal_type')">Update</button>
+              <select name="animal_type">
+                  <option value="cat"> <?php if ($pet['animal_type'] == 'cat'); ?>Cat</option>
+                  <option value="dog"> <?php if ($pet['animal_type'] == 'dog'); ?>Dog</option>
+              </select>
+              <!-- <button type="button" id="update-animal-type">Update</button> -->
+              <button type="button" onclick="updateField('animal_type')">Update</button>
 
-                <!-- Status -->
-                <label for="status">Status:</label>
-                <select name="status">
-                    <option value="lost"> <?php if ($pet['status'] == 'lost'); ?>Lost</option>
-                    <option value="found"> <?php if ($pet['status'] == 'found'); ?>Found</option>
-                </select>
-                <button type="button" onclick="updateField('status')">Update</button>
+              <!-- Status -->
+              <label for="status">Status:</label>
+              <select name="status">
+                  <option value="lost"> <?php if ($pet['status'] == 'lost'); ?>Lost</option>
+                  <option value="found"> <?php if ($pet['status'] == 'found'); ?>Found</option>
+              </select>
+              <button type="button" onclick="updateField('status')">Update</button>
 
-                <!-- Location IP -->
-                <label for="location_ip">Location Name:</label>
-                <input type="text" id="location_ip" value="<?php echo htmlspecialchars($pet['location_ip']); ?>">
-                <button type="button" onclick="updateField('location_ip')">Update</button>
+              <!-- Location IP -->
+              <label for="location_ip">Location Name:</label>
+              <input type="text" id="location_ip" value="<?php echo htmlspecialchars($pet['location_ip']); ?>">
+              <button type="button" onclick="updateField('location_ip')">Update</button>
 
-                <!-- Animal Photo -->
-                <label for="pet_photo">Upload Animal Photo:</label>
-                <input type="file" id="pet_photo" name="pet_photo[]" multiple>
-                <button type="button" id="update-photo">Update</button>
-          </form>
+              <!-- Animal Photo -->
+              <label for="pet_photo">Upload Animal Photo:</label>
+              <input type="file" id="pet_photo" name="pet_photo[]" multiple>
+              <button type="button" id="update-photo">Update</button>
+      </form>
 	    </div>    
-            </form>
-        </div>
-      </main>
+      </div>
+    </main>
 
       <main id="mainpage-right-afterlogin">
         <div class="user-photo">
