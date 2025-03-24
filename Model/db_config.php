@@ -31,6 +31,10 @@ try {
         if (!$conn) {
             die("Database connection failed: " . mysqli_connect_error());
         }
+
+         // Set the time zone to Regina (UTC -6)
+         mysqli_query($conn, "SET time_zone = '-06:00'");
+
         // echo "Database connection successful!<br>";
     } catch (Exception $e) {
         die("Database connection failed: " . $e->getMessage());
