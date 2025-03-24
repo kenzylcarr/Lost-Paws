@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
     exit();
   }
 
-  $stmt = $conn->prepare("UPDATE pets SET $field = ? WHERE pet_id ? AND user_id = ?");
+  $stmt = $conn->prepare("UPDATE pets SET $field = ? WHERE pet_id = ? AND user_id = ?");
   $stmt->bind_param("sii", $value, $pet_id, $user_id);
 
   if ($stmt->execute()) {
@@ -133,14 +133,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
 
     <main id="lost-found-database">
         <div class="pet-database-container"> 
-            <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
 
 	    <div class="input-box">
         <form id="edit-post-form">
             <!-- Animal Type -->
             <label for="animal_type">Animal Type:</label>
                 <select name="animal_type">
-                    <option value="cat"> <?php if ($pet['animall-type'] == 'cat') echo 'selected'; ?>>Cat</option>
+                    <option value="cat"> <?php if ($pet['animal-type'] == 'cat') echo 'selected'; ?>>Cat</option>
                     <option value="dog"> <?php if ($pet['animal_type'] == 'dog') echo 'selected'; ?>>Dog</option>
                 </select>
                 <!-- <button type="button" id="update-animal-type">Update</button> -->
@@ -188,14 +188,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
     <script>
       function updateField(fieldName) {
         let petId = <?php echo $pet_id; ?>;
-        let newValue = document.getElementById('[name="${fieldName}"]`).value;
+        let newValue = document.querySelector(`[name="${fieldName}"]`).value;
 
         fetch('editpost.php', {
-          method: 'POST';
+          method: 'POST',
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
-          body: 'field=${fieldName}&value=${encodedURICompoennet(newValue)}&pet_id=${petId}`
+          body: 'field=${fieldName}&value=${encodedURIComponent(newValue)}&pet_id=${petId}`
         })
         .then(response => response.text())
         .then(data => {
