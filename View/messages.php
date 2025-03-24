@@ -328,6 +328,12 @@ while ($message = $messages->fetch_assoc()) {
            // Show the selected tab
             document.getElementById(tabId).style.display = 'block';
 
+           // Remove 'active' class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+
 
           
         </script>
