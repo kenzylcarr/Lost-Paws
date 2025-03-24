@@ -302,6 +302,10 @@ while ($message = $messages->fetch_assoc()) {
                 alert("Please enter a message.");
                 return;
             }
+
+            // Create a new list item
+            let listItem = document.createElement("li");
+            listItem.textContent = petMessage;
           
         </script>
 
