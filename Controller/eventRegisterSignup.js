@@ -83,6 +83,8 @@ function usernameHandler(event) {
     xhr.open("POST", "../Model/register.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function() {
+    try {
+      const response = JSON.parse(xhr.responseText);
       if (xhr.status === 200) {
         let response = JSON.parse(xhr.responseText);
         if (response.usernameTaken) {
@@ -92,7 +94,13 @@ function usernameHandler(event) {
         } else {
           usernameTakenError.classList.add("hidden");
         }
+      } else {
+        alert('Error:' + xhr.statusText);
       }
+    } catch (e) {
+      console.error('Error parsing JSON:', e);
+      alert('Server returned an error' + xhr.responseText);
+    }
     };
     xhr.send("username=" + encodeURIComponent(username.value));
   }
