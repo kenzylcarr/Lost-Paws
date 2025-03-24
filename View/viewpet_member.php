@@ -178,31 +178,33 @@ if (isset($_GET['id'])) {
                     $comment_content = isset($comment['comment_content']) ? $comment['comment_content'] : null;
                     $comment_user_id = isset($comment['user_id']) ? $comment['user_id'] : null;
 
-                 // if we're editing this comment, display the update form above it
-                if (isset($_POST['edit_comment']) && $_POST['edit_comment'] == $comment_id) {
+                  // check if the user is editing this specific comment
+                  if (isset($_POST['edit_comment']) && $_POST['edit_comment'] == $comment_id) {
+                    // If editing, display the comment as a text area for editing
                     echo '
-                    <div class="edit-comment">
+                    <div class="comment-item">
                         <form action="" method="post">
                             <input type="hidden" name="comment_id" value="' . $comment_id . '">
-                            <textarea name="comment" placeholder="Edit comment">' . htmlspecialchars($comment_content) . '</textarea>
+                            <textarea name="comment" placeholder="Edit your comment">' . htmlspecialchars($comment_content) . '</textarea>
                             <button type="submit" name="update_comment">Update</button>
                         </form>
                     </div>';
-                }
-                
+                  } else {
+                    // display the comment normally if it's not being edited
                     echo '<div class="comment-item">';
                     echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
                     echo '<p><em>' . htmlspecialchars($comment['comment_date']) . '</em></p>';
-      
-                    // Show edit and delete options only for the comment owner
-                    if ($comment_user_id == $user_id) {
-                      echo '<form action="" method="post">
-                              <input type="hidden" name="comment_id" value="' . $comment_id . '">
-                              <button type="submit" name="delete_comment">Delete</button>
-                              <button type="submit" name="edit_comment" value="' . $comment_id . '">Edit</button>
-                            </form>';
+
+                      // Show edit and delete options only for the comment owner
+                      if ($comment_user_id == $user_id) {
+                        echo '<form action="" method="post">
+                                <input type="hidden" name="comment_id" value="' . $comment_id . '">
+                                <button type="submit" name="delete_comment">Delete</button>
+                                <button type="submit" name="edit_comment" value="' . $comment_id . '">Edit</button>
+                              </form>';
+                      }
+                      echo '</div>';
                     }
-                    echo '</div>';
                   }
                 } else {
                   echo '<p>No comments yet.</p>';
