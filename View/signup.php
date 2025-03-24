@@ -200,6 +200,7 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <span id="error-text-firstname"
                         class="error-text <?php echo empty($errors['firstname']) ? 'hidden' : ''; ?>"><?php echo $errors['firstname'] ?? ''; ?></span>
                 </div>
+                
                 <!-- Last Name -->
                 <div class="signup-field">
                     <label for="lastname">Last Name</label>
@@ -207,6 +208,7 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <span id="error-text-lastname"
                         class="error-text <?php echo empty($errors['lastname']) ? 'hidden' : ''; ?>"><?php echo $errors['lastname'] ?? ''; ?></span>
                 </div>
+                
                 <!-- Username -->
                 <div class="signup-field">
                     <label for="username">Username</label>
@@ -217,6 +219,7 @@ echo "Execution time: " . $execution_time . " seconds.";
                         <?php echo $errors['username_taken'] ?? ''; ?>
                     </div>
                 </div>
+                
                 <!-- Email Address -->
                 <div class="signup-field">
                     <label for="email">Email</label>
@@ -238,6 +241,7 @@ echo "Execution time: " . $execution_time . " seconds.";
                         <?php echo $errors['phone_taken'] ?? ''; ?>
                     </div>
                 </div>
+                
                 <!-- Password -->
                 <div class="signup-field">
                     <label for="password">Password</label>
@@ -245,6 +249,7 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <span id="error-text-password"
                         class="error-text <?php echo empty($errors['password']) ? 'hidden' : ''; ?>"><?php echo $errors['password'] ?? ''; ?></span>
                 </div>
+                
                 <!-- Confirm Password -->
                 <div class="signup-field">
                     <label for="cpassword">Confirm Password</label>
@@ -252,6 +257,7 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <span id="error-text-cpassword"
                         class="error-text <?php echo empty($errors['cpassword']) ? 'hidden' : ''; ?>"><?php echo $errors['cpassword'] ?? ''; ?></span>
                 </div>
+                
                 <!-- Profile Photo -->
                 <div class="signup-field">
                     <label for="profile_photo">Profile Picture</label>
@@ -260,11 +266,13 @@ echo "Execution time: " . $execution_time . " seconds.";
                         class="error-text <?php echo empty($errors['profile_photo']) ? 'hidden' : ''; ?>">
                         <?php echo $errors['profile_photo'] ?? ''; ?></p>
                 </div>
+                
                 <!-- Submit button -->
                 <div class="signup-field">
                     <input class="signup-button" type="submit" value="Sign Up!" />
                 </div>
             </form>
+            
             <!-- If user already has an account  -->
             <div class="signup-footnote">
                 <p>Already have an account? <a id="login-button" href="/View/login.php">Login</a></p>
