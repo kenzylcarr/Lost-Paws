@@ -123,12 +123,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       mysqli_stmt_close($stmt);
     }
-  } else {
-    // Display validation errors
-    if (!empty($username_err)) echo $username_err . "<br>";
-    if (!empty($email_err)) echo $email_err . "<br>";
-    if (!empty($phone_err)) echo $phone_err . "<br>";
-    if (!empty($password_err)) echo $password_err . "<br>";
+  // } else {
+  //   // Display validation errors
+  //   if (!empty($username_err)) echo $username_err . "<br>";
+  //   if (!empty($email_err)) echo $email_err . "<br>";
+  //   if (!empty($phone_err)) echo $phone_err . "<br>";
+  //   if (!empty($password_err)) echo $password_err . "<br>";
   }
 }
 mysqli_close($conn);

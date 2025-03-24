@@ -25,12 +25,6 @@ try {
     $dbname = $_ENV['DB_NAME'];
     $username = $_ENV['DB_USERNAME'];
     $password = $_ENV['DB_PASSWORD'];
-
-    // Debug output
-    // echo "Attempting to connect to database:<br>";
-    // echo "Host: " . $host . "<br>";
-    // echo "Database: " . $dbname . "<br>";
-    // echo "Username: " . $username . "<br>";
     
     try {
         $conn = mysqli_connect($host, $username, $password, $dbname);
