@@ -36,7 +36,7 @@
     echo "User not found.";
     exit();
   }
-  
+
   try {
     // Fetch conversation where the user is either the sender or receiver
     $query = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
@@ -223,7 +223,7 @@
         </div>
     
         <div class="user-name">
-          <p><?php echo htmlspecialchars($first_name) . ' ' . htmlspecialchars($last_name); ?></p>
+          <p><?php echo htmlspecialchars($first_name ?? '', ENT_QUOTES, 'UTF-8') . ' ' . htmlspecialchars($last_name ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
           <p><?php echo htmlspecialchars($username); ?></p>
         </div>
     
