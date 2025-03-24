@@ -169,7 +169,29 @@
  END TEST -->
 
   <!-- START LOST FOUND SWITCH TEST -->
-<!-- 
+        
+  <script>
+          function submitPet() {
+            // Get values from the form
+            let petStatus = document.getElementById("petStatus").value;
+            let petMessage = document.getElementById("petMessage").value.trim();
+
+            if (petMessage === "") {
+                alert("Please enter a message.");
+                return;
+            }
+
+            // Create a new list item
+            let listItem = document.createElement("li");
+            listItem.textContent = petMessage;
+
+            // Append to the correct list
+            if (petStatus === "lost") {
+                document.getElementById("lostList").appendChild(listItem);
+            } else {
+                document.getElementById("foundList").appendChild(listItem);
+            }
+
             // Clear the message box after submission
             document.getElementById("petMessage").value = "";
         }
@@ -192,7 +214,7 @@
             // Add 'active' class to clicked button
             document.querySelector(`[onclick="toggleTab('${tabId}')"]`).classList.add('active');
         }    
-        </script> -->
+        </script>
 
 <!-- END LOST FOUND SWITCH TEST -->
   
