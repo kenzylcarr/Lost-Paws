@@ -43,7 +43,7 @@ $stmt->close();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
   $newUsername = trim($_POST['username']);
 
-  // Validate username (same as JavaScript validation)
+  // Validate username
   if (empty($newUsername)) {
       echo "<p class='error-message'>Username cannot be empty.</p>";
   } elseif (!preg_match("/^[A-Za-z0-9]+$/", $newUsername)) {
@@ -56,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
       if ($stmt->execute()) {
           // Update session username if successful
           $_SESSION['username'] = $newUsername;
+          header("Location: accountpage.php");
+          exit();
           echo "<p class='success-message'>Username updated successfully!</p>";
       } else {
           echo "<p class='error-message'>Error updating username. Please try again.</p>";
@@ -63,6 +65,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
 
       $stmt->close();
   }
+
+
+// Handle form submission for first name and last name update
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Collect and sanitize form inputs
+  $new_firstname = trim($_POST['firstname']);
+  $new_lastname = trim($_POST['lastname']);
+  
+  // Validate first name and last name (only letters and spaces allowed)
+  if (!empty($new_firstname) && preg_match("/^[A-Za-z]+(?:\s[A-Za-z]+)*$/", $new_firstname) &&
+      !empty($new_lastname) && preg_match("/^[A-Za-z]+(?:\s[A-Za-z]+)*$/", $new_lastname)) {
+      
+      // Prepare and execute the query to update the first name and last name in the database
+      $stmt = $conn->prepare("UPDATE users SET first_name = ?, last_name = ? WHERE user_id = ?");
+      $stmt->bind_param("ssi", $new_firstname, $new_lastname, $_SESSION['user_id']);
+      
+      if ($stmt->execute()) {
+          // Redirect to reload the page with updated information
+          $_SESSION['first_name'] = $new_firstname;
+          $_SESSION['last_name'] = $new_lastname;
+          header("Location: accountpage.php");
+          exit();
+      } else {
+          echo "Error updating name information.";
+      }
+      $stmt->close();
+  } else {
+      echo "Invalid name format.";
+  }
+}
 }
 ?>
 
