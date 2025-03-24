@@ -6,7 +6,7 @@
             Makenzy Laursen-Carr (mil979 - 200504296), 
             Kaira Molano (kvm406 - 200447526), 
             Fatima Rizwan (frf706 - 200446702)
-  File name: petmap.php
+  File name: petmap-user.php
 -->
 
 <!-- PHP validation for the form begins -->
@@ -85,13 +85,11 @@ mysqli_close($conn);
 
       <!-- Navigation menu -->
       <div class="nav-links">
-        <a href="aboutpage.php">About Lost Paws</a>
-        <a href="lostandfound.php">Lost & Found</a>
+        <a href="homepage.php">Homepage</a>
       </div>
 
       <div class="button">
-        <a href="/View/login.php" id="login-button">Login</a>
-        <a href="/View/signup.php" id="signup-button">Sign up!</a>
+        <a href="/View/login.php" id="login-button">Logout</a>
       </div>
     </nav>
 	

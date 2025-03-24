@@ -30,7 +30,7 @@
       <!-- Navigation menu -->
       <div class="nav-links">
         <a href="/View/lostandfound.php">Lost & Found</a>
-        <a href="/View/petmap.php">Pet Map</a>
+        <a href="/View/petmap-visitor.php">Pet Map</a>
       </div>
 
       <div class="button">
