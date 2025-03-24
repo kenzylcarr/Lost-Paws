@@ -285,10 +285,18 @@ while ($message = $messages->fetch_assoc()) {
                   <p><strong>$sender:</strong> $content</p>
               </div>";
     }
-    ?>
-        
+    ?>        
     </main>
   </div>
   </div>
+
+<!-- START LOST FOUND SWITCH TEST -->
+        
+        <script>
+          
+        </script>
+
+<!-- END LOST FOUND SWITCH TEST -->
+        
 </body>
 </html>
