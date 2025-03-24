@@ -212,7 +212,7 @@
               <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
                 <div class="conversation-header">
                   <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
-                  <p><small>Last message: <?php echo isset($conversation[0]['content']) ? htmlspecialchars($converation[0]['content']) : 'No messages yet'; ?></small></p>
+                  <p><small>Last message: <?php echo isset($conversation[0]['content']) ? htmlspecialchars($conversation[0]['content']) : 'No messages yet'; ?></small></p>
                 </div>
               </div>
             <?php endforeach; ?>
