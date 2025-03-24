@@ -23,6 +23,7 @@ $username_err = "";
 $password_err = "";
 $login_err = "";
 
+
 // Process the form when submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Validate username
@@ -142,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Username -->
         <div class="login-field">
           <label for="username">Username</label>
-          <input type="text" name="username" id="username" value="<?php echo htmlspecialchars($username); ?>">
+          <input type="text" name="username" id="username">
           <p id="error-text-username" class="error-text <?php echo empty($username_err) ? 'hidden' : ''; ?>">
             <?php echo $username_err; ?>
           </p>
