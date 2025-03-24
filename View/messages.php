@@ -134,6 +134,7 @@
 <head>
   <title>Messages</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/messages-style.css">
   <script src="../Controller/eventHandler.js"></script>
 
   <!-- START SENT RECEIVED SWITCH TEST -->
