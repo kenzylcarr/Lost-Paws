@@ -118,8 +118,8 @@
 <head>
   <title>Messages</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
-  <link rel="stylesheet" type="text/css" href="/View/CSS/messages-style.css">
   <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/messages-style.css">
 
   <script src="../Controller/eventHandler.js"></script>
 
@@ -291,13 +291,13 @@
         <button class="send-reply">Send</button>
       </div>
 
-    <!-- Input Box to Send Message -->
-    <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
-    <button class="send-reply">Send</button>
-    <!-- </div> -->
+        <!-- Input Box to Send Message -->
+        <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
+        <button class="send-reply">Send</button>
+        <!-- </div> -->
 
-    <!-- Message Thread for Received Messages (Conversation 1) -->
-    <div class="message-thread" id="received-conversation1" style="display: none;">
+      <!-- Message Thread for Received Messages (Conversation 1) -->
+      <div class="message-thread" id="received-conversation1" style="display: none;">
       <?php 
         // Assuming you have a valid connection to the database
         $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ? AND recipient_id = ?";
@@ -320,7 +320,7 @@
     </main>
 
 
-      <main id="mainpage-right-afterlogin">
+      <main id="mainpage-right-afterlogin" style="min-height: 90vh;">
         <div class="user-photo">
           <img src="../View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
         </div>
