@@ -69,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
 
 // Handle form submission for first name and last name update
 if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
-  $new_firstname = trim($_POST['first_name']);
-  $new_lastname = trim($_POST['last_name']);
+  $new_firstname = trim($_POST['firstname']);
+  $new_lastname = trim($_POST['lastname']);
   
   // Validate first name and last name (only letters and spaces allowed)
   if (!empty($new_firstname) && preg_match("/^[A-Za-z]+(?:\s[A-Za-z]+)*$/", $new_firstname) &&
