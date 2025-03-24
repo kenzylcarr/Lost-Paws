@@ -27,6 +27,16 @@
   $user_data = $result->fetch_assoc();
   $user_id = $user_data['user_id'];
 
+  if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+    $user_id = $user['user_id'];
+    $first_name = $user['first_name'];
+    $last_name = $user['last_name'];
+  } else {
+    echo "User not found.";
+    exit();
+  }
+  
   try {
     // Fetch conversation where the user is either the sender or receiver
     $query = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
