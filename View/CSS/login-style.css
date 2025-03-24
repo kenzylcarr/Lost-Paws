@@ -7,6 +7,7 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: login-style.css */
 
+
 .logo {
   padding: 15px;
   background-color: #B6D0E2;
@@ -16,7 +17,6 @@
 .login-error ~ .auth-form-login .login-field input {
   border: 1px solid #ff0000;
 }
-
 
 .error-text:not(.hidden) {
   color: #ff0000;
