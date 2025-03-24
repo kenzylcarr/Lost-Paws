@@ -22,6 +22,16 @@ $username_err = "";
 $password_err = "";
 $login_err = "";
 
+// Check for existing login error
+if (isset($_SESSION['login_err'])) {
+  $login_err = $_SESSION['login_err'];
+  unset($_SESSION['login_err']);
+
+  // For general errors, highlight both fields
+  $username_err = " "; // Space to trigger CSS
+  $password_err = " "; // Space to trigger CSS
+}
+
 // Process the form when submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Validate username
@@ -141,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Username -->
         <div class="login-field">
           <label for="username">Username</label>
-          <input type="text" name="username" id="username" />
+          <input type="text" name="username" id="username" value="<?php echo htmlspecialchars($username); ?>">
           <p id="error-text-username" class="error-text <?php echo empty($username_err) ? 'hidden' : ''; ?>">
             <?php echo $username_err; ?>
           </p>
