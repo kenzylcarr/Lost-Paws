@@ -81,22 +81,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
 
   $pet = $result->fetch_assoc();
 
-//   // Handle form submission
-//   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $animal_type = $_POST['animal_type'];
-//     $status = $_POST['status'];
-//     $location_ip = $_POST['location_ip'];
-// 
-//     $stmt = $conn->prepare("UPDATE pets SET animal_type = ?, status = ?, location_ip = ? WHERE pet_id = ? AND user_id = ?");
-//     $stmt->bind_param("sssii", $animal_type, $status, $location_ip, $pet_id, $user_id);
-// 
-//     if ($stmt->execute()) {
-//         header("Location: myposts.php");
-//         exit();
-//     } else {
-//         echo "Error updating pet post.";
-//     }
-//   }
+  // Handle file uploads
+  if (isset($_FILES['pet_photo']) && is_array($_FILES['pet_photo']['name'])) {
+    $target_dir = "../View/pet-uploads/";
+    $total_files = count($_FILES['pet_photo']['name']);
+
+    for ($i = 0; $i < $total_files; $i++) {
+      $file_name = basename($_FILES['pet_photo']['name'][$i]);
+      $target_file = $target_dir . $file_name;
+      $uploadOK = 1;
+
+      // Check if the file is an image
+      $check = getimagesize($_FILES['pet_photo']['tmp_name'][$i]);
+      if ($check === false) {
+        echo "File is not an image.";
+        $uploadOK = 0;
+      }
+
+      // Check file size
+      if ($_FILES['pet_photo']['size'][$i] > 1000000) {
+        echo "File is too large. Maximum 1MB.";
+        $uploadOK = 0;
+      }
+      
+      // Allow certain file types
+      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+      if (!in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif'])) {
+        echo "Sorry, only JPG, JPEG, PNG and GIF files are accepted.";
+        $uploadOK = 0;
+      }
+      // Attempt to upload the file if all checks pass
+      if ($uploadOK == 1) {
+        if (move_uploaded_file($_FILES['pet_photo']['tmp_name'][$i], $target_file)) {
+            $pet_photo[] = $target_file; // Store the path for database insertion
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+      }
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -157,9 +180,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
               <button type="button" onclick="updateField('location_ip')">Update</button>
 
               <!-- Animal Photo -->
+              <label>Current Photo:</label>
+              <img src="/View/pet-uploads/<?php echo htmlspecialchars($pet['picture']); ?>" alt="Pet Photo">
+
               <label for="pet_photo">Upload Animal Photo:</label>
               <input type="file" id="pet_photo" name="pet_photo[]" multiple>
-              <button type="button" id="update-photo">Update</button>
+              <input type="submit" name="update-photo" value="Upload Photo">
       </form>
 	    </div>    
       </div>
@@ -201,5 +227,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
         .catch(error => console.error('Error:', error));
       }
       </script>
+      
     </body>
 </html>
