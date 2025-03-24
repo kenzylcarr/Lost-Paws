@@ -242,8 +242,6 @@
 
         <!-- Tabs for Lost Pets and Found Pets -->
         <div class="tabs">
-          <!-- <button onclick="toggleTab('lost-pets-tab')" class="tab-button">Lost Pets</button>
-          <button onclick="toggleTab('found-pets-tab')" class="tab-button">Found Pets</button> -->
           <button onclick="toggleTab('sent-messages-tab')" class="tab-button">Sent Messages</button>
           <button onclick="toggleTab('received-messages-tab')" class="tab-button">Received Messages</button>
         </div>
