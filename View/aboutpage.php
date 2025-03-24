@@ -50,7 +50,7 @@
             </div>
 
             <div class="aboutPage-map"> 
-                <a href="/View/petmap.php"><h3>Check Out Our Map!</h3></a>
+                <a href="/View/petmap-visitor.php"><h3>Check Out Our Map!</h3></a>
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81279.3134140618!2d-104.66390488857418!3d50.460124225863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x531c1e40fba53deb%3A0x354a3296b77b54b1!2sRegina%2C%20SK!5e0!3m2!1sen!2sca!4v1740001571797!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
