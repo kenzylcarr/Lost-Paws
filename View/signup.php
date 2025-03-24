@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cpassword = test_input($_POST["cpassword"]);
     $phone = test_input($_POST["phone"]);
 
-    $nameRegex = "/^[A-Za-z'-]+(?: [A-Za-z'-]+)*$/";
+    $nameRegex = "/^[a-zA-Z'-]+$/";
     $unameRegex = "/^[a-zA-Z0-9_]+$/";
     $emailRegex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     $passwordRegex = "/^(?=.*\W).{6,}$/";
@@ -132,6 +132,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
 
+                    $end_time = microtime(true);
+                    $execution_time = $end_time - $start_time;
+                    echo "Execution time: " . $execution_time . " seconds.";
                     // Redirect to login page
                     header("location: ../View/login.php");
                     exit();

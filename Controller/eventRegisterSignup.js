@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function()
 /* FUNCTION HANDLERS FOR SIGN-UP PAGE */
 function validateName(name) {
   // Regex for name
-  const nameRegEx = /^[A-Za-z'-]+(?: [A-Za-z'-]+)*$/;
+  const nameRegEx = /^[a-zA-Z'-]+$/;
   return nameRegEx.test(name);
 }
 

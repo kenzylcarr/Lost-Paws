@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function()
 /* Common validator functions begin */
 function validateName(name)
 {
-  let nameRegEx = /^[A-Za-z'-]+(?: [A-Za-z'-]+)*$/;
+  let nameRegEx = /^[a-zA-Z'-]+$/;
 
   if (nameRegEx.test(name))
       return true;
