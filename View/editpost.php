@@ -149,8 +149,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
                 <!-- Status -->
                 <label for="status">Status:</label>
                 <select name="status">
-                    <option value="lost"> <?php if ($pet['status'] == 'lost') echo 'selected'; ?>>Lost</option>
-                    <option value="found"> <?php if ($pet['status'] == 'found') echo 'selected'; ?>>Found</option>
+                    <option value="lost"> <?php if ($pet['status'] == 'lost') echo 'selected'; ?>Lost</option>
+                    <option value="found"> <?php if ($pet['status'] == 'found') echo 'selected'; ?>Found</option>
                 </select>
                 <button type="button" onclick="updateField('status')">Update</button>
 
