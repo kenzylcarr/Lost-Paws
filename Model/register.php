@@ -19,23 +19,23 @@ if (!$conn) {
 }
 
 // Declare variables with empty values
-$first_name = $last_name = $username = $email = $phone = $password = "";
-$first_name_err = $last_name_err = $username_err = $email_err = $phone_err = $password_err = "";
+$firstname = $last_name = $username = $email = $phone = $password = "";
+$firstname_err = $lastname_err = $username_err = $email_err = $phone_err = $password_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate first name
-    if(empty(trim($_POST["first_name"]))) {
-      $first_name_err = "Please enter a first name.";
+    if(empty(trim($_POST["firstname"]))) {
+      $firstname_err = "Please enter a first name.";
   } else {
-    $first_name = trim($_POST["first_name"]);
+    $firstname = trim($_POST["firstname"]);
   }
   
     // Validate last name
-    if(empty(trim($_POST["last_name"]))) {
-        $last_name_err = "Please enter a last name.";
+    if(empty(trim($_POST["lastname"]))) {
+        $lastname_err = "Please enter a last name.";
     } else {
-      $last_name = trim($_POST["last_name"]);
+      $lastname = trim($_POST["lastname"]);
     }
     
   // Validate username
