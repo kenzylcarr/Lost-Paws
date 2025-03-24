@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
         }
       }
     }
-  }
+
   if (isset($pet_photo) && count($pet_photo) > 0) {
     $new_picture = $pet_photo[0];
 
@@ -99,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
     $stmt->bind_param("si", $new_picture, $pet_id);
     $stmt->execute();
   }
+}
 
   // Fetch pet ID data from database
   if (!isset($_GET['id']) || empty($_GET['id'])) {
