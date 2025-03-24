@@ -19,6 +19,38 @@ if (!isset($_SESSION['username'])) {
     exit();
   }
   
+$username = $_SESSION['username'];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
+  require_once("../Model/db_config.php");
+
+  $field = $_POST['field'];
+  $value = $_POST['value'];
+  $pet_id = intval($_POST['pet_id']);
+
+  $stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
+  $stmt->bind_param("s", $username);
+  $stmt->execute();
+  $user = $stmt->get_result()->fetch_assoc();
+  $user_id = $user['user_id'];
+
+  $allowed_fields = ['animal_type', 'status', 'location_ip'];
+  if (!in_array(field, $allowed_fields)) {
+    exit();
+  }
+
+  $stmt = $conn->prepare("UPDATE pets SET $field = ? WHERE pet_id ? AND user_id = ?");
+  $stmt->bind_param("sii", $value, $pet_id, $user_id);
+
+  if ($stmt->execute()) {
+    echo "Updated successfully!";
+  }
+  else {
+    echo "Error updating.";
+  }
+  exist();
+}
+
   // Fetch pet ID data from database
   if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "Invalid pet ID.";
@@ -103,32 +135,34 @@ if (!isset($_SESSION['username'])) {
             <form method="POST">
 
 	    <div class="input-box">
+        <form id="edit-post-form">
             <!-- Animal Type -->
             <label for="animal_type">Animal Type:</label>
                 <select name="animal_type">
-                    <option value="cat">Cat</option>
-                    <option value="dog">Dog</option>
+                    <option value="cat"> <?php if ($pet['aniaml-type'] == 'cat') echo 'selected'; ?>>Cat</option>
+                    <option value="dog"> <?php if ($pet['animal_type'] == 'dog') echo 'selected'; ?>>Dog</option>
                 </select>
-                <button type="button" id="update-animal-type">Update</button>
+                <!-- <button type="button" id="update-animal-type">Update</button> -->
+                <button type="button" onclick="updateField('animal_type')">Update</button>
 
                 <!-- Status -->
                 <label for="status">Status:</label>
                 <select name="status">
-                    <option value="lost">Lost</option>
-                    <option value="found">Found</option>
+                    <option value="lost"> <?php if ($pet['status'] == 'lost') echo 'selected'; ?>>Lost</option>
+                    <option value="found"> <?php if ($pet['status'] == 'found') echo 'selected'; ?>>Found</option>
                 </select>
-                <button type="button" id="update-status">Update</button>
+                <button type="button" onclick="updateField('status')">Update</button>
 
                 <!-- Location IP -->
                 <label for="location_ip">Location Name:</label>
-                <input type="text" name="location_ip" required>
-                <button type="button" id="update-location-ip">Update</button>
+                <input type="text" id="location_ip" value="<?php echo htmlspecialchars($pet['location_ip']); ?>">
+                <button type="button" onclick="updateField('location_ip')">Update</button>
 
                 <!-- Animal Photo -->
                 <label for="pet_photo">Upload Animal Photo:</label>
                 <input type="file" id="pet_photo" name="pet_photo[]" multiple>
                 <button type="button" id="update-photo">Update</button>
-
+          </form>
 	    </div>    
             </form>
         </div>
@@ -149,5 +183,25 @@ if (!isset($_SESSION['username'])) {
         </div>
       </main>
     </div>
+
+    <script>
+      function updateField(fieldName) {
+        let petId = <?php echo $pet_id; ?>;
+        let newValue = document.getElementById(fieldName).value;
+
+        fetch('editpost.php', {
+          method: 'POST';
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: 'field=${fieldName}&value=${encodedURICompoennet(newValue)}&pet_id=${petId}`
+        })
+        .then(response => response.text())
+        .then(data => {
+          alter(data);
+        })
+        .catch(error => console.error('Error:', error));
+      }
+      </script>
     </body>
 </html>
