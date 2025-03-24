@@ -396,6 +396,7 @@ input {
     grid-row-start: 1;
     grid-row-end: 2;
     padding: 25px;
+    margin-bottom: 20px;
   }
 
   .lost-or-found-label h1{
@@ -422,7 +423,7 @@ input {
     width: 55vw;
     height: 65vh;
     display: grid;
-	  
+	  margin-bottom: 20px;
     grid-template-columns: 1.5fr 2fr;
 
     box-shadow: 0 2px 5px rgba(216, 213, 213, 0.5);
@@ -482,7 +483,7 @@ input {
     padding: 25px;
     width: 55vw;
     max-height: auto; 
-    margin-top: -300px;
+    margin-top: -200px;
   }
   
   .comment-container input{
