@@ -133,14 +133,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-field">
           <label for="username">Username</label>
           <input type="text" name="username" id="username" />
-          <p id="error-text-username" class="error-text hidden">Invalid username</p>
+          <p id="error-text-username" class="error-text hidden">Invalid username or password</p>
         </div>
 
         <!-- Password -->
         <div class="login-field">
           <label for="password">Password</label>
           <input type="password" name="password" id="password" />
-          <p id="error-text-password" class="error-text hidden">Invalid password</p>
+          <p id="error-text-password" class="error-text hidden">Invalid username or password</p>
         </div>
 
         <!-- Incase of Forgotten Password
