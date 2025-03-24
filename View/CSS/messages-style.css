@@ -1,0 +1,139 @@
+/* CS 476: Lost Paws Project
+  Group Members: 
+            Anna Chu (ace859 - 200391368), 
+            Ibrahim Hassan (hassan4i - 200343818),
+            Makenzy Laursen-Carr (mil979 - 200504296), 
+            Kaira Molano (kvm406 - 200447526), 
+            Fatima Rizwan (frf706 - 200446702)
+  File name: messages-style.css */
+
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+/* START CSS FOR messages.php */
+
+.messages-page .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 2px;
+    max-width: 80px;
+    height: 70px;
+    margin-left: 0px;
+    margin-bottom: 20px;
+  }
+  
+  .messages-page .nav-logo {
+    height: 70px;
+    width: auto;
+    margin-right: 20px;
+    margin-top: 30px;
+  }
+  
+  .messages-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height */
+  }
+  
+  .messages-page #messages-main {
+    flex-grow: 1; /* Push the footer down */
+    padding-top: 80px;
+    padding-left: 10px;
+  }
+  
+  .messages-page .settings-page footer {
+    background-color: #ceedf1;
+    text-align: center;
+    font-size: 15px;
+    padding: 20px;
+    margin-top: auto; 
+    margin-bottom: 0;
+    position: relative; 
+    width: 100%; 
+  }
+  
+  .messages-page .conversation-list {
+    margin-top: 20px;
+  }
+  
+  .messages-page .conversation-item {
+    background-color: #cce4fc;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .messages-page .conversation-item:hover {
+    background-color: #dfeaed;
+  }
+  
+  .messages-page .conversation-header {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  
+  .messages-page .conversation-item p {
+    margin: 0;
+  }
+  
+  .messages-page .conversation-item small {
+    color: #888;
+  }
+  
+  .messages-page .message-thread {
+    display: none;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+  }
+  
+  .messages-page .thread-header h3 {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+  
+  .messages-page .message-item {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+  }
+  
+  .messages-page .message-item.received {
+    background-color: #faf0f0;
+  }
+  
+  .messages-page .message-item.sent {
+    background-color: #d4edda;
+    text-align: right;
+  }
+  
+  .messages-page .message-item p {
+    margin: 0;
+    font-size: 1em;
+  }
+  
+  .messages-page textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .messages-page .send-reply {
+    background-color: #64acf9;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .messages-page .send-reply:hover {
+    background-color: #0056b3;
+  }
+  
+  /* END CSS FOR messages.php */
+  
