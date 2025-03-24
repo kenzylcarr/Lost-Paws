@@ -520,6 +520,13 @@ input {
     padding: 3px;
     font-size: medium;
 }
+
+  .comment-item textarea {
+    min-height: 50px;
+    max-height: 300px;
+    resize: none; /* to prevent manual resizing */
+  }
+
   #select-post-main-right {
     grid-column-start: 3;
     grid-column-end: 4;
