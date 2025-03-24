@@ -190,6 +190,8 @@ if (isset($_GET['id'])) {
                         </form>
                     </div>';
                   } else {
+                    $comment_date = new DateTime($comment['comment_date'], new DateTimeZone('UTC'));
+                    $comment_date->setTimezone(new DateTimeZone('America/Regina'));
                     // display the comment normally if it's not being edited
                     echo '<div class="comment-item">';
                     echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
