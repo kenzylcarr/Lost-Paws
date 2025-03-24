@@ -343,3 +343,19 @@ padding: 8px;
 }                                     
 
 /*   END CSS: homepage.php */  
+
+
+/*  START CSS: editpost.php  */
+
+.input-box {
+  border: 2px solid #c3c8ce;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0 20px -10vw;
+  background-color: #f9f9f9;
+  width: 80vw;
+  max-width: 500px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  position: relative;
+}
