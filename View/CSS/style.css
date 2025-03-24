@@ -388,7 +388,7 @@ input {
     display: grid;
     grid-template-rows: 1fr 1fr 2fr 1fr;
     width: 60vw;
-    height: 130vh;
+    height: 150vh;
     padding: 25px;
 }
 
@@ -494,7 +494,7 @@ input {
   .all-comments {
     overflow-x: hidden; 
     overflow-y: scroll; 
-    max-height: 350px;
+    max-height: 400px;
   }
 
   .comment-item {
