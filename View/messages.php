@@ -313,6 +313,11 @@ while ($message = $messages->fetch_assoc()) {
             } else {
                 document.getElementById("foundList").appendChild(listItem);
             }
+
+            // Clear the message box after submission
+            document.getElementById("petMessage").value = "";
+        }
+
           
         </script>
 
