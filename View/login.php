@@ -12,6 +12,7 @@
 // Start the session
 session_start();
 
+
 // Include database configuration file
 require_once '../Model/db_config.php';
 
