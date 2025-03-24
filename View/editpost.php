@@ -188,13 +188,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
 
         fetch('editpost.php', {
           method: 'POST',
-          header: {
+          headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
-          body: 'field=${fieldName}&value=${encodedURIComponent(newValue)}&pet_id=${petId}`
+          body: `field=${fieldName}&value=${encodeURIComponent(newValue)}&pet_id=${petId}`
         })
         .then(response => response.text())
-        .then(data => {
+        .then(data => { 
           window.location.href = "myposts.php";
         })
         .catch(error => console.error('Error:', error));
