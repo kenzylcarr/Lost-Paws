@@ -139,10 +139,10 @@ if (isset($_GET['id'])) {
             <div class="lost-or-found-label">
               <h1><?php echo htmlspecialchars($pet['status']); ?> Pet</h1> 
             </div>
-        <!-- Title of Post -->
+        <!-- Title of Post
             <div class="title-post">
               <h1>Title of Post</h1> 
-            </div>
+            </div> -->
         <!-- Container for Information -->
             <div class="description-container">
               <!-- Column 1: Pet Photo, Contact User-->
