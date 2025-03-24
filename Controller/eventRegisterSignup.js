@@ -83,25 +83,24 @@ function usernameHandler(event) {
     xhr.open("POST", "../Model/register.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function() {
-      console.log(xhr.responseText);
-      try {
-        const response = JSON.parse(xhr.responseText);
-        if (xhr.status === 200) {
-          let response = JSON.parse(xhr.responseText);
-          if (response.usernameTaken) {
-            console.log("Username is already taken.");
-            username.classList.add('error-border');
-            usernameTakenError.classList.remove("hidden");
-          } else {
-            usernameTakenError.classList.add("hidden");
-          }
+    try {
+      const response = JSON.parse(xhr.responseText);
+      if (xhr.status === 200) {
+        let response = JSON.parse(xhr.responseText);
+        if (response.usernameTaken) {
+          console.log("Username is already taken.");
+          username.classList.add('error-border');
+          usernameTakenError.classList.remove("hidden");
         } else {
-          alert('Error:' + xhr.statusText);
+          usernameTakenError.classList.add("hidden");
         }
-      } catch (e) {
-        console.error('Error parsing JSON:', e);
-        alert('Server returned an error' + xhr.responseText);
+      } else {
+        alert('Error:' + xhr.statusText);
       }
+    } catch (e) {
+      console.error('Error parsing JSON:', e);
+      alert('Server returned an error' + xhr.responseText);
+    }
     };
     xhr.send("username=" + encodeURIComponent(username.value));
   }
@@ -120,12 +119,9 @@ function emailHandler(event) {
 
   // AJAX request
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "../Model/register.php", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onload = function() {
-    console.log(xhr.responseText);
-    try {
-      const response = JSON.parse(xhr.responseText);
+    xhr.open("POST", "../Model/register.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function() {
       if (xhr.status == 200) {
         let response = JSON.parse(xhr.responseText);
 
@@ -137,13 +133,7 @@ function emailHandler(event) {
           email.classList.remove('error-border');
           emailTakenError.classList.add("hidden");
         }
-      } else {
-        alert('Error: ' + xhr.statusText); 
       }
-    } catch (e) {
-      console.error('Error parsing JSON:', e);
-      alert('Server returned an error: ' + xhr.responseText);
-    }
     };
     xhr.send("email=" + encodeURIComponent(email.value));
   }
