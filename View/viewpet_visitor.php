@@ -98,6 +98,7 @@ if (isset($_GET['id'])) {
         <div class="nav-links">
           <a href="/View/aboutpage.php">About Lost Paws</a>
           <a href="/View/lostandfound.php">Lost & Found</a>
+          <a href="/View/petmap-visitor.php">Pet Map</a>
         </div>
   
         <div class="button">

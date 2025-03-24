@@ -117,6 +117,7 @@ if (isset($_GET['id'])) {
         <div class="nav-links">
           <a href="homepage.php">Homepage</a>
           <a href="/View/reportpetpage.php">Report a Pet</a>
+          <a href="/View/petmap-user.php">Pet Map</a>
         </div>
   
         <div class="button">

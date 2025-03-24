@@ -185,6 +185,7 @@
       <div class="nav-links">
         <a href="homepage.php">Homepage</a>
         <a href="reportpetpage.php">Report a Pet</a>
+        <a href="/View/petmap-user.php">Pet Map</a>
       </div>
       <div class="button">
         <a id="login-button" href="logout.php">Logout</a>
