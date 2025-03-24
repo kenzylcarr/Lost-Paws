@@ -87,7 +87,6 @@ function usernameHandler(event) {
       try {
         const response = JSON.parse(xhr.responseText);
         if (xhr.status === 200) {
-          let response = JSON.parse(xhr.responseText);
           if (response.usernameTaken) {
             console.log("Username is already taken.");
             username.classList.add('error-border');
@@ -127,9 +126,7 @@ function emailHandler(event) {
     try {
       const response = JSON.parse(xhr.responseText);
       if (xhr.status == 200) {
-        let response = JSON.parse(xhr.responseText);
-
-        if (response.emailTaken) {
+        if (response.emailTakenError) {
           console.log("Email is already taken.");
           email.classList.add('error-border');
           emailTakenError.classList.remove("hidden");
@@ -161,20 +158,28 @@ function phoneHandler(event) {
       xhr.open("POST", "../Model/register.php", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.onload = function() {
-        if (xhr.status == 200) {
-          let response = JSON.parse(xhr.responseText);
-        if (response.phoneTaken) {
-          console.log("Phone number is already taken.");
-          phone.classList.add('error-border');
-          document.getElementById("error-text-phone-taken").classList.remove("hidden");
-        } else {
-          document.getElementById("error-text-phone-taken").classList.add("hidden");
+        console.log(xhr.responseText);
+        try {
+          const response = JSON.parse(xhr.responseText);
+          if (xhr.status == 200) {
+            if (response.phoneTakenError) {
+              console.log("Phone number is already taken.");
+              phone.classList.add('error-border');
+              document.getElementById("error-text-phone-taken").classList.remove("hidden");
+            } else {
+              document.getElementById("error-text-phone-taken").classList.add("hidden");
+            }
+          } else {
+            alert('Error: ' + xhr.statusText);
+          }
+        } catch (e) {
+          console.error('Error parsing JSON:', e);
+          alert('Server returned an error: ' + xhr.responseText);
         }
-      }
-    };
-    xhr.send("phone=" + encodeURIComponent(phone.value));
+      };
+      xhr.send("phone=" + encodeURIComponent(phone.value));
+    }
   }
-}
 
 function passwordHandler(event) {
   let password = event.target;
@@ -273,6 +278,7 @@ function validateSignup(event)
 
   // validating email
   let email = document.getElementById("email");
+  let emailTakenError = document.getElementById("error-text-email-taken");
   if (!validateEmail(email.value))
   {
     email.classList.add('error-border');
@@ -287,6 +293,7 @@ function validateSignup(event)
 
   // validating phone number
   let phone = document.getElementById("phone");
+  let phoneTakenError = document.getElementById("error-text-phone-taken");
   if (!validatePhoneNumber(phone.value))
   {
     phone.classList.add("error-border");
