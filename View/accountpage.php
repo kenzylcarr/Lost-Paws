@@ -274,17 +274,17 @@ $stmt->close();
               <form id="account-settings-form" method="post" action="save-account-settings.php">
                 <!-- Full Name -->
                 <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" id="fullname" value="" required oninput="validateFullName(this)" />
+                <input type="text" name="fullname" id="fullname" placeholder="Enter your Full Name" required oninput="validateFullName(this)" />
                 <p id="fullname-error" class="error-message"></p>
 
                 <!-- Username -->
                 <label for="account-username">Username</label>
-                <input type="text" name="username" id="account-username" value="" required oninput="validateUsername(this)" />
+                <input type="text" name="username" id="account-username" required oninput="validateUsername(this)" />
                 <p id="account-username-error" class="error-message"></p>
 
                 <!-- Email Address -->
                 <label for="account-email">Email Address</label>
-                <input type="email" name="email" id="account-email" value="" required oninput="validateEmail(this)" />
+                <input type="email" name="email" id="account-email" placeholder="Enter your email address" required oninput="validateEmail(this)" />
                 <p id="account-email-error" class="error-message"></p>
 
                 <!-- Phone Number -->
