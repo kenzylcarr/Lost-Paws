@@ -420,9 +420,10 @@ input {
     margin-left: 30px;
     padding: 25px;
     width: 55vw;
-    height: auto;
+    height: 40vh;
     display: grid;
 	  margin-bottom: 20px;
+    margin-top: -50px;
     grid-template-columns: 1.5fr 2fr;
 
     box-shadow: 0 2px 5px rgba(216, 213, 213, 0.5);
@@ -439,6 +440,7 @@ input {
     grid-row-start: 1;
     grid-row-end: 3;
     max-width: 600px;
+        height: auto;
   }
 
   .description-column1 img {
@@ -481,6 +483,7 @@ input {
     margin-left: 30px;
     padding: 25px;
     width: 55vw;
+    max-height: 400px;
     margin-top: -300px;
   }
   
