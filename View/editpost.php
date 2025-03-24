@@ -184,7 +184,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
     <script>
       function updateField(fieldName) {
         let petId = <?php echo $pet_id; ?>;
-        let newValue = document.querySelector(`[name="${fieldName}"]`).value;
+        let inputElement = document.querySelector(`[name="${fieldName}"], #${fieldName}`);
+        let newValue = inputElement.value;
 
         fetch('editpost.php', {
           method: 'POST',
