@@ -113,6 +113,8 @@
   <title>Messages</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <script src="../Controller/eventHandler.js"></script>
+
+  <!-- TEST
   <script>
     // JavaScript function to toggle between tabs (Lost Pets and Found Pets)
     function toggleTab(tabId) {
@@ -142,6 +144,8 @@
       // });
     }
   </script>
+ END TEST -->
+  
 </head>
 
 <body>
