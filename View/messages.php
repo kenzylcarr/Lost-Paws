@@ -320,7 +320,7 @@
     </main>
 
 
-      <main id="mainpage-right-afterlogin" style="min-height: 90vh;">
+      <div id="mainpage-right-afterlogin" style="min-height: 90vh;">
         <div class="user-photo">
           <img src="../View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
         </div>
@@ -333,7 +333,7 @@
         <div class="user-options">
             <p><a href="/View/myposts.php">View My Posts</a></p>	
         </div>
-      </main>
+      </div>
       </div>
     </div>
 
