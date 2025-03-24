@@ -325,6 +325,9 @@ while ($message = $messages->fetch_assoc()) {
                 tab.style.display = 'none';
             });
 
+           // Show the selected tab
+            document.getElementById(tabId).style.display = 'block';
+
 
           
         </script>
