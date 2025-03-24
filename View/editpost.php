@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
   $user_id = $user['user_id'];
 
   $allowed_fields = ['animal_type', 'status', 'location_ip'];
-  if (!in_array(field, $allowed_fields)) {
+  if (!in_array($field, $allowed_fields)) {
     exit();
   }
 
@@ -43,12 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
   $stmt->bind_param("sii", $value, $pet_id, $user_id);
 
   if ($stmt->execute()) {
-    echo "Updated successfully!";
+    header("Location: myposts.php");
+    exit();
   }
   else {
     echo "Error updating.";
   }
-  exist();
+  exit();
 }
 
   // Fetch pet ID data from database
@@ -187,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
     <script>
       function updateField(fieldName) {
         let petId = <?php echo $pet_id; ?>;
-        let newValue = document.getElementById(fieldName).value;
+        let newValue = document.getElementById('[name="${fieldName}"]`).value;
 
         fetch('editpost.php', {
           method: 'POST';
@@ -198,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
         })
         .then(response => response.text())
         .then(data => {
-          alter(data);
+          window.location.href = "myposts.php";
         })
         .catch(error => console.error('Error:', error));
       }
