@@ -180,12 +180,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
               <button type="button" onclick="updateField('location_ip')">Update</button>
 
               <!-- Animal Photo -->
-              <label>Current Photo:</label>
-              <img src="/View/pet-uploads/<?php echo htmlspecialchars($pet['picture']); ?>" alt="Pet Photo">
-
               <label for="pet_photo">Upload Animal Photo:</label>
               <input type="file" id="pet_photo" name="pet_photo[]" multiple>
-              <input type="submit" name="update-photo" value="Upload Photo">
+              <button type="button" id="update-photo">Update</button>
       </form>
 	    </div>    
       </div>
