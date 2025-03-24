@@ -11,6 +11,19 @@
 
 /* START CSS FOR messages.php */
 
+.messages-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+#messages-main {
+  flex: 3;
+  width: 100%;
+}
+
+
 .messages-page .logo {
     display: flex;
     align-items: center;
