@@ -325,12 +325,12 @@ $stmt->close();
 
 				<!-- New Password -->
 				<label for="new-password">New Password</label>
-				<input type="password" name="new-password" id="new-password" required oninput="validatePassword(this)" />
+				<input type="password" name="new-password" id="new-password" required placeholder="Enter your new password" oninput="validatePassword(this)" />
 				<p id="new-password-error" class="error-message"></p>
 
 				<!-- Confirm New Password -->
 				<label for="confirm-password">Confirm New Password</label>
-				<input type="password" name="confirm-password" id="confirm-password" required oninput="validateConfirmPassword(this)" />
+				<input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm your new password" oninput="validateConfirmPassword(this)" />
 				<p id="confirm-password-error" class="error-message"></p>
 
 				<input type="submit" value="Save Changes" class="save-button" />
