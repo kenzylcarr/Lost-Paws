@@ -48,6 +48,7 @@ $stmt->close();
   <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
   <script src="../Controller/eventHandler.js"></script>
   <script>
+    
     // JavaScript function to toggle visibility of sections
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('.settings-section');
@@ -120,6 +121,7 @@ $stmt->close();
       }
     }
 
+// Keep this for future updates
     // JavaScript to dynamically populate cities based on selected province
     // const citiesByProvince = {
     //   BC: ['Vancouver', 'Victoria', 'Kelowna'],
@@ -161,7 +163,8 @@ $stmt->close();
     //     input.style.borderColor = "";
     //   }
     // }
-
+// end code for address
+	  
 	    // Validate Current Password
 	function validateCurrentPassword(input) {
 	  const password = input.value;
@@ -188,7 +191,7 @@ $stmt->close();
 	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
 	
 	  if (!password.match(passwordRegex)) {
-	    errorMessage.textContent = "Password must be at least 6 characters, include one capital letter, and one special character.";
+	    errorMessage.textContent = "Password must 6 characters, include one capital letter, and one special character.";
 	    input.style.borderColor = "red";
 	  } else {
 	    errorMessage.textContent = ""; // Clear error message when validation passes
