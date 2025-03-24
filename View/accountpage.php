@@ -350,6 +350,7 @@ $stmt->close();
             <div id="delete" class="settings-section" style="display: none;">
               <h3>Delete Account</h3>
               <p>Once your account is deleted, you will not be able to recover it. This action is permanent.</p>
+		<br>
               <button class="delete-button">Delete Account</button>
             </div>
 			
