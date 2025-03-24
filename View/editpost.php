@@ -101,6 +101,8 @@ if (!isset($_SESSION['username'])) {
     <main id="lost-found-database">
         <div class="pet-database-container"> 
             <form method="POST">
+
+	    <div class="input-box">
             <!-- Animal Type -->
             <label for="animal_type">Animal Type:</label>
                 <select name="animal_type">
@@ -126,7 +128,8 @@ if (!isset($_SESSION['username'])) {
                 <label for="pet_photo">Upload Animal Photo:</label>
                 <input type="file" id="pet_photo" name="pet_photo[]" multiple>
                 <button type="button" id="update-photo">Update</button>
-                
+
+	    </div>    
             </form>
         </div>
       </main>
