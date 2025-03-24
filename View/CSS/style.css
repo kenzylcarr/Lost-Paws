@@ -410,14 +410,14 @@ input {
     grid-row-start: 2;
     grid-row-end: 3;
     margin-left: 30px;
-    margin-top: -90px;
+    margin-top: -130px;
   }
   
   .description-container {
     grid-row-start: 3;
     grid-row-end: 4;
     margin-left: 30px;
-    margin-top: -240px;
+    margin-top: -300px;
     padding: 25px;
     width: 55vw;
     height: 65vh;
@@ -475,8 +475,6 @@ input {
 	padding-top: 20px;
   }
 
-
-
   .comment-container {
     grid-row-start: 4;
     grid-row-end: 5;
@@ -494,7 +492,7 @@ input {
   .all-comments {
     overflow-x: hidden; 
     overflow-y: scroll; 
-    max-height: 350px;
+    max-height: 400px;
   }
 
   .comment-item {
