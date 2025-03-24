@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
   }
 
   // Fetch comments for the pet
-  $stmt = $conn->prepare("SELECT comments.comment_id, comments.comment_content, comments.comment_date, users.username, comments.user_id
+  $stmt = $conn->prepare("SELECT comments.comment_id, comments.comment_content, CONVERT_TZ(comments.comment_date, '+00:00', '-06:00') AS regina_time, users.username, comments.user_id
                           FROM comments 
                           JOIN users ON comments.user_id = users.user_id 
                           WHERE comments.pet_id = ? 
@@ -190,8 +190,6 @@ if (isset($_GET['id'])) {
                         </form>
                     </div>';
                   } else {
-                    $comment_date = new DateTime($comment['comment_date'], new DateTimeZone('UTC'));
-                    $comment_date->setTimezone(new DateTimeZone('America/Regina'));
                     // display the comment normally if it's not being edited
                     echo '<div class="comment-item">';
                     echo '<p><strong>' . htmlspecialchars($comment['username']) . ':</strong> ' . htmlspecialchars($comment['comment_content']) . '</p>';
