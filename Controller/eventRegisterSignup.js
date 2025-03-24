@@ -55,8 +55,12 @@ function firstnameHandler(event) {
   let firstname = event.target;
   if (!validateName(firstname.value)) {
     console.log("'" + firstname.value + "' is not a valid first name");
+    firstname.classList.add('error-border');
+    document.getElementById("error-text-firstname").classList.remove("hidden");
   } else {
     console.log("'" + firstname.value + "' is a valid first name");
+    firstname.classList.remove('error-border');
+    document.getElementById("error-text-firstname").classList.add("hidden");
   }
 }
 
@@ -64,8 +68,12 @@ function lastnameHandler(event) {
   let lastname = event.target;
   if (!validateName(lastname.value)) {
     console.log("'" + lastname.value + "' is not a valid last name");
+    lastname.classList.add('error-border');
+    document.getElementById("error-text-lastname").classList.remove("hidden");
   } else {
     console.log("'" + lastname.value + "' is a valid last name");
+    lastname.classList.remove('error-border');
+    document.getElementById("error-text-lastname").classList.add("hidden");
   }
 }
 
@@ -177,28 +185,26 @@ function validateSignup(event)
 
   // validating first name
   let firstname = document.getElementById("firstname");
-  if (!validateName(firstname.value))
-  {
+  if (!validateName(firstname.value)) {
+    console.log("'" + firstname.value + "' is not a valid first name");
     firstname.classList.add('error-border');
     document.getElementById("error-text-firstname").classList.remove("hidden");
     formIsValid = false;
-  }
-  else
-  {
+  } else {
+    console.log("'" + firstname.value + "' is a valid first name");
     firstname.classList.remove('error-border');
     document.getElementById("error-text-firstname").classList.add("hidden");
   }
 
   // validating last name
   let lastname = document.getElementById("lastname");
-  if (!validateName(lastname.value))
-  {
+  if (!validateName(lastname.value)) {
+    console.log("'" + lastname.value + "' is not a valid last name");
     lastname.classList.add('error-border');
     document.getElementById("error-text-lastname").classList.remove("hidden");
     formIsValid = false;
-  }
-  else
-  {
+  } else {
+    console.log("'" + lastname.value + "' is a valid last name");
     lastname.classList.remove('error-border');
     document.getElementById("error-text-lastname").classList.add("hidden");
   }
