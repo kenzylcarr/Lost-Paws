@@ -80,7 +80,7 @@ function usernameHandler(event) {
 
     // check if the username already exists in the database
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "register.php", true);
+    xhr.open("POST", "../Model/register.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function() {
       if (xhr.status === 200) {
