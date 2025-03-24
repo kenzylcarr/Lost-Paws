@@ -87,9 +87,9 @@ $stmt->close();
       }
     }
 
-    // Function to validate Full Name (Only letters & spaces, Auto Title Case)
+    // Function to validate First Name (Only letters & spaces, Auto Title Case)
     function validateFirstName(input) {
-      const fullNameError = document.getElementById("firstname-error");
+      const firstNameError = document.getElementById("firstname-error");
       const namePattern = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
 
       // Automatically format name to "Title Case"
@@ -98,17 +98,17 @@ $stmt->close();
         .replace(/\b\w/g, char => char.toUpperCase());
 
       if (!namePattern.test(input.value)) {
-        fullNameError.textContent = "First name can only contain letters and spaces.";
+        firstNameError.textContent = "First name can only contain letters and spaces.";
         input.style.borderColor = "red";
       } else {
-        fullNameError.textContent = "";
+        firstNameError.textContent = "";
         input.style.borderColor = "";
       }
     }
 
     // Function to validate Full Name (Only letters & spaces, Auto Title Case)
     function validateLastName(input) {
-      const fullNameError = document.getElementById("lastname-error");
+      const lastNameError = document.getElementById("lastname-error");
       const namePattern = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
 
       // Automatically format name to "Title Case"
@@ -117,10 +117,10 @@ $stmt->close();
         .replace(/\b\w/g, char => char.toUpperCase());
 
       if (!namePattern.test(input.value)) {
-        fullNameError.textContent = "Last name can only contain letters and spaces.";
+        lastNameError.textContent = "Last name can only contain letters and spaces.";
         input.style.borderColor = "red";
       } else {
-        fullNameError.textContent = "";
+        lastNameError.textContent = "";
         input.style.borderColor = "";
       }
     }
@@ -295,12 +295,12 @@ $stmt->close();
               <form id="account-settings-form" method="post" action="/Model/update-accountSettings.php">
                 <!-- First Name -->
                 <label for="firstname">First Name</label>
-                <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" placeholder="Enter your First Name" required oninput="validateFullName(this)" />
+                <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" placeholder="Enter your First Name" required oninput="validateFirstName(this)" />
                 <p id="firstname-error" class="error-message"></p>
 
                 <!-- Last Name -->
                 <label for="lastname">Last Name</label>
-                <input type="text" name="lastname" id="lastname" value="<?php echo htmlspecialchars($user['last_name'] ?? ''); ?>" placeholder="Enter your Last Name" required oninput="validateFullName(this)" />
+                <input type="text" name="lastname" id="lastname" value="<?php echo htmlspecialchars($user['last_name'] ?? ''); ?>" placeholder="Enter your Last Name" required oninput="validateLastName(this)" />
                 <p id="lastname-error" class="error-message"></p>
 
                 <!-- Email Address -->
