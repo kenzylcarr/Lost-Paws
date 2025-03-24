@@ -13,9 +13,14 @@
 // Include the db_config.php file to connect to database
 require_once("../Model/db_config.php");
 
+// Declare variables
+$response = ['status' => 'error', 'message' => ''];
+
 // Check if connection is successful
 if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
+  $response['message'] = "Database connection failed: " . mysqli_connect_error();
+  echo json_encode($response);
+  exit();
 }
 
 // Declare variables with empty values
@@ -46,12 +51,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     $username = trim($_POST["username"]);
                 }
             } else {
-                echo "Something went wrong. Please try again later.";
+                $response['message'] = "Something went wrong. Please try again later.";
+                echo json_encode($response);
+                exit();
             }
         mysqli_stmt_close($stmt);
-        } else {
-            echo "Something went wrong. Please try again later.";
-        }
     }
 
   // Validate email address
@@ -115,21 +119,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
       // Attempt to execute the prepared statement
       if (mysqli_stmt_execute($stmt)) {
-        // Redirect to login page
-        header("location: ../View/login.php");
+        $response['status'] = 'success';
+        $response['message'] = 'Successfully registered.';
         exit();
       } else {
-        echo "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
+        $response['message'] = "Something went wrong. Please try again later. Error: " . mysqli_error($conn);
       }
       mysqli_stmt_close($stmt);
     }
-  // } else {
-  //   // Display validation errors
-  //   if (!empty($username_err)) echo $username_err . "<br>";
-  //   if (!empty($email_err)) echo $email_err . "<br>";
-  //   if (!empty($phone_err)) echo $phone_err . "<br>";
-  //   if (!empty($password_err)) echo $password_err . "<br>";
+  } else {
+    // Display validation errors
+    if ($username_err) {
+      $response['message'] = $username_err;
+    } 
+    if ($email_err) {
+      $response['message'] = $email_err;
+    }
+    if ($phone_err) {
+      $response['message'] = $phone_err;
+    }
+    if ($password_err){
+      $response['message'] = $password_err;
+    }
+  // Send JSON response
+  echo json_encode($response);
+  exit();
   }
 }
 mysqli_close($conn);
+
 ?>
