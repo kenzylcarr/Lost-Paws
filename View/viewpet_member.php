@@ -241,16 +241,6 @@ if (isset($_GET['id'])) {
             if ($result->num_rows > 0) {
               $comment_data = $result->fetch_assoc();
               $comment_content = $comment_data['comment_content'];
-
-              // Display form for editing the comment
-              echo '
-              <div class="edit-comment">
-                <form action="" method="post">
-                  <input type="hidden" name="comment_id" value="' . $comment_id . '">
-                  <textarea name="comment" placeholder="Edit comment">' . htmlspecialchars($comment_content) . '</textarea>
-                  <button type="submit" name="update_comment">Update</button>
-                </form>
-              </div>';
             } else {
               echo "Comment not found.";
             }
