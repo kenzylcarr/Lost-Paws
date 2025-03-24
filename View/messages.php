@@ -298,6 +298,10 @@ while ($message = $messages->fetch_assoc()) {
             let petStatus = document.getElementById("petStatus").value;
             let petMessage = document.getElementById("petMessage").value.trim();
 
+            if (petMessage === "") {
+                alert("Please enter a message.");
+                return;
+            }
           
         </script>
 
