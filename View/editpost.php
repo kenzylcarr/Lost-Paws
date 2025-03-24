@@ -52,35 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
   exit();
 }
 
-  // Fetch pet ID data from database
-  if (!isset($_GET['id']) || empty($_GET['id'])) {
-    echo "Invalid pet ID.";
-    exit();
-  }
-
-  $pet_id = intval($_GET['id']);
-
-  // Fetch user information
-  $stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
-  $stmt->bind_param("s", $username);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $user = $result->fetch_assoc();
-  $user_id = $user['user_id'];
-
-  // Fetch pet information
-  $stmt = $conn->prepare("SELECT animal_type, status, location_ip, picture FROM pets WHERE pet_id = ? AND user_id = ?");
-  $stmt->bind_param("ii", $pet_id, $user_id);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  
-  if ($result->num_rows === 0) {
-    echo "Pet post not found.";
-    exit();
-  }
-
-  $pet = $result->fetch_assoc();
-
   // Handle file uploads
   if (isset($_FILES['pet_photo']) && is_array($_FILES['pet_photo']['name'])) {
     $target_dir = "../View/pet-uploads/";
@@ -120,6 +91,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
       }
     }
   }
+  if (count($uploaded_files) > 0) {
+    // Assuming you want to keep only the latest uploaded file, replace the current pictures.
+    $new_picture = $uploaded_files[0]; // Take the first file (or choose a file from $uploaded_files as per your logic)
+
+    // Update the pet's picture with the new one
+    $stmt = $conn->prepare("UPDATE pets SET picture = ? WHERE pet_id = ?");
+    $stmt->bind_param("si", $new_picture, $pet_id);
+    $stmt->execute();
+  }
+  // Fetch pet ID data from database
+  if (!isset($_GET['id']) || empty($_GET['id'])) {
+    echo "Invalid pet ID.";
+    exit();
+  }
+
+  $pet_id = intval($_GET['id']);
+
+  // Fetch user information
+  $stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+  $stmt->bind_param("s", $username);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $user = $result->fetch_assoc();
+  $user_id = $user['user_id'];
+
+  // Fetch pet information
+  $stmt = $conn->prepare("SELECT animal_type, status, location_ip, picture FROM pets WHERE pet_id = ? AND user_id = ?");
+  $stmt->bind_param("ii", $pet_id, $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  
+  if ($result->num_rows === 0) {
+    echo "Pet post not found.";
+    exit();
+  }
+
+  $pet = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
