@@ -59,9 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if ($stmt->execute()) {
           // Update session username if successful
           $_SESSION['username'] = $newUsername;
-          header("Location: accountpage.php");
-          exit();
-          echo "<p class='success-message'>Username updated successfully!</p>";
       } else {
           echo "<p class='error-message'>Error updating username. Please try again.</p>";
       }
@@ -85,8 +82,6 @@ if (isset($_POST['phone'])) {
       if ($stmt->execute()) {
           // Redirect to reload the page with updated information
           $_SESSION['phone_number'] = $new_phone;
-          header("Location: accountpage.php");
-          exit();
       } else {
           echo "<p class='error-message'>Error updating phone number. Please try again.</p>";
       }
@@ -113,8 +108,6 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
           // Redirect to reload the page with updated information
           $_SESSION['first_name'] = $new_firstname;
           $_SESSION['last_name'] = $new_lastname;
-          header("Location: accountpage.php");
-          exit();
       } else {
           echo "Error updating name information.";
       }
@@ -123,6 +116,8 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
       echo "Invalid name format.";
   }
   }
+    header("Location: accountpage.php");
+    exit();
 }
 ?>
 
