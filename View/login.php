@@ -23,16 +23,6 @@ $username_err = "";
 $password_err = "";
 $login_err = "";
 
-// Check for existing login error
-if (isset($_SESSION['login_err'])) {
-  $login_err = $_SESSION['login_err'];
-  unset($_SESSION['login_err']);
-
-  // For general errors, highlight both fields
-  $username_err = " "; // Space to trigger CSS
-  $password_err = " "; // Space to trigger CSS
-}
-
 // Process the form when submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Validate username
