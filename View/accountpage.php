@@ -259,11 +259,11 @@ $stmt->close();
               <h3>Profile Information</h3>
               <form id="profile-form" method="post" action="save-profile.php">
                 <label for="profile-username">Username</label>
-                <input type="text" name="username" id="profile-username" value="" oninput="validateUsername(this)" />
+                <input type="text" name="username" id="profile-username" placeholder="Enter your username" oninput="validateUsername(this)" />
                 <p id="profile-username-error" class="error-message"></p>
 
                 <label for="profile-email">Email</label>
-                <input type="email" name="email" id="profile-email" value="" oninput="validateEmail(this)" />
+                <input type="email" name="email" id="profile-email" placeholder="Enter your email address" oninput="validateEmail(this)" />
                 <p id="profile-email-error" class="error-message"></p>
 
                 <input type="submit" value="Save Changes" class="save-button" />
