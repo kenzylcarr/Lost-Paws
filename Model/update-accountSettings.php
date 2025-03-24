@@ -23,7 +23,20 @@ $username = $_SESSION['username'];
 $user_id = null; // update user-specific data
 
 
+// Fetch user data from the database
+$stmt = $conn->prepare("SELECT user_id, email_address, phone_number, profile_photo FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+    $user_id = $user['user_id'];
+} else {
+    echo "User not found.";
+    exit();
+}
 
+$stmt->close();
 
 
 ?>
