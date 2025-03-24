@@ -310,7 +310,9 @@ while ($message = $messages->fetch_assoc()) {
             // Append to the correct list
             if (petStatus === "lost") {
                 document.getElementById("lostList").appendChild(listItem);
-            } 
+            } else {
+                document.getElementById("foundList").appendChild(listItem);
+            }
           
         </script>
 
