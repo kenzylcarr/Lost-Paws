@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
 
 
 // Handle form submission for first name and last name update
-if (isset($_POST['first_name']) && isset($_POST['last_name'])) {
+if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
   $new_firstname = trim($_POST['first_name']);
   $new_lastname = trim($_POST['last_name']);
   
