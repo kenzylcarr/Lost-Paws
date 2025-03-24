@@ -49,32 +49,54 @@
       // }
       $conversations[$key][] = $msg;
     }
-
-    // For lost pets
-    $lostPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
-                      FROM messages M
-                      JOIN users U1 ON M.sender_id = U1.user_id
-                      JOIN users U2 ON M.receiver_id = U2.user_id
-                      WHERE M.pet_status = 'lost' AND (M.sender_id = ? OR M.receiver_id = ?)
-                      ORDER BY M.timestamp DESC";
-    $stmt = $conn->prepare($lostPetsQuery);
-    $stmt->bind_param("ii", $user_id, $user_id);
+    // Query to fetch sent messages
+    $sentMessagesQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+                          FROM messages M
+                          JOIN users U1 ON M.sender_id = U1.user_id
+                          JOIN users U2 ON M.receiver_id = U2.user_id
+                          WHERE M.sender_id = ?
+                          ORDER BY M.timestamp DESC";
+    $stmt = $conn->prepare($sentMessagesQuery);
+    $stmt->bind_param("i", $user_id);
     $stmt->execute();
-    $lostMessages = $stmt->get_result();
+    $sentMessages = $stmt->get_result();
 
-
-    // For found pets
-    $foundPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
-                      FROM messages M
-                      JOIN users U1 ON M.sender_id = U1.user_id
-                      JOIN users U2 ON M.receiver_id = U2.user_id
-                      WHERE M.pet_status = 'found' AND (M.sender_id = ? OR M.receiver_id = ?)
-                      ORDER BY M.timestamp DESC";
-    $stmt = $conn->prepare($foundPetsQuery);
-    $stmt->bind_param("ii", $user_id, $user_id);
+    // Query to fetch received messages
+    $receivedMessagesQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+                           FROM messages M
+                           JOIN users U1 ON M.sender_id = U1.user_id
+                           JOIN users U2 ON M.receiver_id = U2.user_id
+                           WHERE M.receiver_id = ?
+                           ORDER BY M.timestamp DESC";
+    $stmt = $conn->prepare($receivedMessagesQuery);
+    $stmt->bind_param("i", $user_id);
     $stmt->execute();
-    $foundMessages = $stmt->get_result();
+    $receivedMessages = $stmt->get_result();
 
+//     // For lost pets
+//     $lostPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+//                       FROM messages M
+//                       JOIN users U1 ON M.sender_id = U1.user_id
+//                       JOIN users U2 ON M.receiver_id = U2.user_id
+//                       WHERE M.pet_status = 'lost' AND (M.sender_id = ? OR M.receiver_id = ?)
+//                       ORDER BY M.timestamp DESC";
+//     $stmt = $conn->prepare($lostPetsQuery);
+//     $stmt->bind_param("ii", $user_id, $user_id);
+//     $stmt->execute();
+//     $lostMessages = $stmt->get_result();
+// 
+// 
+//     // For found pets
+//     $foundPetsQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
+//                       FROM messages M
+//                       JOIN users U1 ON M.sender_id = U1.user_id
+//                       JOIN users U2 ON M.receiver_id = U2.user_id
+//                       WHERE M.pet_status = 'found' AND (M.sender_id = ? OR M.receiver_id = ?)
+//                       ORDER BY M.timestamp DESC";
+//     $stmt = $conn->prepare($foundPetsQuery);
+//     $stmt->bind_param("ii", $user_id, $user_id);
+//     $stmt->execute();
+//     $foundMessages = $stmt->get_result();
 
   } catch (mysqli_sql_exception $e) {
     die ("Database error: " . $e->getMessage());
@@ -221,8 +243,10 @@
 
         <!-- Tabs for Lost Pets and Found Pets -->
         <div class="tabs">
-          <button onclick="toggleTab('lost-pets-tab')" class="tab-button">Lost Pets</button>
-          <button onclick="toggleTab('found-pets-tab')" class="tab-button">Found Pets</button>
+          <!-- <button onclick="toggleTab('lost-pets-tab')" class="tab-button">Lost Pets</button>
+          <button onclick="toggleTab('found-pets-tab')" class="tab-button">Found Pets</button> -->
+          <button onclick="toggleTab('sent-messages-tab')" class="tab-button">Sent Messages</button>
+          <button onclick="toggleTab('received-messages-tab')" class="tab-button">Received Messages</button>
         </div>
 
         <div class="create-message">
@@ -258,39 +282,38 @@
           </form>
         </div>
         
-        <!-- Lost Pets Tab Content -->
-        <div id="lost-pets-tab" class="tab-content" style="display: block;">
+        <!-- Sent Messages Tab Content -->
+        <div id="sent-messages-tab" class="tab-content" style="display: block;">
           <div class="conversation-list">
 
-            <!-- Dynamically populate conversations -->
-            <?php foreach ($conversations as $conversation): ?>
-              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
+            <?php foreach ($sentMessages as $message): ?>
+              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $message[0]['message_id']; ?>')">
                 <div class="conversation-header">
-                  <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
-                  <p><small>Last message: <?php echo isset($conversation[0]['content']) ? htmlspecialchars($conversation[0]['content']) : 'No messages yet'; ?></small></p>
+                  <p><strong><?php echo htmlspecialchars($message[0]['receiver_name']); ?></strong></p>
+                  <p><small>Last message: <?php echo isset($message[0]['content']) ? htmlspecialchars($message[0]['content']) : 'No messages yet'; ?></small></p>
                 </div>
               </div>
             <?php endforeach; ?>
           </div>
         </div>
 
-        <!-- Found Pets Tab Content -->
-      <div id="found-pets-tab" class="tab-content" style="display: none;">
-        <div class="conversation-list">
-          <!-- Dynamically populate conversations -->
-          <?php foreach ($conversations as $conversation): ?>
-            <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
-              <div class="conversation-header">
-                <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
-                <p><small>Last message: <?php echo isset($conversation[0]['content']) ? htmlspecialchars($conversation[0]['content']) : 'No messages yet'; ?></small></p>
-              </div>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
+          <!-- Received Messages Tab Content -->
+          <div id="received-messages-tab" class="tab-content" style="display: block;">
+          <div class="conversation-list">
 
-      <!-- Message Thread for Lost Pets (Conversation 1) -->     
-      <div class="message-thread" id="lost-conversation1" style="display: none;">
+            <?php foreach ($receivedMessages as $message): ?>
+              <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $message[0]['message_id']; ?>')">
+                <div class="conversation-header">
+                  <p><strong><?php echo htmlspecialchars($message[0]['sender_name']); ?></strong></p>
+                  <p><small>Last message: <?php echo isset($message[0]['content']) ? htmlspecialchars($message[0]['content']) : 'No messages yet'; ?></small></p>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+
+      <!-- Message Thread for Sent Messages (Conversation 1) -->     
+      <div class="message-thread" id="sent-conversation1" style="display: none;">
         <?php
         // Assuming you have a valid connection to the database
         $messagesQuery = "SELECT * FROM messages WHERE conversation_id = ?";
@@ -310,10 +333,10 @@
                   </div>";
         }
         ?>
-    <!-- Input Box to Send Message -->
-    <textarea id="reply-message-found1" placeholder="Type a message..." rows="4"></textarea>
-    <button class="send-reply">Send</button>
-<div>
+        <!-- Input Box to Send Message -->
+        <textarea id="reply-message-found1" placeholder="Type a message..." rows="4"></textarea>
+        <button class="send-reply">Send</button>
+      </div>
 
     <!-- Input Box to Send Message -->
     <textarea id="reply-message-lost1" placeholder="Type a message..." rows="4"></textarea>
