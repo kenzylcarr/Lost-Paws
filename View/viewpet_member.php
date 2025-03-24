@@ -178,6 +178,9 @@ if (isset($_GET['id'])) {
                     $comment_content = isset($comment['comment_content']) ? $comment['comment_content'] : null;
                     $comment_user_id = isset($comment['user_id']) ? $comment['user_id'] : null;
 
+                  // add a unique ID to each comment item for targeting via hash
+                  $comment_item_id = "comment-" . $comment_id; 
+
                   // check if the user is editing this specific comment
                   if (isset($_POST['edit_comment']) && $_POST['edit_comment'] == $comment_id) {
                     // If editing, display the comment as a text area for editing
@@ -284,6 +287,18 @@ if (isset($_GET['id'])) {
   <script>
     const petLat = <?php echo isset($pet['latitude']) ? $pet['latitude'] : '0'; ?>;
     const petLng = <?php echo isset($pet['longitude']) ? $pet['longitude'] : '0'; ?>;
+  
+    // check if there's a hash in the URL (indicating the ID of the comment being edited)
+    if (window.location.hash) {
+    // wait for the page to fully load before scrolling
+    window.onload = function() {
+      // scroll to the element with the specified ID
+      var commentElement = document.querySelector(window.location.hash);
+      if (commentElement) {
+        commentElement.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+  }
   </script>
 
   <script src="../Controller/map-loadLocation.js"></script>
