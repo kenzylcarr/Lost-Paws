@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
   }
 
   // Fetch comments for the pet
-  $stmt = $conn->prepare("SELECT comments.comment_id, comments.comment_content, CONVERT_TZ(comments.comment_date, '+00:00', '-06:00') AS regina_time, users.username, comments.user_id
+  $stmt = $conn->prepare("SELECT comments.comment_id, comments.comment_content, comments.comment_date, users.username, comments.user_id
                           FROM comments 
                           JOIN users ON comments.user_id = users.user_id 
                           WHERE comments.pet_id = ? 
