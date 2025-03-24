@@ -327,6 +327,7 @@ $stmt->close();
 				<!-- New Password -->
 				<label for="new-password">New Password</label>
 				<input type="password" name="new-password" id="new-password" required placeholder="Enter your new password" oninput="validatePassword(this)" />
+				<button type="button" class="password-toggle" onclick="togglePasswordVisibility('new-password')">view</button>
 				<p id="new-password-error" class="error-message"></p>
 
 				<!-- Confirm New Password -->
