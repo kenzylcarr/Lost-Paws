@@ -345,6 +345,21 @@ $stmt->close();
 		<br>
               <button class="delete-button">Delete Account</button>
             </div>
+
+	<!-- Password visibility -->
+	<script>
+	function togglePasswordVisibility(inputId) {
+	    var inputField = document.getElementById(inputId);
+	    var currentType = inputField.type;
+	
+	    // Toggle between 'password' and 'text'
+	    if (currentType === "password") {
+	        inputField.type = "text"; // Show password
+	    } else {
+	        inputField.type = "password"; // Hide password
+	    }
+	}
+	</script>
 			
           </section>
         
