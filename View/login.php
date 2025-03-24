@@ -12,7 +12,6 @@
 // Start the session
 session_start();
 
-
 // Include database configuration file
 require_once '../Model/db_config.php';
 
@@ -22,7 +21,6 @@ $password = "";
 $username_err = "";
 $password_err = "";
 $login_err = "";
-
 
 // Process the form when submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -69,22 +67,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               header("location: homepage.php");
               exit();
             } else {
-              // Invalid password
-              $_SESSION['login_err'] = "Invalid username or password.";
+              // Display error message if password is invalid and prevent user from logging in
+              $login_err = "Invalid username or password.";
               header("location: login.php");
               exit();
             }
           }
         } else {
-          // Invalid username
-          $_SESSION['login_err'] = "Invalid username or password.";
-          header("location: login.php");
-          exit();
+          // Display error message if username does not exist
+          $login_err = "Invalid username.";
         }
       } else {
-        $_SESSION['login_err'] = "Something went wrong. Please try again.";
-        header("location: login.php");
-        exit();
+        echo "Something went wrong. Please try again later.";
       }
       // Close statment
       mysqli_stmt_close($stmt);
@@ -131,11 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>Welcome to Lost Paws!</h2>
       </div>
 
-      <!-- Show login error if exists -->
-      <?php if (!empty($login_err)): ?>
-        <div class="login-error"><?php echo $login_err; ?></div>
-      <?php endif; ?>
-
       <!-- Prompts for user input to login -->
       <form class="auth-form-login" id="login-form" action="../View/login.php" method="post">
         <h3>Login</h3>
@@ -143,19 +132,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Username -->
         <div class="login-field">
           <label for="username">Username</label>
-          <input type="text" name="username" id="username">
-          <p id="error-text-username" class="error-text <?php echo empty($username_err) ? 'hidden' : ''; ?>">
-            <?php echo $username_err; ?>
-          </p>
+          <input type="text" name="username" id="username" />
+          <p id="error-text-username" class="error-text hidden">Invalid username</p>
         </div>
 
         <!-- Password -->
         <div class="login-field">
           <label for="password">Password</label>
           <input type="password" name="password" id="password" />
-          <p id="error-text-password" class="error-text <?php echo empty($password_err) ? 'hidden' : ''; ?>">
-            <?php echo $password_err; ?>
-          </p>
+          <p id="error-text-password" class="error-text hidden">Invalid password</p>
         </div>
 
         <!-- Incase of Forgotten Password
@@ -166,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- Submit Button to Login -->
         <div class="login-field">
-          <input id="login-button" type="submit" value="Login">
+          <input id="login-button" type="submit" value="Login" action="homepage.php">
         </div>
       </form>
 
