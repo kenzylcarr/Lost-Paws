@@ -524,6 +524,8 @@ input {
   .comment-item textarea {
     min-height: 50px;
     max-height: 300px;
+    min-width: 200px;
+    max-width: 200px;
     resize: none; /* to prevent manual resizing */
   }
 
