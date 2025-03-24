@@ -107,6 +107,7 @@ if (!isset($_SESSION['username'])) {
                     <option value="cat">Cat</option>
                     <option value="dog">Dog</option>
                 </select>
+                <button type="button" id="update-animal-type">Update</button>
 
                 <!-- Status -->
                 <label for="status">Status:</label>
@@ -114,16 +115,18 @@ if (!isset($_SESSION['username'])) {
                     <option value="lost">Lost</option>
                     <option value="found">Found</option>
                 </select>
+                <button type="button" id="update-status">Update</button>
 
                 <!-- Location IP -->
                 <label for="location_ip">Location Name:</label>
                 <input type="text" name="location_ip" required>
+                <button type="button" id="update-location-ip">Update</button>
 
                 <!-- Animal Photo -->
                 <label for="pet_photo">Upload Animal Photo:</label>
                 <input type="file" id="pet_photo" name="pet_photo[]" multiple>
+                <button type="button" id="update-photo">Update</button>
                 
-                <button type="submit">Update</button>
             </form>
         </div>
       </main>
