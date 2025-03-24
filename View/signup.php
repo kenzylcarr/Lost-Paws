@@ -213,6 +213,9 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <input type="text" id="username" name="username" />
                     <span id="error-text-username"
                         class="error-text <?php echo empty($errors['username']) ? 'hidden' : ''; ?>"><?php echo $errors['username'] ?? ''; ?></span>
+                    <div id="error-text-username-taken" class="error-text <?php echo empty($errors['username_taken']) ? 'hidden' : ''; ?>">
+                        <?php echo $errors['username_taken'] ?? ''; ?>
+                    </div>
                 </div>
                 <!-- Email Address -->
                 <div class="signup-field">
@@ -220,6 +223,9 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <input type="email" name="email" id="email" />
                     <span id="error-text-email"
                         class="error-text <?php echo empty($errors['email']) ? 'hidden' : ''; ?>"><?php echo $errors['email'] ?? ''; ?></span>
+                    <div id="error-text-email-taken" class="error-text <?php echo empty($errors['email_taken']) ? 'hidden' : ''; ?>">
+                        <?php echo $errors['email_taken'] ?? ''; ?>
+                    </div>
                 </div>
 
                 <!-- Phone Number -->
@@ -228,6 +234,9 @@ echo "Execution time: " . $execution_time . " seconds.";
                     <input type="tel" id="phone" name="phone" />
                     <p id="error-text-phone" class="error-text <?php echo empty($errors['phone']) ? 'hidden' : ''; ?>">
                         <?php echo $errors['phone'] ?? ''; ?></p>
+                    <div id="error-text-phone-taken" class="error-text <?php echo empty($errors['phone_taken']) ? 'hidden' : ''; ?>">
+                        <?php echo $errors['phone_taken'] ?? ''; ?>
+                    </div>
                 </div>
                 <!-- Password -->
                 <div class="signup-field">
