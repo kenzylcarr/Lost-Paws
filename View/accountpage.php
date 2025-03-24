@@ -258,9 +258,10 @@ $stmt->close();
             <!-- Profile Section -->
             <div id="profile" class="settings-section" style="display: block;">
               <h3>Profile Information</h3>
+              <!-- Username -->
               <form id="profile-form" method="post" action="/Model/update-accountSettings.php">
                 <label for="profile-username">Username</label>
-                <input type="text" name="username" id="profile-username" placeholder="Enter your username" oninput="validateUsername(this)" />
+                <input type="text" name="username" id="profile-username" value="<?php echo htmlspecialchars($username); ?>" placeholder="Enter your username" oninput="validateUsername(this)" />
                 <p id="profile-username-error" class="error-message"></p>
 
                 <input type="submit" value="Save Changes" class="save-button" />
@@ -275,17 +276,17 @@ $stmt->close();
               <form id="account-settings-form" method="post" action="/Model/update-accountSettings.php">
                 <!-- Full Name -->
                 <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" id="fullname" placeholder="Enter your Full Name" required oninput="validateFullName(this)" />
+                <input type="text" name="fullname" id="fullname" value="<?php echo htmlspecialchars($user['full_name']); ?>" placeholder="Enter your Full Name" required oninput="validateFullName(this)" />
                 <p id="fullname-error" class="error-message"></p>
 
                 <!-- Email Address -->
                 <label for="account-email">Email Address</label>
-                <input type="email" name="email" id="account-email" placeholder="Enter your email address" required oninput="validateEmail(this)" />
+                <input type="email" name="email" id="account-email" value="<?php echo htmlspecialchars($user['email_address']); ?>" placeholder="Enter your email address" required oninput="validateEmail(this)" />
                 <p id="account-email-error" class="error-message"></p>
 
                 <!-- Phone Number -->
                 <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" />
+                <input type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($user['phone_number']); ?>" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" />
                 <p id="phone-error" class="error-message"></p>
 
                 <!-- Province -->

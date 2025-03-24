@@ -45,6 +45,17 @@ if (isset($_POST['fullname'], $_POST['email'], $_POST['phone'], $_POST['username
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $username_new = mysqli_real_escape_string($conn, $_POST['username']);
 
+    // check if the new username or email already exists in the database
+    $stmt = $conn->prepare("SELECT * FROM users WHERE (username = ? OR email_address = ?) AND user_id != ?");
+    $stmt->bind_param("ssi", $username_new, $email, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "Username or email already exists. Please choose another.";
+        exit();
+    }
+
     // update profile info in the database
     $stmt = $conn->prepare("UPDATE users SET full_name = ?, email_address = ?, phone_number = ?, username = ? WHERE user_id = ?");
     $stmt->bind_param("ssssi", $fullname, $email, $phone, $username_new, $user_id);
