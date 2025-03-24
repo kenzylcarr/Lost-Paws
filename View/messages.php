@@ -318,6 +318,9 @@ while ($message = $messages->fetch_assoc()) {
             document.getElementById("petMessage").value = "";
         }
 
+           // Function to toggle between Lost & Found tabs
+        function toggleTab(tabId) {
+
           
         </script>
 
