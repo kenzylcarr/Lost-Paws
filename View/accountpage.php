@@ -187,11 +187,11 @@ $stmt->close();
 	  const password = input.value;
 	  const errorMessage = document.getElementById("new-password-error");
 	
-	  // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
+	  // Regular expression to check for at least one capital letter, one special character, and 6 characters
 	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
 	
 	  if (!password.match(passwordRegex)) {
-	    errorMessage.textContent = "Password must 6 characters, include one capital letter, and one special character.";
+	    errorMessage.textContent = "Password must be 6 characters, include one capital letter, and one special character.";
 	    input.style.borderColor = "red";
 	  } else {
 	    errorMessage.textContent = ""; // Clear error message when validation passes
@@ -273,7 +273,7 @@ $stmt->close();
             <!-- Account Section -->
             <div id="account" class="settings-section" style="display: none;">
               <h3>Account Settings</h3>
-              <p>Here you can update your account settings.</p>
+              <p>Update your account information here: </p>
 
               <form id="account-settings-form" method="post" action="save-account-settings.php">
                 <!-- Full Name -->
@@ -350,6 +350,7 @@ $stmt->close();
             <div id="delete" class="settings-section" style="display: none;">
               <h3>Delete Account</h3>
               <p>Once your account is deleted, you will not be able to recover it. This action is permanent.</p>
+		<br>
               <button class="delete-button">Delete Account</button>
             </div>
 			
