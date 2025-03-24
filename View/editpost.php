@@ -140,8 +140,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
             <!-- Animal Type -->
             <label for="animal_type">Animal Type:</label>
                 <select name="animal_type">
-                    <option value="cat"> <?php if ($pet['animal_type'] == 'cat') echo 'selected'; ?>>Cat</option>
-                    <option value="dog"> <?php if ($pet['animal_type'] == 'dog') echo 'selected'; ?>>Dog</option>
+                    <option value="cat"> <?php if ($pet['animal_type'] == 'cat'); ?>Cat</option>
+                    <option value="dog"> <?php if ($pet['animal_type'] == 'dog'); ?>Dog</option>
                 </select>
                 <!-- <button type="button" id="update-animal-type">Update</button> -->
                 <button type="button" onclick="updateField('animal_type')">Update</button>
@@ -149,8 +149,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
                 <!-- Status -->
                 <label for="status">Status:</label>
                 <select name="status">
-                    <option value="lost"> <?php if ($pet['status'] == 'lost') echo 'selected'; ?>Lost</option>
-                    <option value="found"> <?php if ($pet['status'] == 'found') echo 'selected'; ?>Found</option>
+                    <option value="lost"> <?php if ($pet['status'] == 'lost'); ?>Lost</option>
+                    <option value="found"> <?php if ($pet['status'] == 'found'); ?>Found</option>
                 </select>
                 <button type="button" onclick="updateField('status')">Update</button>
 
