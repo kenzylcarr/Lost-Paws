@@ -35,13 +35,13 @@ $phone = "";
 $start_time = microtime(true);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = test_input($_POST["first_name"]);
-    $last_name = test_input($_POST["last_name"]);
-    $username = test_input($_POST["username"]);
-    $email = test_input($_POST["email"]);
-    $password = test_input($_POST["password"]);
-    $cpassword = test_input($_POST["cpassword"]);
-    $phone = test_input($_POST["phone"]);
+    $first_name = isset($_POST["first_name"]) ? test_input($_POST["first_name"]) : "";
+    $last_name = isset($_POST["last_name"]) ? test_input($_POST["last_name"]) : "";
+    $username = isset($_POST["username"]) ? test_input($_POST["username"]) : "";
+    $email = isset($_POST["email"]) ? test_input($_POST["email"]) : "";
+    $password = isset($_POST["password"]) ? test_input($_POST["password"]) : "";
+    $cpassword = isset($_POST["cpassword"]) ? test_input($_POST["cpassword"]) : "";
+    $phone = isset($_POST["phone"]) ? test_input($_POST["phone"]) : "";
 
     $nameRegex = "/^[a-zA-Z'-]+$/";
     $unameRegex = "/^[a-zA-Z0-9_]+$/";
