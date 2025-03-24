@@ -135,6 +135,8 @@
   <title>Messages</title>
   <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
   <link rel="stylesheet" type="text/css" href="/View/CSS/messages-style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/mainpage-style.css">
+
   <script src="../Controller/eventHandler.js"></script>
 
   <!-- START SENT RECEIVED SWITCH TEST -->
@@ -204,6 +206,24 @@
         <a id="login-button" href="logout.php">Logout</a>
       </div>
     </nav>
+
+    <main id="mainpage-right-afterlogin">
+        <div class="user-photo">
+          <img src="../View/uploads/<?php echo htmlspecialchars($user['profile_photo']); ?>" alt="user photo" />
+        </div>
+    
+        <div class="user-name">
+          <p><?php echo htmlspecialchars($first_name) . ' ' . htmlspecialchars($last_name); ?></p>
+          <p><?php echo htmlspecialchars($username); ?></p>
+        </div>
+    
+        <div class="user-options">
+            <p><a href="/View/myposts.php">View My Posts</a></p>	
+            <!-- <p><a href="/View/accountpage.php">Account Settings</a></p>	 -->
+            <p><a href="/View/messages.php">Messages</a></p>
+        </div>
+      </main>
+    </div>
 
     <main id="messages-main">
       <div class="messages-container">
