@@ -212,7 +212,7 @@
               <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
                 <div class="conversation-header">
                   <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
-                  <p><small>Last message: <?php echo htmlspecialchars($message['content']); ?></small></p>
+                  <p><small>Last message: <?php echo isset($conversation[0]['content']) ? htmlspecialchars($converation[0]['content']) : 'No messages yet'; ?></small></p>
                 </div>
               </div>
             <?php endforeach; ?>
@@ -227,7 +227,7 @@
             <div class="conversation-item" onclick="toggleConversation('conv-<?php echo $conversation[0]['message_id']; ?>')">
               <div class="conversation-header">
                 <p><strong><?php echo htmlspecialchars($conversation[0]['sender_name']); ?></strong></p>
-                <p><small>Last message: <?php echo htmlspecialchars($conversation[0]['content']); ?></small></p>
+                <p><small>Last message: <?php echo isset($conversation[0]['content']) ? htmlspecialchars($conversation[0]['content']) : 'No messages yet'; ?></small></p>
               </div>
             </div>
           <?php endforeach; ?>
@@ -245,9 +245,9 @@
         $messages = $stmt->get_result();
 
         while ($message = $messages->fetch_assoc()) {
-            $sender = htmlspecialchars($message['sender_name']);
-            $content = htmlspecialchars($message['content']);
-            $direction = ($message['sender_id'] == $user_id) ? 'sent' : 'received';
+            $sender = isset($message['sender_name']) ? htmlspecialchars($message['sender_name']) : 'Unknown';
+            $content = isset($message['content']) ? htmlspecialchars($message['content']) : 'No content available';
+            $direction = ($conversation['sender_id'] == $user_id) ? 'sent' : 'received';
 
           // Display the message content
             echo "<div class='message-item $direction'>
@@ -276,9 +276,9 @@
     $messages = $stmt->get_result();
 
 while ($message = $messages->fetch_assoc()) {
-        $sender = htmlspecialchars($message['sender_name']);
-        $content = htmlspecialchars($message['content']);
-        $direction = ($message['sender_id'] == $user_id) ? 'sent' : 'received';
+        $sender = htmlspecialchars($conversation['sender_name']);
+        $content = htmlspecialchars($conversation['content']);
+        $direction = ($conversation['sender_id'] == $user_id) ? 'sent' : 'received';
 
   // Display the message content
         echo "<div class='message-item $direction'>
