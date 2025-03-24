@@ -169,7 +169,7 @@
  END TEST -->
 
   <!-- START LOST FOUND SWITCH TEST -->
-
+<!-- 
             // Clear the message box after submission
             document.getElementById("petMessage").value = "";
         }
@@ -192,7 +192,7 @@
             // Add 'active' class to clicked button
             document.querySelector(`[onclick="toggleTab('${tabId}')"]`).classList.add('active');
         }    
-        </script>
+        </script> -->
 
 <!-- END LOST FOUND SWITCH TEST -->
   
