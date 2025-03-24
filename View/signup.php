@@ -24,8 +24,8 @@ function test_input($data)
 }
 
 $errors = array();
-$first_name = "";
-$last_name = "";
+$firstname = "";
+$lastname = "";
 $username = "";
 $email = "";
 $password = "";
@@ -35,8 +35,8 @@ $phone = "";
 $start_time = microtime(true);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = isset($_POST["first_name"]) ? test_input($_POST["first_name"]) : "";
-    $last_name = isset($_POST["last_name"]) ? test_input($_POST["last_name"]) : "";
+    $first_name = isset($_POST["firstname"]) ? test_input($_POST["firstname"]) : "";
+    $last_name = isset($_POST["lastname"]) ? test_input($_POST["lastname"]) : "";
     $username = isset($_POST["username"]) ? test_input($_POST["username"]) : "";
     $email = isset($_POST["email"]) ? test_input($_POST["email"]) : "";
     $password = isset($_POST["password"]) ? test_input($_POST["password"]) : "";
@@ -49,11 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordRegex = "/^(?=.*\W).{6,}$/";
     $phoneRegex = "/^\d{10}$/";
 
-    if (!preg_match($nameRegex, $first_name)) {
-        $errors['first_name'] = "Invalid first name";
+    if (!preg_match($nameRegex, $firstname)) {
+        $errors['firstname'] = "Invalid first name";
     }
-    if (!preg_match($nameRegex, $last_name)) {
-        $errors['last_name'] = "Invalid last name";
+    if (!preg_match($nameRegex, $lastname)) {
+        $errors['lastname'] = "Invalid last name";
     }
     if (!preg_match($unameRegex, $username)) {
         $errors['username'] = "Invalid Username";
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert user into the database
         $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, email_address, password, phone_number, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $first_name, $last_name, $username, $email, $hashedPassword, $phone, $avatar_temp);
+        $stmt->bind_param("sssssss", $firstname, $lastname, $username, $email, $hashedPassword, $phone, $avatar_temp);
         $result = $stmt->execute();
 
         if (!$result) {
@@ -197,18 +197,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form class="auth-form-signup" id="signup-form" method="post" enctype="multipart/form-data">
                 <!-- First Name -->
                 <div class="signup-field">
-                    <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" id="first_name" />
-                    <span id="error-text-first_name"
-                        class="error-text <?php echo empty($errors['first_name']) ? 'hidden' : ''; ?>"><?php echo $errors['first_name'] ?? ''; ?></span>
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" id="firstname" />
+                    <span id="error-text-firstname"
+                        class="error-text <?php echo empty($errors['firstname']) ? 'hidden' : ''; ?>"><?php echo $errors['firstname'] ?? ''; ?></span>
                 </div>
                 
                 <!-- Last Name -->
                 <div class="signup-field">
-                    <label for="last_name">Last Name</label>
-                    <input type="text" name="last_name" id="last_name" />
-                    <span id="error-text-last_name"
-                        class="error-text <?php echo empty($errors['last_name']) ? 'hidden' : ''; ?>"><?php echo $errors['last_name'] ?? ''; ?></span>
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" id="lastname" />
+                    <span id="error-text-lastname"
+                        class="error-text <?php echo empty($errors['lastname']) ? 'hidden' : ''; ?>"><?php echo $errors['lastname'] ?? ''; ?></span>
                 </div>
                 
                 <!-- Username -->
