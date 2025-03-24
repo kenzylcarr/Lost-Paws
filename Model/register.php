@@ -19,12 +19,26 @@ if (!$conn) {
 }
 
 // Declare variables with empty values
-$username = $email = $phone = $password = "";
-$username_err = $email_err = $phone_err = $password_err = "";
+$first_name = $last_name = $username = $email = $phone = $password = "";
+$first_name_err = $last_name_err = $username_err = $email_err = $phone_err = $password_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate username
+    // Validate first name
+    if(empty(trim($_POST["first_name"]))) {
+      $first_name_err = "Please enter a first name.";
+  } else {
+    $first_name = trim($_POST["first_name"]);
+  }
+  
+    // Validate last name
+    if(empty(trim($_POST["last_name"]))) {
+        $last_name_err = "Please enter a last name.";
+    } else {
+      $last_name = trim($_POST["last_name"]);
+    }
+    
+  // Validate username
     if(empty(trim($_POST["username"]))) {
         $username_err = "Please enter a username.";
     } else {
@@ -103,11 +117,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $param_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare INSERT statement
-    $sql = "INSERT INTO users (username, email_address, phone_number, password, profile_photo) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (first_name, last_name, username, email_address, phone_number, password, profile_photo) VALUES (?, ?, ?, ?, ?, ?, ?)";
     if ($stmt = mysqli_prepare($conn, $sql)) {
-      mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
+      mysqli_stmt_bind_param($stmt, "sssssss", $param_first_name, $param_last_name, $param_username, $param_email, $param_phone, $param_password, $param_profile_photo);
 
       // Set parameters
+      $param_first_name = $first_name;
+      $param_last_name = $last_name;
       $param_username = $username;
       $param_email = $email;
       $param_phone = $phone;
