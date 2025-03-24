@@ -131,6 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt = $conn->prepare("UPDATE users SET profile_photo = ? WHERE username = ?");
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
+
                     // Redirect to login page
                     header("location: ../View/login.php");
                     exit();
@@ -146,9 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-$end_time = microtime(true);
-$execution_time = $end_time - $start_time;
-echo "Execution time: " . $execution_time . " seconds.";
+
 ?>
 
 <!DOCTYPE html>
