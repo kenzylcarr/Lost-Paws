@@ -7,10 +7,21 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: login-style.css */
 
+
 .logo {
   padding: 15px;
   background-color: #B6D0E2;
   margin-left: -15px;
+}
+
+.login-error ~ .auth-form-login .login-field input {
+  border: 1px solid #ff0000;
+}
+
+.error-text:not(.hidden) {
+  color: #ff0000;
+  font-size: 0.9em;
+  height: 1em; 
 }
 
 .navmenu {
