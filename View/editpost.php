@@ -91,15 +91,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
       }
     }
   }
-  if (count($uploaded_files) > 0) {
-    // Assuming you want to keep only the latest uploaded file, replace the current pictures.
-    $new_picture = $uploaded_files[0]; // Take the first file (or choose a file from $uploaded_files as per your logic)
+  if (isset($pet_photo) && count($pet_photo) > 0) {
+    $new_picture = $pet_photo[0];
 
     // Update the pet's picture with the new one
     $stmt = $conn->prepare("UPDATE pets SET picture = ? WHERE pet_id = ?");
     $stmt->bind_param("si", $new_picture, $pet_id);
     $stmt->execute();
   }
+
   // Fetch pet ID data from database
   if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "Invalid pet ID.";
