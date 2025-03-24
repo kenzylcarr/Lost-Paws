@@ -66,6 +66,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
       $stmt->close();
   }
 
+// Handle form submission for phone number update
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Collect and sanitize the phone number input
+  $new_phone = trim($_POST['phone']);
+  
+  // Validate phone number (check if it matches a valid format)
+  $phonePattern = "/^(?:\(\d{3}\)\s?\d{3}-\d{4}|\d{10}|\d{3}-\d{3}-\d{4})$/"; // Allow formats like (000) 000-0000, 0000000000, 000-000-0000
+  
+  if (!empty($new_phone) && preg_match($phonePattern, $new_phone)) {
+      // Prepare and execute the query to update the phone number in the database
+      $stmt = $conn->prepare("UPDATE users SET phone_number = ? WHERE user_id = ?");
+      $stmt->bind_param("si", $new_phone, $_SESSION['user_id']);
+      
+      if ($stmt->execute()) {
+          // Redirect to reload the page with updated information
+          $_SESSION['phone_number'] = $new_phone;
+          header("Location: accountpage.php");
+          exit();
+      } else {
+          echo "<p class='error-message'>Error updating phone number. Please try again.</p>";
+      }
+      $stmt->close();
+  } else {
+      echo "<p class='error-message'>Invalid phone number format. Please enter a valid phone number.</p>";
+  }
+}
 
 // Handle form submission for first name and last name update
 if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
