@@ -8,6 +8,7 @@
             Fatima Rizwan (frf706 - 200446702)
   File name: messages.php
 -->
+
 <?php
   session_start();
   require_once("../Model/db_config.php");
@@ -57,6 +58,7 @@
       // }
       $conversations[$key][] = $msg;
     }
+    
     // Query to fetch sent messages
     $sentMessagesQuery = "SELECT M.*, U1.username AS sender_name, U2.username AS receiver_name
                           FROM messages M
