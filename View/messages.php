@@ -293,6 +293,11 @@ while ($message = $messages->fetch_assoc()) {
 <!-- START LOST FOUND SWITCH TEST -->
         
         <script>
+          function submitPet() {
+            // Get values from the form
+            let petStatus = document.getElementById("petStatus").value;
+            let petMessage = document.getElementById("petMessage").value.trim();
+
           
         </script>
 
