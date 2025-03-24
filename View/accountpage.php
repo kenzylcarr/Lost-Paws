@@ -37,6 +37,33 @@ if ($result->num_rows > 0) {
 }
 
 $stmt->close();
+
+
+// Check if the form is submitted and handle the username update
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
+  $newUsername = trim($_POST['username']);
+
+  // Validate username (same as JavaScript validation)
+  if (empty($newUsername)) {
+      echo "<p class='error-message'>Username cannot be empty.</p>";
+  } elseif (!preg_match("/^[A-Za-z0-9]+$/", $newUsername)) {
+      echo "<p class='error-message'>Username can only contain letters and numbers (no spaces or special characters).</p>";
+  } else {
+      // Update username in the database
+      $stmt = $conn->prepare("UPDATE users SET username = ? WHERE user_id = ?");
+      $stmt->bind_param("si", $newUsername, $user_id);
+      
+      if ($stmt->execute()) {
+          // Update session username if successful
+          $_SESSION['username'] = $newUsername;
+          echo "<p class='success-message'>Username updated successfully!</p>";
+      } else {
+          echo "<p class='error-message'>Error updating username. Please try again.</p>";
+      }
+
+      $stmt->close();
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -278,7 +305,7 @@ $stmt->close();
             <div id="profile" class="settings-section" style="display: block;">
               <h3>Profile Information</h3>
               <!-- Username -->
-              <form id="profile-form" method="post" action="/Model/update-accountSettings.php">
+              <form id="profile-form" method="post">
                 <label for="profile-username">Username</label>
                 <input type="text" name="username" id="profile-username" value="<?php echo htmlspecialchars($username); ?>" placeholder="Enter your username" oninput="validateUsername(this)" />
                 <p id="profile-username-error" class="error-message"></p>
@@ -292,7 +319,7 @@ $stmt->close();
               <h3>Account Settings</h3>
               <p>Update your account information here: </p>
 
-              <form id="account-settings-form" method="post" action="/Model/update-accountSettings.php">
+              <form id="account-settings-form" method="post">
                 <!-- First Name -->
                 <label for="firstname">First Name</label>
                 <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" placeholder="Enter your First Name" required oninput="validateFirstName(this)" />
@@ -342,7 +369,7 @@ $stmt->close();
             <!-- Change Password Section -->
 			<div id="password" class="settings-section" style="display: none;">
 			  <h3>Change Password</h3>
-			  <form id="change-password-form" method="post" action="/Model/update-accountSettings.php" onsubmit="return validatePasswordChange()">
+			  <form id="change-password-form" method="post" onsubmit="return validatePasswordChange()">
 				
 				<!-- Current Password -->
 				<label for="current-password">Current Password</label>
