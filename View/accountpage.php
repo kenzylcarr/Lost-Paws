@@ -40,7 +40,10 @@ $stmt->close();
 
 
 // Check if the form is submitted and handle the username update
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Collect and sanitize the inputs
+  if (isset($_POST['username'])) {
+  // Update username
   $newUsername = trim($_POST['username']);
 
   // Validate username
@@ -62,12 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'])) {
       } else {
           echo "<p class='error-message'>Error updating username. Please try again.</p>";
       }
-
       $stmt->close();
+    }
   }
 
 // Handle form submission for phone number update
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['phone'])) {
   // Collect and sanitize the phone number input
   $new_phone = trim($_POST['phone']);
   
@@ -119,7 +122,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
   } else {
       echo "Invalid name format.";
   }
-}
+  }
 }
 ?>
 
