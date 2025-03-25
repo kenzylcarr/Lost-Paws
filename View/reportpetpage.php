@@ -149,14 +149,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$end_time = microtime(true);
-$execution_time = $end_time - $start_time;
+$execution_time = microtime(true) - $start_time;
 echo "Execution time: " . $execution_time . " seconds.";
 
 // Write execution time to a txt file
+$user_info = "User Information: \nUsername: $username\nEmail: $email\nPhone: $phone\n";
+$pet_info = "Pet Information: \nAnimal Type: $animal_type\nStatus: $status\nLocation: $location_ip\nLatitude: $latitude\nLongitude: $longitude\nPet Photos: " . implode(", ", $pet_photo) . "\n";
+
 $file = fopen("execution_time.txt", "a");
-fwrite($file, "reportpetpage.php execution time: " . $execution_time . " seconds.\n");
-fclose($file);
+if ($file) {
+  fwrite($file, "reportpetpage.php execution time: " . $execution_time . " seconds.\n");
+  fwrite($file, $user_info);
+  fwrite($file, $pet_info);
+  fclose($file);
+} else {
+  echo "Error: Unable to open the file.";
+}
 
 mysqli_close($conn);
 ?>

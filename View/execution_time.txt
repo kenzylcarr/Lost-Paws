@@ -1,2 +1,0 @@
-signup.php execution time: 1742866072.437 seconds.
-reportpetpage.php execution time: 1.9073486328125E-6 seconds.
