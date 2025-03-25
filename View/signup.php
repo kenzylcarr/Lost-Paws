@@ -132,6 +132,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
                     
+                    $execution_time = microtime(true) - $start_time;
+                    echo "Execution time: " . $execution_time . " seconds.";
+
+                    // Write execution time to a txt file
+                    $file = fopen("execution_time.txt", "a");
+                    fwrite($file, "signup.php execution time: " . $execution_time . " seconds.\n");
+                    fclose($file);
+                    
                     // Redirect to login page
                     header("location: ../View/login.php");
                     exit();
@@ -147,14 +155,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
-$execution_time = microtime(true) - $start_time;
-echo "Execution time: " . $execution_time . " seconds.";
-
-// Write execution time to a txt file
-$file = fopen("execution_time.txt", "a");
-fwrite($file, "signup.php execution time: " . $execution_time . " seconds.\n");
-fclose($file);
 
 ?>
 
