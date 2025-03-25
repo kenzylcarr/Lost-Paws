@@ -127,20 +127,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  // Check for input errors before submitting to the database
-  if (empty($animal_type_err) && empty($status_err) && empty($location_err) && empty($latitude_err) && empty($longitude_err)) {
-      // Prepare INSERT statement
-      $stmt = $conn->prepare("INSERT INTO pets (user_id, animal-type, status, location_ip, picture, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)");
-      
-      // Insert into the database
-      foreach ($pet_photo as $picture) {
-        $stmt->bind_param("issssff", $user_id, $animal_type, $status, $location_ip, $picture, $latitude, $longitude);
-        if (!$stmt->execute()) {
-          echo "Error: " . $stmt->error;
+    // Check for input errors before submitting to the database
+    if (empty($animal_type_err) && empty($status_err) && empty($location_err) && empty($latitude_err) && empty($longitude_err)) {
+        // Prepare INSERT statement
+        $stmt = $conn->prepare("INSERT INTO pets (user_id, animal-type, status, location_ip, picture, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        
+        // Insert into the database
+        foreach ($pet_photo as $picture) {
+          $stmt->bind_param("issssff", $user_id, $animal_type, $status, $location_ip, $picture, $latitude, $longitude);
+          if (!$stmt->execute()) {
+            echo "Error: " . $stmt->error;
+          }
         }
-      }
-      $end_time = microtime(true);
-      $execution_time = $end_time - $start_time;
+        $end_time = microtime(true);
+        $execution_time = $end_time - $start_time;
 
       echo "Execution time: " . $execution_time . " seconds.<br>";
 
