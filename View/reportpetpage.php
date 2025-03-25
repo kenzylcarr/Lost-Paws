@@ -153,7 +153,7 @@ $execution_time = microtime(true) - $start_time;
 echo "Execution time: " . $execution_time . " seconds.";
 
 // Write execution time to a txt file
-$user_info = "User Information: \nUsername: $username\nEmail: $email\nPhone: $phone\n";
+$user_info = "User Information: \nUsername: $username\n";
 $pet_info = "Pet Information: \nAnimal Type: $animal_type\nStatus: $status\nLocation: $location_ip\nLatitude: $latitude\nLongitude: $longitude\n";
 
 $file = fopen("execution_time.txt", "a");
