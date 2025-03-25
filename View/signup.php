@@ -31,9 +31,6 @@ $email = "";
 $password = "";
 $phone = "";
 
-// Start measuring the execution time
-$start_time = microtime(true);
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = isset($_POST["firstname"]) ? test_input($_POST["firstname"]) : "";
     $last_name = isset($_POST["lastname"]) ? test_input($_POST["lastname"]) : "";
@@ -131,16 +128,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt = $conn->prepare("UPDATE users SET profile_photo = ? WHERE username = ?");
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
-
-                    $end_time = microtime(true);
-                    $execution_time = $end_time - $start_time;
-
-                    // Store the execution time in the database
-                    $stmt = $conn->prepare("INSERT INTO performance_log (function_name, execution_time) VALUES ('signup', ?)");
-                    $stmt->bind_param("d", $execution_time); // 'd' for double (float)
-                    $stmt->execute();
-
-                    echo "Execution time: " . $execution_time . " seconds.";
                     
                     // Redirect to login page
                     header("location: ../View/login.php");

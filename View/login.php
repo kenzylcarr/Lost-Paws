@@ -22,6 +22,9 @@ $username_err = "";
 $password_err = "";
 $login_err = "";
 
+// Start measuring the execution time
+$start_time = microtime(true);
+
 // Process the form when submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Validate username
@@ -62,6 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               $_SESSION["signedin"] = true;
               $_SESSION["id"] = $user_id;
               $_SESSION["username"] = $username;
+
+              $end_time = microtime(true);
+              $execution_time = $end_time - $start_time;
+
+              echo "Execution time: " . $execution_time . " seconds.";
 
               // Redirect user to mainpage after login
               header("location: homepage.php");
