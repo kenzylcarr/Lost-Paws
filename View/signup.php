@@ -152,10 +152,8 @@ $execution_time = microtime(true) - $start_time;
 echo "Execution time: " . $execution_time . " seconds.";
 
 // Write execution time to a txt file
-$user_data = "First Name: $firstname\nLast Name: $lastname\nUsername: $username\nEmail: $email\nPhone: $phone\n\n";
 $file = fopen("execution_time.txt", "a");
 fwrite($file, "signup.php execution time: " . $execution_time . " seconds.\n");
-fwrite($file, $user_data);
 fclose($file);
 
 ?>
