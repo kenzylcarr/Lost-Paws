@@ -387,12 +387,12 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
 
                 <!-- Email Address -->
                 <label for="account-email">Email Address</label>
-                <input type="email" name="email" id="account-email" value="<?php echo htmlspecialchars($user['email_address']); ?>" placeholder="Enter your email address" required oninput="validateEmail(this)" />
+                <input type="email" name="email" id="account-email" value="<?php echo htmlspecialchars($user['email_address']); ?>" placeholder="Enter your email address" required oninput="validateEmail(this)" readonly />
                 <p id="account-email-error" class="error-message"></p>
 
                 <!-- Phone Number -->
                 <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($user['phone_number']); ?>" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" />
+                <input type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($user['phone_number']); ?>" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" readonly />
                 <p id="phone-error" class="error-message"></p>
 
                 <!-- Province -->
