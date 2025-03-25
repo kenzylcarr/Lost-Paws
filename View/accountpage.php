@@ -372,7 +372,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
             <!-- Account Section -->
             <div id="account" class="settings-section" style="display: none;">
               <h3>Account Settings</h3>
-              <p>Update your account information here: </p>
+              <p>View your account information here: </p>
 
               <form id="account-settings-form" action="../View/accountpage.php" method="post">
                 <!-- First Name -->
@@ -417,7 +417,6 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
                 <input type="text" name="address" id="address" value="" required oninput="validateAddress(this)" />
                 <p id="address-error" class="error-message"></p> -->
 
-                <input type="submit" value="Save Changes" class="save-button" />
               </form>
             </div>
 

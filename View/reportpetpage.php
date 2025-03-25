@@ -153,6 +153,11 @@ $end_time = microtime(true);
 $execution_time = $end_time - $start_time;
 echo "Execution time: " . $execution_time . " seconds.";
 
+// Write execution time to a txt file
+$file = fopen("execution_time.txt", "a");
+fwrite($file, "reportpetpage.php execution time: " . $execution_time . " seconds.\n");
+fclose($file);
+
 mysqli_close($conn);
 ?>
 
@@ -213,7 +218,7 @@ mysqli_close($conn);
 
           <!-- Animal Photo -->
           <label for="pet_photo">Upload Animal Photo:</label>
-          <input type="file" id="pet_photo" name="pet_photo[]" multiple>
+          <input type="file" id="pet_photo" name="pet_photo[]">
 
           <!-- Google Map for Location -->
           <label for="map">Select Location on Map: </label>

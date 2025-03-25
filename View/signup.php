@@ -135,6 +135,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $end_time = microtime(true);
                     $execution_time = $end_time - $start_time;
                     echo "Execution time: " . $execution_time . " seconds.";
+
+                    // Write execution time to a txt file
+                    $file = fopen("execution_time.txt", "a");
+                    if ($file) {
+                        fwrite($file, "signup.php execution time: " . $execution_time . " seconds.\n");
+                        fclose($file);
+                    } else {
+                        echo "Error: Unable to open the file.";
+                    }
                     
                     // Redirect to login page
                     header("location: ../View/login.php");
