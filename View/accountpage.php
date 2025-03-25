@@ -392,7 +392,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
 
                 <!-- Phone Number -->
                 <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($user['phone_number']); ?>" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" />
+                <input type="tel" name="phone" id="phone" value="<?php echo htmlspecialchars($user['phone_number']); ?>" placeholder="e.g., (000) 000-0000" oninput="validatePhoneNumber(this)" readonly />
                 <p id="phone-error" class="error-message"></p>
 
                 <!-- Province -->
