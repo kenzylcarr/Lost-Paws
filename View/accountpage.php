@@ -266,54 +266,54 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
     // }
 // end code for address
 	  
-	    // Validate Current Password
-	function validateCurrentPassword(input) {
-	  const password = input.value;
-	  const errorMessage = document.getElementById("current-password-error");
-	
-	  // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
-	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
-	
-	  if (!password.match(passwordRegex)) {
-	    errorMessage.textContent = "Password must contain at least 6 characters, including 1 uppercase letter and 1 special character.";
-	    input.style.borderColor = "red";
-	  } else {
-	    errorMessage.textContent = ""; // Clear error message when validation passes
-	    input.style.borderColor = ""; // Reset the border color to default
-	  }
-	}
-	
-	// Validate New Password
-	function validatePassword(input) {
-	  const password = input.value;
-	  const errorMessage = document.getElementById("new-password-error");
-	
-	  // Regular expression to check for at least one capital letter, one special character, and 6 characters
-	  const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
-	
-	  if (!password.match(passwordRegex)) {
-	    errorMessage.textContent = "Password must contain at least 6 characters, including 1 uppercase letter and 1 special character.";
-	    input.style.borderColor = "red";
-	  } else {
-	    errorMessage.textContent = ""; // Clear error message when validation passes
-	    input.style.borderColor = ""; // Reset the border color to default
-	  }
-	}
-	
-	// Validate Confirm Password
-	function validateConfirmPassword(input) {
-	  const confirmPassword = input.value;
-	  const newPassword = document.getElementById("new-password").value;
-	  const errorMessage = document.getElementById("confirm-password-error");
-	
-	  if (confirmPassword !== newPassword) {
-	    errorMessage.textContent = "Passwords do not match.";
-	    input.style.borderColor = "red";
-	  } else {
-	    errorMessage.textContent = ""; // Clear error message when passwords match
-	    input.style.borderColor = ""; // Reset the border color to default
-	  }
-	}
+	//     // Validate Current Password
+	// function validateCurrentPassword(input) {
+	//   const password = input.value;
+	//   const errorMessage = document.getElementById("current-password-error");
+	// 
+	//   // Regular expression to check for at least one capital letter, one special character, and minimum 6 characters
+	//   const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
+	// 
+	//   if (!password.match(passwordRegex)) {
+	//     errorMessage.textContent = "Password must contain at least 6 characters, including 1 uppercase letter and 1 special character.";
+	//     input.style.borderColor = "red";
+	//   } else {
+	//     errorMessage.textContent = ""; // Clear error message when validation passes
+	//     input.style.borderColor = ""; // Reset the border color to default
+	//   }
+	// }
+	// 
+	// // Validate New Password
+	// function validatePassword(input) {
+	//   const password = input.value;
+	//   const errorMessage = document.getElementById("new-password-error");
+	// 
+	//   // Regular expression to check for at least one capital letter, one special character, and 6 characters
+	//   const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{6,}$/;
+	// 
+	//   if (!password.match(passwordRegex)) {
+	//     errorMessage.textContent = "Password must contain at least 6 characters, including 1 uppercase letter and 1 special character.";
+	//     input.style.borderColor = "red";
+	//   } else {
+	//     errorMessage.textContent = ""; // Clear error message when validation passes
+	//     input.style.borderColor = ""; // Reset the border color to default
+	//   }
+	// }
+	// 
+	// // Validate Confirm Password
+	// function validateConfirmPassword(input) {
+	//   const confirmPassword = input.value;
+	//   const newPassword = document.getElementById("new-password").value;
+	//   const errorMessage = document.getElementById("confirm-password-error");
+	// 
+	//   if (confirmPassword !== newPassword) {
+	//     errorMessage.textContent = "Passwords do not match.";
+	//     input.style.borderColor = "red";
+	//   } else {
+	//     errorMessage.textContent = ""; // Clear error message when passwords match
+	//     input.style.borderColor = ""; // Reset the border color to default
+	//   }
+	// }
   </script>
 </head>
 
@@ -347,8 +347,8 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
             <ul class="settings-menu">
               <li><a href="javascript:void(0);" onclick="toggleSection('profile')">Profile</a></li>
               <li><a href="javascript:void(0);" onclick="toggleSection('account')">Account</a></li>
-              <li><a href="javascript:void(0);" onclick="toggleSection('password')">Change Password</a></li>
-              <li><a href="javascript:void(0);" onclick="toggleSection('delete')">Delete Account</a></li>
+              <!-- <li><a href="javascript:void(0);" onclick="toggleSection('password')">Change Password</a></li>
+              <li><a href="javascript:void(0);" onclick="toggleSection('delete')">Delete Account</a></li> -->
             </ul>
           </aside>
 
