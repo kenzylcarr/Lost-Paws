@@ -423,7 +423,7 @@ input {
     height: 50vh;
     display: grid;
 	  margin-bottom: 20px;
-    margin-top: -150px;
+    margin-top: -110px;
     grid-template-columns: 1.5fr 2fr;
 
     box-shadow: 0 2px 5px rgba(216, 213, 213, 0.5);
@@ -485,7 +485,7 @@ input {
     padding: 25px;
     width: 55vw;
     max-height: 300px;
-    margin-top: -140px;
+    margin-top: -150px;
   }
   
   .comment-container input{
