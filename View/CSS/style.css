@@ -430,7 +430,7 @@ input {
   }
 
   .description-container > img {
-    max-height: 400px;
+    max-height: 200px;
     max-width: 300px;
   }
 
@@ -440,7 +440,7 @@ input {
     grid-row-start: 1;
     grid-row-end: 3;
     max-width: 600px;
-        height: auto;
+    height: auto;
   }
 
   .description-column1 img {
@@ -469,6 +469,7 @@ input {
     overflow-x: hidden; 
     overflow-y: scroll; 
     max-width: 600px;
+    max-width: 400px;
   }
 
 
