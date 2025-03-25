@@ -241,7 +241,7 @@ mysqli_close($conn);
 
 <?php if(isset($execution_time)): ?>
 <div id="execution-time" style="margin-top: 10px; font-size: 14px; color: gray;">
-  Page generated in <?php echo $execution_time; ?> seconds.
+  Execution time: <?php echo $execution_time; ?> seconds.
 </div>
 <?php endif; ?>
 
