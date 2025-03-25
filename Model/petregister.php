@@ -142,8 +142,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
      
              echo "Execution time: " . $execution_time . " seconds.<br>";
      
-            header("Location: ../View/homepage.php");
-            exit();
+             header("Location: ../View/reportpetpage.php");
+             exit();
         }
     } else {
         // Display validation errors
