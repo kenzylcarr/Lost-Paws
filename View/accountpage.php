@@ -382,7 +382,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
 
                 <!-- Last Name -->
                 <label for="lastname">Last Name</label>
-                <input type="text" name="lastname" id="lastname" value="<?php echo htmlspecialchars($user['last_name'] ?? ''); ?>" placeholder="Enter your Last Name" required oninput="validateLastName(this)" />
+                <input type="text" name="lastname" id="lastname" value="<?php echo htmlspecialchars($user['last_name'] ?? ''); ?>" placeholder="Enter your Last Name" required oninput="validateLastName(this)" readonly />
                 <p id="lastname-error" class="error-message"></p>
 
                 <!-- Email Address -->
