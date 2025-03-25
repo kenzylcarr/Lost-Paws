@@ -377,7 +377,7 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
               <form id="account-settings-form" action="../View/accountpage.php" method="post">
                 <!-- First Name -->
                 <label for="firstname">First Name</label>
-                <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" placeholder="Enter your First Name" required oninput="validateFirstName(this)" />
+                <input type="text" name="firstname" id="firstname" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" placeholder="Enter your First Name" required oninput="validateFirstName(this)" readonly />
                 <p id="firstname-error" class="error-message"></p>
 
                 <!-- Last Name -->
