@@ -417,7 +417,6 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
                 <input type="text" name="address" id="address" value="" required oninput="validateAddress(this)" />
                 <p id="address-error" class="error-message"></p> -->
 
-                //<input type="submit" value="Save Changes" class="save-button" />
               </form>
             </div>
 
