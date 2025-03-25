@@ -53,7 +53,6 @@ $start_time = microtime(true);
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-  $start_time = microtime(true);
 
   // debugging
   echo "Latitude: " . $_POST["latitude"] . "<br>";
@@ -142,10 +141,8 @@ if (empty($animal_type_err) && empty($status_err) && empty($location_err) && emp
       }
     }
   }
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $end_time = microtime(true);
-    $execution_time = number_format(($end_time - $start_time), 4);
-  }
+  $end_time = microtime(true);
+  $execution_time = number_format(($end_time - $start_time), 4);
 
   echo "Execution time: " . $execution_time . " seconds.<br>";
 
