@@ -478,7 +478,7 @@ input {
 	padding-top: 20px;
   }
 
-  .cdisplay-comments {
+  .display-comments {
     grid-row-start: 3;
     grid-row-end: 4;
     margin-left: 30px;
@@ -496,7 +496,7 @@ input {
   .all-comments {
     overflow-x: hidden; 
     overflow-y: scroll; 
-    max-height: 400px;
+    max-height: 300px;
   }
 
   .comment-item {
