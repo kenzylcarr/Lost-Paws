@@ -432,28 +432,28 @@ if (isset($_POST['firstname']) && isset($_POST['lastname'])) {
 				<p id="current-password-error" class="error-message"></p>
 
 				<!-- New Password -->
-				<label for="new-password">New Password</label>
+				<!-- <label for="new-password">New Password</label>
 				<input type="password" name="new-password" id="new-password" required placeholder="Enter your new password" oninput="validatePassword(this)" />
 				<button type="button" class="password-toggle" onclick="togglePasswordVisibility('new-password')">view</button>
-				<p id="new-password-error" class="error-message"></p>
+				<p id="new-password-error" class="error-message"></p> -->
 
 				<!-- Confirm New Password -->
-				<label for="confirm-password">Confirm New Password</label>
+				<!-- <label for="confirm-password">Confirm New Password</label>
 				<input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm your new password" oninput="validateConfirmPassword(this)" />
 				<button type="button" class="password-toggle" onclick="togglePasswordVisibility('confirm-password')">view</button>
-				<p id="confirm-password-error" class="error-message"></p>
+				<p id="confirm-password-error" class="error-message"></p> -->
 
 				<input type="submit" value="Save Changes" class="save-button" />
 			  </form>
 			</div>
 
             <!-- Delete Account Section -->
-            <div id="delete" class="settings-section" style="display: none;">
+            <!-- <div id="delete" class="settings-section" style="display: none;">
               <h3>Delete Account</h3>
               <p>Once your account is deleted, you will not be able to recover it. This action is permanent.</p>
 		<br>
               <button class="delete-button">Delete Account</button>
-            </div>
+            </div> -->
 
 	<!-- Password visibility -->
 	<script>
