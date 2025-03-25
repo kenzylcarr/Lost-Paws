@@ -133,8 +133,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->execute();
                     
                     // Redirect to login page
-                    // header("location: ../View/login.php");
-                    // exit();
+                    header("location: ../View/login.php");
+                    exit();
                 } else {
                     $errors['profile_photo'] = "Sorry, the image could not be moved.";
                 }
@@ -148,8 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$end_time = microtime(true);
-$execution_time = $end_time - $start_time;
+$execution_time = microtime(true) - $start;
 echo "Execution time: " . $execution_time . " seconds.";
 
 // Write execution time to a txt file
