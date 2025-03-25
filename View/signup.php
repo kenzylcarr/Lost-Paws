@@ -148,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$execution_time = microtime(true) - $start;
+$execution_time = microtime(true) - $start_time;
 echo "Execution time: " . $execution_time . " seconds.";
 
 // Write execution time to a txt file
