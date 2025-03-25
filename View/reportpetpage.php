@@ -148,8 +148,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($longitude_err)) echo $longitude_err . "<br>";
     }
 }
+$end_time = microtime(true);
+$execution_time = $end_time - $start_time;
 
-$execution_time = microtime(true) - $start_time;
+// Store the execution time in the database
+$stmt = $conn->prepare("INSERT INTO performance_log (function_name, execution_time) VALUES ('report', ?)");
+$stmt->bind_param("d", $execution_time); // 'd' for double (float)
+$stmt->execute();
+
 echo "Execution time: " . $execution_time . " seconds.";
 
 mysqli_close($conn);

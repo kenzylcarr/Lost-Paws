@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $end_time = microtime(true);
                     $execution_time = $end_time - $start_time;
 
-                    // Store the execution time in the database (optional)
+                    // Store the execution time in the database
                     $stmt = $conn->prepare("INSERT INTO performance_log (function_name, execution_time) VALUES ('signup', ?)");
                     $stmt->bind_param("d", $execution_time); // 'd' for double (float)
                     $stmt->execute();
