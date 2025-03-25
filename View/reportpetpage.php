@@ -152,11 +152,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 $execution_time = microtime(true) - $start_time;
 echo "Execution time: " . $execution_time . " seconds.";
 
-// Write execution time to a txt file
-$file = fopen("execution_time.txt", "a");
-fwrite($file, "reportpetpage.php execution time: " . $execution_time . " seconds.\n");
-fclose($file);
-
 mysqli_close($conn);
 ?>
 
