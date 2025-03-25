@@ -15,8 +15,7 @@
 session_start();
 require_once("../Model/db_config.php");
 
-function test_input($data)
-{
+function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -31,16 +30,19 @@ $email = "";
 $password = "";
 $phone = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = isset($_POST["firstname"]) ? test_input($_POST["firstname"]) : "";
-    $last_name = isset($_POST["lastname"]) ? test_input($_POST["lastname"]) : "";
-    $username = isset($_POST["username"]) ? test_input($_POST["username"]) : "";
-    $email = isset($_POST["email"]) ? test_input($_POST["email"]) : "";
-    $password = isset($_POST["password"]) ? test_input($_POST["password"]) : "";
-    $cpassword = isset($_POST["cpassword"]) ? test_input($_POST["cpassword"]) : "";
-    $phone = isset($_POST["phone"]) ? test_input($_POST["phone"]) : "";
+// Start measuring the execution time
+$start_time = microtime(true);
 
-    $nameRegex = "/^[a-zA-Z'-]+$/";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $firstname = test_input($_POST["firstname"]);
+    $lastname = test_input($_POST["lastname"]);
+    $username = test_input($_POST["username"]);
+    $email = test_input($_POST["email"]);
+    $password = test_input($_POST["password"]);
+    $cpassword = test_input($_POST["cpassword"]);
+    $phone = test_input($_POST["phone"]);
+
+    $nameRegex = "/^[a-zA-Z\s]+$/";
     $unameRegex = "/^[a-zA-Z0-9_]+$/";
     $emailRegex = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     $passwordRegex = "/^(?=.*\W).{6,}$/";
@@ -101,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["Database Error:"] = "Failed to insert user";
         } else {
             // Handle file upload
-            $target_dir = "../View/uploads/";
+            $target_dir = "/home/u204807276/domains/pawsarelost.com/public_html/View/uploads/";
             $uploadOK = true;
             $imageFileType = strtolower(pathinfo($_FILES["profile_photo"]["name"], PATHINFO_EXTENSION));
             $uid = $conn->insert_id; // Get the last inserted ID
@@ -128,9 +130,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt = $conn->prepare("UPDATE users SET profile_photo = ? WHERE username = ?");
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
-                    
                     // Redirect to login page
-                    header("location: ../View/login.php");
+                    header("Location: login.php");
                     exit();
                 } else {
                     $errors['profile_photo'] = "Sorry, the image could not be moved.";
@@ -144,138 +145,113 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
+$end_time = microtime(true);
+$execution_time = $end_time - $start_time;
+echo "Execution time: " . $execution_time . " seconds.";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Signup | Lost Paws</title>
-    <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
-    <link rel="stylesheet" type="text/css" href="/View/CSS/signup-style.css">
-    <script src="../Controller/eventHandler.js"></script>
+  <title>Signup | Lost Paws</title>
+  <link rel="stylesheet" type="text/css" href="/View/CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="/View/CSS/signup-style.css">
+  <script src="../Controller/eventHandler.js"></script>
 </head>
 
 <body>
-    <div id="container">
-        <nav class="navmenu">
-            <!-- Lost Paws Logo -->
-            <div class="logo">
-                <a href="../index.php">
-                    <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo" /></p>
-                </a>
-            </div>
+  <div id="container">
+    <nav class="navmenu">
+      <!-- Lost Paws Logo -->
+      <div class="logo"> 
+          <a href="../index.php">
+            <p><img src="images/lp-logo.png" alt="Lost Paws Logo" class="nav-logo"/></p>
+          </a>
+      </div>
+  
+      <!-- Navigation menu -->
+      <div class="nav-links">
+        <a href="/View/aboutpage.php">About Lost Paws</a>
+        <a href="/View/lostandfound.php">Lost & Found</a>
+        <a href="petmap.php">Pet Map</a>
+      </div>
+    </nav>
 
-            <!-- Navigation menu -->
-            <div class="nav-links">
-                <a href="/View/aboutpage.php">About Lost Paws</a>
-                <a href="/View/lostandfound.php">Lost & Found</a>
-                <a href="petmap.php">Pet Map</a>
-            </div>
-        </nav>
+  <!-- Left-hand side of page  -->
+    <main id="main-left-signup">
+      <h1>Welcome</h1>
+      <h2>Join Our Lost Paws Community!</h2>
+    </main>
 
-        <!-- Left-hand side of page  -->
-        <main id="main-left-signup">
-            <h1>Welcome</h1>
-            <h2>Join Our Lost Paws Community!</h2>
-        </main>
-
-        <!-- Right-hand side of page  -->
-        <main id="main-right-signup">
-            <div class="signup-header">
-                <h2>Hello! Tell us a bit about yourself.</h2>
-            </div>
-
-            <!-- Prompts user to input their information -->
-            <form class="auth-form-signup" id="signup-form" method="post" action="../Model/register.php" enctype="multipart/form-data">
+  <!-- Right-hand side of page  -->
+    <main id="main-right-signup">
+      <div class="signup-header">
+          <h2>Hello! Tell us a bit about yourself.</h2>
+      </div>
+      
+  <!-- Prompts user to input their information -->
+          <form class="auth-form-signup" id="signup-form" method="post" enctype="multipart/form-data">
                 <!-- First Name -->
                 <div class="signup-field">
                     <label for="firstname">First Name</label>
-                    <input type="text" name="firstname" id="firstname" />
-                    <span id="error-text-firstname"
-                        class="error-text <?php echo empty($errors['firstname']) ? 'hidden' : ''; ?>"><?php echo $errors['firstname'] ?? ''; ?></span>
-                </div>
-                
+                    <input type="text" name="firstname" id="firstname"/> 
+                    <span id="error-text-firstname" class="error-text hidden">Invalid first name.</span> 
+                </div>    
                 <!-- Last Name -->
                 <div class="signup-field">
                     <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname" id="lastname" />
-                    <span id="error-text-lastname"
-                        class="error-text <?php echo empty($errors['lastname']) ? 'hidden' : ''; ?>"><?php echo $errors['lastname'] ?? ''; ?></span>
+                    <input type="text" name="lastname" id="lastname"/> 
+                    <span id="error-text-lastname" class="error-text hidden">Invalid last name.</span> 
                 </div>
-                
                 <!-- Username -->
                 <div class="signup-field">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" />
-                    <span id="error-text-username"
-                        class="error-text <?php echo empty($errors['username']) ? 'hidden' : ''; ?>"><?php echo $errors['username'] ?? ''; ?></span>
-                    <div id="error-text-username-taken" class="error-text <?php echo empty($errors['username_taken']) ? 'hidden' : ''; ?>">
-                        <?php echo $errors['username_taken'] ?? ''; ?>
-                    </div>
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" />
+                        <span id="error-text-username" class="error-text hidden">Invalid username.</span> 
                 </div>
-                
                 <!-- Email Address -->
                 <div class="signup-field">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" />
-                    <span id="error-text-email"
-                        class="error-text <?php echo empty($errors['email']) ? 'hidden' : ''; ?>"><?php echo $errors['email'] ?? ''; ?></span>
-                    <div id="error-text-email-taken" class="error-text <?php echo empty($errors['email_taken']) ? 'hidden' : ''; ?>">
-                        <?php echo $errors['email_taken'] ?? ''; ?>
-                    </div>
+                    <input type="email" name="email" id="email"/> 
+                    <span id="error-text-email" class="error-text hidden">Invalid email address.</span> 
                 </div>
-
+            
                 <!-- Phone Number -->
                 <div class="signup-field">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" />
-                    <p id="error-text-phone" class="error-text <?php echo empty($errors['phone']) ? 'hidden' : ''; ?>">
-                        <?php echo $errors['phone'] ?? ''; ?></p>
-                    <div id="error-text-phone-taken" class="error-text <?php echo empty($errors['phone_taken']) ? 'hidden' : ''; ?>">
-                        <?php echo $errors['phone_taken'] ?? ''; ?>
-                    </div>
+                    <input type="tel" id="phone" name="phone"/> 
+                    <p id="error-text-phone" class="error-text hidden">Enter a valid phone number.</p>
                 </div>
-                
                 <!-- Password -->
                 <div class="signup-field">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" />
-                    <span id="error-text-password"
-                        class="error-text <?php echo empty($errors['password']) ? 'hidden' : ''; ?>"><?php echo $errors['password'] ?? ''; ?></span>
+                    <input type="password" name="password" id="password"/> 
+                    <span id="error-text-password" class="error-text hidden">Invalid password. Must be at least 6 characters long, and contain one special character.</span> 
                 </div>
-                
                 <!-- Confirm Password -->
                 <div class="signup-field">
                     <label for="cpassword">Confirm Password</label>
-                    <input type="password" name="cpassword" id="cpassword" />
-                    <span id="error-text-cpassword"
-                        class="error-text <?php echo empty($errors['cpassword']) ? 'hidden' : ''; ?>"><?php echo $errors['cpassword'] ?? ''; ?></span>
+                    <input type="password" name="cpassword" id="cpassword"/> 
+                    <span id="error-text-cpassword" class="error-text hidden">Passwords do not match.</span> 
                 </div>
-                
                 <!-- Profile Photo -->
                 <div class="signup-field">
                     <label for="profile_photo">Profile Picture</label>
                     <input type="file" id="profile_photo" name="profile_photo" />
-                    <p id="error-text-profile_photo"
-                        class="error-text <?php echo empty($errors['profile_photo']) ? 'hidden' : ''; ?>">
-                        <?php echo $errors['profile_photo'] ?? ''; ?></p>
+                    <p id="error-text-profile_photo" class="error-text hidden">Choose a valid file.</p>
                 </div>
-                
-                <!-- Submit button -->
+                <!-- Submit button that redirects user to mainpage -->
                 <div class="signup-field">
-                    <input class="signup-button" type="submit" value="Sign Up!" />
+                    <input class="signup-button" type="submit" value="Sign Up!" action="login.php"/>
                 </div>
             </form>
-            
-            <!-- If user already has an account  -->
-            <div class="signup-footnote">
-                <p>Already have an account? <a id="login-button" href="/View/login.php">Login</a></p>
-            </div>
-        </main>
-    </div>
-    <script src="../Controller/eventRegisterSignup.js"></script>
+      <!-- If user already has an account  -->
+      <div class="signup-footnote">
+          <p>Already have an account? <a id="login-button" href="/View/login.php">Login</a></p>
+      </div>
+   </main>
+  </div>
+  <script src="../Controller/eventRegisterSignup.js"></script>
 </body>
 
 </html>
