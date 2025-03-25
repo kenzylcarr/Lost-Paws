@@ -213,7 +213,7 @@ mysqli_close($conn);
 
           <!-- Animal Photo -->
           <label for="pet_photo">Upload Animal Photo:</label>
-          <input type="file" id="pet_photo" name="pet_photo[]" multiple>
+          <input type="file" id="pet_photo" name="pet_photo[]">
 
           <!-- Google Map for Location -->
           <label for="map">Select Location on Map: </label>
