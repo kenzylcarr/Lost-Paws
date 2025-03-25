@@ -166,7 +166,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
         <div class="pet-database-container"> 
         <div class="input-box">
         <form id="edit-post-form" method="POST" enctype="multipart/form-data">
-            <!-- Animal Type -->
+
+	<!-- Do not let user update animal type
             <label for="animal_type">Animal Type:</label>
               <select name="animal_type">
                   <option value="cat"> <?php if ($pet['animal_type'] == 'cat'); ?>Cat</option>
@@ -174,6 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['field'])) {
               </select>
               <!-- <button type="button" id="update-animal-type">Update</button> -->
               <button type="button" onclick="updateField('animal_type')">Update</button>
+	-->
 
               <!-- Status -->
               <label for="status">Status:</label>
