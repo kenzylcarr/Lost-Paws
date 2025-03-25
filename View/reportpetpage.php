@@ -143,6 +143,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         header("Location: ../View/reportpetpage.php");
         exit();
+        
+        // Debugging message
+        echo "Redirecting to reportpetpage.php...";
+
     } else {
         // Display validation errors
         if (!empty($animal_type_err)) echo $animal_type_err . "<br>";
