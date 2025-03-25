@@ -14,9 +14,6 @@
 session_start();
 require_once("../Model/db_config.php");
 
-// Execution time
-// $start_time = microtime(true);
-
 // Check if connection is successful
 if (!$conn) {
   die("Database connection failed: " . mysqli_connect_error());
