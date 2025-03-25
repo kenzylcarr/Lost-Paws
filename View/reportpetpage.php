@@ -136,12 +136,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error: " . $stmt->error;
           }
         }
-        $end_time = microtime(true);
-        $execution_time = $end_time - $start_time;
 
-        echo "Execution time: " . $execution_time . " seconds.<br>";
-
-        header("Location: ../View/reportpetpage.php");
+        header("Location: ../View/homepage.php");
         exit();
     } else {
         // Display validation errors
