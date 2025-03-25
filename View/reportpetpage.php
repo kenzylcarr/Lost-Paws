@@ -157,14 +157,10 @@ $user_info = "User Information: \nUsername: $username\n";
 $pet_info = "Pet Information: \nAnimal Type: $animal_type\nStatus: $status\nLocation: $location_ip\nLatitude: $latitude\nLongitude: $longitude\n";
 
 $file = fopen("execution_time.txt", "a");
-if ($file) {
-  fwrite($file, "reportpetpage.php execution time: " . $execution_time . " seconds.\n");
-  fwrite($file, $user_info);
-  fwrite($file, $pet_info);
-  fclose($file);
-} else {
-  echo "Error: Unable to open the file.";
-}
+fwrite($file, "reportpetpage.php execution time: " . $execution_time . " seconds.\n");
+fwrite($file, $user_info);
+fwrite($file, $pet_info);
+fclose($file);
 
 mysqli_close($conn);
 ?>
