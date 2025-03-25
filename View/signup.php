@@ -132,7 +132,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_param("ss", $target_file, $username);
                     $stmt->execute();
 
-                    $execution_time = microtime(true) - $start_time;
+                    $end_time = microtime(true);
+                    $execution_time = $end_time - $start_time;
+
+                    // Store the execution time in the database (optional)
+                    $stmt = $conn->prepare("INSERT INTO performance_log (function_name, execution_time) VALUES ('signup', ?)");
+                    $stmt->bind_param("d", $execution_time); // 'd' for double (float)
+                    $stmt->execute();
+
                     echo "Execution time: " . $execution_time . " seconds.";
                     
                     // Redirect to login page
